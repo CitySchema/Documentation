@@ -157,6 +157,12 @@ font-weight: 600;
 margin: 0;
 }
 
+.section_title {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  }
+
 img.title {
   padding: 10px 10px 10px 10px;
 }
