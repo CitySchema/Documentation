@@ -1,0 +1,165 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Treeview Tutorial | YogiHosting Demo</title>
+    <link rel="icon" type="image/png" href="http://www.yogihosting.com/wp-content/themes/yogi-yogihosting/Images/favicon.ico">
+    <meta charset="utf-8" />
+    <style>
+        body {
+            background: #111 no-repeat;
+            background-image: -webkit-gradient(radial, 50% 0, 150, 50% 0, 300, from(#444), to(#111));
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #FFF;
+        }
+
+            h2 a {
+                color: #0184e3;
+                text-decoration: none;
+            }
+
+                h2 a:hover {
+                    text-decoration: underline;
+                }
+
+        .container {
+            width: 1000px;
+            margin: auto;
+            color: #FFF;
+            font-size: 25px;
+        }
+
+            .container h3 {
+                font-size: 20px;
+            }
+
+        #content {
+            border: dashed 2px #CCC;
+            padding: 10px;
+        }
+
+        #treeview, #treeview ul {
+            list-style: none;
+        }
+
+            #treeview .parent {
+                position: relative;
+                cursor: pointer;
+            }
+
+                #treeview .parent:before {
+                    padding-left: 25px;
+                    background: url(Image/plus-minus.png) no-repeat;
+                    background-position: -25px top;
+                    content: "";
+                    height: 25px;
+                }
+
+            #treeview .close:before {
+                background-position: 0 top;
+            }
+
+            #treeview .parent > ul {
+                display: none;
+            }
+
+        #reset {
+            padding: 5px 10px;
+            background: #4CAF50;
+            border: none;
+            color: #FFF;
+            cursor: pointer;
+        }
+
+            #reset:hover {
+                color: #4CAF50;
+                background: #FFF;
+            }
+    </style>
+</head>
+<body>
+    <h1>jQuery Treeview Tutorial</h1>
+    <h2><a href="http://www.yogihosting.com/jquery-treeview/">Read the tutorial on YogiHosting » </a><button id="reset">Reset »</button></h2>
+    <div class="container">
+        <div id="content">
+            <ul id="treeview">
+                <li class="parent">
+                    North America
+                    <ul>
+                        <li class="parent">
+                            USA
+                            <ul>
+                                <li>Alabama</li>
+                                <li class="parent">
+                                    New York
+                                    <ul>
+                                        <li>NYC</li>
+                                        <li>New Jersey</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>Brazil</li>
+                    </ul>
+                </li>
+                <li class="parent">
+                    Asia
+                    <ul>
+                        <li class="parent">
+                            China
+                            <ul>
+                                <li class="parent">
+                                    Guangdong
+                                    <ul>
+                                        <li>Shantou</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="parent">
+                            India
+                            <ul>
+                                <li class="parent">
+                                    Uttar Pradesh
+                                    <ul>
+                                        <li>Lucknow</li>
+                                        <li>Kanpur</li>
+                                    </ul>
+                                </li>
+                                <li class="parent">
+                                    Gujarat
+                                    <ul>
+                                        <li>Surat</li>
+                                        <li>Ahmedabad</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--Reference to jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#reset").click(function (e) {
+                location.reload();
+            });
+
+            $("#treeview .parent").click(function (e) {
+                e.stopPropagation();
+                $(this).find(">ul").toggle("slow");
+                if ($(this).hasClass("close"))
+                    $(this).removeClass("close");
+                else
+                    $(this).addClass("close");
+            });
+        });
+    </script>
+</body>
+</html>

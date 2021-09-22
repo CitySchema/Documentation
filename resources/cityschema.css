@@ -1,0 +1,364 @@
+  /* Style sheet for citySchema.org documentation library 
+  */
+
+/* The layout is governed by the grid mechanism 
+*/
+
+#grid-container {
+  display: grid;
+  grid-template-columns: 250px 750px;
+  grid-template-areas:
+    'index-container main-container '; 
+
+  /*grid-gap: 10px; */
+  background-color: linen;
+  /*padding: 10px;*/
+  width: 1000px;
+  margin: auto;
+  /*overflow: auto;*/
+  /*height: 100vh; */
+}
+
+#main-container {
+  display: grid;       
+  grid-template-areas:
+    'header header header header header'
+    'article article article article article'
+    'footer footer footer footer footer'; 
+  grid-template-rows: 50px auto 30px;
+  /*overflow: auto;*/
+  /*overflow: hidden;*/
+  /*height: 100vh;*/
+
+}
+#index-container {
+  display: grid;
+  width: 250px;
+  position: fixed;
+  grid-template-areas:
+    'index-header'
+    'index'
+    'index-footer';
+  grid-template-rows: 50px auto 5px;
+  background-color: linen;
+  height: 100vh;
+  border-right-style: ridge;
+  border-right-color: rgb(28, 87, 121);
+  border-right-width: 1px;
+}
+
+
+  #header { grid-area: header; 
+    background-color: rgb(91, 179, 238);
+    padding: 0px 10px 0px 10px;
+    color: linen;}
+  #index { grid-area: index; 
+       overflow: auto;
+       overflow-wrap: normal; 
+       padding: 10px 0px 10px 10px;}
+  #article { grid-area: article; 
+       padding: 10px 15px 10px 15px;}
+  #footer { grid-area: footer; 
+            padding: 0px 10px 15px 10px;}
+  #index-header { grid-area: index-header; 
+       background-color: rgb(91, 179, 238);
+       padding: 10px 0px 0px 0px;
+        }
+  #index-footer { grid-area: index-footer; 
+       padding: 0px 10px 15px 10px;
+       border-top-style: ridge;
+       border-top-color: rgb(28, 87, 121);
+       border-top-width: 1px;
+      }
+  #main-container { grid-area: main-container; }
+  #index-container { grid-area: index-container; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Stops scrolling before target */
+:target:before {
+  content: "";
+  display: block;
+  /*height: 70px;*/
+  padding-top: 65px;
+  margin: -65px 0 0;
+}
+
+/* I wish this worked,but it doesn't
+:target h3 {
+  background-color: yellow;
+}
+*/
+
+  body {
+    margin: 0;  /*Eliminates tab scrollbar */
+    color: rgb(28, 87, 121);
+    background-color:#a7a09a;
+
+  }
+  body a:active {
+    background-color: rgb(247, 223, 15);
+  }
+
+  a:link {
+    color: rgb(28, 87, 121);
+    text-decoration: none;
+  }
+
+  #article a:link {
+    color: rgb(70, 221, 247);
+    text-decoration: underline ;
+  }
+
+  #article a:visited {
+    color: rgb(28, 87, 121);
+  }
+
+  a:visited {
+    color: rgb(28, 87, 121);
+  } 
+  a:hover {
+    color: rgb(28, 87, 121);
+    background-color:#d4d1ce;
+  }
+
+  #header a:link {
+    color: linen;
+  }
+
+  #header a:visited {
+    color: linen;
+  }
+
+  #footer a:visited {
+    color: red;
+  }
+  #footer a {
+    color: red;
+  }
+  #footer a:active {
+    background-color: rgb(247, 223, 15);
+  }
+
+  p {
+    margin-top: 8px; 
+    margin-bottom: 8px; 
+  }
+
+  h3 {
+    margin-bottom: 8px; 
+  }
+
+.title {
+font-size: 26px;
+font-weight: 600;
+margin: 0;
+}
+
+img.title {
+  padding: 10px 10px 10px 10px;
+}
+
+.rightflex {
+display: flex;
+flex-wrap: nowrap;
+flex-direction: row-reverse;
+}
+
+.rightflex > div {
+padding: 0px 10px 10px 10px;
+text-align: center;
+
+}
+
+
+.middleflex {
+    display: flex;
+    }
+
+.middleflex >div {
+      padding: 0px 10px 10px 0px;
+      text-align: center;
+      }
+
+
+
+/* These treeview styles regulate the sidebar index. */
+.treeview .chapter  {
+  list-style: none;
+  cursor: pointer; 
+}
+
+/*
+ul.verses {
+  list-style-position: inside;
+  list-style-type: circle;
+  /*background: url("./images/plusminusdot.png") no-repeat;
+  background-position: 40 top;
+
+}
+*/
+
+/* Main Level */
+ul.treeview  {
+  list-style: none;
+  margin-left:0px;
+  margin-top: 0px;
+  padding-left:0px;
+  padding-top: 10px;
+  /*list-style-position: inside;*/
+
+}
+
+/* Second Level */
+ul.treeview >ul {
+  margin-left:5px;
+  padding-left:10px;
+
+}
+
+
+/* Second Level 
+ul.treeview  ul.chapter >ul {
+  margin-left:0px;
+  padding: 10px 10px;
+  background-color: pink;
+}
+
+*/
+
+/* Second Level */
+ul.verses {
+  margin-left:0px;
+  padding-left:15px;
+}
+
+ /*
+.treeview .chapter {
+    position: relative; 
+    cursor: pointer; 
+}
+
+*/
+.treeview ul li.verse {
+list-style-type: none;
+  }
+
+.treeview ul li.verse:before {
+  padding-left: 16px;
+  background: url("./images/winupdowndot.png") no-repeat;
+  background-position: -40px top;
+  background-size: 60px, 20px;
+  content: "";
+  height: 25px;
+}
+
+.treeview ul.verses {
+  padding: 2px 10px;
+  margin: 0px;
+}
+
+.treeview ul.verses >li {
+  padding: 0px 10px;
+  margin: 0px;
+  list-style-position: inside;
+  text-indent: -1em;
+  padding-left: 1em;
+}
+
+.treeview .chapter:before {
+  padding-left: 18px;
+  background: url("./images/winupdowndot.png") no-repeat;
+  background-position: 0px top;
+  background-size: 60px, 20px;
+  content: "";
+  height: 25px;
+}
+  .treeview .is-open:before {
+      background-position: -20px top;
+  }
+  .treeview ul.verses {  /*Default view is hidden.  This is toggled with jquery. */
+      display: none;
+  }
+
+#toggle_subjects, #toggle_headings {
+  cursor: pointer;
+}
+
+
+ figure.right {
+  float: right;
+  width: 45%;
+  text-align: left;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+  background-color: rgb(245, 242, 239);
+}
+
+figure.middle {
+  /*display: flex;*/
+  display: block;
+   width: 95%;
+   margin-left: auto;
+   margin-right: auto;
+  text-align: left;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+  background-color: rgb(245, 242, 239);
+}
+
+img.scaled {
+  width: 100%; 
+  height: auto;
+}
+
+.triptic {
+  width: 33%; 
+  height: auto;
+}
+
+table.dictionary {
+  width: 85%; 
+  margin-left: 25px;
+  margin-right: 50px;
+  border-collapse: collapse;
+  font: 87.5% "myriad-pro", Arial, Helvetica, sans-serif;
+}
+table.dictionary tr:nth-child(even) {
+  background: #f5f3f3;
+}
+table.dictionary tr:nth-child(odd) {
+  background: #e1e1e1;
+}
+
+table.dictionary td {
+   /*padding: .5em 1em;*/
+  vertical-align: top;
+  line-height: 1.5em; 
+  border: 1px solid #B3B2B2;
+}
+table.dictionary th {
+  padding: .5em 1em;
+  vertical-align: top;
+  background:  #bfbfbf;
+  font-weight: normal;
+  padding: .5em 1em;
+  text-align: left;
+  border: 1px solid #b3b2b2;
+  font-weight: bold;
+}
+
+table.dictionary p {
+  margin-bottom: 0.6em;
+  margin-block-end: 0.6em;
+}
