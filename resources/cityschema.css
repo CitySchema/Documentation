@@ -96,6 +96,7 @@ html {
     margin: 0;  /*Eliminates tab scrollbar */
     color: rgb(28, 87, 121);
     background-color:#a7a09a;
+    font-family: Arial, sans-serif;
 
   }
   body a:active {
@@ -152,6 +153,7 @@ html {
   }
 
 .title {
+font-family: 'Times New Roman', serif;
 font-size: 26px;
 font-weight: 600;
 margin: 0;
@@ -195,6 +197,8 @@ text-align: center;
 .treeview .chapter  {
   list-style: none;
   cursor: pointer; 
+  font-weight: 550;
+
 }
 
 /*
@@ -215,6 +219,8 @@ ul.treeview  {
   padding-left:0px;
   padding-top: 10px;
   /*list-style-position: inside;*/
+  font-family: Roboto Condensed, sans-serif;
+  font-size: 14px;
 
 }
 
