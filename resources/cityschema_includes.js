@@ -31,8 +31,8 @@ let index_htm = `
 <ul class="treeview">
 <li class="chapter"><a href="../home/index.htm">Home Page</a></li>
     <ul class="verses">
-    <li class="verse"><a href="../home_intro/index.htm#early">Home Intro Early Link</a></li>
-    <li class="verse"><a href="../home_intro/index.htm#late">Home Intro Late Link</a></li>
+    <li class="verse"><a href="../home/index.htm#early">Home Intro Early Link</a></li>
+    <li class="verse"><a href="../home/index.htm#late">Home Intro Late Link</a></li>
 </ul>
 <li class="chapter"><a href="../template/index.htm">Documentation Template</a></li>
     <ul class="verses">
