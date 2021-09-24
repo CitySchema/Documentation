@@ -197,6 +197,7 @@ text-align: center;
 .treeview .chapter  {
   list-style: none;
   cursor: pointer; 
+  font-family: "Arial Narrow", Arial, sans-serif;
   font-weight: 550;
 
 }
@@ -219,8 +220,8 @@ ul.treeview  {
   padding-left:0px;
   padding-top: 10px;
   /*list-style-position: inside;*/
-  font-family: Roboto Condensed, sans-serif;
-  font-size: 14px;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 15px;
 
 }
 
@@ -245,6 +246,7 @@ ul.treeview  ul.chapter >ul {
 ul.verses {
   margin-left:0px;
   padding-left:15px;
+
 }
 
  /*
@@ -256,6 +258,8 @@ ul.verses {
 */
 .treeview ul li.verse {
 list-style-type: none;
+font-family: "Arial Narrow", Arial, sans-serif;
+font-weight: 100;
   }
 
 .treeview ul li.verse:before {
