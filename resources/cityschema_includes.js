@@ -31,14 +31,11 @@ let index_htm = `
 <ul class="treeview">
 <li class="chapter"><a href="../home/index.htm">Home Page</a></li>
     <ul class="verses">
-    <li class="verse"><a href="../home/index.htm#early">Home Intro Early Link</a></li>
-    <li class="verse"><a href="../home/index.htm#late">Home Intro Late Link</a></li>
+    <li class="verse"><a href="../home/index.htm#why">Home Intro Early Link</a></li>
+    <li class="verse"><a href="../home/index.htm#streetscapes">Home Intro Late Link</a></li>
 </ul>
-<li class="chapter"><a href="../template/index.htm">Documentation Template</a></li>
-    <ul class="verses">
-        <li class="verse"><a href="../template/index.htm#early">Early Link</a></li>
-        <li class="verse"><a href="../template/index.htm#late">Late Link</a></li>
-    </ul>
+<li class="chapter"><a href="../repocat_intro/index.htm">Repository / Catalog </a></li>
+
 
 </ul> <!-- Closes Index -->
 `
