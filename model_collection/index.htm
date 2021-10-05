@@ -1,0 +1,180 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head>
+    <title>Model Collection Management</title>
+    <meta name="description" content="Covers the procedures formanaging a collection of 3D building models as part od a GIS-based city modeling project.  Par of the citySchema.org framework fro developing, sharing and preserving city model assets. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography, citySchema">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/cityschema.css" rel="stylesheet"> 
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/cityschema.js"></script>
+</head>
+<body>
+    <div id="grid-container">
+      <div id="index-container">
+         <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+      </div> 
+      <div id="main-container">
+        <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+<div id="article">
+  <h3 class="section_title">Building Model Mangagement </h3>  <!-- Optional: would be the tile of the intro chapter. -->
+    <h1 class="title">Managing the Building Model Collection</h1>
+  
+    <p>This page provides an overview of the procedures and tools for managing the collection of 3D models od buildings, bridges, walls and docks as part of a city model within the <a href="../home.index.htm">citySchema.org framework for developing, sharing and preserving city model assets</a>.
+    </p>
+    <h3>Features and Benefits</h3>
+    <p>The tools and tasks provided in this workflow provide a simple, easy-to-understand, time-saving  tools and procedures that wil help your organization keep its model assets organized in a predictable fashion.  Even if the person in charge of model management changes, she or he will understand where to find source files and tools left by the last curator.
+    </p><p>
+    The tools and tasks included here provide a simple, yet powerful way to make updates and revisions to your model collection while retaining the capability to autid and reverse any action that has been taken even after edit-changes have been saved.  This is a very important feature as it is often the case that problems such as lost or corruptds models are not discovered for weeks, and when they are, it can be difficult to trace the problem or to know how many other models may have been affected. 
+    </p><p>
+    It is time-consuming and frustrating to figure out how to manage a city-wide collection or 3D models.  We con;t claim that this method is perfect, and welcome suggestions about how it might be improved.  Nevertheless, pbcGIS guarantees that starting with this workflow and tools wil be a big time-saver and should make management more confident in the over-all long-term asset management strategy.
+    </p>
+
+
+    <h2>Foundation Concepts</h2>
+    <p>For model curators, it is essential to understand the conceptual overview of the model collection, including definitions of important terms and a data dictionary issued in the document: <a href="https://cityschema.github.io/repository-catalog/catalog/model_collection.htm" target="metadata">Overview of Building Model Collection and Catalog</a>.  This is published in the Repository/Catalog along with all of the other metadata related to citySchema.org template model.  
+    </p><p>
+    <a href="https://github.com/CitySchema" target="github">citySchema templates shared on GitHub</a> are a recommendation.  Your organization may develop its own data dictionary and metadata.  Doing this, will probably require modifying many of the tools that are shared by citySchema.org.  So we recommend trying the demonstrations before digigng in and modifying the schema. 
+    </p>
+
+    <h2>Filesystem Context for ArcGIS Data Management</h2>
+    <p>The model collection management tools and tasks are saved as an ArcGIS Pro workspace, which is a self-contained collection of ArcGIS pro project documents, geoprocessing tools, and a scratch workspace.  At pbcGIS, we keep manage the city model in a filesystem as shown in figure 1.  
+    </p>
+    In our environment we have no networked file serves, so all of the resources for a city model are under a single directory.  In your environment, you might have the Cty3d master folder and the Cty3D_Dev files on different disks.  For the sake of portability,  our demonstration of the model management tools and procedures will be work with all resources in a single workflow folder. as shown in Figure 2. 
+  </p>
+  <p>A tour of the ModelCollectionMgt workflow folder is useful for orientation to the file organization.  It also introduces the main components of the workflow:
+  </p>
+  <ul>
+    <li><b>ArcDocs folder: </b> contains arcGIS Pro projects where the processing takes place.  There also may be layer files stored here, to save styling of layers and group layers for re-use within the maps and scenes within the project.  Also contans the arcGIS Task files that hold the step-by-step interactive guide for managing your model collection.  
+
+    <li><b>ModelWork folder: </b> contains the source model files for new models that have been submitted for inclusion into the collection.  Or models that are edited during model management operations.  WIthin the ModelWork folder, models are stored in batch folders named according to the source and date.  This organization allows for source models to be referenced in the model catalog and easily retrieved in case anyone wants revisit and modify a model using the original sources.  When a ModlCopllectio_Mgt workflow folder is retired, the contents of ModelWork are copied to the modelWork folder in <b>Cty3D_Archive</b>.
+    <li><b>PriorArchive folder:</b> contains the latest archived edition of the Cty3D_Models_YYYYMMDD.gdb.  The date string in the name og the geodatabase reflects the date that the geodatabase was issued a prior ModelCollection_Mgt. The capability to recover from corruption and errors requires that the lineage of PriorArchive models be continuous.  Note that all of the NextEditon modelcollections are spawned from one priorArchive geodatabase.  If you want to start form a newer collection, then the ModelCollection_Mgt workflow folder should be retired, and a fresh one started. 
+    <p>
+      It is often the case that the next edition of the model collection calls for changes tothe table schema for 3D models.  It would take a while to explain why, but for the purposes of maintaining the audit and rollback capability, it is necessary to apply whatever schema changes you intend to make to the prior archived model collection, before you begin making changes.  Therefore, the PriorArchive folder may contain a geodatabase named Cty3D_Models_YYYYMMDD_Migrated.gdb.  
+    </p>
+    </p><p>The PriorArchive folder contains geodatabases and also lyrx files that are used to view and inspect the model collection.  
+    <li><b>NextEdition folder:</b> is the destination for the new editions of Cty3D_Model geodatabases.  A single ModeCollection_Mgt workflow folder may spawn several new editions, each one carrying a new date string in its name.  Each new edition alsocomes with its lyrx files.
+    <li></b>Stage folder:</b> contains two geodatabases: <b>Stage.gdb</b> which contains copies of all of the prior_archived feature classes which have had edits made to them.  There is also a newModels feature class that contains all of the new models that have been imported or new models that are the results of edits to models frm the Prior_Archived collection.  Models from the Stage geodatatabase are used to generate the next edition of the model collection.  
+    </p><p>
+    The <b>congig.gdb</b> contains the template multipatch feature class reflecting the latest schema for 3D models feature classes. Tables representing domain values are also stored in config.gdb. 
+    <li><b>Sources folder:</b> the sources folder contains parcel information, the latest development log and a terrain raster that covers the extent of the city model.  These datasets are used tp attach attributes to new building models. 
+    </p><p>
+      In your production environment, these datasets may be referenced form other places.  It is useful tohave copies of them here so that thee is never any doubt about which version of these data-sets have been used. 
+    <li><b>Tools folder:</b> ArcGIS tool boxes, FME workbench folders, Python scripts, projection files, and lyrx files used in workflows that wil be discussed below. 
+    </p>
+    <li><b>Scratch folder:</b> is the destination for all intermediate datasets generated by tools.
+    </ul>  
+
+    <h2>A tour of the ModelCollection_Mgt ArcGIS Pro Project</h2>
+    <p>The ArcDocs ModelMgt_YYYYMMDD.aprx file is an arcGIS pro project that is set up to reference all of the tools and data-sets to run all of the procedures necessary for making changes tothe Prior Archive model collecetion and publishing the Next Edition.  Before digging in tothe tasks, it wil be useful to check the critical preferences settings in this project.  Sometimes ArcGIS initializes these differntly when you move or create a new project.
+    </p>
+
+    <h3>Project Options</h3>
+    <p>In the <b>Project</b> window under <b>Project > Current Settings</b> Notice that we have set the following:
+      <li><b>Home Folder</b> is the <b>ModelCollection_Mgt_YYYYMMDD</b> folder that contains all of the resources listed above.  This setting gives you a handy means of jumping tothis folder inorder to find any of the resources in the project. 
+      <li><b>Default Geodatabase: </b> set to scratch.gdb in your project's Scratch folder.  If this geodatabase doesn't exist, you should create it. 
+      <li><b>Default Toolbox:</b> is modelCollection_Mgt toolbox in your project's tools folder. 
+      </ul>
+     <p>Under the <b>Project > Options > Geoprocessing</b> settings make sure that the following two options are set asd follows
+        <ul>
+          <li><b>Checked: Allow geoprocessing tools to overwrite the results of prior geoprocessing operations</b>
+          <li><b>Unchecked: Remove layers that reference data overwritten by geoprocessing tools
+        </ul>
+
+<h3>Project Scenes and Maps</h3>
+<p>The ModelCollection_Mgt project has one map and one 3D scene.  
+<p>
+  The Map is a quick way of displaying the 2D source data that is not always easy to portray in 3D. The layers in the Map table of contents provide anopportunity to discuss some of the important source layers that are used by the model management processes.  For maximum edutainment, set your table of contens to <b>View Source Folders</b> so you can see where these data-sets are stored within the <b>Sources folder</b> of your ModelCollection_Mgt workflow folder. 
+</p>
+  <ul>
+    <li><b>DevLog_Pts: </b> The development log is a table that carries infomration related to the status of projects under review.  Each agency wil have a different variation on this.  In Boston, this table keeps track of the status of each project after each meeting of the review board. It also contains the projectID and the URL for the project on the BostonBuilds web site. There is a lot of other useful information about projects, but those three fields are the ones that are most important for understanding which models may need to be promoted, demoted or superceded.
+    <li></b>Tile Boundaries and Points:</b> are created by another workflow that wil be described later.  It will be good tolook at the atributes of these data-sets.  Notice that our tile-generation workflow produces tile corner and tile centerpoints, and calculates coordinates for these in geographic, state plane and shifted state plane coordinates.  The elevations for the tile points have been calculated because they are necessary for making sure our terrain meshes extend exactly to the corners of each tile. 
+    <li><b>Metro_Elevation_5m:</b> A raster elevation model that covers the full extent of the tiles for our project.  This elevation model is used to calculate the geometric envelope for new models. 
+    This elevation model covers the full extent of all tiles. We include a rough elevation mode here to keep out demo dataset slim.  In actual production, we use a 1-Foot raster that is made form our high resolution terrain model within the city and uses the MassGIS DTM for the outlying areas.  
+    <li><b>Parcels 2020:</b> Parcel boundaries are used to add parcel IDs and Assessor map URLs to new building models. When parcel data is updated, you may want to update the assessing links.
+    <li><b>Issue Points:</b>  used to mark issues such as missing models.  Issues with existingt models are marked on the <b>QA_Issue</b> field on the model's attribute table.
+    </ul>
+
+    <h2>The 3D Scene</h2> 
+    <p>The 3D scene and its table of contents is the hub of the ModelCollection_Mgt project all of the tools reference layers from this scene. It is also the view upon which all review and edit tasks are carried out. 
+    </p>
+    <h3>Layers</h3>
+    <ul>
+      <li><b>Prior Migrated Unfiltered:</b> This group layer includes a layer for each of the multipatch layers that wee released with the prior archived model collection.  In cases where schema changes have been made for the current round of updates, these should be the Prior Migrated layers. These make up the initial state of the collection before any changes are made.  These feature classes should be considered read-only.  
+        <li><b>Prior Migrated Layer Demo :</b> represents the each of the multipatch feature classes in the prior archived edition, but with styling and definition query views that make it easy to review the collection, toggling proposed-to-built and proposed-to-be-demolished buildings.  
+        <p>The styling for these layers was saved when the prior archived model collection was issued.
+      <li><b>Stage Unfiltered: </b> portrays eachof the feature layers in the Stage.gdb, plus a 3d version of the development log points and issue points portrayed as 3d columns. Any of the multipatch layers in this group layer may be edited except as noted in <a href="#edit_rules"> below.
+      <li><b>Stage Edit Views: </b> in the course of making edits, it is useful to use special views, such as: 
+         <ul>
+           <li>Views of the <b>Proposed_MP</b> and <b>Internal_MP</b> feature classes that are joined to the current Development Log table -- for figuring out whether status promotions may be necessary. 
+            <li><b>Definition Query Views</b> (marked with DQV appended to the layer names)that provide a mechanism for visiting and checking each of the models that had perviously been Under Construction, or might have a status change indicated.  You can inspect these definition queries to see how they work. In thecourse of making edits, you may encounter reasons to make your own DQV views tofacilitate edits.  A cool theng about DQV's based on values of <b>Model Status</b> is that in cases where you are checking and changing values fro Model Status, the models so updated wil automatically jump out of the DQV and into another.
+          <ul>
+          </ul>
+        
+      <h3>Tools and Tasks</h3>
+      <p>  There are several procedures that you might use when managing your model collection.  The ModelCollection_Mgt peoject uses <b>Tasks</b> to break the model management process into phases, as you can see, each phase may involve sevral steps.  Most of these steps are optional.  Generally speaking,each step is carried out by calling on one of the tools in the ModelCollection_Mgt toolbox.  Within the toolbox,the tools are grouped in tool-sets that correspond to specific Model Collection Management tasks. Power users may decide in some cased just to run the geoprocessing tools on their own without using tasks.  You may enconter cases where you want to make a copy pf a tool to customize it.
+      </p><p>
+      Users should be very familiar with the ArcGIS Geoprocessing tools and tasks.  There are many ways of modifying these so that they don't work.  This documentation can't cover all of these possibilities.
+
+
+
+
+        
+
+
+
+        <h2 id="edit_rules">Edit Rules<h2>
+        
+        <ul>
+          <li>You should never delete a multipatch!  
+          <li>the way to remove a multipatch from the next edition
+            <ul>
+              <li>Change status to Alt, modified, demolished or retired
+              <li>set edit flag to Stop
+          </ul>
+
+
+
+
+  
+  
+  like the parcels, tile boundaries and points and the values of the terrain raster.  
+</p> 
+
+
+
+
+
+
+      
+      
+    
+    
+
+
+
+
+
+
+</div> <!-- Closes #article div -->
+
+    <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+  </div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+</html>
+    
