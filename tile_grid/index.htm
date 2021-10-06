@@ -38,6 +38,138 @@
   <h1 class="title">Overview of the Tile Grid and Coordinate System</h1>
     <p>This page is currently under construction.  Content should be added by October 7, 2020. 
     </p>
+
+    <figure class="right">
+      <a href="./images/Bos3d_TileGrid_ref.jpg"><img class="scaled" src="./images/Bos3d_TileGrid_ref.jpg"></a>
+      <figcaption>Boston Metro 3D Tile Grid and Coordinate System. Click image to enlarge</a></figcaption>
+    </figure>
+
+
+<p><b>File Name: </b> Boston Metro Tile Grid    
+<br><b>Updated: </b> July 6, 2021     
+<br><b>Formats: </b> Autodesk DXF, Trimble Sketchup, ESRI Shapefile, GeoJSON
+
+<div id="context"><!-- loaded from config.js. --></div>
+<div id="nav3d"><!-- loaded from config.js. --></div>
+
+
+<h2 id="purpose">Tiling Strategy</h2>
+<p>The tiling scheme for the BPDA's 3D model serves as a framework for sharing a detailed model of metropolitan extent with design tools that are limited in terms of spatial extent and file-size.  By dividing the city-wide model components into snap-together modules, the tile grid provides a framework for registering model collections and terrain meshes that can be precisely snapped together and draped with a variety tiled groundplan images. 
+</p>
+
+<h2 id="coordinates">Metro Boston 3D Coordinate System</h2>
+<p>Surveyors and engineers in Massachusetts prepare their official drawings using the Massachusetts State Plane Coordinate System with coordinates expressed in Feet.  The origin of the State Plane grid lies outside the state, which makes coordinate references much larger numbers than most most 3D modeling tools can deal with gracefully.  The creators of AutoCAD, 3DsMax, Rhino, SketchUp and Blender all recommend moving geospatially referenced geometry closer to the origin to avoid problems of precision when creating, transforming or rendering.  
+</p><p>
+To facilitate on-going exchange of 3D models, we have chosen a default offset that places the origin to the South-West of Boston and neighboring cities. We expect modelers to use project-specific coordinate origins.  Preserving the Metro3D insertion point and a tile boundary with models will make it easy to incorporate updates and exchange models with other Metro 3D Boston users whith perfect geo-registration.
+
+<p><b>Projected Coordinate System:</b> State Plane Massachusetts Mainland (Feet),  North American Datum of 1983.
+<br><b>Vertical Coordinate System for 3D data:</b> North American Vertical Datum, 1988 (NAVD 88) Feet (Height)
+
+<br><b>Origin / Offset / Insertion Point </B>
+    <br>The origin of the Metro 3D Boston coordinate system serves as the insertion point for models.
+<UL>
+ <LI>State Plane Coordinates:</b>
+<ul> <li><b>X:</b>731,100 feet
+     <li><b>Y:</b>2,902,900 feet
+</ul>
+<li><b>Geographic:</b>
+<ul><li><b>Longitude:</b> 71.223391 W 
+<li><b>Latitude:</b> 42.213379 N 
+</ul>
+</ul>
+<p><b>To align Metro 3D Boston grid with True North:</b>  Rotate 0.34 Degrees clockwise. 
+<P>To georeference SketchUp tiles for interoperability with SketchUp's geolcoation tools, see the <a href="./sketchup_model.htm#georeference" target="metadata">Notes at the bottom of the SketchUp Models page</a>.  
+
+<h2 id="tips">Tips for Geo-Location and Integrating Updates</h2>
+<p>Maintain geolocation in your models to easily integrate updates from other Metro Boston 3D collaborators. 
+<ul>
+<li>When importing this reference grid into your model be sure to specify units of Feet and check the tile-width (5000 feet) to be sure. 
+<li>Define your model origin, orientation, and scale to suit your project's requirements.  
+<li>Keep the Metro 3D insertion point and tile boundary in your project to assure easy and precise registration of updates from other Metro Boston 3D sources with your project and vice-versa. 
+<li>To import new models from Metro 3D Boston users, snap to the original insertion point.  It may no longer be at 0,0,0, but it is the relative location that counts. 
+<li>To prepare your models for exchange with other Metro Boston 3D collaborators:
+<ol>
+    <li> shift selected geometry with the insertion point back to 0,0,0. Scale and un-rotate, if necessary, to align the upper-right corner of your tile boundary with the reference grid. 
+    <li>Now you can export or import geometry for easy snap-in registration!
+    </ol>
+</ul>
+
+
+
+<h2 id="download">Download Tile Grid Resources</h2>
+<ul>
+<li><a href="https://cityschema.github.io/repository-catalog/Bos3d_CityWide_Data/Bos3d_TIleGrid/Metro_Boston_3D_CRS.zip">ArcGIS Projection file for Metro 3D Boston coordinate system.</a> 
+<li>Tile reference image in <a href="https://cityschema.github.io/repository-catalog/Bos3d_CityWide_Data/Bos3d_TIleGrid/Bos3d_TileGrid_OBJ.zip">.OBJ format</a> or <a href="https://cityschema.github.io/repository-catalog/Bos3d_CityWide_Data/Bos3d_TIleGrid/Bos3d_TileGrid_Reference.jpg">JPEG</a>.
+<li>Tile Polygons and Points (including insertion-point and bounding rectangle)
+
+<ul><li><a href="https://cityschema.github.io/repository-catalog/Bos3d_CityWide_Data/Bos3d_TIleGrid/Bos3d_TileGrid_SKP.zip">SketchUp format.</a> 
+    <li><a href="https://cityschema.github.io/repository-catalog/Bos3d_CityWide_Data/Bos3d_TIleGrid/Bos3D_TileGrid_MetroShift_Feet.zip">DXF format Metro Boston 3D coordinate system</a> or <a href="https://cityschema.github.io/repository-catalog/Bos3d_CityWide_Data/Bos3d_TIleGrid/Bos3d_TileGrid_StPlane_Unshift_Feet.zip" >Un-shifted State Plane Feet</a> -- useful for registering data layers from unshifted State-Plane data-sets. 
+    <li><a href="https://cityschema.github.io/repository-catalog/Bos3d_CityWide_Data/Bos3d_TIleGrid/Bos3d_TileGrid_Shapefiles.zip">Shapefile format</a>. useful for clipping ground plan images or vector data to precisely register with tiled models. 
+    <li><a href="https://cityschema.github.io/repository-catalog/Bos3d_CityWide_Data/Bos3d_TIleGrid/Bos3d_TileGrid.json.zip">GeoJSON format</a>. Helpful for automating processes that involve coordinate transformation of tiled models (see Data Dictionary, below.
+</ul>
+
+</ul>
+
+<h2 id="datadictionary">Data Dictionary for Tile Grid Attribute Table</h2>
+<p>This attribute table is a reference for tile identifiers and tile-center coordinates.</p>
+<p>Since the tiles are 5000 feet and square with the State Plane grid, eht state-plane coordinates fom the corners can be calculated by adding or subtracting 2500 feet frm the center coordinate.
+</p>
+
+
+<table class="dictionary">
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+<tr>
+<td><p>Town_Code</p></td>
+<td><p>Text</p></td>
+<td><p>A three letter abbreviation of the town name.</p></td>
+</tr>
+<tr>
+<td><p>Tile_Label</p></td>
+<td><p>Text</p></td>
+<td><p>a hyphenated label consisting of the letter designating the tile column and the number reflecting the tile row.</p></td>
+</tr>
+<tr>
+<td><p>Tile_ID</p></td>
+<td><p>Text</p></td>
+<td><p>A concatenation of the Town_Code, underscore, and the Tile_Label string.  This identifier is used for naming tiled models and folders elminates tile name conflicts for modeling projects that span multiple towns.</p></td>
+</tr>
+<tr>
+<td><p>Center_Lat</p></td>
+<td><p>Text</p></td>
+<td><p>The latitude of the center of the tile.  Assuming the WGS84 earth model. </p></td>
+</tr>
+<tr>
+<td><p>Center_Lon</p></td>
+<td><p>Text</p></td>
+<td><p>The longitude of the center of the tile.  Assuming the WGS84 earth model. </p></td>
+</tr>
+<tr>
+<td><p>BosShift_X</p></td>
+<td><p>Text</p></td>
+<td><p>The X coordinate of the tile center.  Metro Boston 3D coordinate system </p></td>
+</tr>
+<tr>
+<td><p>BosShift_Y</p></td>
+<td><p>Text</p></td>
+<td><p>The Y coordinate of the tile center.  Metro Boston 3D coordinate system </p></td>
+</tr>
+<tr>
+<td><p>MASP_X</p></td>
+<td><p>Text</p></td>
+<td><p>The X coordinate of the tile center.  Massachusetts State Plane (Mainland, Feet) coordinate system</p></td>
+</tr>
+<tr>
+<td><p>MASP_Y</p></td>
+<td><p>Text</p></td>
+<td><p>The Y coordinate of the tile center.  Massachusetts State Plane (Mainland, Feet) coordinate system </p></td>
+</tr>
+</table>
+
+
 </div> <!-- Closes #article div -->
 
     <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 

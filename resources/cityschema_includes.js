@@ -40,6 +40,15 @@ let index_htm = `
      <li class="chapter"><a href="../model_management/index.htm">Managing the Model Collection</a></li>
    </ul>
 <li class="chapter"><a href="../tile_grid/index.htm">Tile Grid and Coordinate System</a></li>
+    <ul class="verses">
+            <li><a href="../tile_grid/index.htm#purpose" target="metadata">Tiling Strategy</a>
+            <li><a href="../tile_grid/index.htm#coordinates" target="metadata">Metro Boston 3D Coordinate System</a>
+            <li><a href="../tile_grid/index.htm#tips" target="metadata">Tips for maintaining georeferencing in your projects</a>
+            <li><a href="../tile_grid/index.htm#download" target="metadata">Download City-Wide Tile-Grid in various formats</a>
+            <li><a href="../tile_grid/index.htm#datadictionary" target="metadata">Tile Grid Data Dictionary</a>
+     </ul>
+
+
 </ul> <!-- Closes Index -->
 `
 let header_htm = `
