@@ -34,9 +34,12 @@ let index_htm = `
     <li class="verse"><a href="../home/index.htm#why">Why?</a></li>
     <li class="verse"><a href="../home/index.htm#streetscapes">Streetscapes are part of our cultural heritage</a></li>
 </ul>
-<li class="chapter"><a href="../repocat_intro/index.htm">Repository / Catalog </a></li>
-
-
+<li class="chapter"><a href="../repocat/index.htm">Repository / Catalog </a></li>
+<li class="chapter"><a href="../model_collection/index.htm">Building Model Collection Overview</a></li>
+   <ul class="verses">
+     <li class="chapter"><a href="../model_management/index.htm">Managing the Model Collection</a></li>
+   </ul>
+<li class="chapter"><a href="../tile_grid/index.htm">Tile Grid and Coordinate System</a></li>
 </ul> <!-- Closes Index -->
 `
 let header_htm = `
