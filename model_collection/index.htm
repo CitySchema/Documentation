@@ -34,8 +34,8 @@
 
 <!-- Page content goes inside the article div -->
 <div id="article">
-  <h3 class="section_title">Model Collection</h3>  <!-- Optional: would be the tile of the intro chapter.  -->
-  <h1 class="title">Overview of the Building Model Collection and Catalog</h1>
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Introducing the Building Model Collection and Catalog</h1>
 
     <h2>Purpose</h2>
 <p> 
@@ -79,7 +79,7 @@ The real-world structures represented by models in the collection may exist or m
     The primary tool used for assembling and managing the model collection is ArcGIS Pro – commercial GIS software by ESRI.  In ArcGIS, 3D models are stored as a data column in a table known as a Geodatabase Feature Class.  Like an ordinary database table a GIS feature class  associates a row of numerical and text attributes. A geodatabase feature class may also represent geometric objects like lines and polygons or 3D models.  A 3D model in an ESRI geodatabase is stored as a Multipatch object -- an arrangement of triangular faces that may be colored or draped with image textures.  The geometry of geodatabase features can be expressed in world-wide coordinate systems.  These capabilities make ArcGIS geodatabases very useful for developing and managing a collection of georeferenced 3D models.  
 </p>
 <p>
-    Geodatabase feature classes are not an open format and ESRI does not recommend that their geodatabase format be considered as a vehicle for long-term data preservation.  3D modeling tools used by designers and other makers do not work with geodatabase format, nor do they work with coordinate systems that are very broad in extent.  To make the resources accessible to diverse users and applications  the agency publishes the model collection with a system of tiled modules in formats that address the needs of non-GIS tools.  You can find a deeper discussion of the tiling scheme and coordinate system on the page <a href="../tile_grid/index.htm">Boston 3D Tile Grid and Coordinate System</a>.
+    Geodatabase feature classes are not an open format and ESRI does not recommend that their geodatabase format be considered as a vehicle for long-term data preservation.  3D modeling tools used by designers and other makers do not work with geodatabase format, nor do they work with coordinate systems that are very broad in extent.  To make the resources accessible to diverse users and applications  the agency publishes the model collection with a system of tiled modules in formats that address the needs of non-GIS tools.  You can find a deeper discussion of the tiling scheme and coordinate system on the page <a href="../tile_grid/index.htm" >Boston 3D Tile Grid and Coordinate System</a>.
 </p>
 
 <figure class="right">
@@ -105,19 +105,19 @@ The real-world structures represented by models in the collection may exist or m
 <h2>The Open Format Model Archive and Catalog</h2>
 The open format model archive and catalog package has been designed to fulfill the functional requirements of the <p>The ISO reference model for an <a href="https://en.wikipedia.org/wiki/Open_Archival_Information_System">Open Archival Information System (OAIS)</a> for long-term preservation, validation and exchange of assets between applications. 
 </p><p>
-The open format model collection is segmented by tiles.  Each tile-specific model collection may be downloaded in full from the <a href="https://cityschema.github.io/repository-catalog/catalog/index.htm">clickable tile map</a> 
+The open format model collection is segmented by tiles.  Each tile-specific model collection may be downloaded in full from the <a href="https://cityschema.github.io/repository-catalog/catalog/index.htm" target="repocat">clickable tile map</a> 
 or used on-line to locate and download individual model files from each tiles <a href="https://cityschema.github.io/repository-catalog/Bos3d_Tiled_Data/Bos3d_ModelCollection_OBJ/BOS_I_3_ModelCollection_OBJ/ModelCatalog/ModelFinder.htm" target="metadata">Model Catalog Index Map</a>.  
 </p>
 
 
 <figure class="right">
   <img class="scaled" src="./images/ModelFinder.jpg">
-  <figcaption>Each of the tiled model collections comes with a clickable model-finder map! <a href="https://cityschema.github.io/repository-catalog/Bos3d_Tiled_Data/Bos3d_ModelCollection_OBJ/BOS_I_3_ModelCollection_OBJ/ModelCatalog/ModelFinder.htm" target="metadata"> Click for demo.</a></figcaption>
+  <figcaption>Each of the tiled model collections comes with a clickable model-finder map! <a href="https://cityschema.github.io/repository-catalog/Bos3d_Tiled_Data/Bos3d_ModelCollection_OBJ/BOS_I_3_ModelCollection_OBJ/ModelCatalog/ModelFinder.htm" target="repocat"> Click for demo.</a></figcaption>
 </figure>
 
 
 <p>
-Each tile's model collection contains an open-format rendition of each building model in <a href=https://www.loc.gov/preservation/digital/formats/fdd/fdd000507.shtml">Wavefront Object format (.OBJ)</a>.  This model is zipped along with a json file that carries all of the model's attributes. 
+Each tile's model collection contains an open-format rendition of each building model in <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000507.shtml">Wavefront Object format (.OBJ)</a>.  This model is zipped along with a json file that carries all of the model's attributes. 
 </p><p>
 Each tile's collection also includes a <b>Catalog Folder</b> that holds a GeoJSON and CSV table of the model footprints, tile frame and a low-resolution copy of the tile's base-map. 
 The catalog folder for each tiled model collection includes a <b>ModelFinder.htm</b> file that uses javascript and the catalog resources to create a clickable model index map.  Clicking the model's footprint on the map reveals its attributes and a download link for the zipped OBJ package. The ModelFinder application provides a means for collaborators to discover and selectively download updated models.  
@@ -129,7 +129,7 @@ The ModelFinder application demonstrates how the tiled model archive and catalog
 <h2 id="skp">SketchUp Format Model Collection</h2>
 <p> The .OBJ format is a simple way of encoding individual models.  But it does not handle layers or nested object hierarchies.  Importing thousands of .OBJ models into a modeling project requires writing a macro.  SketchUp format, while proprietary, is imported by most commercial tools and preserves layering and object hierarchies.  This is why we have chosen to create a set of tiled SketchUp format models for users of commercial 3D modeling tools for a one-click access to the building model collection, tiled terrain and groundplan all in one model.
 </p><p>
-The SketchUp format models preserve the unique Model_ID as the group name for each building model.  These names are also preserved when importing the SketchUp model into 3DMax and Rhino.)  So users developing automated procedures in those tools will be able to use the CSV or GeoJSON catalog to keep their models connected to attribute information.  Sketchup-format models are discussed in more detailon the page <a href="https://cityschema.github.io/repository-catalog/catalog/sketchup_model.htm">Boston 3D Tiled SketchUp Models</a>
+The SketchUp format models preserve the unique Model_ID as the group name for each building model.  These names are also preserved when importing the SketchUp model into 3DMax and Rhino.)  So users developing automated procedures in those tools will be able to use the CSV or GeoJSON catalog to keep their models connected to attribute information.  Sketchup-format models are discussed in more detailon the page <a href="https://cityschema.github.io/repository-catalog/catalog/sketchup_model.htm" target="repocat">Boston 3D Tiled SketchUp Models</a>
 </p>    
 
 <script src="../resources/repocat_includes.js"></script>
