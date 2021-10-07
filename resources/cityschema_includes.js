@@ -28,11 +28,15 @@
 
 let index_htm = `
 <span class="title">Templates & Tools</span>
+<p>This site is not yet officially open.  Feel free to look around.  Watch this space for the grand opening.
+If you are interested in being notified with announcements, email paul b cote (no spaces) at gmail.com.
+</p>  
 <ul class="treeview">
 <li class="chapter"><a href="../home/index.htm">Home Page</a></li>
     <ul class="verses">
     <li class="verse"><a href="../home/index.htm#why">Why?</a></li>
     <li class="verse"><a href="../home/index.htm#streetscapes">Streetscapes are part of our cultural heritage</a></li>
+    <li class="verse"><a href="../home/index.htm#ack">Acknowledgements</a></li>
 </ul>
 <li class="chapter"><a href="../repocat/index.htm">Repository / Catalog </a></li>
   <ul class="verses">
