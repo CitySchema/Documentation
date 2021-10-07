@@ -36,7 +36,7 @@ let coordsys = `
 			<li><b>Latitude:</b> 42.213379 N 
 			</ul>
 		</ul>
-  <p>For more details about the <b>Metro Boston 3D Coordinate Referencing System</b> and how to coordinate your projects with city-model resources, see the <a href="./tile_grid.htm" target="metadata">Boston 3D Tile Grid</a> page.
+  <p>For more details about the <b>Metro Boston 3D Coordinate Referencing System</b> and how to coordinate your projects with city-model resources, see the <a href="./tile_scheme.htm" target="metadata">Boston 3D Tile Grid</a> page.
 `
 
 let disclaimer = `
