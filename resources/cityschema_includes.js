@@ -37,6 +37,13 @@ let index_htm = `
 <li class="chapter"><a href="../repocat/index.htm">Repository / Catalog </a></li>
 <li class="chapter"><a href="../model_collection/index.htm">Building Model Collection Overview</a></li>
    <ul class="verses">
+      <li><a href="../model_collection/index.htm#overview">Conceptual Overview</a>
+      <li><a href="../model_collection/index.htm#interop">Interoperability Strategy</a>
+      <li><a href="../model_collection/index.htm#gdb">Geodatabase Format Collection and Catalog</a>
+      <li><a href="../model_collection/index.htm#obj">Open Source Format Collection and Catalog</a>
+      <li><a href="../model_collection/index.htm#datadictionary">Data Dictionary for Model Catalog</a> 
+      <li><a href="../model_collection/index.htm#status">Model Status Dictionary</a>
+      <li><a href="../model_collection/index.htm#LOD">Levels of Detail and other Recommendations for Model Structure</a>
      <li class="chapter"><a href="../model_management/index.htm">Managing the Model Collection</a></li>
    </ul>
 <li class="chapter"><a href="../tile_grid/index.htm">Tile Grid and Coordinate System</a></li>
