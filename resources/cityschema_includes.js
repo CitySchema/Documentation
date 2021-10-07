@@ -42,7 +42,7 @@ If you are interested in being notified with announcements, email paul b cote (n
   <ul class="verses">
     <li class="verse"><a href="../repocat/index.htm#tour">Take the tour!</a></li>
    </ul>
-<li class="chapter"><a href="../model_collection/index.htm">Building Model Collection Overview</a></li>
+<li class="chapter"><a href="../model_collection/index.htm">Building Model Collection</a></li>
    <ul class="verses">
       <li class="verse"><a href="../model_collection/index.htm#overview">Conceptual Overview</a>
       <li class="verse"><a href="../model_collection/index.htm#interop">Interoperability Strategy</a>
