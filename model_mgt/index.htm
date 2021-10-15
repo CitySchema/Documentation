@@ -54,8 +54,10 @@
     <h2>Filesystem Context for ArcGIS Data Management</h2>
     <p>The model collection management tools and tasks are saved as an ArcGIS Pro workspace, which is a self-contained collection of ArcGIS pro project documents, geoprocessing tools, and a scratch workspace.  At pbcGIS, we keep manage the city model in a filesystem as shown in figure 1.  
     </p>
-    In our environment we have no networked file serves, so all of the resources for a city model are under a single directory.  In your environment, you might have the Cty3d master folder and the Cty3D_Dev files on different disks.  For the sake of portability,  our demonstration of the model management tools and procedures will be work with all resources in a single workflow folder. as shown in Figure 2. 
+    All of the resources used for our demonstration project keep all of the resources for a city model are under a single directory.  In your environment, you might have the City3d master folder and the City3D_Dev files on different disks.  For the sake of portability,  our demonstration of the model management tools and procedures will be work with all resources in a single workflow folder. as shown in Figure 2. 
   </p>
+  <h2>The Big Picture</h2>
+
   <p>A tour of the ModelCollectionMgt workflow folder is useful for orientation to the file organization.  It also introduces the main components of the workflow:
   </p>
   <ul>
@@ -64,13 +66,13 @@
     <li><b>ModelWork folder: </b> contains the source model files for new models that have been submitted for inclusion into the collection.  Or models that are edited during model management operations.  WIthin the ModelWork folder, models are stored in batch folders named according to the source and date.  This organization allows for source models to be referenced in the model catalog and easily retrieved in case anyone wants revisit and modify a model using the original sources.  When a ModlCopllectio_Mgt workflow folder is retired, the contents of ModelWork are copied to the modelWork folder in <b>Cty3D_Archive</b>.
     <li><b>PriorArchive folder:</b> contains the latest archived edition of the Cty3D_Models_YYYYMMDD.gdb.  The date string in the name og the geodatabase reflects the date that the geodatabase was issued a prior ModelCollection_Mgt. The capability to recover from corruption and errors requires that the lineage of PriorArchive models be continuous.  Note that all of the NextEditon modelcollections are spawned from one priorArchive geodatabase.  If you want to start form a newer collection, then the ModelCollection_Mgt workflow folder should be retired, and a fresh one started. 
     <p>
-      It is often the case that the next edition of the model collection calls for changes tothe table schema for 3D models.  It would take a while to explain why, but for the purposes of maintaining the audit and rollback capability, it is necessary to apply whatever schema changes you intend to make to the prior archived model collection, before you begin making changes.  Therefore, the PriorArchive folder may contain a geodatabase named Cty3D_Models_YYYYMMDD_Migrated.gdb.  
+      It is often the case that the next edition of the model collection calls for changes to the table schema for 3D models.  It would take a while to explain why, but for the purposes of maintaining the audit and rollback capability, it is necessary to apply whatever schema changes you intend to make to the prior archived model collection, before you begin making changes.  Therefore, the PriorArchive folder may contain a geodatabase named Cty3D_Models_YYYYMMDD_Migrated.gdb.  
     </p>
-    </p><p>The PriorArchive folder contains geodatabases and also lyrx files that are used to view and inspect the model collection.  
-    <li><b>NextEdition folder:</b> is the destination for the new editions of Cty3D_Model geodatabases.  A single ModeCollection_Mgt workflow folder may spawn several new editions, each one carrying a new date string in its name.  Each new edition alsocomes with its lyrx files.
-    <li></b>Stage folder:</b> contains two geodatabases: <b>Stage.gdb</b> which contains copies of all of the prior_archived feature classes which have had edits made to them.  There is also a newModels feature class that contains all of the new models that have been imported or new models that are the results of edits to models frm the Prior_Archived collection.  Models from the Stage geodatatabase are used to generate the next edition of the model collection.  
+    </p><p>The PriorArchive folder contains geodatabases and ArcGIS layer (.lyrx) files that are used to view and inspect the model collection.  
+    <li><b>NextEdition folder:</b> is the destination for the new editions of City3D_Model geodatabases.  A single ModeCollection_Mgt workflow folder may spawn several new editions, each one carrying a new date string in its name.  Each new edition also comes with its lyrx files.
+    <li></b>Stage folder:</b> contains two geodatabases: <b>Stage.gdb</b> which contains copies of all of the prior_archived feature classes which have had edits made to them.  There is also a newModels_mp feature class that contains all of the new models that have been imported or new models that are the results of edits to models frm the Prior_Archived collection.  Models from the Stage geodatatabase are used to generate the next edition of the model collection.  
     </p><p>
-    The <b>congig.gdb</b> contains the template multipatch feature class reflecting the latest schema for 3D models feature classes. Tables representing domain values are also stored in config.gdb. 
+    The <b>config.gdb</b> contains the template multipatch feature class reflecting the latest schema for 3D model feature classes. Tables representing domain values are also stored in config.gdb. 
     <li><b>Sources folder:</b> the sources folder contains parcel information, the latest development log and a terrain raster that covers the extent of the city model.  These datasets are used tp attach attributes to new building models. 
     </p><p>
       In your production environment, these datasets may be referenced form other places.  It is useful tohave copies of them here so that thee is never any doubt about which version of these data-sets have been used. 
@@ -80,7 +82,7 @@
     </ul>  
 
     <h2>A tour of the ModelCollection_Mgt ArcGIS Pro Project</h2>
-    <p>The ArcDocs ModelMgt_YYYYMMDD.aprx file is an arcGIS pro project that is set up to reference all of the tools and data-sets to run all of the procedures necessary for making changes tothe Prior Archive model collecetion and publishing the Next Edition.  Before digging in tothe tasks, it wil be useful to check the critical preferences settings in this project.  Sometimes ArcGIS initializes these differntly when you move or create a new project.
+    <p>The ArcDocs ModelMgt_YYYYMMDD.aprx file is an arcGIS pro project that is set up to reference all of the tools and data-sets to run all of the procedures necessary for making changes to the Prior Archive model collection and publishing the Next Edition.  Before digging into the tasks, it will be useful to check the critical preferences settings in this project.  Sometimes ArcGIS initializes these differntly when you move or create a new project.
     </p>
 
     <h3>Project Options</h3>
@@ -98,13 +100,13 @@
 <h3>Project Scenes and Maps</h3>
 <p>The ModelCollection_Mgt project has one map and one 3D scene.  
 <p>
-  The Map is a quick way of displaying the 2D source data that is not always easy to portray in 3D. The layers in the Map table of contents provide anopportunity to discuss some of the important source layers that are used by the model management processes.  For maximum edutainment, set your table of contens to <b>View Source Folders</b> so you can see where these data-sets are stored within the <b>Sources folder</b> of your ModelCollection_Mgt workflow folder. 
+  The Map is a quick way of displaying the 2D source data that is not always easy to portray in 3D. The layers in the Map table of contents provide an opportunity to discuss some of the important source layers that are used by the model management processes.  For maximum edutainment, set your table of contents to <b>View Source Folders</b> so you can see where these data-sets are stored within the <b>Sources folder</b> of your ModelCollection_Mgt workflow folder. 
 </p>
   <ul>
-    <li><b>DevLog_Pts: </b> The development log is a table that carries infomration related to the status of projects under review.  Each agency wil have a different variation on this.  In Boston, this table keeps track of the status of each project after each meeting of the review board. It also contains the projectID and the URL for the project on the BostonBuilds web site. There is a lot of other useful information about projects, but those three fields are the ones that are most important for understanding which models may need to be promoted, demoted or superceded.
-    <li></b>Tile Boundaries and Points:</b> are created by another workflow that wil be described later.  It will be good tolook at the atributes of these data-sets.  Notice that our tile-generation workflow produces tile corner and tile centerpoints, and calculates coordinates for these in geographic, state plane and shifted state plane coordinates.  The elevations for the tile points have been calculated because they are necessary for making sure our terrain meshes extend exactly to the corners of each tile. 
+    <li><b>DevLog_Pts: </b> The development log is a table that carries information related to the status of projects under review.  Each agency will have a different variation on this.  In Boston, this table keeps track of the status of each project after each meeting of the review board. It also contains the projectID and the URL for the project on the BostonBuilds web site. There is a lot of other useful information about projects, but those three fields are the ones that are most important for understanding which models may need to be promoted, demoted or superseded.
+    <li></b>Tile Boundaries and Points:</b> are created by another workflow that will be described later.  Take a look at the attributes of these data-sets.  Notice that our tile-generation workflow produces tile corner and tile center points, and calculates coordinates for these in geographic, State Plane and <a href="../tile_scheme/index.htm">our shifted version of the State Plane Coordinate System</a>.  The elevations for the tile points have been calculated because they are necessary for making sure our terrain meshes extend exactly to the corners of each tile. 
     <li><b>Metro_Elevation_5m:</b> A raster elevation model that covers the full extent of the tiles for our project.  This elevation model is used to calculate the geometric envelope for new models. 
-    This elevation model covers the full extent of all tiles. We include a rough elevation mode here to keep out demo dataset slim.  In actual production, we use a 1-Foot raster that is made form our high resolution terrain model within the city and uses the MassGIS DTM for the outlying areas.  
+    This elevation model covers the full extent of all tiles. We include a rough elevation mode here to keep out demo dataset slim.  In actual production, we use a 1-Foot raster that is derived from our high resolution terrain model within the city and the MassGIS DTM for the outlying areas.  
     <li><b>Parcels 2020:</b> Parcel boundaries are used to add parcel IDs and Assessor map URLs to new building models. When parcel data is updated, you may want to update the assessing links.
     <li><b>Issue Points:</b>  used to mark issues such as missing models.  Issues with existingt models are marked on the <b>QA_Issue</b> field on the model's attribute table.
     </ul>
@@ -114,21 +116,207 @@
     </p>
     <h3>Layers</h3>
     <ul>
-      <li><b>Prior Migrated Unfiltered:</b> This group layer includes a layer for each of the multipatch layers that wee released with the prior archived model collection.  In cases where schema changes have been made for the current round of updates, these should be the Prior Migrated layers. These make up the initial state of the collection before any changes are made.  These feature classes should be considered read-only.  
-        <li><b>Prior Migrated Layer Demo :</b> represents the each of the multipatch feature classes in the prior archived edition, but with styling and definition query views that make it easy to review the collection, toggling proposed-to-built and proposed-to-be-demolished buildings.  
+      <li><b>Prior Migrated Unfiltered:</b> This group layer includes a layer for each of the multipatch layers that were released with the prior archived model collection.  In cases where schema changes have been made for the current round of updates, these should be the Prior Migrated layers. These make up the initial state of the collection before any changes are made.  These feature classes should be considered read-only.  
+        <li><b>Prior Migrated Layer Demo :</b> represents the each of the multipatch feature classes in the prior archived edition, but with styling and definition query views that make it easy to review the collection, toggling proposed-to-built and proposed-to-be-demolished buildings.  Definition query views are identified by including a <b>DQV</b> suffix in their names.
         <p>The styling for these layers was saved when the prior archived model collection was issued.
-      <li><b>Stage Unfiltered: </b> portrays eachof the feature layers in the Stage.gdb, plus a 3d version of the development log points and issue points portrayed as 3d columns. Any of the multipatch layers in this group layer may be edited except as noted in <a href="#edit_rules"> below.
+      <li><b>Stage Unfiltered: </b> portrays each of the feature layers in the Stage.gdb, plus a 3d version of the development log points and issue points portrayed as 3d columns. Any of the multipatch layers in this group layer may be edited except as noted in <a href="#edit_rules"> below.
       <li><b>Stage Edit Views: </b> in the course of making edits, it is useful to use special views, such as: 
          <ul>
            <li>Views of the <b>Proposed_MP</b> and <b>Internal_MP</b> feature classes that are joined to the current Development Log table -- for figuring out whether status promotions may be necessary. 
-            <li><b>Definition Query Views</b> (marked with DQV appended to the layer names)that provide a mechanism for visiting and checking each of the models that had perviously been Under Construction, or might have a status change indicated.  You can inspect these definition queries to see how they work. In thecourse of making edits, you may encounter reasons to make your own DQV views tofacilitate edits.  A cool theng about DQV's based on values of <b>Model Status</b> is that in cases where you are checking and changing values fro Model Status, the models so updated wil automatically jump out of the DQV and into another.
+            <li><b>Definition Query Views</b> (identified by the DQV appended to the layer names) that provide a mechanism for visiting and checking each of the models that had perviously been Under Construction, or might have a status change indicated.  You can inspect these definition queries to see how they work. In thecourse of making edits, you may encounter reasons to make your own DQV views to facilitate edits.  A cool thing about DQV's based on values of <b>Model Status</b> is that in cases where you are checking and changing values fro Model Status, the models so updated wil automatically jump out of the DQV and into another.
           <ul>
           </ul>
         
-      <h3>Tools and Tasks</h3>
-      <p>  There are several procedures that you might use when managing your model collection.  The ModelCollection_Mgt peoject uses <b>Tasks</b> to break the model management process into phases, as you can see, each phase may involve sevral steps.  Most of these steps are optional.  Generally speaking,each step is carried out by calling on one of the tools in the ModelCollection_Mgt toolbox.  Within the toolbox,the tools are grouped in tool-sets that correspond to specific Model Collection Management tasks. Power users may decide in some cased just to run the geoprocessing tools on their own without using tasks.  You may enconter cases where you want to make a copy pf a tool to customize it.
+      <h2>Explore Tasks and Tools</h2>
+      <p>  There are several procedures involved managing your model collection.  The ModelCollection_Mgt project uses <b>Tasks</b> to break the model management process into a sequence of stages. Click on <b>View > Tasks </b> to explore at the stages, organized as task groups and expand the groups to explore the individual tasks.  
       </p><p>
-      Users should be very familiar with the ArcGIS Geoprocessing tools and tasks.  There are many ways of modifying these so that they don't work.  This documentation can't cover all of these possibilities.
+      Most of the prepard tasks call on geoprocessing tools and models.  To cut down on confusion with 3D models, we are going to call geoprocessing models "tools"  Use <b>View > Catalog Pane</b> to expose the catalog on the right-side of the ArcGIS window.  Expand the toolboxes group and the <b>City3D_ModelMgt.tbx</b>  toolbox.  You wil notice that the firast five tool groups have names that correspond with the task groups.  Expand these and have a look at the various tools. 
+      </p><p>
+        Notice how the individual tools are named with numbers corresponding tothe tool group and letters referring tothe general order that they might be used.  Sticking with this convention makes it easier to find the custom tools when confronted with the huge drop-down list that is used in the Task editor.   
+      </p><p>Not all tools are associated with tasks.  SOme of them, such as the ones inthe pbcGIS_utils tool group are handy utilities.  And Rumpus contains tools that you might create to preserve one-off procedures that you may want to repeat or re-use. 
+      </p><p>
+      Users should be very familiar with trouble-shooting <a href="https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/basics/geoprocessing-quick-tour.htm"target="archelp"> ArcGIS Geoprocessing tools</a> and <a href="https://pro.arcgis.com/en/pro-app/latest/help/tasks/whatistask.htm" target="archelp">tasks</a>.  There are many ways of modifying these so that they don't work.  This documentation can't cover all of these possibilities.
+      </p>
+      <h2>Initializing the Workspace</h2>
+      <p>The first task and tool group provides procedures for starting a new model management workspace. Here are the basic steps involved:
+      </p>
+      <h3>The Initialize WOrkspace Tools</h3>
+      </p><p>
+        <ol>
+        <li>Copy the Prior Archived model collection and migrate its schema if necessary.  This is a manual step that involves simply finding the latest edition of the model collection -- as created by a prior version of the Model Management workflow and copying it to the Prior Archived folder. 
+        </p><b>Note:</b> for each generation of the modelManagement workspace you should only do this step once.  There may be many new editions created during the life=span of the workspace until the workspace folder is retired.  Bust all of these new editions are spawned from a single prior archived version. 
+      </p><p>
+        <b>Note 2.</b> To keep the ability to re-trace all changes that have been made to the model collection, it is important that the prior_archived model collection be an unchanged, dataed copy of the last edition of the collection that was produced by the last Model_Mgt workspace.  If changes were made to the model collection outside of a model management workspace, it won;t be the end of the world.  Its just that it wil be difficult or impossible to figure out what those changes were or how to un-do them if necessary.  
+          <p>The Prior Archived model collection is a geodatabase as described in <a href="../model_collection/index.htm" target="outboard">.  This model collection will be the base-line reference copy for all changes.  The prior Archived collection will be used for recovery should the need arise.  
+        <li>It is sometimes desired to change the model schema -- adding, removing or taking away fields from the multipatch feature classes.  Keep in mind that each of the feature classes in the collection need to have exactly the same schema or lots of tasks will fail.  Therefore, if schema changes are necessary, you should modify the script, <b>1a. Create New Model Template</b>.  Notice the copious comments included as labels in this tool.  Another important thing about this tool is that the new model template is stored in the <b>Stage/ModelMgt_Config.gdb</b> because several other tools and tasks use this template. 
+        <li>The tool, <b>1b. Create Models MP FC</b> is used in several tools and tasks.  This tool takes the model template and creates a new feature class for storing new models. At the same time, it makes sure that the target geodatabase has the proper domains for <b>Model Status</b> and <b>QA Flag</b>.  If you want to modify these domains in your new schema, you should edit the appropriate tables in <b>Stage/ModelMgt_Config.gdb</b> first. 
+        <li> The <b>1c. Migrate Prior Archived FCs</b>. Tool uses the <b>Create Models MP FC</b> tool to create a new models feature class and then takes an input model and appends it to the new feature class.  It uses an iterator to do this once for each of the five feature classes.  <i><b>Important note: This tool has to be modified to carry out any field value transformations that may be necessary to translate old fields into new ones!</b></i> .  
+        <li> <b>1d. Update Domains</b>.  In case you just want to update the domains in a geodatabase that contains a 3D model multipatch feature class, this tool is for you.  Note that before you run it, you should update the domain tables in the <b>Stage/ModelMgt_Config.gdb</b>.  
+        <li><b>1e. Create Issue Points</b>.  The Issue Points feature class is used to flag places where new models need to be made.  This tool wil lcreate a new one.  If the prior archived model collection comes with unresolved issue points, it may be best to copy thses over so that you can address the issues during your model management sessions.
+        <li><b> 1e. Initialize Development Log</b>.  The development log is a table that includes a row for each development project and contains the latest status for that project, and a URL for the show page for the project.  Each agency wil have its own variation on this, whether such a table exists at all.  It is important that the Project ID be a unique key in this table.  I've included the tool here that I created for the Boston Planning and Development Agency, here.  
+        </ol>
+ 
+      <h3>The Initialize Workspace Tasks</h3>
+       <p>These tasks are organized to help guide the set-up for a new model management workspace. As discussed above.  SOme of the work involved at this stage is carried out using models as discussed above. Because some of these tools require a lot of customization depending on circumstances, not all of them are referenced by tasks. Most operations that are repeatable are encapsulated in Tasks, where possible.  
+        <ol>
+          <li><b>Update Domains:</b> makes use of the Update Domains tool described above.  
+          <li><b>Initialize Stage feature classes</b>.  Each time you initialize a model management workspace, each of the prior model feature classes is copied to the stage geodatabase. This uses the <b>1c. Migrate Prior Archived FCs </b> tool, but changes the name of the output worlspace and prepends the string <b>Stage</b> to the name of each to avoid confusion.</a> 
+          <li><b>Initialize Stage NewModels FC:</b> The newModels feature class in the Stage geodatabase holds any new model that might be imported or created by editing a pre-existing model.  This task uses the <b>1b. Create Models MP</b> tools to create a new empty feature class for thie purpose using the current model template feautre class.
+          </ol>
+          
+        <h2 id="import">Import, Inspect and Enroll Models</h2>
+        <p>The process of importing new models is designed so that the source material for new models and edited models is preserved in batch folders in the ModelWork folder.  These batch folders provide a place to store original models that are submitted and relevant source material.  Each batch forlder contains a geodatabase with multipatch feature classes that are based on the latest model template  for storing intermediate versions of models that are checked and adjusted as necessary, and then pushed through the process of automatically assigning attributes.   One of the attributes that gets assigned to each model is the name of the model batch folder and the source model name -- which provides the way to find the original source material for each model.  Tis connection to sources is useful in case anyone wants to edit the model again, or to trouble-shoot corruption issues.  
+        </p>
+        <div class="tip">
+          <h3>Manuscript Models</h3>
+          <p>Tools for authoring 3D models typically provide a hierarchal means of organizing geometry in layers and as nested groups. 3D authoring tools also provide ways of describing curves or other shapes in terms of parameters as opposed to explicit vertices. These mechanisms are different from the table-based organization used by ArcGIS -- in which multipatch objects are stored as single mesh objects that are made of triangle-facets. The hierarchal organization of 3D authoring tools provides a way of managing the complexity of models.  The table-based structure of GIS has advantages in terms of scalability.  When transferring a model from its native 3D editing environment into GIS, best results are obtained when the authoring tool is used to flatten the model into a simple triangulated mesh, which translates directly into a multipatch object.  
+          </p><p>
+          In cases where a model is available in its original authoring format, the edtitable source document (manuscript) is worth keeping, because the layering and group hierarchy is useful but lost when the model is translated to an exchange format like OBJ format.
+          </div>
+        
+ <p>
+        When the Model Management workspace is retired, all of the model batch folders are moved to the City3D_Archive folder is the home of all of the source material that has gone into the city-wide 3d model since the beginning. 
+
+        <ol>
+          <li><b>Create a new model batch folder.</b> This is done manually.  The batch name consists of the name of the source and then a date string in the form YYYYMMDD.  The source name could be the name of the contributing firm or individual, the name of a project, or in the case of a batch of edits, it the name might begin with "edits".  These folders wil be created manually using windows explorer.
+          
+        <li>Create a new batch geodatabase.  This tasks has two steps.  First a new geodatabase is created in the selected Batch Folder.  It should be named "Geodatabse.gdb".  Next, the <b>1b. Create Models MP FC</b> tool (previously explained) is called twice to create two new feature classes: Prep_MP to hold provisional models and Ready_MP.  These feature classes are made according to the latest model template and have all of the latest coded domains for Status and QA_Flag.
+         
+        <li><b>Inspect and Repair Model in SketchUp.</b> Sorry to say, you should always expect problems when importing hand-made models created with design-oriented 3D modeling tools.  Many of these problems wil be difficult or impossible to fix in ArcGIS.  Therefore, it is recommended to begin the model import process by carryig out the following steps.  If you have a contributor who has been properly trained and produces reliable models, you may be able to skip these.
+          <ol>
+          <il>Copy the original model into the batch folder.  I recommend that you save this in a folder named "ms" for manuscript.  
+          <li>Copy whatever source information that you might have into the ms/src folder.   This might even include a saved copy of the email that you received with the model -- which contains a lot of very useful information. 
+          <li>register the model in the appropriate SketchUp tile.  You may have a stash of these working tiles on your PC somewhere.  It is not necessary to have the entire tiles in your ModelWork folder.
+          <li>heck and adjust the X,Y and Z placement and make geometric changes, such as adding a basement to make sure that the model does not have floating corners when displayed on terrain models of varying accuracy.  
+        <li>Turn all of the faces (both sides) to white. 
+          <li> If your source model contains multiple buildings, cut these apart as necessary into separate groups.  
+        <li>Export the groups to individual SketchUp components into a folder named <b>skp</b> in your model batch folder. If you are using some other tool for your inspection and clean-up, you may have a different convention. 
+          <li>Finally, export each building model as a triangulated OBJ file. 
+            <P>Consult the <a href="../submissions/index.htm" target="outboard">Model SUbmission Guidelines</a>. for hints on formatting.  Export into a sub-directory named <b>obj</b> within your batch folder.  
+          </ol>
+      <p>Now you have some triangulated OBJ models that are confirmed to be in the correct coordinate system.  
+
+      <li><b>Import Models: </b> The tool, <b>2b. Import Models</b> provides user-settable variables for a bunch of model attributes related to model provenance.  It also takes a list of models, which could be in any format that ArcMap imports. The results are put into the Prep_MP feature class in the target batch folder. 
+      </ol>
+      <h3>Inspect and Prepare Multipatch Models</h3>
+      <p>Once models have been imported into the Prep_MP feature class, they should be inspected again. SOme common problems include:  </p>
+    <ul>
+      <li>Some or all of the faces are in-side out. 
+      <li>Some or all of the faces are not pure white.
+      </ul>
+      <p>Either of these problems will prevent the model from having colors assigned by ArcMap.  The problem with wrong-way faces is a sign of model corruption which will probably prevent the model from being exported correctly. Either of these conditions can be fixed with tools in the <b>pbcUtils</b> tool-set (see below). 
+      </p><p>
+      If need-be, you can fix the models in your 3D editing tool, and re-import into the same Prep_MP feature class.  Once you have a good version of each model, just delete the bad versions frm Prep_MP.
+      </p><p>
+      Now there are a few attributes you should set:
+      </p>
+      <ul>
+        <li><b>Proj_ID:</b> for model tha represent projects that are in the review process, Proj_ID should be populated with the corresponding ID and the Proj_URL from the Development log. 
+        <lI><b>Status</b> should reflect the model status.  Consult the <a href="../model_collection/index.htm#status" target="outboard">Model Status Domain</a>.
+        <li>Set the Appear_Dt and Appear_Src to reflect the critical approval or submission dates from the development log. These values should support the validity of the Status.
+        <li>Use the <b>3d. Assign Model_ID</b> tool to assign new model IDs to each of the models inthe Prep_MP feature class.
+      </ul>
+      <h3>3e. Assign Geometric Attributes</h3>
+      <p>The next step in enrolling new models is to assign attributes that are calculated based on the model geometry.  This includes assignment of the Parcel ID and Assessor's link, Assignment of the model centroid coordinates and associated links to the oblique imagery in Google Maps and Nearmap; and the Tile ID. 
+      </p><p>
+        The <b>3e. Assign Geometric Attributes tool takes all of the features in the Prep_MP feature class and assigns the attributes, placing the fully attributed models into the Ready_MP feature class.   
+        </p>
+        <h3>2d. Append Ready to NewModels_MP</h3>
+        <p>After checking the models in the Ready_MP feature class, it is time to append them to the Stage/NewModels_MP feature class.
+        </p>
+      <h1>Staging Changes to the Model Collection</h1>
+      <p>At this point, we have the collection of prior-archived models and newly imported models in several feature classes in <b>Stage.gdb</b>.  We can now begin the process of checking and updating the values of model status attributes for these models.  To begin with, it is important to have a clear understanding of the purpose for each of the attributes.  So please review the <a href="../model_collection/index.htm#datadictionary">Model Collection Data Dictionary</a>.  
+      </p>
+      <h3>Overview</h3>
+      <ol>
+        <li>Understand the <b>Stage Edit Views</b>
+        <li>Visit each of the new models.  If you have had more than one batch, it can be helpful to sort the NewModels feature class according to the Record Initialization Date.
+        <li>Use your most current reference image, which could be Google Maps, Google Earth or NearMap to see what has been happening in the context of the new model. 
+        <li>Update the Model Status attributes to reflect the status of the new model and other models that may be affected by the new project.  While you have the reference material in front of you, update the values Appear Date, Appear Source and Disappear Date and Disappear Source.  For example, 
+            <ul>
+              <li>For new models that have a status of Approved or Permitted, the Appear Date can reflect the date of the project approval or permission as reflected in the development log. The Appear source should be the development log with its issue date. 
+              <li>For existing models that would be affected by approved or permitted  projects, change their status to <b>Approved Demo</b> or <b>Permitted Demo</b>. 
+              <p>While you have the most current photography at hand, it is useful to use the <b>Disappear Source</b> attribute to record your observation of whether there is any site work going on, or of the existing structures remain unchanged.   
+              <li>It is often the case that models affected by new development may have to be modified since the new project may call for the removal of parts of existing models while leaving other parts intact.  These models should have their <B>QA Flag</b> set to <b>3D Edit Candidate</b>.  These will be dealt with later. 
+              <li>If a new model is a new project proposal that superseds an existing proposal on the same site, the firmer model may have its status changed to <b>Superseded Proposal</b> and the <b>Disappear Date</b> should be the same as the appear date for the new proposal. 
+              </uL>
+      <li>Notice that when models in the Active feature class have their Model Status values changed to <b>Demolished</b>, <b>Modified</b> or their QA Flag set to <b>3d Edit Candidate</b> or <b>Stop</b>, these models disappear from the Stage Active Definition Query View to one of the other definition query views.  This allows you to quickly toggle these alternate views to expose any small models that may otherwise be hidden under other models.  
+      </ol>
+     <div class="tip">
+       <h3>Time-Series Imagery in Google Earth</h3>
+       <p>Google Earth is a free tool that includes a deep store of recent and historical aerial imagery. The historical imagery can be viewed by clicking the button shown at number 2 in the image below.</p>
+        <figure class="middle"> 
+          <img class="scaled" src="images/google_earth.jpg"> 
+          <figcaption>Google Earth is a great free research tool.</figcaption>
+        </figure>
+      <p>You can quickly zoom to a site in Google Earth by copy-pasting the latitude and longitude from the model's attributes into the Google Earth search box as shown at number 1 in the figure, above.  
+     </div>
+
+      <h3>Reviewing, Promoting and Demoting Models in the Project Pipeline</h3>
+      <p>Reviewing the New models results in setting new values for models in the Active, Proposed and Internal feature classes.  But there may be other status changes that are called for as other models move through the review process.  To evaluate these, it is helpful to join development log table with the Active, Proposed and Internal feature classes reflected in the Stage Edit Views.  Select by attribute queries or new definition query views can be created to highlight models that are candidates for promotion or demotion based on the comparison of the value Model Status tothe latest Project Status.  These change candidates should be checked one-by one.  With reference to the most current aerials.  Then the same update procedure as described above, can be carried out. 
+      </p>
+
+      <h2>Editing Workflows</h2>
+      <p>There are several sorts of situations that call for model edits.  We have already discussed the situation where an active model needs to be split to make room for a new project that may replace part of an existing structure.  Another situation arises when you discover some sort of model corruption such as faces that seem to be missing, or faces that are in-side out and not reacting to light properly.  You may also encounter situations where a large group of models needs to have their bottoms extended to fill in illogical gaps between the models and a low-resolution terrain model.  Situations may arise where a new model is created or split using the model editing tools in ArcGIS.
+      </p>
+         
+      <p>
+      Whatever the case, all edits should be dealt with in a Model Batch and treated as new models with new Model Identifiers as described above in the section on <a href="#import">Importing Models</a>.  Once an existing model has had its QA Flag set to <b>3D Edit Candidate</b> it will be ignored when migrating to the next edition.  Processing edited models through the prep, inspect and ready pipeline provides quality assurance and audit tracking capability.  We have found that editing models in the Active feature class canlead to corruption and promulgation of invisible phantom models that are nearly impossible to get rid of. 
+      </p>
+      
+      
+      <h3>Edit Batches</h3>
+      <p>The naming of model batches folders in the ModelWork folder is useful for finding the editable manuscript data for hand-made models.  For hand-made models, batch folders should get names prefixed withthe name of the individual or agency credited for the models.  In the case of model edits you might have one edit batch for each edition of the model collection that you make.  When you are fixing or creating a large number of models using an automated procedure, such as the Bottom Extender tool, it may be worthwhile to create an edit batch folder exclusively for keeping the initial models (as Prep_MP) and the finished models, as "Ready_MP."  The geoprocessing scripts for doing the transformation might also be stored with the edit batch.  It is often the case that transformations such as these may need to be revised and repeated. In the case of 3D models, we have seen that problems with bulk transformations may not be detected until weeks later when someone tries to translate the format. 
+      </p>
+      <div class="tip">
+        <h3>Problems with Surface Normals</h3> 
+        <p>One thing that makes 3D models tricker than flat points, lines, and polygons is the problem of lighting and shading.  In GIS, 3D objects are made of triangulated faces. Your computer needs to figure out which direction each triangle is facing in order to shade it correctly.  The orientation of a face with regard to the light source is known as the <b>Surface Normal</b>.  Normal in this sense refers to a perpendicular line.
+        </P><p>
+         It happens that one of the most common forms of corruption in multipatch models happens when surface normals for some or all of the faces in a model are not identified correctly.  ANother way of saying this is that the face or faces are <b>pointing in the wrong direction</b> or <b>Inside-out</b>
+         When this happens it may show up as faces that appear to be invisible or not there) when looked at from one side,or faces that appear to be dark and not reflecting light as they should.  These objects also behave badly when you try to color them with symbology.
+        </p><p>
+         <b>What is the cause?</b> It happens that multipatch objects do not store information about surface normals.  Instead, the direction faces are pointing is inferred, on the fly, by a convention called the <b>Right Hand Rule</b> that says that the vertices of each face are listed in an order that looks like counter-clockwise from the perspective of the lighted side.    With this in mind, it is not difficult to imagine how these inferences might break.  Especially when a less-then-perfect 3D editing tool is used to create new faces by intersecting complicated 3d objects.  
+         <p>To the human eye, problems with normals are not hard to spot.  For automated procedures that create hundreds of new faces  by cutting complex mesh objects there are situations where the algorithm has know way of knowing.  This is especially true when the original mesh objects are not validated as closed solids.  
+        </p><p>
+      </div>
+      <h3>Model Editing</h3>
+      <p>A common editing workflow comes into play when an existing model needs to be split to accommodate a new model of a proposed structure that will preserve part of the existing one. At the end of the process, you can have a new model that represents the portion if the existing structure that will return to the Active feature class.  And you may also end up with have a second new model that represents the "historical" portion of the original structure that is to be demolished.  As it happens, this process of model editing may be trickier and more time consuming than we would like.  
+      </p>
+      <div class="tip">
+      <h3>How the <b>Modified</b> Model Status Saves You Time</h3> 
+        <p> 
+      For model curators who are primarily future-oriented, there may not be a clear business case for spending half a day trying to neatly dissect both sides of this complex cutting procedure.  Asit happens, cutting models canbe very difficult -- especially when the models donot verify as being fully closed, or "wat6er tight."   
+      </p><p>
+      In consideration of this fact, we have established the <b>Modified</b> status for models.  The first task is to cut the existing model and to end up with a model that represents the portion that persists.  The original model, in its entirety has its status set to <b>Modified</b>.  This status will cause the entire old model to be shifted to the <b>History_MP</b> feature class.  The new partial model willhave its status set to "Current" and after going through the process of editing and importing through a model batch, it will move through the <b>NewModels_MP</b> feature class and eventually wind up in the <b>Active_MP</b> feature class. 
+      </p><p>
+        The <b>Disappear Date</b> for modified models should be set to the date when the partial demolition occurs.  For the "Current" portion of the model, the Appear Date should be set to the same date. If you think about how a time-slider will work, you can imagine that when rentering a past scenario, the original, whole, model will be displayed up until that date.  When the slider moves through the curren time, the modified model will dissappear and the new model and the remaining portion of the old model will appear. 
+        <p>
+          It <b><i>is</i></b> confusing that the Appear date of the current portion of the modified model is recent, when the actual structure may be 100 years old.  This is one reason why this Appear Date is not called <b>Year Built</b>.  The original year built for the structure, if it is known could be preserved as the Appear Date on the historical version of the modified model.    
+        <p>This situation is an illustration of why the model collection and its attributes is primarily concerned with <b>Models</b> and not with <b>Buildings</b>. 
+        </div>
+        <h2>The Model Modification Workflow Scenariops</h2>
+        <p>Lets take a look at the example of an existing model that needs to be edited.   If you have a very simple model that you would like to try splitting with the <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/slice-a-multipatch-feature.htm" target="arcdoc"> ArcGIS Split Multipatch tool</a>, then follow these steps:
+        
+          <ol>
+            <li>Select the model and set its status to <b>Modified</b> and its <b>Disappear Date</b> as concurrent with the appear date of the model that is causing the modification. 
+            <li>Use the Append tool to copy the model into to the <b>Prep_MP</b> feature class in your edit batch. 
+            <li>Use the ArcGIS 3D editing tools to <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/modify-a-multipatch-feature.htm" target="arcdoc">Modify</a> or <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/slice-a-multipatch-feature.htm" target="arcdoc">Split</a> the model in Prep_MP. 
+            <li>Follow the procedures for <a href="#import">Importing a model</a>, outlined above.
+            </ol>
+        <p>I expect that the ArcGIS model editing tools will be improved as time marches on.  At the current writing, the author finds it preferable to use a purpose-built 3D authoring tool for editing 3D models.       
+        </p><p>
+          <h3>Edit a Current Model with Your Favorite Authoring Tool</h3>
+          Typically, models that need to be modified are in the <b>Active_MP</b> feature class. Therefore these models are reflected in one of the published SketchUp tiles or as an OBJ file in the Repository / Catalog.  Using one of these representations may be the best starting place for editing in your preferred 3D authoring tool. In this case, the procedure for editing is identical to the procedure outlined in  <a href="#import">Importing a model</a>.
+      </p>
+          <h3>Exporting an OBJ Model from ArcMap</h3>
+          In a case where all you have is a multipatch model that has not already been converted to a SketchUp or OBJ file, it may be possible to export from Multipatch to a single OBJ file that is in our Metro-Shift coordinate system. Using the <b>MultiPatch to OBJ</b> tool in the <b>pbc_3DUtils</b> tool group in our <b>ModelMgt.tbx</b>. Not that this tool requires a licensed copy of Safe Software's FME Desktop, and may require a bit of python trobleshooting to make work in your environment.      
+        </p>
+        
+       <h3>Finishing your Edits</h3>
+       <p>
+      In any case, whenever you edit a model, it is important to assign a new Model_ID and enter a short summary of the edit opreration in the <b>Edit_Action</b> field.  These details are necessary for applications that use the Repository Catalog to discover and apply updates to their remote model collections.  
+      </p>
+           
 
 
 

@@ -317,7 +317,11 @@ let dictionaries =  `
 <td>Internal</td>
 <td>The model represents a proposal that is under review by the planning board.  </td>
 </tr>
-
+<tr>
+<td><b>Proposal Superceded </b></td>
+<td>Internal</td>
+<td>The model represents a proposal that has been superseded by a new proposal.  </td>
+</tr>
 
     <tr>
     <td><b>Retired</b></td>
