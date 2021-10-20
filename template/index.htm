@@ -3,8 +3,8 @@
 <html lang="en">
 <!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
 <head> <!-- Edit the following for each page -->
-    <title>Template</title>
-    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation avout cross-siciplinary collaboration on city models. ">
+    <title>Style Guide</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-siciplinary collaboration on city models. ">
     <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
     <meta name="author" content="Paul B. Cote">
     
@@ -29,49 +29,124 @@
           <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
           <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
         </div> 
-        <div id="main-container">
-          <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
 
 <!-- Page content goes inside the article div -->
-<div id="article">
-  <h3 class="section_title">Section Title</h3>  <!-- Optional: would be the tile of the intro chapter.  -->
-  <h1 class="title">for Cross-Disciplinary Collaboration on Digital City Models</h1>
-    <p>Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya 
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Documentation Template & Style Guide</h1>
+    <p>This page serves as a template for new resources in the documentation collection.  It contains all of the necessarry included files and demonstrates the components that are accommodated by the <b><a href="../resources/cityschema.css">cityschema.css</a></b></p>
       <h3 id="early">Early</h3>
+       <p>The html declaration of the heading above has an id attribute set as <b>id="early"</b>.  This ID can be addressed as an internal link within the page.  For example, it is referred to as <b>a href="../template/index.htm#early"</b> in other pages and most importantly, in the list of "verses" that falls under the chapter, <b>Documentation Template</b> in the navigational sidebar.
+       </p>  
+      
       <figure class="right">
         <img class="scaled" src="images/tall.jpg">
         <figcaption>Fig Right</figcaption>
       </figure>
-      <p><a href="#late">Scroll to Late</a>  doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya <p>doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya <p>doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya 
-      </p>
-      <figure class="middle"> 
-        <img class="triptic" src="images/tall.jpg"> 
-        <img class="triptic" src="images/tall.jpg"> 
-        <img class="triptic" src="images/tall.jpg"> 
+
+      <h3 id="figures">Figures: Left, Right and Middle</h3>
+       <p>The cityschema.css has three types of figures.  The one on the right uses the following
+         html:
+  <!-- notice: the indent of <pre> text is expressed by actual whitespace. -->
+  <pre>
+  &lt;figure class="right"&gt;
+  &lt;img class="scaled" src="images/tall.jpg"&gt;
+  &lt;figcaption&gt;Fig Right Caption&lt;/figcaption&gt;
+  &lt;/figure&gt;
+  </pre>
+
+       <p>Makes a right-justified image.  </p>
+       <p>Notice that the heading comes after the image in the html.  This avoids an apparent vacant space above the image. 
+      <p>Normally, there would be plenty of text that pertains to the image, to fill up the half-width column on the left-hand side of the figure.  If not, you can always start the next thing with a <b>style="clear: both;"</b>, as we do with the heading,below. 
+       <h3 id="late" style="clear: both;">Another Internal Link</h3>
+       <p>The link above has <b>id="late"</b>.  It is linked in the sidebar table of contents.  It demonstrates the smooth scroll effect. 
+       </p>Notice also that the <b>style="clear: both"</b> causes it to slip past the right-hand image to the next clear spot on the page.
+
+       <h3>The Middle Figure</h3>
+       <p>Below this text, you will see the rendering of the following code:</p>
+  <pre>
+  &lt;figure class="middle"&gt;
+  &lt;img class="scaled" src="images/wide.jpg"&gt;
+  &lt;figcaption&gt;Fig Middle Caption&lt;/figcaption&gt;
+  &lt;/figure&gt;
+  </pre>
+      <figure class="middle">
+        <img class="scaled" src="images/wide.jpg">
+        <figcaption>Middle Figure</figcaption>
+      </figure>
+
+
+
+      <p> The next image uses the middle figure with the image <b>class="triptic"</b>.  Coded like so:
+        
+        <pre>
+          &lt;figure class="middle"&gt;
+          &lt;img class="triptic" src="images/tall.jpg"&gt;
+          &lt;img class="triptic" src="images/tall.jpg"&gt;
+          &lt;img class="triptic" src="images/tall.jpg"&gt;
+          &lt;figcaption&gt;Fig Middle Caption&lt;/figcaption&gt;
+          &lt;/figure&gt;
+        </pre>
+      
+      <figure class="middle">
+      <div class="middleflex"> 
+        <img src="images/tall.jpg"> 
+        <img src="images/tall.jpg"> 
+        <img src="images/tall.jpg"> 
+      </div>
         <figcaption>Triptic</figcaption>
       </figure>
-      <p>Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya <p>doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya <p>doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya 
-      </p>
-      <figure class="middle"> 
-        <img class="scaled" src="images/wide.jpg"> 
-        <figcaption> Fig Middle</figcaption>
-      </figure>
-        <h3 class="heading" id="late">doing? </h3>
-        <p>Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya <a href="#early">Scroll to Early</a> 
-    </p>
-
+    
+    <h3>The Default Table Style</h3>
+     <p>The default table style looks like this.</p>
     <table class="dictionary">
       <tr><th>Heading 1</th><th>Heading 2</th></tr>
       <tr><td>Row 1</td><td>Col 2</td></tr>
       <tr><td>Row 1</td><td>Col 2</td></tr>
     </table>
 
-    <p>Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya <p>doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya <p>doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya doing? Hi how ya  how ya doing? Hi how ya doing? 
-    </p>
-</div> <!-- Closes #article div -->
+<h2>Browser Tab Targets for Links</h2>
+<p>Some pages should be opened n specific new tabs as they may be useful refernce info related to other pages.  We don;t want tabs to proliferate, however.  So, for pages of a specific sort, we dlivberately want to replace other pages of the same sort in a particular tab.   
+</p><ul>
+  <li><b>target="datadict"</b>: Data dictionary at bottom of the Model Collection Page
+  <li><b>target="metadata"</b>: A metadata page from the repo/catalog.
+  <li><b>target="download"</b>: The tiled download page from the repo/catalog.
+  <li><b>target="index"</b>: Documentation Index page from the repo/catalog.
+  <li><b>target="arcdoc"</b>: link to software documentation.
+  </ul>
 
-    <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
-  </div> <!-- Closes main container--> 
+    <h3>Thematic Blocks</h3>
+    <p>High-order conceptual ideas are discussed in the plain text.  
+    </p><p> Lists of steps are included in blue boxes, indented with a blue heading. and dark blue text. </p>
+       <div class="procedure">
+        <h3>A Procedure</h3>
+         <p>A procedure has a heading, a short introduction, then a list of numbered steps</p>
+         <ol>
+           <li>First you do <b>Step One</b>.
+           <li>Then you do <b>Step Two</b>.
+         </ol>
+         <p>Then there might be a short statement of the ending condition.
+       </div> <!--closes procedure -->
+    <h3>More Text</h3>
+    <p>Then as things roll along, there is usually more conceptual description.  But before long, there might be a need for a sort of sidebar discussion.   These are topics that may be a zoom-in or a zoom-out.  These may be ideas that get linked to from other documents. These sidebars get a gold box but with the same bluish text.
+    </p>
+    <div id="funfact" class="funfact">
+      <h3>A Side Bar</h3>
+      <p>A div of <b>class="sidebar"</b> starts out with an &lt;H3&gt; and then has some text explaining a sort of meta-topic that pertains to the ideas that surround it.  
+      <p>The topic might zoom in or zoom out relative to the context.
+      <p>this is the sort of thing that is likely tobe referred to from soe other page.       
+    </div> <!-- closes sidebar -->
+   <p>Typically, the page would have some more text that closes up the big idea.  Maybe providing pointers about were else to go. 
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
 </div> <!-- closes grid container-->
 </body>
 </html>
