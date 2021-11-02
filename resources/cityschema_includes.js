@@ -34,13 +34,17 @@ If you are interested in being notified with announcements, email paul b cote (n
 <ul class="treeview">
 <li class="chapter"><a href="../home/index.htm">Home Page</a></li>
     <ul class="verses">
-    <li class="verse"><a href="../home/index.htm#why">Why?</a></li>
+    <li class="verse"><a href="../home/index.htm#challenges">City Modeling Challenges</a></li>
+    <li class="verse"><a href="../home/index.htm#fab">Features and Benefits</a></li>
+    <li class="verse"><a href="../home/index.htm#why">Coordination of Effort</a></li>
     <li class="verse"><a href="../home/index.htm#streetscapes">Streetscapes are part of our cultural heritage</a></li>
     <li class="verse"><a href="../home/index.htm#ack">Acknowledgements</a></li>
 </ul>
 <li class="chapter"><a href="../repocat/index.htm">Repository / Catalog </a></li>
   <ul class="verses">
-    <li class="verse"><a href="../repocat/index.htm#tour">Take the tour!</a></li>
+  <li class="verse"><a href="../repocat/index.htm#principles">Guided by Sound Asset Management Principles</a></li>
+  <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
+    <li class="verse"><a href="../repocat/index.htm#github">Explore, Clone and Customize on GitHub.</a></li>
    </ul>
 <li class="chapter"><a href="../model_collection/index.htm">Building Model Collection</a></li>
    <ul class="verses">
@@ -51,15 +55,22 @@ If you are interested in being notified with announcements, email paul b cote (n
       <li class="verse"><a href="../model_collection/index.htm#datadictionary">Data Dictionary for Model Catalog</a> 
       <li class="verse"><a href="../model_collection/index.htm#status">Model Status Dictionary</a>
       <li class="verse"><a href="../model_collection/index.htm#LOD">Levels of Detail and other Recommendations for Model Structure</a>
-      <li class="chapter"><a href="../submissions/index.htm">Model Submission Guidelines</a></li>
-        <ul class="verses">
-          <li class="verse"><a href="../submissions/index.htm#lod">Level of Detail</a>
-          <li class="verse"><a href="../submissions/index.htm#obj">Triangulated OBJ Format</a>
-          <li class="verse"><a href="../submissions/index.htm#georef">Context and/or Geolocation</a>
-          <li class="verse"><a href="../submissions/index.htm#sources">Source Material</a>
-        </ul>
-     <li class="chapter"><a href="../model_management/index.htm">Managing the Model Collection</a></li>
+
    </ul>
+
+   <li class="chapter"><a href="../model_management/index.htm">Managing the Building Model Collection in ArcGIS</a></li>
+   <ul class="verses">
+      <li class="verse">In Work! Check back soon. 
+   </ul>
+
+   <li class="chapter"><a href="../submissions/index.htm">Model Submission Guidelines</a></li>
+   <ul class="verses">
+      <li class="verse"><a href="../submissions/index.htm#lod">Level of Detail</a>
+      <li class="verse"><a href="../submissions/index.htm#obj">Triangulated OBJ Format</a>
+      <li class="verse"><a href="../submissions/index.htm#georef">Context and/or Geolocation</a>
+      <li class="verse"><a href="../submissions/index.htm#sources">Source Material</a>
+   </ul>
+
 <li class="chapter"><a href="../tile_scheme/index.htm">Tile Scheme and Coordinate System</a></li>
     <ul class="verses">
             <li class="verse"><a href="../tile_scheme/index.htm#purpose" target="metadata">Tiling Strategy</a>
