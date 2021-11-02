@@ -64,7 +64,7 @@
        <p>The link above has <b>id="late"</b>.  It is linked in the sidebar table of contents.  It demonstrates the smooth scroll effect. 
        </p>Notice also that the <b>style="clear: both"</b> causes it to slip past the right-hand image to the next clear spot on the page.
 
-       <h3>The Middle Figure</h3>
+       <h3 id="midfig">The Middle Figure</h3>
        <p>Below this text, you will see the rendering of the following code:</p>
   <pre>
   &lt;figure class="middle"&gt;
@@ -77,17 +77,17 @@
         <figcaption>Middle Figure</figcaption>
       </figure>
 
-
-
-      <p> The next image uses the middle figure with the image <b>class="triptic"</b>.  Coded like so:
+      <p id="triptic"> The next image uses the middle figure with the image <b>class="triptic"</b>.  Coded like so:
         
         <pre>
-          &lt;figure class="middle"&gt;
-          &lt;img class="triptic" src="images/tall.jpg"&gt;
-          &lt;img class="triptic" src="images/tall.jpg"&gt;
-          &lt;img class="triptic" src="images/tall.jpg"&gt;
-          &lt;figcaption&gt;Fig Middle Caption&lt;/figcaption&gt;
-          &lt;/figure&gt;
+    &lt;figure class="middle"&gt;
+      &lt;div class="middleflex"&gt;
+        &lt;img src="images/tall.jpg"&gt;
+        &lt;img src="images/tall.jpg"&gt;
+        &lt;img src="images/tall.jpg"&gt;
+      &lt;/div&gt;
+    &lt;figcaption&gt;Fig Middle Caption&lt;/figcaption&gt;
+    &lt;/figure&gt;
         </pre>
       
       <figure class="middle">
@@ -99,15 +99,15 @@
         <figcaption>Triptic</figcaption>
       </figure>
     
-    <h3>The Default Table Style</h3>
-     <p>The default table style looks like this.</p>
+    <h3 id="table">The Dictionary Table Style</h3>
+     <p>Tables with <b>class="dictionary</b> look like this.</p>  
     <table class="dictionary">
       <tr><th>Heading 1</th><th>Heading 2</th></tr>
       <tr><td>Row 1</td><td>Col 2</td></tr>
       <tr><td>Row 1</td><td>Col 2</td></tr>
     </table>
 
-<h2>Browser Tab Targets for Links</h2>
+<h2 id="tabtargets">Browser Tab Targets for Links</h2>
 <p>Some pages should be opened n specific new tabs as they may be useful refernce info related to other pages.  We don;t want tabs to proliferate, however.  So, for pages of a specific sort, we dlivberately want to replace other pages of the same sort in a particular tab.   
 </p><ul>
   <li><b>target="datadict"</b>: Data dictionary at bottom of the Model Collection Page
@@ -117,7 +117,7 @@
   <li><b>target="arcdoc"</b>: link to software documentation.
   </ul>
 
-    <h3>Thematic Blocks</h3>
+    <h3 id="blocks">Thematic Blocks</h3>
     <p>High-order conceptual ideas are discussed in the plain text.  
     </p><p> Lists of steps are included in blue boxes, indented with a blue heading. and dark blue text. </p>
        <div class="procedure">
@@ -133,8 +133,8 @@
     <p>Then as things roll along, there is usually more conceptual description.  But before long, there might be a need for a sort of sidebar discussion.   These are topics that may be a zoom-in or a zoom-out.  These may be ideas that get linked to from other documents. These sidebars get a gold box but with the same bluish text.
     </p>
     <div id="funfact" class="funfact">
-      <h3>A Side Bar</h3>
-      <p>A div of <b>class="sidebar"</b> starts out with an &lt;H3&gt; and then has some text explaining a sort of meta-topic that pertains to the ideas that surround it.  
+      <h3>A Fun Fact/h3>
+      <p>A div of <b>class="funfact"</b> starts out with an &lt;H3&gt; and then has some text explaining a sort of meta-topic that pertains to the ideas that surround it.  
       <p>The topic might zoom in or zoom out relative to the context.
       <p>this is the sort of thing that is likely tobe referred to from soe other page.       
     </div> <!-- closes sidebar -->

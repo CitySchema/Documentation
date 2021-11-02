@@ -71,7 +71,13 @@ If you are interested in being notified with announcements, email paul b cote (n
      <li class="chapter"><a href="../template/index.htm">Documentation Template</a></li>
      <ul class="verses">
              <li class="verse"><a href="../template/index.htm#early">An internal Link</a>
+             <li class="verse"><a href="../template/index.htm#figures">A Right-Hand Figure</a>
+             <li class="verse"><a href="../template/index.htm#midfig">A Middle Figure</a>
              <li class="verse"><a href="../template/index.htm#late">A Later Link</a>
+             <li class="verse"><a href="../template/index.htm#triptic">A Three-Panel Figure</a>
+             <li class="verse"><a href="../template/index.htm#table">Table Style</a>
+             <li class="verse"><a href="../template/index.htm#tabtargets">Tab Targets</a>
+             <li class="verse"><a href="../template/index.htm#blocks">Colored Text Blocks</a>
       </ul>
 </ul> <!-- Closes Index -->
 `

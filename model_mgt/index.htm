@@ -31,40 +31,54 @@
 
 <!-- Page content goes inside the article div -->
 <div id="article">
-  <h3 class="section_title">Building Model Mangagement </h3>  <!-- Optional: would be the tile of the intro chapter. -->
-    <h1 class="title">Managing the Building Model Collection</h1>
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter. -->
+    <h1 class="title">Managing the Building Model Collection using ArcGIS Pro</h1>
   
     <p>This page provides an overview of the procedures and tools for managing the collection of 3D models od buildings, bridges, walls and docks as part of a city model within the <a href="../home.index.htm">citySchema.org framework for developing, sharing and preserving city model assets</a>.
-    </p>
-    <h2>Roles and Responsibilities<h2>
-    Before digging into the technical details of <b>How</b> to manage a city-wide collection of 3D models that is continuously updated to include representations of the near-future, while non-destructively remembering the present and providing a framework for putting together shard information about past situations; it will be uesful to have a picture of the <b>Who</b> and the <b>Why</b>.  Or so to say, the institutional roles and responsibilities. In terms of the short-term scope of the audience for this documentation, consider first the <b>echnician</b>, who is the sort of person who you find managing geographic data in a municipality. You also have the <b>Manager</b>, who is accountable for taking care of the institution's information and for hiring technicians who may be employees or contractors. As far as the <b>Institution</b> is concerned, the a good architecture for taking care of institutional knowledge -- for planning, for memory and for learning -- is an architecture that remains useful even without the particular individuals holding the position of technician or manager. The understanding cityScheme platform conceptually will provide the GIS manager and the CTO with confidence that the enterprise of city modeling and the associated assets are sustainable for the long haul.  
+    </p><p> 
+    The workflow and tools described on this page ca nbe demonstrated using the <b>citySchema: Model-Management-ArcGIS repository shared on github (soon)</b>.  We start withthe ArcGIS Pro workflow because our municipalGIS managers tend to have licenses for this tool-kit.  The ArcGIS model for representing 3D geometry as geographic features is well suited to the task. We anticipate that the concepts and procedured described here may be implemented onother platforms with the same result. 
+    </p> 
+    <h3 id="roles">Roles and Responsibilities<h3>
+    Before digging into the technical details of <b>How</b> to manage a city-wide collection of 3D models, it will be uesful to have a picture of the sorts of people for whom this scheme has been designed, and the personal and institutional <b>motivations</b> that make this effort worthwhile.  The <b>Technical User</b>, is the sort of person who you find managing geographic data in a municipality. You also have the <b>IT Manager</b> is accountable for taking care of the institution's information and for hiring technical model collection managers who may be employees or contractors. For the IT manager, a successful architecture results in a collectionof assets that is sustainable even without the particular individuals holding the position of technician or manager. For the IT manager, Understanding cityScheme platform conceptually will establish confidence that the costly enterprise of city modeling and the associated assets are sustainable for the long haul.  
     </p><p>
-    Managers and technicians should each read this documentation to understand the scheme for naming and labeling assets. To be aware that there is a place for storing and finding every piece of the city model.  This will relieve the technician form having to make thousands of new decisions, and learning from the unsuccessful ones.  It will also assure the manager that the information resources are recoverable even after the technician unexpectedly "wins the lottery". 
+    Managers and technicians should each read this documentation to understand the scheme for naming and labeling assets. To be aware that there is a place for storing and finding every piece of the city model.  This will relieve the technician from having to make thousands of new decisions, and learning from the unsuccessful ones.  It will also assure the manager that the information resources are recoverable even after the technician unexpectedly "wins the lottery". 
     </p>
-  <p>
-    The tools and tasks included here provide a simple, yet powerful way to make updates and revisions to your model collection while retaining the capability to audit and reverse any action that has been taken even after edit-changes have been saved.  This is a very important feature as it is often the case that problems such as lost or corrupted models are not discovered for weeks, and when they are, it can be difficult to trace the problem or to know how many other models may have been affected. 
-    </p><p>
-    It is time-consuming and frustrating to figure out how to manage a city-wide collection or 3D models.  We don't claim that this method is perfect, and welcome suggestions about how it might be improved.  Nevertheless, pbcGIS guarantees that starting with this workflow and tools wil be a big time-saver and should make management more confident in the over-all long-term asset management strategy.
-    </p>
+  
+
 
 
     <h2>Foundation Concepts</h2>
-    <p>For model curators, it is essential to understand the conceptual overview of the model collection, including definitions of important terms and a data dictionary issued in the document: <a href="https://cityschema.github.io/repository-catalog/catalog/model_collection.htm" target="metadata">Overview of Building Model Collection and Catalog</a>.  This is published in the Repository/Catalog along with all of the other metadata related to citySchema.org template model.  
-    </p><p>
-    <a href="https://github.com/CitySchema" target="github">citySchema templates shared on GitHub</a> are a recommendation.  Your organization may develop its own data dictionary and metadata.  Doing this, will probably require modifying many of the tools that are shared by citySchema.org.  So we recommend trying the demonstrations before digigng in and modifying the schema. 
+
+    <p>For model curators, it is essential to understand the conceptual overview of the model collection, including definitions of important terms and a data dictionary issued in the document: <a href="../model_collection/index.htm" target="reference">Overview of Building Model Collection and Catalog</a>.  It is particularly important to understand the <a href="../model_collection/index.htm#datadictionary" target="reference">Data Dictionary</b> with all of the meanings and values expected for each of the model attributes.</p> 
+    <p>
+    The city model is a temporal database that keeps track of models that represent prior and future scenarios.  Furthermore, 3D models are tricier to deal with and to re-create than the 2D features that GIS technicians are familiar with.   The tools and tasks included here provide a simple, yet powerful way to make updates and revisions to your model collection while retaining the capability to audit and reverse any action that has been taken even after edit-changes have been saved.  This is a very important feature as it is often the case that problems such as lost or corrupted models are not discovered for weeks, and when they are, it can be difficult to trace the problem or to know how many other models may have been affected. 
+      </p><p>
+    The Building model collection is one component of the city-wide 3D model, which also includes detailed terrain and groundplan information.  The model collection framework support4d by this workflow prepares the model collection to become one of the components of the <a href="../repocat/index.htm">citySchema Repository Catalog</b>  city model publishing and archiving strategy.
+    </p>    <p>
+    <a href="https://github.com/CitySchema" target="github">citySchema templates shared on GitHub</a> are a recommendation.  Your organization may develop its own data dictionary and metadata.  Doing this, will probably require modifying many of the tools that are shared by citySchema.org.  So we recommend trying the demonstrations before digging in and modifying the schema. 
     </p>
 
-    <h2>Filesystem Context for ArcGIS Data Management</h2>
-    <p>The model collection management tools and tasks are saved as an ArcGIS Pro workspace, which is a self-contained collection of ArcGIS pro project documents, geoprocessing tools, and a scratch workspace.  At pbcGIS, we keep manage the city model in a filesystem as shown in figure 1.  
+
+    <figure class="right">
+      <img class="scaled" src="images/tall.jpg">
+      <figcaption>Figure 1: City Model FIlesystem Context</figcaption>
+    </figure>
+    <h2 id="context">Filesystem Context for ArcGIS Data Management</h2>
+    <p>The model collection management tools and tasks are saved as an ArcGIS Pro workspace, which is a self-contained collection of ArcGIS pro project documents, geoprocessing tools, and a scratch workspace.  At pbcGIS, we manage the city model in a filesystem as shown in figure 1.  
     </p>
     All of the resources used for our demonstration project keep all of the resources for a city model are under a single directory.  In your environment, you might have the City3d master folder and the City3D_Dev files on different disks.  For the sake of portability,  our demonstration of the model management tools and procedures will be work with all resources in a single workflow folder. as shown in Figure 2. 
   </p>
-  <h2>The Big Picture</h2>
 
-  <p>A tour of the ModelCollectionMgt workflow folder is useful for orientation to the file organization.  It also introduces the main components of the workflow:
+  <h2 id="tour">Tour of the Model Management Workspace</h2>
+
+  <p>A tour of the ModelCollectionMgt workflow folder is useful for orientation to the file organization.  It also introduces the main components of the workflow.  You can watch the tour on youtube (soon) or follow along with your local copy of the workspace available from github (soon).  
   </p>
+  <div class="tour">
+  <h3>Filesystem and Folders</h3>
+  <p>The model management workspace demo is provided as a self-contained workspace with every tool and file accessible via relative path-names. In your environment, it may be beneficial to store multi-purpose resources in other places on your network file-system. 
+  </p> 
   <ul>
-    <li><b>ArcDocs folder: </b> contains arcGIS Pro projects where the processing takes place.  There also may be layer files stored here, to save styling of layers and group layers for re-use within the maps and scenes within the project.  Also contans the arcGIS Task files that hold the step-by-step interactive guide for managing your model collection.  
+    <li><b>ArcDocs folder: </b> contains ArcGIS Pro projects where the processing takes place.  There also may be layer files stored here, to save styling of layers and group layers for re-use within the maps and scenes within the project.  Also contans the arcGIS Task files that hold the step-by-step interactive guide for managing your model collection.  
 
     <li><b>ModelWork folder: </b> contains the source model files for new models that have been submitted for inclusion into the collection.  Or models that are edited during model management operations.  WIthin the ModelWork folder, models are stored in batch folders named according to the source and date.  This organization allows for source models to be referenced in the model catalog and easily retrieved in case anyone wants revisit and modify a model using the original sources.  When a ModlCopllectio_Mgt workflow folder is retired, the contents of ModelWork are copied to the modelWork folder in <b>Cty3D_Archive</b>.
     <li><b>PriorArchive folder:</b> contains the latest archived edition of the Cty3D_Models_YYYYMMDD.gdb.  The date string in the name og the geodatabase reflects the date that the geodatabase was issued a prior ModelCollection_Mgt. The capability to recover from corruption and errors requires that the lineage of PriorArchive models be continuous.  Note that all of the NextEditon modelcollections are spawned from one priorArchive geodatabase.  If you want to start form a newer collection, then the ModelCollection_Mgt workflow folder should be retired, and a fresh one started. 
