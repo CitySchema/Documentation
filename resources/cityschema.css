@@ -162,8 +162,10 @@ html {
   }
 
   #article a:link {
-    color: rgb(86, 112, 128);
-    text-decoration: underline ;
+    color: rgb(94, 143, 173);
+    /*text-decoration: underline ;*/
+    text-decoration: none ;
+    border-bottom: 1px solid #9ccbec;
   }
 
   #article a:visited {
