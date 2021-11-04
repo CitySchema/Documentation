@@ -347,7 +347,15 @@ font-weight: 100;
   padding: 0px 10px;
   margin: 0px;
   list-style-position: inside;
-  text-indent: -1em;
+  text-indent: -1.5em;
+  padding-left: 1em;
+}
+
+.treeview >li.chapter {
+  /*padding: 0px 10px;
+  margin: 0px; */
+  list-style-position: inside;
+  text-indent: -1.5em;
   padding-left: 1em;
 }
 
@@ -359,6 +367,15 @@ font-weight: 100;
   content: "";
   height: 25px;
 }
+
+.treeview ul >li {
+  padding: 0px 10px;
+  margin: 0px;
+  list-style-position: inside;
+  text-indent: -1em;
+  padding-left: 1em;
+}
+
   .treeview .is-open:before {
       background-position: -20px top;
   }
