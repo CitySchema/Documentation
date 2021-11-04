@@ -378,6 +378,12 @@ font-weight: 100;
   padding-left: 1em;
 }
 
+.treeview li.active {
+  background-color: #94cdf3;
+
+}
+
+
   .treeview .is-open:before {
       background-position: -20px top;
   }
