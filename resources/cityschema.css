@@ -157,12 +157,12 @@ html {
   }
 
   a:link {
-    color: rgb(28, 87, 121);
+    color: rgb(86, 112, 128);
     text-decoration: none;
   }
 
   #article a:link {
-    color: rgb(70, 221, 247);
+    color: rgb(86, 112, 128);
     text-decoration: underline ;
   }
 

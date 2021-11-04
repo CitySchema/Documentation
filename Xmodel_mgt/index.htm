@@ -34,11 +34,32 @@
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter. -->
     <h1 class="title">Managing the Building Model Collection using ArcGIS Pro</h1>
   
+<p style="background-color:khaki"><b>This page is currently under development!</b>  <br>November 4, 2021.</p> 
+
     <p>This page provides an overview of the procedures and tools for managing the collection of 3D models od buildings, bridges, walls and docks as part of a city model within the <a href="../home.index.htm">citySchema.org framework for developing, sharing and preserving city model assets</a>.
     </p><p> 
     The workflow and tools described on this page ca nbe demonstrated using the <b>citySchema: Model-Management-ArcGIS repository shared on github (soon)</b>.  We start with the ArcGIS Pro workflow because our municipalGIS managers tend to have licenses for this tool-kit.  The ArcGIS model for representing 3D geometry as geographic features is well suited to the task. We anticipate that the concepts and procedures described here may be implemented on other platforms with the same result. 
     </p> 
-    <h3 id="roles">Enterprise and Technical Viewpoints</h3>
+    <h3>Table of Contents</h3>
+    <ol>
+      <li><a href="#roles">Enterprise and Technical Viewpoints</a>
+      <li><a href="#foundation">Foundation Concepts and Data Dictionary</a>
+      <li><a href="#context">Filesystem Context </a>
+      <li><a href="#tour">Tour of the Model Management Workspace Folder: Data Management</a>
+      <li><a href="#lifecycle">Lifecycle of a Model Management Workspace</a>
+      <li><a href="#project">Tour of the ArcGIS Pro Project: Properties, Layers and Views</a>
+      <li><a href="#initialize">Initializing the Workspace</a>
+      <li><a href="#import">Import, Inspect and Enroll Models</a>
+      <li><a href="#stage">Promote and Demote Models</a>
+      <li><a href="#edit">Model Editing Workflows</a>
+      <li><a href="#nextedition">Publishing the Next Edition Model Collection</a>
+      </ol>
+
+
+<HR>
+
+
+    <h2 id="roles">Enterprise and Technical Viewpoints</h2>
     Before digging into the technical details of <b>How</b> to manage a city-wide collection of 3D models, it will be uesful to have a picture of the sorts of people for whom this scheme has been designed, and the personal and institutional <b>motivations</b> that make this effort worthwhile.  The <b>Technical User</b>, is the sort of person who you find making edits to geographic data in a municipality. 
   </p><p>
     
@@ -53,9 +74,9 @@
     </p>
   
 
+<HR>
 
-
-    <h2>Foundation Concepts</h2>
+    <h2 id="foundation">Foundation Concepts</h2>
 
     <p>For model curators, it is essential to understand the conceptual overview of the model collection, including definitions of important terms and a data dictionary issued in the document: <a href="../model_collection/index.htm" target="reference">Overview of Building Model Collection and Catalog</a>.  It is particularly important to understand the <a href="../model_collection/index.htm#datadictionary" target="reference">Data Dictionary</a> with all of the meanings and values expected for each of the model attributes.</p> 
       </p><p>
@@ -70,7 +91,7 @@
       <figcaption>Figure 1: City Model Filesystem Context</figcaption>
     </figure>
 
-    <h2 id="context">Context and Lifecycle of the ArcGIS Data Management Workspace</h2>
+    <h2 id="context">Filesystem Context </h2>
     <p>The diagram below illustrates a simple view of the file system context of the model management workspace.  The <b>Bos3d_Master</b> folder holds much of the prepared source material for the city model, including city-wide terran and groundplan information.  These data-sets originate in GIS workflows described elsewhere.  Bos3d_Master is where users and applications reference the currently active 3d model collection. 
     <b>The Bos3d_Archive</b> folder is used to preserve information that is not routinely used -- including the source files for 3D models that have been imported, previous versions of the development log, and selected archived snapshots of the 3D model collection. 
     </p>
@@ -83,7 +104,10 @@
     All of the resources used for our demonstration project keep all of the resources for a city model are under a single directory.  In your environment, you might have the City3d master folder and the City3D_Dev files on different disks.  For the sake of portability,  our demonstration of the model management tools and procedures will be work with all resources in a single workflow folder. as shown in Figure 2. 
   </p>
 
-  <h2 id="tour">Tour of the Model Management Workspace</h2>
+<HR>
+
+
+  <h1 id="tour">Tour of the Model Management Workspace</h1>
 
   <p>A tour of the ModelCollectionMgt workflow folder is useful for orientation to the file organization.  It also introduces the main components of the workflow.  You can watch the tour on youtube (soon) or follow along with your local copy of the workspace available from github (soon).  
   </p>
@@ -123,7 +147,7 @@
 
 <hr>
 
-<h2 id="lifecycle">Lifecycle of a Model Management Workspace</h2>
+<h1 id="lifecycle">Lifecycle of a Model Management Workspace</h1>
 <p>A model management workspace is intended to produce new editions of the model collection that represent updates to the Prior Archived model collection.  In the lifespan of a model management workspace several new editions can be made based on the same Prior Archived collection.  The changes reflected by the Stage feature classes are cumulative.  When it is decided to change the Prior Archived collection to a newer edition, then a new Model Management workspace is initialized and all of the source data in ModelWork folder is copied to the main CTY3D_Archive folder. 
 
 
@@ -148,8 +172,8 @@ New and edited models are always brought in through a Batch folder within the MO
 <hr>
 
 
-    <h2>A tour of the ModelCollection_Mgt ArcGIS Pro Project</h2>
-    <p>The ArcDocs ModelMgt_YYYYMMDD.aprx file is an arcGIS pro project that is set up to reference all of the tools and data-sets to run all of the procedures necessary for making changes to the Prior Archive model collection and publishing the Next Edition.  Before digging into the tasks, it will be useful to check the critical preferences settings in this project.  Sometimes ArcGIS initializes these differntly when you move or create a new project.
+    <h2 id="project">A tour of the ModelCollection_Mgt ArcGIS Pro Project</h2>
+    <p>The ArcDocs ModelMgt_YYYYMMDD.aprx file is an arcGIS pro project that is set up to reference all of the tools and data-sets to run all of the procedures necessary for making changes to the Prior Archive model collection and publishing the Next Edition.  Before digging into the tasks, it will be useful to check the critical preferences settings in this project.  Sometimes ArcGIS initializes these differently when you move or create a new project.
     </p>
 
     <figure class="right">
@@ -166,12 +190,12 @@ New and edited models are always brought in through a Batch folder within the MO
       </ul>
      <p>Under the <b>Project > Options > Geoprocessing</b> settings make sure that the following two options are set asd follows
         <ul>
-          <li><b>Checked: Allow geoprocessing tools to overwrite the results of prior geoprocessing operations</b>
-          <li><b>Unchecked: Remove layers that reference data overwritten by geoprocessing tools
+          <li><b>Checked:</b> Allow geoprocessing tools to overwrite the results of prior geoprocessing operations
+          <li><b>Unchecked:</b> Remove layers that reference data overwritten by geoprocessing tools
         </ul>
       </div>
 
-  <hr>
+<hr>
 
 
 <h2>Project Layers, Scenes and Maps</h2>
@@ -221,7 +245,7 @@ New and edited models are always brought in through a Batch folder within the MO
 <hr>
 
 
-      <h2>Explore Tasks and Tools</h2>
+      <h2 id="tools">Explore Tasks and Tools</h2>
       <p>  There are several procedures involved managing your model collection.  The ModelCollection_Mgt project uses <b>Tasks</b> to break the model management process into a sequence of stages. Click on <b>View > Tasks </b> to explore at the stages, organized as task groups and expand the groups to explore the individual tasks.  
       </p><p>
       Most of the prepard tasks call on geoprocessing tools and models.  To cut down on confusion with 3D models, we are going to call geoprocessing models "tools"  Use <b>View > Catalog Pane</b> to expose the catalog on the right-side of the ArcGIS window.  Expand the toolboxes group and the <b>City3D_ModelMgt.tbx</b>  toolbox.  You wil notice that the firast five tool groups have names that correspond with the task groups.  Expand these and have a look at the various tools. 
@@ -244,7 +268,7 @@ New and edited models are always brought in through a Batch folder within the MO
       </p>
     <hr>
     <hr>
-      <h2>Tool Group 1: Initializing the Workspace</h2>
+      <h2 id="initialize">Tool Group 1: Initializing the Workspace</h2>
       <p>The first task and tool group provides procedures for starting a new model management workspace. Here are the basic steps involved:
       </p>
       <h3>The Initialize Workspace Tools</h3>
@@ -277,7 +301,11 @@ New and edited models are always brought in through a Batch folder within the MO
           <li><b>Initialize Stage NewModels FC:</b> The newModels feature class in the Stage geodatabase holds any new model that might be imported or created by editing a pre-existing model.  This task uses the <b>1b. Create Models MP</b> tools to create a new empty feature class for thie purpose using the current model template feautre class.
           </ol>
           
-        <h2 id="import">Import, Inspect and Enroll Models</h2>
+
+<hr>
+
+
+        <h1 id="import">Import, Inspect and Enroll Models</h1>
         <p>The process of importing new models is designed so that the source material for new models and edited models is preserved in batch folders in the ModelWork folder.  These batch folders provide a place to store original models that are submitted and relevant source material.  Each batch forlder contains a geodatabase with multipatch feature classes that are based on the latest model template  for storing intermediate versions of models that are checked and adjusted as necessary, and then pushed through the process of automatically assigning attributes.   One of the attributes that gets assigned to each model is the name of the model batch folder and the source model name -- which provides the way to find the original source material for each model.  Tis connection to sources is useful in case anyone wants to edit the model again, or to trouble-shoot corruption issues.  
         </p>
         <div class="tip">
@@ -287,7 +315,7 @@ New and edited models are always brought in through a Batch folder within the MO
           In cases where a model is available in its original authoring format, the edtitable source document (manuscript) is worth keeping, because the layering and group hierarchy is useful but lost when the model is translated to an exchange format like OBJ format.
           </div>
         
- <p>
+       <p>
         When the Model Management workspace is retired, all of the model batch folders are moved to the City3D_Archive folder is the home of all of the source material that has gone into the city-wide 3d model since the beginning. 
 
         <ol>
@@ -337,7 +365,10 @@ New and edited models are always brought in through a Batch folder within the MO
         <h3>2d. Append Ready to NewModels_MP</h3>
         <p>After checking the models in the Ready_MP feature class, it is time to append them to the Stage/NewModels_MP feature class.
         </p>
-      <h1>Staging Changes to the Model Collection</h1>
+
+<hr>
+
+      <h1 id="stage">Promote and Demote Models</h1>
       <p>At this point, we have the collection of prior-archived models and newly imported models in several feature classes in <b>Stage.gdb</b>.  We can now begin the process of checking and updating the values of model status attributes for these models.  To begin with, it is important to have a clear understanding of the purpose for each of the attributes.  So please review the <a href="../model_collection/index.htm#datadictionary">Model Collection Data Dictionary</a>.  
       </p>
       <h3>Overview</h3>
@@ -375,8 +406,9 @@ New and edited models are always brought in through a Batch folder within the MO
       Most of the <b>Edit Actions</b> that happen to the stage feature classes during the staging process can be described as "Updated Status Attributes". The <b>3b. Update Edit Fields</b> tool facilitates updating the Edit fields by letting you select a date/time that reflects the time when you began your staging procedures.  You can fill in your user name and a value for <b>Edit Action</b> and the tool will update the edit fields for each of the five stage feature classes.  This tool uses a clever trick to copy the Record Update time stamp before it gets over-written due to the update of the edit fields.  This means that you are still able toorder the records according to when the update actually happened by using the static <b>Edit Date</b> field.
      </p>
 
+<hr>
 
-      <h2>Model Editing Workflows</h2>
+      <h1 id="edit">Model Editing Workflows</h1>
       <p>There are several sorts of situations that call for edits to the multipatch models.  We have already discussed the situation where an active model needs to be split to make room for a new project that may replace part of an existing structure.  Another situation arises when you discover some sort of model corruption such as faces that seem to be missing, or faces that are in-side out and not reacting to light properly.  You may also encounter situations where a large group of models needs to have their bottoms extended to fill in illogical gaps between the models and a low-resolution terrain model.  Situations may arise where a new model is created or split using the model editing tools in ArcGIS.
       </p>
          
@@ -385,7 +417,7 @@ New and edited models are always brought in through a Batch folder within the MO
       </p>
       
       
-      <h3>Edit Batches</h3>
+      <h2 id="batches" >About Edit Batches</h2>
       <p>The naming of model batches folders in the ModelWork folder is useful for finding the editable manuscript data for hand-made models.  For hand-made models, batch folders should get names prefixed withthe name of the individual or agency credited for the models.  In the case of model edits you might have one edit batch for each edition of the model collection that you make.  When you are fixing or creating a large number of models using an automated procedure, such as the Bottom Extender tool, it may be worthwhile to create an edit batch folder exclusively for keeping the initial models (as Prep_MP) and the finished models, as "Ready_MP."  The geoprocessing scripts for doing the transformation might also be stored with the edit batch.  It is often the case that transformations such as these may need to be revised and repeated. In the case of 3D models, we have seen that problems with bulk transformations may not be detected until weeks later when someone tries to translate the format. 
       </p>
       <div class="tip">
@@ -440,8 +472,9 @@ New and edited models are always brought in through a Batch folder within the MO
       <p>The <b>Edit User</b>, <b>Edit Action</b> and <b>Edit Date</b> fields are assigned to new models in the <b>Prep_MP</b> feature class.  When models are imported, these are set by the Import Models tool. The various way of modifying existing models offer many oppoerunities for models to get into <b>Prep_MP</b> through other avenues.  It is therefore necessary to be extra careful to remember set the edit fields when you have the information at hand. 
       </p>
 
+<HR>      
     
-    <h1>Preparing the Next Edition Model Collection</h1>
+    <h1 id="nextedition">Preparing the Next Edition Model Collection</h1>
 
     <p>The first step in creating the next edition of the model collection involves making a new geodatabase with an empty feature class ready to recieve the new collection.  As discussed under the heading <a href="#lifecycle">Lifecycle of the Model Management Workspace</a>, the <b>NextEdition</b> folder can contain several updated editions of the model collections based off of the same PriorArchived collection. Each of these new editions is distinguished by a YYYYMMDD date stamp that reflects the date that the new edition was initialized.
     </p><p>
@@ -493,48 +526,6 @@ New and edited models are always brought in through a Batch folder within the MO
         </p><p>
         For each feature class, a sequence of selections is made to route multipatch feature to the appropriate destination feature class according to the value of the model's Status. For each iteration of the tool, one of the feature classes in Stage.gdb is subjected to five SQL queries corresponding to the Status Classes described in the <a href="../model_collection/index.htm#status">Status Class Dictionary</a>
         </p>
-
-
-
-
-
-    
-
-
-
-        
-
-
-
-        <h2 id="edit_rules">Edit Rules</h2>
-        
-        <ul>
-          <li>You should never delete a multipatch!  
-          <li>the way to remove a multipatch from the next edition
-            <ul>
-              <li>Change status to Alt, modified, demolished or retired
-              <li>set edit flag to Stop
-          </ul>
-
-
-
-
-  
-  
-  like the parcels, tile boundaries and points and the values of the terrain raster.  
-</p> 
-
-
-
-
-
-
-      
-      
-    
-    
-
-
 
 
 

@@ -60,7 +60,18 @@ If you are interested in being notified with announcements, email paul b cote (n
 
    <li class="chapter"><a href="../model_management/index.htm">Managing the Building Model Collection in ArcGIS</a></li>
    <ul class="verses">
-      <li class="verse">In Work! Check back soon. 
+
+      <li class="verse"><a href="../model_management/index.htm#roles">Enterprise and Technical Viewpoints</a>
+      <li class="verse"><a href="../model_management/index.htm#foundation">Foundation Concepts and Data Dictionary</a>
+      <li class="verse"><a href="../model_management/index.htm#context">Filesystem Context </a>
+      <li class="verse"><a href="../model_management/index.htm#tour">Tour of the Model Management Workspace Folder: Data Management</a>
+      <li class="verse"><a href="../model_management/index.htm#lifecycle">Lifecycle of a Model Management Workspace</a>
+      <li class="verse"><a href="../model_management/index.htm#project">Tour of the ArcGIS Pro Project: Properties, Layers and Views</a>
+      <li class="verse"><a href="../model_management/index.htm#initialize">Initializing the Workspace</a>
+      <li class="verse"><a href="../model_management/index.htm#import">Import, Inspect and Enroll Models</a>
+      <li class="verse"><a href="../model_management/index.htm#stage">Promote and Demote Models</a>
+      <li class="verse"><a href="../model_management/index.htm#edit">Model Editing Workflows</a>
+      <li class="verse"><a href="../model_management/index.htm#nextedition">Publishing the Next Edition Model Collection</a>. 
    </ul>
 
    <li class="chapter"><a href="../submissions/index.htm">Model Submission Guidelines</a></li>
