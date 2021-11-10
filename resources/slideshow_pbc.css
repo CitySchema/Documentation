@@ -15,9 +15,10 @@ body {
 
 .slideshow {
   width: 95%;
-  border-style: solid;
-  border-width: 1px;
-  background-color: rgb(241, 235, 226);
+  /*border-style: solid;
+  border-width: 1px;*/
+  background-color: rgb(245, 242, 239);
+  border: thin silver solid;
   display: block;
   padding-bottom: 2px;
   margin-left:auto;
@@ -63,7 +64,7 @@ body {
     margin-right: auto;
     object-fit:contain;
     padding: 2px;
-    background-color: rgb(241, 235, 226)
+    background-color: rgb(245, 242, 239);
 }
 
 .slide {
@@ -75,7 +76,7 @@ body {
     margin-right: auto;
     object-fit:contain;
     padding: 2px;
-    background-color: rgb(241, 235, 226);
+    background-color: rgb(245, 242, 239);
     /*z-index:2 ;*/
     /*transition: opacity 1s ease-in-out;
     opacity:0;

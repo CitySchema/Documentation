@@ -402,10 +402,7 @@ img.scaled {
   height: auto;
 }
 
-img.triptic {
-  width: 31%; 
-  height: auto;
-}
+
 
 
  figure.right {
@@ -435,6 +432,16 @@ figure.middle {
   margin: 0.5em;
   padding: 0.5em;
   background-color: rgb(245, 242, 239);
+}
+
+figure > img {
+  width: 100%; 
+  height: auto;
+}
+
+img.triptic {
+  width: 31%; 
+  height: auto;
 }
 
 table.dictionary {
