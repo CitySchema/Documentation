@@ -40,8 +40,9 @@
   <h1 class="title">Documentation Template & Style Guide</h1>
     <p>This page serves as a template for new resources in the documentation collection.  It contains all of the necessarry included files and demonstrates the components that are accommodated by the <b><a href="../resources/cityschema.css">cityschema.css</a></b></p>
 
- <!-- Slideshow container -->
-    <div id="ooslides" class="slideshow in-page" 
+
+    <!-- Slideshow container -->
+    <!-- div id="ooslides" class="slideshow in-page" 
     data-imgheight = "250px" 
     data-title = "I'm a Slideshow with a title and No Captions" 
     data-playpaused = "playing"
@@ -49,18 +50,19 @@
   
     <div class="slidecontainer" data-title="Treeline" data-caption="Away up to tree-line.">
       <div class="slide"><img src="./images/wide.jpg" ></div>
-      <div class="caption"></div>
-      <div class="learnmore"><a href='#early'>Learn More about Trees</a></div>
+      <div class="caption">
+     </div>
+      <div class="learnmore"><a href='#funfact'>Learn More about Trees</a></div>
    </div>
 
 
     <div class="slidecontainer" data-title="Tall Boy" >
       <div class="slide"> <img src="./images/tall.jpg"></div>
       <div class="caption"></div>
-      <div class="learnmore"><a href='#late'>Learn More about Texans</a></div>
+      <div class="learnmore"><a href='#funfact'>Learn More about Texans</a></div>
     </div>
-</div> <!-- Closes ooslideshow-->
 
+</div --> <!-- Closes ooslideshow-->
 
 <h3 id="slideshow_element">Slideshows</h3>
 <p>The script, <b>slideshow_pbc.js</b> looks for any div with <b>class="slideshow:</b> and turns it into a slideshow with lots of features as you can see, above.  Ther slideshow div has to contain subdivisions that are <b>class="slideshow_container"</b> with more subdivisions as shown below:</p>
@@ -68,29 +70,37 @@
 
 
 <pre>
-  &lt;!-- Slideshow container --&gt;
-  &lt;div id="moreslides" class="slideshow in-page" 
-  data-imgheight = "250px" 
-  data-title = "" 
-  data-playpaused = "paused"
-  &lt;div class="slidecontainer" data-title="Treeline" data-caption="Away up to tree-line."&gt;
+&lt;!-- Slideshow container --&gt;
+&lt;div id="moreslides" class="slideshow in-page" 
+data-imgheight = "250px" 
+data-title = "" 
+data-playpaused = "paused"
+data-fadespeed = "10" &gt;
+
+&lt;div class="slidecontainer" data-title="Treeline" data-caption="Away up to tree-line."&gt;
   &lt;div class="slide"&gt;&lt;img src="./images/wide.jpg" &gt;&lt;/div&gt;
-  &lt;div class="caption"&gt;&lt;p&gt;Now is the time for all good men to come to the TREELINE.  
-  Lets make this a very long line so that we can see the wrap-around effect..&lt;/p&gt;
-  &lt;p&gt;And then there was that other time
-  &lt;p&gt;But lets focus on right now.
-  &lt;p&gt;OK?  OK!
-  &lt;/div&gt;
-  &lt;div class="learnmore"&gt;&lt;a href='#funfact'&gt;Learn More about Trees&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
-  &lt;div class="slidecontainer" data-title="Tall Boy" &gt;
-    &lt;div class="slide"&gt; &lt;img src="./images/tall.jpg"&gt;&lt;/div&gt;
-    &lt;div class="caption"&gt;&lt;p&gt;Now is the time for Hes a long tall texan.&lt;/p&gt;&lt;/div&gt;
-    &lt;div class="learnmore"&gt;&lt;a href='#funfact'&gt;Learn More about Texans&lt;/a&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;/div&gt; &lt;!-- Closes moreslides--&gt;
+  &lt;div class="caption"&gt;&lt;p&gt;Now is the time for all good men to come to the TREELINE.  Lets make this a very long line so that we can see the wrap-around effect..&lt;/p&gt;
+ &lt;p&gt;And then there was that other time
+ &lt;p&gt;But lets focus on right now.
+ &lt;p&gt;OK?  OK!
+ &lt;/div&gt;
+  &lt;div class="learnmore"&gt;&lt;a href='#funfact'&gt;Learn More about Trees&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="slidecontainer" data-title="Tall Boy" &gt;
+  &lt;div class="slide"&gt; &lt;img src="./images/tall.jpg"&gt;&lt;/div&gt;
+  &lt;div class="caption"&gt;&lt;p&gt;Now is the time for Hes a long tall texan.&lt;/p&gt;&lt;/div&gt;
+  &lt;div class="learnmore"&gt;&lt;a href='#funfact'&gt;Learn More about Texans&lt;/a&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;/div&gt; &lt;!-- Closes ooslideshow--&gt;
+
 </pre>
 
- 
+    <h3 id="early">Headings with IDs Are Referenced with Scroll-To Animation</h3>
+       <p>The html declaration of the heading above has an id attribute set as <b>id="early"</b>.  This ID can be addressed as an internal link within the page.  For example, it is referred to as <b>a href="../template/index.htm#early"</b> in other pages and most importantly, in the list of "verses" that falls under the chapter, <b>Documentation Template</b> in the navigational sidebar.
+       </p>  
+
 <h3>Another Slideshow with no title and Captions</h3>
 <p>If no captions are included in slide containers, then the slideshow element is more compact.  Likewise with the title.
 </p>
@@ -103,28 +113,22 @@ data-playpaused = "paused"
 data-fadespeed = "10" >
 
 <div class="slidecontainer" data-title="Treeline" data-caption="Away up to tree-line.">
-<div class="slide"><img src="./images/wide.jpg" ></div>
-<div class="caption"><p>Now is the time for all good men to come to the TREELINE.  Lets make this a very long line so that we can see the wrap-around effect..</p>
-<p>And then there was that other time
-<p>But lets focus on right now.
-<p>OK?  OK!
-</div>
-<div class="learnmore"><a href='#funfact'>Learn More about Trees</a></div>
+  <div class="slide"><img src="./images/wide.jpg" ></div>
+  <div class="caption"><p>Now is the time for all good men to come to the TREELINE.  Lets make this a very long line so that we can see the wrap-around effect..</p>
+ <p>And then there was that other time
+ <p>But lets focus on right now.
+ <p>OK?  OK!
+ </div>
+  <div class="learnmore"><a href='#funfact'>Learn More about Trees</a></div>
 </div>
 
 <div class="slidecontainer" data-title="Tall Boy" >
-<div class="slide"> <img src="./images/tall.jpg"></div>
-<div class="caption"><p>Now is the time for Hes a long tall texan.</p></div>
-<div class="learnmore"><a href='#funfact'>Learn More about Texans</a></div>
+  <div class="slide"> <img src="./images/tall.jpg"></div>
+  <div class="caption"><p>Now is the time for Hes a long tall texan.</p></div>
+  <div class="learnmore"><a href='#funfact'>Learn More about Texans</a></div>
 </div>
 
 </div> <!-- Closes ooslideshow-->
-
-<hr>
-
-<h3 id="early">Headings with IDs Are Referenced with Scroll-To Animation</h3>
-<p>The html declaration of the heading above has an id attribute set as <b>id="early"</b>.  This ID can be addressed as an internal link within the page.  For example, it is referred to as <b>a href="../template/index.htm#early"</b> in other pages and most importantly, in the list of "verses" that falls under the chapter, <b>Documentation Template</b> in the navigational sidebar.
-</p> 
 
 
       <figure class="right">
