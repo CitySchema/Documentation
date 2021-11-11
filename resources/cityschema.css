@@ -407,13 +407,15 @@ img.scaled {
 
  figure.right {
   float: right;
-  width: 45%;
+  width: 42%;
   text-align: left;
   font-style: italic;
   font-size: smaller;
   text-indent: 0;
   border: thin silver solid;
   margin: 0.5em;
+  margin-left: 30px;
+  margin-right: 25px;
   padding: 0.5em;
   background-color: rgb(245, 242, 239);
 }
