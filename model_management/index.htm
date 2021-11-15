@@ -12,6 +12,8 @@
     <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
     <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
     <link href="../resources/cityschema.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
 
     <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
           When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
@@ -87,7 +89,7 @@
 
 
     <figure class="right">
-      <img class="scaled" src="images/filesystem_context.jpg">
+      <img src="images/filesystem_context.jpg">
       <figcaption>Figure 1: City Model Filesystem Context</figcaption>
     </figure>
 
@@ -117,7 +119,7 @@
 
   <div class="feature tour">
     <figure class="right">
-      <img class="scaled" src="images/model_mgt_files.jpg">
+      <img src="images/model_mgt_files.jpg">
       <figcaption>Figure 2: Model Management Workspace</figcaption>
     </figure>
   <h3>Filesystem and Folders</h3>
@@ -152,11 +154,34 @@
 <h1 id="lifecycle">Lifecycle of a Model Management Workspace</h1>
 <p>A model management workspace is intended to produce new editions of the model collection that represent updates to the Prior Archived model collection.  In the lifespan of a model management workspace several new editions can be made based on the same Prior Archived collection.  The changes reflected by the Stage feature classes are cumulative.  When it is decided to change the Prior Archived collection to a newer edition, then a new Model Management workspace is initialized and all of the source data in ModelWork folder is copied to the main CTY3D_Archive folder. 
 
-
-  <figure class="middle">
-    <img class="scaled" src="images/wide.jpg">
-    <figcaption>Figure 3: Lifecycle of a Model Collection Management Workspace</figcaption>
-  </figure>
+    <!-- Slideshow container -->
+    <div id="moreslides" class="slideshow in-page" 
+    data-imgheight = "350px" 
+    data-title = "" 
+    data-playpaused = "playing" >
+    <div class="slidecontainer" data-title="Initialize Prior Archived Collection" data-caption="Away up to tree-line.">
+    <div class="slide"><img src="./images/lifecycle_init.jpg" ></div>
+    <div class="caption"><p>The workspace folder is initialized by copying the latest archived model collection geodatabase from the Archive folder.  These will remain read-only.</p>
+    </div>
+    <div class="learnmore">
+    </div></div>
+    <div class="slidecontainer" data-title="Populate Staging Feature Classes" >
+      <div class="slide"> <img src="./images/lifecycle_stage.jpg"></div>
+      <div class="caption"><p>After migrating the schema, if necessary, the prior feature classes are copied to the Stage geodatabase, where the records may be modified.</p></div>
+      <div class="learnmore"></div>
+    </div>
+    <div class="slidecontainer" data-title="Import Models, Stage Changes" >
+      <div class="slide"> <img src="./images/lifecycle_workflow.jpg"></div>
+      <div class="caption"><p>Models may nor be imported and edited, and existing models may have their attributes updated. </p>
+      <p>New editions of the collection are formed by sorting the new models and prior archived models according to their new status values. </div>
+      <div class="learnmore"></div>
+    </div>
+    <div class="slidecontainer" data-title="Import Models, Stage Changes" >
+      <div class="slide"> <img src="./images/lifecycle_close.jpg"></div>
+      <div class="caption"><p>Several new editions may be produced and several new model batches processed in a single model management workspace. At some point, the workspace wil be retired, with the latest edition and the model batches and the workspace itself being archived.  </p></div>
+      <div class="learnmore"></div>
+    </div>
+    </div> <!-- Closes moreslides-->
 
 <h3>The Stage Phase and Edit Rules</h3>
 <p>The Model Management workspace has three chambers: <b>Prior Archived</b>, <b>Stage</b> and <b>Next Edition</b>.  

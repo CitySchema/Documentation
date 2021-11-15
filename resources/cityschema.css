@@ -264,6 +264,8 @@ img.title {
   margin: 0.5em;
   margin-right: 2em;
   padding: 0em 0.5em 0.5em 0.5em;
+  overflow:auto;
+  clear: both;
 }
 
 .feature h3{
