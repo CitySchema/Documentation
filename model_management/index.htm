@@ -152,7 +152,9 @@
 <hr>
 
 <h1 id="lifecycle">Lifecycle of a Model Management Workspace</h1>
-<p>A model management workspace is intended to produce new editions of the model collection that represent updates to the Prior Archived model collection.  In the lifespan of a model management workspace several new editions can be made based on the same Prior Archived collection.  The changes reflected by the Stage feature classes are cumulative.  When it is decided to change the Prior Archived collection to a newer edition, then a new Model Management workspace is initialized and all of the source data in ModelWork folder is copied to the main CTY3D_Archive folder. 
+<p>The citySchema system uses workspace folders to organize tools and data into self-contained packages that may be re-used, modified and archived.  While in use these workspaces provide an environment for re-purposing and customizing tools.  After a preriod of use, a workspace can be zipped and retired to become a frozen container for all of the decisions and procedures that were applied and may be revisited. </p>   
+<p>A model management workspace is intended to produce new editions of the model collection that represent updates to the Prior Archived model collection.  In the lifespan of a model management workspace several new editions can be made based on the same Prior Archived collection.  The changes reflected by the Stage feature classes are cumulative. 
+Stages in the lifesycle of a model management worspace are depicted in the slideshow, below. 
 
     <!-- Slideshow container -->
     <div id="moreslides" class="slideshow in-page" 
@@ -170,43 +172,25 @@
       <div class="caption"><p>After migrating the schema, if necessary, the prior feature classes are copied to the Stage geodatabase, where the records may be modified.</p></div>
       <div class="learnmore"></div>
     </div>
-    <div class="slidecontainer" data-title="Import Models, Stage Changes" >
+    <div class="slidecontainer" data-title="Stage Changes, Produce New Editions" >
       <div class="slide"> <img src="./images/lifecycle_workflow.jpg"></div>
       <div class="caption"><p>Models may nor be imported and edited, and existing models may have their attributes updated. </p>
       <p>New editions of the collection are formed by sorting the new models and prior archived models according to their new status values. </div>
       <div class="learnmore"></div>
     </div>
-    <div class="slidecontainer" data-title="Import Models, Stage Changes" >
+    <div class="slidecontainer" data-title="Archive Resources, Retire Workspace" >
       <div class="slide"> <img src="./images/lifecycle_close.jpg"></div>
       <div class="caption"><p>Several new editions may be produced and several new model batches processed in a single model management workspace. At some point, the workspace wil be retired, with the latest edition and the model batches and the workspace itself being archived.  </p></div>
       <div class="learnmore"></div>
     </div>
     </div> <!-- Closes moreslides-->
 
-<h3>The Stage Phase and Edit Rules</h3>
-<p>The Model Management workspace has three chambers: <b>Prior Archived</b>, <b>Stage</b> and <b>Next Edition</b>.  
-</p>
-<p> In the <b>Prior Edition folder</b> only one sort of editing takes place.  That would be to add, remove or rename or re-order fields in the model table schema.  If this sort of migration is done, it would happen at the initiation of the workspace.  Each of the feature classes is migrated exactly the same way. 
-</p>
-<p>In the <b>Next_Edition folder </b> none of the feature classes would ever be edited. Though it may be tempting to make small corrections here, todo so means that the changes wil be lost when a future edition is produced by processing the feature classes in the Stage geodatabase.
-</p><p>
-In the <b>Stage Geodatabase</b>, the attributes of models may be updated in any of the feature classes.  No multipatch features are ever deleted.  To prevent a model from going to the next edition, it would have its Status changed to "Retired."  Or if its a model that represents a structure that is demolished or modified, it would have its Status set accordingly.  
-</p><p>
-New and edited models are always brought in through a Batch folder within the MOdel_Work folder.  After being fully checked, geometrically, and having their IDs and other attributes properly assigned, new models are introduced to the Stage geodatabase by appending them to the <b>New_Models_MP</b> feature class.  Models produced by editing prior-archived models get a new Model_ID assigned, even if the change only involved flipping some faces.  The new ID is how model changes and updates are detected throught the model catalog. 
-</p>
-
 
 <hr>
 
-
-    <h2 id="project">A tour of the ModelCollection_Mgt ArcGIS Pro Project</h2>
-    <p>The ArcDocs ModelMgt_YYYYMMDD.aprx file is an arcGIS pro project that is set up to reference all of the tools and data-sets to run all of the procedures necessary for making changes to the Prior Archive model collection and publishing the Next Edition.  Before digging into the tasks, it will be useful to check the critical preferences settings in this project.  Sometimes ArcGIS initializes these differently when you move or create a new project.
+    <h2 id="project">A tour of the ModelMgt ArcGIS Pro Project</h2>
+    <p>The ModelMgt_YYYYMMDD.aprx file, located inthe ArcDocs folder is an arcGIS pro project that references the tools and data-sets involved in making changes to the model collection and publishing new editions.  Before digging into the tasks, it will be useful to check the critical preferences settings in this project.  Sometimes ArcGIS initializes these differently when you move or create a new project.
     </p>
-
-    <figure class="right">
-      <img class="scaled" src="images/tall.jpg">
-      <figcaption>Figure 4: ArcGIS Pro Options</figcaption>
-    </figure>
 
     <div class="feature tour">
     <h3>Project Options</h3>
@@ -220,41 +204,44 @@ New and edited models are always brought in through a Batch folder within the MO
           <li><b>Checked:</b> Allow geoprocessing tools to overwrite the results of prior geoprocessing operations
           <li><b>Unchecked:</b> Remove layers that reference data overwritten by geoprocessing tools
         </ul>
-      </div>
+    </div>
 
 <hr>
 
 
 <h2>Project Layers, Scenes and Maps</h2>
-<p>The ModelCollection_Mgt project has one map and one 3D scene.  
+<p>The ModelMgt project includes one map and one 3D scene.  
 <p>
-  The Map is a quick way of displaying the 2D source data that is not always easy to portray in 3D. The layers in the Map table of contents provide an opportunity to discuss some of the important source layers that are used by the model management processes.  For maximum edutainment, set your table of contents to <b>View Source Folders</b> so you can see where these data-sets are stored within the <b>Sources folder</b> of your ModelCollection_Mgt workflow folder. 
+  The layers in the Map table of contents provide an opportunity to discuss some of the important source layers that are used by the model management processes.  As we look through them, set your table of contents to <b>View Source Folders</b> so you can see where these data-sets are stored within the <b>Sources folder</b> of your ModelCollection_Mgt workflow folder. 
 </p>
 
 <figure class="middle">
-  <img class="scaled" src="images/wide.jpg">
-  <figcaption>Figure 5: 2D Layers Portrayed in the Map Pane</figcaption>
+  <img class="scaled" src="images/map_contents.jpg">
+  <figcaption>2D Layers Portrayed in the Map Pane</figcaption>
 </figure>
 <div class="feature tour"> 
 <h3>2D Layers</h3>
   <ul>
-    <li><b>DevLog_Pts: </b> The development log is a table that carries information related to the status of projects under review.  Each agency will have a different variation on this.  In Boston, this table keeps track of the status of each project after each meeting of the review board. It also contains the projectID and the URL for the project on the BostonBuilds web site. There is a lot of other useful information about projects, but those three fields are the ones that are most important for understanding which models may need to be promoted, demoted or superseded.
-    <li></b>Tile Boundaries and Points:</b> are created by another workflow that will be described later.  Take a look at the attributes of these data-sets.  Notice that our tile-generation workflow produces tile corner and tile center points, and calculates coordinates for these in geographic, State Plane and <a href="../tile_scheme/index.htm">our shifted version of the State Plane Coordinate System</a>.  The elevations for the tile points have been calculated because they are necessary for making sure our terrain meshes extend exactly to the corners of each tile. 
-    <li><b>Metro_Elevation_5m:</b> A raster elevation model that covers the full extent of the tiles for our project.  This elevation model is used to calculate the geometric envelope for new models. 
-    This elevation model covers the full extent of all tiles. We include a rough elevation mode here to keep out demo dataset slim.  In actual production, we use a 1-Foot raster that is derived from our high resolution terrain model within the city and the MassGIS DTM for the outlying areas.  
-    <li><b>Parcels 2020:</b> Parcel boundaries are used to add parcel IDs and Assessor map URLs to new building models. When parcel data is updated, you may want to update the assessing links.
+    <li><b>Dev_Log_Pts: </b> The development log is a table that carries information related to the status of projects under review.  Each agency will have a different variation on this.  In Boston, this table keeps track of the status of each project after each meeting of the review board. It also contains the projectID and the URL for the project on the BostonBuilds web site. There is a lot of other useful information about projects, but those three fields are the ones that are most important for understanding which models may need to be promoted, demoted or superseded.
     <li><b>Issue Points:</b>  used to mark issues such as missing models.  Issues with existingt models are marked on the <b>QA_Issue</b> field on the model's attribute table.
+    <li></b>Tile Boundaries and Points:</b> are referenced from the <b>Bos3d_Master</b> repository.  The tile center and corner points have elevations -- necessary for making sure our terrain meshes extend exactly to the corners of each tile. 
+    <li><b>Metro_Elevation_5m:</b> Referenced from <b>Bos3d_Master/3D_Data</b> A raster elevation model that covers the full extent of the tiles for our project.  This elevation model is used to calculate the geometric envelope for new models. 
+    This elevation model covers the full extent of all tiles. We include a rough elevation model here to keep the demo dataset slim.  In actual production, we use a 1-Foot raster that is derived from our high resolution terrain model within the city and the MassGIS DTM for the outlying areas.  
+    <li><b>Parcels 2020:</b> Parcel boundaries are used to add parcel IDs and Assessor map URLs to new building models. When parcel data is updated, you may want to update the assessing links.
     </ul>
   </div>
 
-  <div class="feature tour">
+
+  
     <h2>The 3D Scene</h2> 
-    <p>The 3D scene and its table of contents is the hub of the ModelCollection_Mgt project all of the tools reference layers from this scene. It is also the view upon which all review and edit tasks are carried out. 
-    </p>
+    <p>The 3D scene and its table of contents is the hub of the ModelCollection_Mgt project all of the tools reference layers from the table of contents of this 3D scene. It is also the view upon which all review and edit tasks are carried out. </p>
+    <p>The process of updating city-wide multipatch feature classes is complicated because it is often the case that new models can overlap with old models, and because of time required to draw and re-draw city-wide model collections, you can't simply flick the layers on and off to understand how the models relate to each other.  To help keep the model collection visually sorted the 3D scene makes use of Definition Query Views that use SQL expressions to limit the features displayed.  Views based on definition queries are identified with <b>DQV</b> apended to their names.  One of the handy features of this technique is that multipatch models sort themselves into different views when their status is changed.
+    </p> 
     <figure class="middle">
-      <img class="scaled" src="images/wide.jpg">
+      <img class="scaled" src="images/scene_contents.jpg">
       <figcaption>Figure 6: 3D Layers Portrayed in the 3D Scene Pane</figcaption>
     </figure>
+    <div class="feature tour">
     <h3>3D Layers</h3>
     <ul>
       <li><b>Prior Migrated Unfiltered:</b> This group layer includes a layer for each of the multipatch layers that were released with the prior archived model collection.  In cases where schema changes have been made for the current round of updates, these should be the Prior Migrated layers. These make up the initial state of the collection before any changes are made.  These feature classes should be considered read-only.  
@@ -555,7 +542,22 @@ New and edited models are always brought in through a Batch folder within the MO
         </p>
 
 
+        <hr>
 
+        <h3>The Stage Phase and Edit Rules</h3>
+    <p>The Model Management workspace has three chambers: <b>Prior Archived</b>, <b>Stage</b> and <b>Next Edition</b>.  
+    </p>
+    <p> In the <b>Prior Edition folder</b> only one sort of editing takes place.  That would be to add, remove or rename or re-order fields in the model table schema.  If this sort of migration is done, it would happen at the initiation of the workspace.  Each of the feature classes is migrated exactly the same way. 
+    </p>
+    <p>In the <b>Next_Edition folder </b> none of the feature classes would ever be edited. Though it may be tempting to make small corrections here, todo so means that the changes wil be lost when a future edition is produced by processing the feature classes in the Stage geodatabase.
+    </p><p>
+    In the <b>Stage Geodatabase</b>, the attributes of models may be updated in any of the feature classes.  No multipatch features are ever deleted.  To prevent a model from going to the next edition, it would have its Status changed to "Retired."  Or if its a model that represents a structure that is demolished or modified, it would have its Status set accordingly.  
+    </p><p>
+    New and edited models are always brought in through a Batch folder within the MOdel_Work folder.  After being fully checked, geometrically, and having their IDs and other attributes properly assigned, new models are introduced to the Stage geodatabase by appending them to the <b>New_Models_MP</b> feature class.  Models produced by editing prior-archived models get a new Model_ID assigned, even if the change only involved flipping some faces.  The new ID is how model changes and updates are detected throught the model catalog. 
+    </p>
+    
+    
+    <hr>
 
 </div> <!-- Closes #article div -->
 

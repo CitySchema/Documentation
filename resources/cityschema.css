@@ -147,13 +147,15 @@ a:link {
   text-decoration: none;
 }
 #article a:link {
-  color: rgb(94, 143, 173);
+  color: rgb(28, 87, 121);
   /*text-decoration: underline ;*/
   text-decoration: none ;
   border-bottom: 1px solid #9ccbec;
 }
 #article a:visited {
   color: rgb(28, 87, 121);
+  text-decoration: none ;
+  border-bottom: 1px solid #9ccbec;
 }
 a:visited {
   color: rgb(28, 87, 121);
@@ -161,6 +163,8 @@ a:visited {
 a:hover {
   color: rgb(28, 87, 121);
   background-color:#d4d1ce;
+  text-decoration: none ;
+  border-bottom: 1px solid #9ccbec;
 }
 
 /*** Brand-specific colors for layout elements ***/
@@ -284,8 +288,8 @@ img.title {
 }
 
 .feature.tour {
-  background-color: #f7c272;
-  border: 1px solid #dbcba8;
+  background-color: #f8eacb;;
+  border: 1px solid #f7c272;
 }
 
 
