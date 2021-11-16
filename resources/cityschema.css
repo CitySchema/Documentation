@@ -143,28 +143,29 @@ body a:active {
   background-color: rgb(247, 223, 15);
 }
 a:link {
-  color: rgb(86, 112, 128);
+  color: rgb(10, 76, 114);
   text-decoration: none;
 }
 #article a:link {
-  color: rgb(28, 87, 121);
+  color: rgb(10, 76, 114);
   /*text-decoration: underline ;*/
   text-decoration: none ;
   border-bottom: 1px solid #9ccbec;
 }
 #article a:visited {
-  color: rgb(28, 87, 121);
+  color: rgb(10, 76, 114);
   text-decoration: none ;
-  border-bottom: 1px solid #9ccbec;
+  border-bottom: 1px solid rgb(10, 76, 114);
 }
 a:visited {
-  color: rgb(28, 87, 121);
+  color: rgb(10, 76, 114);
+  border-bottom: 1px solid rgb(10, 76, 114);
 } 
 a:hover {
-  color: rgb(28, 87, 121);
+  color: rgb(10, 76, 114);
   background-color:#d4d1ce;
   text-decoration: none ;
-  border-bottom: 1px solid #9ccbec;
+  border-bottom: 1px solid rgb(10, 76, 114);
 }
 
 /*** Brand-specific colors for layout elements ***/
@@ -343,7 +344,7 @@ table.dictionary p {
 .treeview .chapter  {
   list-style: none;
   cursor: pointer; 
-  font-weight: 700;
+  font-weight: 525;
 }
 
 /* Main Level */
@@ -421,6 +422,7 @@ font-weight: 100;
 
 .treeview li.active {
   background-color: #94cdf3;
+  font-weight: 600;
 
 }
 

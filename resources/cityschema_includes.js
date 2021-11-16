@@ -92,7 +92,10 @@ If you are interested in being notified with announcements, email paul b cote (n
      </ul>
      <li class="chapter"><a href="../terrain/index.htm">Modular Terrain Models</a></li>
     <ul class="verses">
-     </ul>
+      <li class="verse"><a href="../terrain/index.htm#anatomy">Anatomy of a DTM</a>
+      <li class="verse"><a href="../terrain/index.htm#sources">Source Data</a>
+      <li class="verse"><a href="../terrain/index.htm#process">The Process</a>
+   </ul>
      <li class="chapter"><a href="../template/index.htm">Documentation Template</a></li>
      <ul class="verses">
              <li class="verse"><a href="../template/index.htm#early">An internal Link</a>

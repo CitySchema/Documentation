@@ -36,15 +36,34 @@
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
   <h1 class="title">Modular Terrain Mesh</h1>
-    <p>The citySchema tiling scheme includes detailed triangulated terrain meshes that snap together seamlessly.  The terrain models extend to the corners of each tile.  Inside the Boston city limit, the terrain model is based on Infotech 2011 DTM breaklines and masspoints.  Areas beyond the city limit use the MassGIS 2005 DTM breaklines and masspoints. 
+  <p>The citySchema city model management framework makes use of very detailed terrain data that is broken into rectagular tiles that can be snapped together seamlessly. The rectangular tiling scheme facilitates the integration of the terrain models with groundplan information shared as high-resolution images -- including the latest true ortho photography.  These snap-together texture-mapped terrain tiles are very compatible in exchanges between GIS and 3d modeling tools used by designers. They also can be shared as raster elevation models that have the same image-draping and edge-matching capabilities.
+
+  <p> This page describes the terrain modeling strategy, including a description of the data-sets and tools provides in the 
+    <ul>
+      <li><a href="https://github.com/CitySchema/Modular-Terrain" target="github">CitySchema/Modular-Terrain Repository.</a>
+    </ul>
+  
+    
+    <h3 id=anatomy">The Anatomy of a Digital Terrain Model</h3>
+    <p>The source source data behind the most efficent and editable <b>Digital Terrain Models (DTM)</b> consists of <b>3D Hard Break Lines</b> that trace the edges of slopes and flat places that have a more or less continuous grade.  <b>Soft Break Lines</b> are lines that the terrain passes through without a crease.  <b>Mass Points </b> provide a way of marking the elevation od peaks and depressions and other locations between the break lines.
+    </p><p>
+    DTM break lines and mass points are the most efficient way of describing the shape of a terrain surface. Because they describe only the critical locations, they are the best source material to use in terrain editing and in exchanges where the number of bytes is an issue.    
+    </p><p>
+    Before a DTM can be rendered as a surface/ require that the elevation information in a DTM be interpolated into a 3D triangulated surface -- sometimes referred to as <b>Mesh</b> or <B>Triangulated Irregular Network (TIN)</b>. There are many ways of triangulating 3D lines and points.  The best one for terrain models is known as <b>Delaunay Triangulation</b> which makes sure that the 3D breaklines are preserved as triangle edges in the resulting mesh.  Triangulated mesh surfaces may be sampled to create a <b>Raster Digital Elevation Model (DEM)</b>.   
     </p>
+    <h3 id="sources">Source Data for the Boston Metro Area.</h3>
+    <p>There are a couple of challenges for creating rectangular terrain models for municipalities.  First, the best terrain models, created from photogrammetry usually extend to the town limit.  So the city is surrounded by  an false flat areas, which are distracting and tend to frustrate designers.  To fix this, we have found a very servicable state-wide DTM from MassGIS, and developed a process that uses MassGIS DTM features in areas that are beyond the Boston city limits. 
+    </p><p>
+    A second issue occurs in the corners of the tiles.  If there is not an elevation point exactly in the corner of each tile, then the mesh will not extend all the way to the corner -- leaving unsightly, illogical and inaccurate holes in the terrain.  To solve this problem, we have added elevations to the tile corners and tile centers.  Points from this <b>Tile Points</b> layer are include in the DTM data for each tile.  
+    </p>
+   <h3 id="process">The Process</h3>
       <p>
-      The citySchema Modular-Terrain-Mesh repository contains resources and tools for creating new tiled terrain models in ArcGIS TIN format.  The <b>Clip Terrain Combo</b> tool can be used to create a rectangular terrain model coverng any area within the Metro3D tile boundary.  To assure that your model extends to the corners, you should snap the corners of your clip rectangle to points in the <b>Metro3D_Tile_Pts</b> feature class. 
+      The <a href="https://github.com/CitySchema/Modular-Terrain" target="github">CitySchema/Modular-Terrain Repository.</a> contains resources and tools for creating new tiled terrain models in ArcGIS TIN format.  The <b>Clip Terrain Combo</b> tool can be used to create a rectangular terrain model coverng any area within the Metro3D tile boundary.  To assure that your model extends to the corners, you should snap the corners of your clip rectangle to points in the <b>Metro3D_Tile_Pts</b> feature class. 
        </p>  
       <div class="feature procedure">
        <h3>To Use:</h3>
           <ol>
-            <li>Clone the workspace from git-hub <a href="https://github.com/CitySchema/Modular-Terrain">CitySchema/Modular-Terrain</a>Repository.
+            <li>Clone the workspace from git-hub <a href="https://github.com/CitySchema/Modular-Terrain" target="github">CitySchema/Modular-Terrain</a>Repository.
             <li>Open the ArcGIS Pro project form the ArcDocs folder. 
             <li>Before attempting to create a custom terrain model, I recommend testing the 
               <b> 

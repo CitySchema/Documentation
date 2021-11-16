@@ -235,14 +235,19 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
   
     <h2>The 3D Scene</h2> 
     <p>The 3D scene and its table of contents is the hub of the ModelCollection_Mgt project all of the tools reference layers from the table of contents of this 3D scene. It is also the view upon which all review and edit tasks are carried out. </p>
-    <p>The process of updating city-wide multipatch feature classes is complicated because it is often the case that new models can overlap with old models, and because of time required to draw and re-draw city-wide model collections, you can't simply flick the layers on and off to understand how the models relate to each other.  To help keep the model collection visually sorted the 3D scene makes use of Definition Query Views that use SQL expressions to limit the features displayed.  Views based on definition queries are identified with <b>DQV</b> apended to their names.  One of the handy features of this technique is that multipatch models sort themselves into different views when their status is changed.
-    </p> 
+    
     <figure class="middle">
       <img class="scaled" src="images/scene_contents.jpg">
       <figcaption>Figure 6: 3D Layers Portrayed in the 3D Scene Pane</figcaption>
     </figure>
+
+    <p>The process of updating city-wide multipatch feature classes is complicated because it is often the case that new models can overlap with old models, and because of time required to draw and re-draw city-wide model collections, you can't simply flick the layers on and off to understand how the models relate to each other.  To help keep the model collection visually sorted the 3D scene makes use of Definition Query Views that use SQL expressions to limit the features displayed.  Views based on definition queries are identified with <b>DQV</b> appended to their names.  
+    <p>Views filtered with definition queries are much quicker to flick on and off. Another handy feature of this technique is that multipatch models sort themselves into appropriate views and symbology immediately when their Status attribute is updated.
+    </p> 
+
     <div class="feature tour">
     <h3>3D Layers</h3>
+ 
     <ul>
       <li><b>Prior Migrated Unfiltered:</b> This group layer includes a layer for each of the multipatch layers that were released with the prior archived model collection.  In cases where schema changes have been made for the current round of updates, these should be the Prior Migrated layers. These make up the initial state of the collection before any changes are made.  These feature classes should be considered read-only.  
         <li><b>Prior Migrated Layer Demo :</b> represents the each of the multipatch feature classes in the prior archived edition, but with styling and definition query views that make it easy to review the collection, toggling proposed-to-built and proposed-to-be-demolished buildings.  Definition query views are identified by including a <b>DQV</b> suffix in their names.
