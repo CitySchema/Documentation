@@ -12,6 +12,8 @@
     <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
     <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
     <link href="../resources/cityschema.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
 
     <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
           When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
@@ -75,10 +77,32 @@
     <h3 id="streetscapes">Streetscapes are part of our Shared Cultural Heritage</h3> 
     <p>The world-wide web has brought about many new possibilities to access and connect information resources about people, places, things and ideas. Georeferencing is a powerful way of connecting resources that relate to places.  <a href="https://www.historypin.org/" target="outboard">HistoryPIN</a>, <a href="https://www.digitalcommonwealth.org/map" target="outboard">Digital Commonwealth</a> and <a href="https://atlascope.leventhalmap.org/" target="outboard">AtlasScope</a> are three examples of cultural preservation projects that use georeferencing to connect historical documents.  These are part of a greater movement known as Digital Humanities, in that is bringing about new ways of discovering,connecting and presenting ideas.  
     </p>
-    <figure class="middle"> 
-      <img class="scaled" src="images/model_history.jpg"> 
-      <figcaption>3D building models are historical documents.</figcaption>
-      </figure>
+
+
+  <!-- Slideshow container -->
+  <div id="moreslides" class="slideshow in-page" 
+  data-imgheight = "400px" 
+  data-title = "" 
+  data-playpaused = "playing" >
+  <div class="slidecontainer" data-title="Alternate Models of the Same Building">
+    <div class="slide"><img src="./images/city_hall_models.jpg" ></div>
+    <div class="caption"><p>Models of buildings and bridges may represent observations made at different times and at different levels of detail.  Each model is worth preserving as a historical document with metadata describing its provenance.</p>
+    </div>
+    <div class="learnmore"></a></div></div>
+  <div class="slidecontainer" data-title="Models of Proposed Structures" >
+    <div class="slide"> <img src="./images/proposed_models.jpg"></div>
+    <div class="caption"><p>Models produced for design review are also historical artifacts.  Including models of ideas that were never built.</p></div>
+    <div class="learnmore"></div>
+    </div>
+    <div class="slidecontainer" data-title="Models of Historical Structures" >
+      <div class="slide"> <img src="./images/historic_models.jpg"></div>
+      <div class="caption"><p>As the model is updated to reflect new conditions, we have a means of preserving and retrieving observations of the past condition. The same schema is also useful for developing and sharing  models intended to illustrate historical conditions compiled from multiple sources. </p></div>
+      <div class="learnmore"></div>
+      </div>
+  </div> <!-- Closes moreslides-->
+
+
+
     <p>3D models of terrain and buildings are not much different from georeferenced photographs, drawings and maps.  It is only a matter of time before tools like the ones referenced above make use of 3D models as part of our cultural memory -- as observations that can be remembered and also as 3D base maps for contextualizing and connecting old photographs and other resources.  It is phenomenal how much new information emerges when observations from different points of view and points in time are connected together.
     </p>
    
