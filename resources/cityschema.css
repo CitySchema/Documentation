@@ -61,7 +61,7 @@
        padding: 10px 0px 10px 10px;}
   #article { grid-area: article; 
        /*background-color: green;*/
-       padding: 10px 15px 10px 15px;}
+       padding: 10px 40px 10px 25px;}
   #footer { grid-area: footer; 
             padding: 0px 10px 15px 10px;}
   #index-header { grid-area: index-header; 
@@ -150,7 +150,7 @@ a:link {
   color: rgb(10, 76, 114);
   /*text-decoration: underline ;*/
   text-decoration: none ;
-  border-bottom: 1px solid #9ccbec;
+  border-bottom: 1px solid rgb(10, 76, 114);
 }
 #article a:visited {
   color: rgb(10, 76, 114);

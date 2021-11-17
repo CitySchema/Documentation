@@ -235,7 +235,7 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
   
     <h2>The 3D Scene</h2> 
     <p>The 3D scene and its table of contents is the hub of the ModelCollection_Mgt project all of the tools reference layers from the table of contents of this 3D scene. It is also the view upon which all review and edit tasks are carried out. </p>
-    
+
     <figure class="middle">
       <img class="scaled" src="images/scene_contents.jpg">
       <figcaption>Figure 6: 3D Layers Portrayed in the 3D Scene Pane</figcaption>
@@ -263,25 +263,33 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
 
 <hr>
 
-
+<figure class="right">
+  <img class="scaled" src="./images/tasks.jpg">
+  <figcaption>ArcGIS Tasks provide a high -level ordering of procedures</figcaption>
+</figure>
       <h2 id="tools">Explore Tasks and Tools</h2>
-      <p>  There are several procedures involved managing your model collection.  The ModelCollection_Mgt project uses <b>Tasks</b> to break the model management process into a sequence of stages. Click on <b>View > Tasks </b> to explore at the stages, organized as task groups and expand the groups to explore the individual tasks.  
+      <p>  There are several procedures involved managing your model collection.  The ModelCollection_Mgt project uses <b>Tasks</b> to break the model management process into a sequence of stages. Click on <b>View > Tasks </b> to explore how the tasks order the steps organized as task groups.  Expand the groups to reveal the individual tasks.  
       </p><p>
-      Most of the prepard tasks call on geoprocessing tools and models.  To cut down on confusion with 3D models, we are going to call geoprocessing models "tools"  Use <b>View > Catalog Pane</b> to expose the catalog on the right-side of the ArcGIS window.  Expand the toolboxes group and the <b>City3D_ModelMgt.tbx</b>  toolbox.  You wil notice that the firast five tool groups have names that correspond with the task groups.  Expand these and have a look at the various tools. 
+      The technical user should be familiar with how tasks are put together with geoprocessing tools.  While this new feature of ArcGIS pro does make things a little easier, unexpected issues may crop up that require some trouble-shooting skills.
+      
+      <h3 style="clear: both">Geoprocessing Tools</h3>
+      <p>
+      Most of the prepared tasks call on geoprocessing tools and models.  To cut down on confusion with 3D models, we are going to call geoprocessing models "tools."  Use <b>View > Catalog </b> Pane to expose the catalog on the right-side of the ArcGIS window.  Expand the toolboxes group and the <b>City3D_ModelMgt.tbx</b> toolbox.  You will notice that the first five tool groups have names that correspond with the task groups.  Expand these and have a look at the various tools. 
       </p>
       <figure class="right">
-        <img class="scaled" src="images/tall.jpg">
-        <figcaption>Figure 7: Model Management Toolbox</figcaption>
+        <img class="scaled" src="./images/tools.jpg">
+        <figcaption>Model Management Toolbox in Catalog Pane</figcaption>
       </figure>
-      
       <p>
         Notice how the individual tools are named with numbers corresponding to the tool group and letters referring tothe general order that they might be used.  Sticking with this convention makes it easier to find the custom tools when confronted with the huge drop-down list that is used in the Task editor.   
       </p><p>Not all tools are associated with tasks.  SOme of them, such as the ones inthe pbcGIS_utils tool group are handy utilities.  And Rumpus contains tools that you might create to preserve one-off procedures that you may want to repeat or re-use. 
       </p>
-      <h3>ArcGIS Geoprrocessing Tools are Self-Documenting</h3>
+
+    
+      <h3>ArcGIS Geoprocessing Tools are Self-Documenting</h3>
       <p>
       A very handy aspect of the ArcGIS geoprocessing framework is that custom-built tools automate many steps that can be thoroughly understood by examining the model.   We carry this further by adding graphic labels to the model itself where clarification and further instruction might be useful. 
-      WIth all of this, the tools can be considered self-documenting.  This alleviates the need for a very detailed discussion of the internals of tools in this documentation.    
+      With all of this, the tools can be considered self-documenting.  This alleviates the need for a very detailed discussion of the internals of tools in this documentation.    
       </p><p>
       Users should be very familiar with trouble-shooting <a href="https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/basics/geoprocessing-quick-tour.htm"target="archelp"> ArcGIS Geoprocessing tools</a> and <a href="https://pro.arcgis.com/en/pro-app/latest/help/tasks/whatistask.htm" target="archelp">tasks</a>.  There are many ways that ArcGIS geoprocessing tools can get messed up. This documentation can't cover all of these possibilities.
       </p>
