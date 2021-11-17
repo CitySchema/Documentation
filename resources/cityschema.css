@@ -61,7 +61,7 @@
        padding: 10px 0px 10px 10px;}
   #article { grid-area: article; 
        /*background-color: green;*/
-       padding: 10px 40px 10px 25px;}
+       padding: 10px 35px 10px 25px;}
   #footer { grid-area: footer; 
             padding: 0px 10px 15px 10px;}
   #index-header { grid-area: index-header; 

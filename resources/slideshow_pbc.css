@@ -130,7 +130,7 @@ select.slidepicker  {
   text-align: center;
   margin:auto;
   /*flex-grow: 1;*/
-  font-size: 15px;
+  font-size: 12px;
 }
 
 .slidenum {
@@ -153,6 +153,7 @@ select.slidepicker  {
   margin-left: auto;
   text-align: right;
   justify-content: space-between;
+  min-width: 120px;
 }
 
 .caption  {
