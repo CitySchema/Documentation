@@ -120,7 +120,7 @@ let header_htm = `
 </div></div>
 `;
 
-let index_head_htm = `<img height="100%" style="float:left; padding: 0px 5px 15px 5px;" src="../resources/images/favicon_lg.png"><p class="title" style="font-size: 28px;" >citySchema.org</p>`;
+let index_head_htm = `<img height="100%" style="float:left; padding: 0px 5px 15px 5px;" src="../resources/images/favicon_lg.png"><p class="title">citySchema.org</p>`;
 
 let index_footer_htm = `
 <!-- div class="middleflex " >

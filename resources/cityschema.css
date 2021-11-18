@@ -67,7 +67,6 @@
   #index-header { grid-area: index-header; 
        background-color: rgb(91, 179, 238);
        padding: 10px 0px 0px 0px;
-       overflow: hidden;
         }
   #index-footer { grid-area: index-footer; 
        padding: 0px 10px 15px 10px;
@@ -151,22 +150,22 @@ a:link {
   color: rgb(10, 76, 114);
   /*text-decoration: underline ;*/
   text-decoration: none ;
-  border-bottom: 1px solid rgb(10, 76, 114);
+  border-bottom: 1px dashed rgb(60, 173, 238);
 }
 #article a:visited {
   color: rgb(10, 76, 114);
   text-decoration: none ;
-  border-bottom: 1px solid rgb(10, 76, 114);
+  border-bottom: 1px dashed rgb(60, 173, 238);
 }
 a:visited {
   color: rgb(10, 76, 114);
-  border-bottom: 1px solid rgb(10, 76, 114);
+  border-bottom: 1px dashed rgb(60, 173, 238);
 } 
 a:hover {
   color: rgb(10, 76, 114);
   background-color:#d4d1ce;
   text-decoration: none ;
-  border-bottom: 1px solid rgb(10, 76, 114);
+  border-bottom: 1px sdashed rgb(60, 173, 238);
 }
 
 /*** Brand-specific colors for layout elements ***/
