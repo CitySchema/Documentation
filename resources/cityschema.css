@@ -67,6 +67,7 @@
   #index-header { grid-area: index-header; 
        background-color: rgb(91, 179, 238);
        padding: 10px 0px 0px 0px;
+       overflow: hidden;
         }
   #index-footer { grid-area: index-footer; 
        padding: 0px 10px 15px 10px;

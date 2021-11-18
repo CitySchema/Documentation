@@ -294,7 +294,23 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
       Users should be very familiar with trouble-shooting <a href="https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/basics/geoprocessing-quick-tour.htm"target="arcdoc"> ArcGIS Geoprocessing tools</a> and <a href="https://pro.arcgis.com/en/pro-app/latest/help/tasks/whatistask.htm" target="archelp">tasks</a>.  There are many ways that ArcGIS geoprocessing tools can get messed up. This documentation can't cover all of these possibilities.
       </p>
     <hr>
-    <hr>
+ 
+    <h2>Beginning the Model Management Workflow</h2>
+    <p>The best way to get started withthe model management workflow is to start with the demonstration repository on gitHub. <b>Add Link!</b>.  Work through all of the procedures documented here just to see that they all work. Then when you are ready to begin for real your model collection may be starting with a completely empty set of feature classes conforming to the <a href="../model_collection/index.htm#data_dictionary" target="datadict">Data Dictionary</a>.  Or if your model collection has alreadybeen started, then you should find the last 3D Models geodatabase that was archived from this workflow and move it into the <b>PriorArchive</b> folder.  The date in the name of this geodatabase should be kept the same so that there is no question about where these updates are starting from. 
+    </p>
+
+    <h3>Inspect and Modify ModelMgt_Config Data</h3>
+    <figure class="right">
+      <img class="scaled" src="./images/config_gdb.jpg">
+      <figcaption>Model Management Config Data</figcaption>
+    </figure>
+    <p>Before any work is carried out toward the next edition of the model collection, you have an opportunity to modify the schema for models.  The master template for all multipatch feature classes and the tables that establish the coded domain fields for model status and QA Flags are kept in the <b>Stage/ModelMgt_Config.gdb</b>.  If you are going to make changes to anyof these, it is critical to make them when you are initializing this workspace.  Altering the schema after you have already made updates is a major headache. 
+    </p><p>As we work through the tools in the first tool group, you will see how changes the domain tables are propogated to all new feature classes.  
+    </p><p>
+    Any changes you want to make tothe multipatch feature class schema shold be made to the <b>Model_Mgt_Config/Model_Template_MP</b> feature class.   
+    </p>
+
+
       <h2 id="initialize">Tool Group 1: Initializing the Workspace</h2>
       <p>The first task and tool group provides procedures for starting a new model management workspace. Here are the basic steps involved:
       </p>

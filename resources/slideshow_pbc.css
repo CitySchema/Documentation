@@ -1,8 +1,7 @@
-body {
-  /*font-family: Verdana, sans-serif;*/
+/*body {
   margin: 20px;
 }
-
+*/
 * {
   box-sizing: border-box;
 }
@@ -147,6 +146,7 @@ select.slidepicker  {
 .slidecontrols {
   font-size: 18px;
   height: 100%;
+  padding-top: 4px;
   width: 15%;
   display:flex;
   flex-direction:row;
@@ -155,6 +155,7 @@ select.slidepicker  {
   justify-content: space-between;
   min-width: 120px;
 }
+
 
 .caption  {
   padding: 0px 6px 6px 6px; 
@@ -193,7 +194,7 @@ select.slidepicker  {
   background-position: -18px 0px;
   outline-style:solid;
   outline-color: red;
-  outline-width: 1px;
+  outline-width: 2px;
 }
 
 .prev_btn, .next_btn {
