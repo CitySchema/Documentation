@@ -186,10 +186,18 @@ a:hover {
 }
 .title {
 font-family: 'Times New Roman', serif;
-font-size: 26px;
+font-size: 27px;
 font-weight: 600;
 margin: 0;
 }
+
+/* Tablet:768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+  .title {
+    font-size: 24px; 
+   }
+ }
+
 .section_title {  /* These are rare,perhaps deprecated */ 
 font-size: 16px;
 font-weight: 600;
