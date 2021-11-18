@@ -112,7 +112,7 @@
 
   <h2 id="tour">Tour of the Model Management Workspace</h2>
 
-  <p>A tour of the ModelCollectionMgt workflow folder is useful for orientation to the file organization.  It also introduces the main components of the workflow.  You can watch the tour on youtube (soon) or follow along with your local copy of the workspace available from github (soon).  
+  <p>A tour of the Model Collection Mgt workflow folder is useful for orientation to the file organization.  It also introduces the main components of the workflow.  You can watch the tour on youtube (soon) or follow along with your local copy of the workspace available from github (soon).  
   </p>
   
  
@@ -193,7 +193,7 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
     </p>
 
     <div class="feature tour">
-    <h3>Project Options</h3>
+    <h3>Project Options and Settings</h3>
     <p>In the <b>Project</b> window under <b>Project > Current Settings</b> Notice that we have set the following:
       <li><b>Home Folder</b> is the <b>ModelCollection_Mgt_YYYYMMDD</b> folder that contains all of the resources listed above.  This setting gives you a handy means of jumping tothis folder inorder to find any of the resources in the project. 
       <li><b>Default Geodatabase: </b> set to scratch.gdb in your project's Scratch folder.  If this geodatabase doesn't exist, you should create it. 
@@ -286,43 +286,60 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
       </p>
 
     
-      <h3>ArcGIS Geoprocessing Tools are Self-Documenting</h3>
+      <h3>ArcGIS Tasks and Geoprocessing Tools are Self-Documenting</h3>
       <p>
       A very handy aspect of the ArcGIS geoprocessing framework is that custom-built tools automate many steps that can be thoroughly understood by examining the tool in <b>Edit</b> mode.   We carry this further by adding graphic labels to the model itself where clarification and further instruction might be useful. 
       With all of this, the tools can be considered self-documenting.  This alleviates the need for a very detailed discussion of the internals of tools in this documentation.    
       </p><p>
       Users should be very familiar with trouble-shooting <a href="https://pro.arcgis.com/en/pro-app/latest/help/analysis/geoprocessing/basics/geoprocessing-quick-tour.htm"target="arcdoc"> ArcGIS Geoprocessing tools</a> and <a href="https://pro.arcgis.com/en/pro-app/latest/help/tasks/whatistask.htm" target="archelp">tasks</a>.  There are many ways that ArcGIS geoprocessing tools can get messed up. This documentation can't cover all of these possibilities.
       </p>
-    <hr>
+    
+      <hr>
  
-    <h2>Getting Started: Inspect the Config Data and Establish Initial Schema</h2> 
+    <h2>Getting Started: Inspect the Config Data and Establish Reference Schema</h2> 
 
-    <p>The best way to get started with the model management workflow is to start with the demonstration repository on gitHub. <b>Add Link!</b>.  Work through all of the procedures documented here just to see that they all work with the demonstration data provided. Once you are comfortable with the workflow, you canmake a copy of the template, remove the geodatabases in the <b>Prior_Archive</b> folder and the <b>Stage/Stage.gdb</b>  
+    <p>The best way to get started with the model management workflow is to start with the demonstration repository on gitHub. <b>Add Link!</b>.  Work through all of the procedures documented here just to see that they all work with the demonstration data provided. Once you are comfortable with the workflow, you can make a copy of the template, remove the geodatabases in the <b>Prior_Archive</b> folder and the <b>Stage/Stage.gdb</b>  
     </p><p>
-    If you have an existing model collection, then take the latest archived version and copy it into the Prior_Archive folder. The date-string in the name of your collection geodatabase should be left in-tact reflecting the date that the collection was issued from the last Model Management workspace. 
-    </p>
+
 
     <h3>Inspect and Modify ModelMgt_Config Data</h3>
     <figure class="right">
-      <img class="scaled" src="./images/config_gdb.jpg">
+      <img class="scaled" src="./images/config_data.jpg">
       <figcaption>Model Management Config Data</figcaption>
     </figure>
     <p>Before any work is carried out toward the next edition of the model collection, you have an opportunity to modify the schema for models.  The master template for all multipatch feature classes and the tables that establish the coded domain fields for model status and QA Flags are kept in the <b>Stage/ModelMgt_Config.gdb</b>.  If you are going to make changes to any of these, it is critical to make them when you are initializing the workspace.      
       <p>Any changes you want to make to the multipatch feature class schema should be made to the <b>Model_Mgt_Config/Model_Template_MP</b> feature class. As we work through the tools in the first tool group, you will see how changes the domain tables are propagated to all new feature classes.  The tool <b>1a. Create Model Template </b> can be helpful for creating and modifying a new model template based on an existing model feature class. 
     </p>
-    <h3>Migrate Prior Archive Feature Classes</h3>
+    <hr>
+
+    <h3>Prepare Prior Archive Feature Classes</h3>
+    <p>The geodatabases in the Prior Archive folder provide the read-only base-line reference for the updates and additions that are carried out during the lifecycle of the Model Management workspace.  To assure that all of the changes made to the model collection are traceable and reversable, it is important that the prior archived collection be latest edition created by the previously retired Model Management Workspace. 
+      
     <p>If you are making changes to the table schema for multipatches, you should make these changes to each of your prior archived feature classes. The model management workflows require that the schema for each of the model feature classes is exactly the same. You might find it useful to make a copy of the tool, <b>1c. Migrate Prior FCs</b> to make a consistent migration for each of the prior feature classes.  Do not alter the original tool which is used for initializing the stage feature classes based on the working model template.  
     </p>
     <p>If you are beginning a model collection from scratch, it is not necessary to have anything in the Prior_Archive folder. 
     </p> 
 
-    <h2>Workflow Tools and Tasks</h2>
-    <p>As we begin to describe the geoprocessing tools and tasks, it wil be helpful to follow along with your ArcGIS pro project open.  You can learn exactly what the tools do by opening them in edit mode.   In most cases, notes and labels have been added to the tools which make them somewhat self-documenting. 
-    </p><p>
-    Some tools are designed to be used form the Tasks dialogs.  Any of the tools may be run on their own by double-clicking on them in the table of contents. If you want to alter anyof the tools, it is best to copy them into the Rumpus tool group first. SInce altering the original tools may cause problems for tasks that incorporate tools. 
+    <hr>
+
+    <figure class="right">
+      <img class="scaled" src="./images/stage_gdb.jpg">
+      <figcaption>The Stage Geodatabase</figcaption>
+    </figure>
+    <h2>Initialize the Stage Collection</h2>
+    <p>All of the changes made to the model collection are carried out on the feature classes in the <b>Stage Geodatabase</b>.  This collection is initialized by copying each feature class from the prior archived collection. An additional multipatch feature class is created for <b>New Models</b>.  The Stage.gdb also contains point feature classes representing the Development Tracking Log and <b>Issue Points</b> which are useful for noting issues such as missing models. 
+    </p>
+  
 
     <div class="feature tour">
+
+
       <h3 id="initialize">Tool Group 1: Initialize the Stage Feature Classes</h3>
+      <figure class="right">
+        <img class="scaled" src="./images/initialize_tools.jpg">
+        <figcaption>Initialize Workspace Tools</figcaption>
+      </figure>
+
       <p>The tools in the <b>1. Initialize</b> tool group 1 and the tasks in the <b>Initialize Model Management Workspace</b> help out with getting your Stage geodatabase up and running. 
       </p>
  
@@ -331,24 +348,53 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
         <li><b>1c. Migrate Prior FCs</b> uses the <b>Create Models MP FC</b> tool to create a new models feature class and then takes an input model and appends it to the new feature class.  It uses an iterator to do this once for each of the five feature classes.  
         <li> <b>1d. Update Domains</b>.  In case you just want to update the domains in a geodatabase that contains a 3D model multipatch feature class, this tool is for you.  Note that before you run it, you should update the domain tables in the <b>Stage/ModelMgt_Config.gdb</b>.  
         <li><b>1e. Create Issue Points</b>.  The Issue Points feature class is used to flag places where new models need to be made.  This tool wil lcreate a new one.  If the prior archived model collection comes with unresolved issue points, it may be best to copy thses over so that you can address the issues during your model management sessions.
-        <li><b> 1e. Initialize Development Log</b>.  The development log is a table that includes a row for each development project and contains the latest status for that project, and a URL for the show page for the project.  Each agency wil have its own variation on this, whether such a table exists at all.  It is important that the Project ID be a unique key in this table.  I've included the tool here that I created for the Boston Planning and Development Agency, here.  
+        <li><b> 1e. Initialize Development Log</b>.  The development log is a table that includes a row for each development project and contains the latest status for that project and a URL for the agency's web home page for the project.    It is important that the Project ID be a unique key in this table.  I've included the tool here that I created for the Boston Planning and Development Agency. Each agency wil have its own variation on this.
         </ol>
       </div>
 
-
+      <div class="feature tour">
       <h3>The Initialize Workspace Tasks</h3>
-       <p>These tasks are organized to help guide the set-up for a new model management workspace. As discussed above.  SOme of the work involved at this stage is carried out using models as discussed above. Because some of these tools require a lot of customization depending on circumstances, not all of them are referenced by tasks. Most operations that are repeatable are encapsulated in Tasks, where possible.  
+      <figure class="right">
+        <img class="scaled" src="./images/initialize_tasks.jpg">
+        <figcaption>Initialize Workspace Tasks</figcaption>
+      </figure>
+       <p>These tasks are organized to help guide the set-up for a new model management workspace. As discussed above.  
         <ol>
           <li><b>Update Domains:</b> makes use of the Update Domains tool described above.  
           <li><b>Initialize Stage feature classes</b>.  Each time you initialize a model management workspace, each of the prior model feature classes is copied to the stage geodatabase. This uses the <b>1c. Migrate Prior Archived FCs </b> tool, but changes the name of the output worlspace and prepends the string <b>Stage</b> to the name of each to avoid confusion.</a> 
-          <li><b>Initialize Stage NewModels FC:</b> The newModels feature class in the Stage geodatabase holds any new model that might be imported or created by editing a pre-existing model.  This task uses the <b>1b. Create Models MP</b> tools to create a new empty feature class for thie purpose using the current model template feautre class.
+          <li><b>Initialize Stage NewModels FC:</b> The newModels feature class in the Stage geodatabase holds any new model that might be imported or created by editing a pre-existing model.  This task uses the <b>1b. Create Models MP</b> tools to create a new empty feature class for thie purpose using the current model template feature class.
           </ol>
-          
+        </div>
+
+      <p>At this point in the workflow, the stage feature classes should reflect all of the models and attributes as they appear in the prior archived collection.  You are now ready to stage changes!  
+         </p>  
 
 <hr>
 
+       <h2>Staging Changes to the Model Collection</h2>
+       <p><b>Staging</b> is a common pattern in computing that provides a way of making and reviewing and potentially rolling back changes before putting a product into production.  While the <b>Editing</b> process for GIS data allows for changes to be rolled back before changes are committed, changes that are staged using this workflow are always traceable back to records the prior archived collection for the life of the model management workspace.  
+       </p><p>It is useful to consider potential changes in four categories:</p>
+       <ul>
+       <li>Add New Models
+       <li>Update Model Status 
+         <ul>
+           <li>Promote the status of a proposed model.
+            <li>Demote the status of an active model to some stage of demolition or history.
+          <ul>
+       <li>Modify Existing Models
+       <li>Retire or Remove Models
+       </ul>
+       <p>The staging workflow allows these changes to be carried out and inspected before a new edition is issued through a process that filters and merges models from the staging geodatabase into appropriate feature classes in the next edition geodatabase according to the value of each model's (potentially changed) <b>Model Status</b>.
+       <p>Within the staging environment, removal of building models is carried out by changing the status to <b>Retired</b> or setting the QA Flag to <b>Remove</b>.  The QA_Flag may be set to <b>Remove</b> flag is used for models that are hopelessly corrupt or completely redundant with other models.  Setting a model's status to Retired is preferred in cases where a model is being edited for some reason. 
 
-        <h1 id="import">Import, Inspect and Enroll Models</h1>
+
+
+
+
+
+
+
+        <h2 id="import">Import, Inspect and Enroll Models</h2>
         <p>The process of importing new models is designed so that the source material for new models and edited models is preserved in batch folders in the ModelWork folder.  These batch folders provide a place to store original models that are submitted and relevant source material.  Each batch forlder contains a geodatabase with multipatch feature classes that are based on the latest model template  for storing intermediate versions of models that are checked and adjusted as necessary, and then pushed through the process of automatically assigning attributes.   One of the attributes that gets assigned to each model is the name of the model batch folder and the source model name -- which provides the way to find the original source material for each model.  Tis connection to sources is useful in case anyone wants to edit the model again, or to trouble-shoot corruption issues.  
         </p>
         <div class="tip">
