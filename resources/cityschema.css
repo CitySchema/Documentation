@@ -143,29 +143,31 @@ body a:active {
   background-color: rgb(247, 223, 15);
 }
 a:link {
-  color: rgb(10, 76, 114);
+  color: rgb(1, 65, 102);
   text-decoration: none;
 }
+
+a:visited {
+  color: rgb(1, 65, 102);
+  border-bottom: 1px dashed rgb(60, 173, 238);
+} 
+a:hover {
+  color: rgb(11, 134, 206);
+  background-color:#d4d1ce;
+  text-decoration: none ;
+  border-bottom: 1px dashed rgb(60, 173, 238);
+}
+
 #article a:link {
-  color: rgb(10, 76, 114);
+  color: rgb(11, 134, 206);
   /*text-decoration: underline ;*/
   text-decoration: none ;
   border-bottom: 1px dashed rgb(60, 173, 238);
 }
 #article a:visited {
-  color: rgb(10, 76, 114);
+  color: rgb(11, 134, 206);
   text-decoration: none ;
   border-bottom: 1px dashed rgb(60, 173, 238);
-}
-a:visited {
-  color: rgb(10, 76, 114);
-  border-bottom: 1px dashed rgb(60, 173, 238);
-} 
-a:hover {
-  color: rgb(10, 76, 114);
-  background-color:#d4d1ce;
-  text-decoration: none ;
-  border-bottom: 1px sdashed rgb(60, 173, 238);
 }
 
 /*** Brand-specific colors for layout elements ***/
@@ -349,6 +351,18 @@ table.dictionary p {
 
 /******Everything below here deals with the nav sidebar*******/
 /* These treeview styles regulate the sidebar index. */
+
+.treeview a:link {
+  color: black;
+  /*text-decoration: underline ;*/
+  text-decoration: none ;
+}
+.treeview  a:visited {
+  color: black
+  text-decoration: none ;
+  border-bottom: 1px dashed rgb(60, 173, 238);
+}
+
 .treeview .chapter  {
   list-style: none;
   cursor: pointer; 
