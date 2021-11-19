@@ -358,7 +358,7 @@ table.dictionary p {
   text-decoration: none ;
 }
 .treeview  a:visited {
-  color: black
+  color: black;
   text-decoration: none ;
   border-bottom: 1px dashed rgb(60, 173, 238);
 }
