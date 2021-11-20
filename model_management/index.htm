@@ -372,32 +372,42 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
 <hr>
 
        <h2>Staging Changes to the Model Collection</h2>
-       <p><b>Staging</b> is a common pattern in computing that provides a way of making and reviewing and potentially rolling back changes before putting a product into production.  While the <b>Editing</b> process for GIS data allows for changes to be rolled back before changes are committed, changes that are staged using this workflow are always traceable back to records the prior archived collection for the life of the model management workspace.  
-       </p><p>It is useful to consider potential changes in four categories:</p>
+       <p><b>Staging</b> is a common pattern in computing that provides a way of making and reviewing and potentially rolling back changes before putting a product into production.  While the <b>Editing</b> process for GIS data allows for changes to be rolled back durng an edit session, changes that are staged using the citySchema Model Management workflow are always traceable back to the corresponding records in the reference collection for the life of the model management workspace.  
+       </p><p>It is useful to consider four potential categories of changes thatmight be made to models in the collection:</p>
        <ul>
        <li>Add New Models
-       <li>Update Model Status 
+       <li>Update Model Status Attributes
          <ul>
-           <li>Promote the status of a proposed model.
-            <li>Demote the status of an active model to some stage of demolition or history.
+          <li>Promote the status of a proposed model.
+          <li>Demote the status of an active model to some stage of demolition or history.
           <ul>
        <li>Modify Existing Models
        <li>Retire or Remove Models
        </ul>
-       <p>The staging workflow allows these changes to be carried out and inspected before a new edition is issued through a process that filters and merges models from the staging geodatabase into appropriate feature classes in the next edition geodatabase according to the value of each model's (potentially changed) <b>Model Status</b>.
-       <p>Within the staging environment, removal of building models is carried out by changing the status to <b>Retired</b> or setting the QA Flag to <b>Remove</b>.  The QA_Flag may be set to <b>Remove</b> flag is used for models that are hopelessly corrupt or completely redundant with other models.  Setting a model's status to Retired is preferred in cases where a model is being edited for some reason. 
-
-
-
-
-
-
-
+       <p>The staging workflow allows these changes to be carried out and inspected before a new edition is issued through a process that filters and merges models from the Stage geodatabase into appropriate feature classes in the next edition geodatabase according to the value of each model's (potentially changed) <b>Model Status</b>.  
+      <p>None of the changes made to the Stage feature classes involve deletion of features.
+      </p>
 
         <h2 id="import">Import, Inspect and Enroll Models</h2>
-        <p>The process of importing new models is designed so that the source material for new models and edited models is preserved in batch folders in the ModelWork folder.  These batch folders provide a place to store original models that are submitted and relevant source material.  Each batch forlder contains a geodatabase with multipatch feature classes that are based on the latest model template  for storing intermediate versions of models that are checked and adjusted as necessary, and then pushed through the process of automatically assigning attributes.   One of the attributes that gets assigned to each model is the name of the model batch folder and the source model name -- which provides the way to find the original source material for each model.  Tis connection to sources is useful in case anyone wants to edit the model again, or to trouble-shoot corruption issues.  
+        <p>Importng new models is a useful place to begin the discussion of model updates.  It is often the case that new models create the necessity to do things to existing models and their attributes. This workflow has three stages:</P>
+          <ol>
+            <li> Create a batch folder for preserving the source files for future reference. 
+            <li> Import one or more models from original source files into a geodatabase conforming to our schema template.
+            <li>Check the models and position or repair as necessary.  Assign identifiers and status attributes. 
+            <li>Automaticly assign geometric and reference attributes.
+            <li>Append the models to the <b>Stage\New_Models_MP</b> feature class.  
+          </ol>
+
+        <h3>Model Batch Folders</h3>
+        <figure class="right">
+          <img class="scaled" src="./images/model_work.jpg">
+          <figcaption>Model sources are stored in Dated ModelBatch folders.</figcaption>
+        </figure>
+        <p>The citySchema model management schema preserves original source files for each model imported intothe collection.  Subsequently, the metadata for each model includes a means of locating the source model and associated information in the <b>Archive/ModelWork</b> folder. This capability is useful in case a model may need to be edited later or if corruption is discovered later.  This source-tracking capability is maintained by the use of <b>Model Batch Folders</b> that begin their life in the <b>ModelMgt\ModelWork folder</b>.  A model batch folder is named according to the name of the agency, firm or individual that contributed the model. The name of the batch folder includes a date that reflects the approximate date when the models were created or contributed.  It is not necessary that this date be precise, it is merely a means of making the batches sortable.  
+        <p>
+          Each batch folder contains a geodatabase with multipatch feature classes that are based on the latest model template  for storing intermediate versions of models that are checked and adjusted as necessary, and then pushed through the process of automatically assigning attributes.   One of the attributes that gets assigned to each model is the name of the model batch folder and the file name for the source model.  
         </p>
-        <div class="tip">
+        <div class="feature funfact">
           <h3>Manuscript Models</h3>
           <p>Tools for authoring 3D models typically provide a hierarchal means of organizing geometry in layers and as nested groups. 3D authoring tools also provide ways of describing curves or other shapes in terms of parameters as opposed to explicit vertices. These mechanisms are different from the table-based organization used by ArcGIS -- in which multipatch objects are stored as single mesh objects that are made of triangle-facets. The hierarchal organization of 3D authoring tools provides a way of managing the complexity of models.  The table-based structure of GIS has advantages in terms of scalability.  When transferring a model from its native 3D editing environment into GIS, best results are obtained when the authoring tool is used to flatten the model into a simple triangulated mesh, which translates directly into a multipatch object.  
           </p><p>
