@@ -377,10 +377,6 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
        <ul>
        <li>Add New Models
        <li>Update Model Status Attributes
-         <ul>
-          <li>Promote the status of a proposed model.
-          <li>Demote the status of an active model to some stage of demolition or history.
-          </ul>
        <li>Modify Existing Models
        <li>Retire or Remove Models
        </ul>
@@ -394,9 +390,12 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
             <li> Create a batch folder for preserving the source files for future reference. 
             <li> Import one or more models from original source files into a geodatabase conforming to our schema template.
             <li>Check the models and position or repair as necessary.  Assign identifiers and status attributes. 
-            <li>Automaticly assign geometric and reference attributes.
+            <li>Automatically assign geometric and reference attributes.
             <li>Append the models to the <b>Stage\New_Models_MP</b> feature class.  
           </ol>
+         <p>It happens that model batch folders are also used to manage the process of editing / modifying existing multipatch models -- which wil be discussed in another section of this documentation. 
+         </p> 
+
 
         <h3>Model Batch Folders</h3>
         <figure class="right">
@@ -407,6 +406,9 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
         <p>
           Each batch folder contains a geodatabase with multipatch feature classes that are based on the latest model template  for storing intermediate versions of models that are checked and adjusted as necessary, and then pushed through the process of automatically assigning attributes.   One of the attributes that gets assigned to each model is the name of the model batch folder and the file name for the source model.  
         </p>
+        <p>
+          When the Model Management workspace is retired, all of the model batch folders are moved to the City3D_Archive folder is the home of all of the source material that has gone into the city-wide 3d model since the beginning. 
+        </p>
         <div class="feature funfact">
           <h3>Manuscript Models</h3>
           <p>Tools for authoring 3D models typically provide a hierarchal means of organizing geometry in layers and as nested groups. 3D authoring tools also provide ways of describing curves or other shapes in terms of parameters as opposed to explicit vertices. These mechanisms are different from the table-based organization used by ArcGIS -- in which multipatch objects are stored as single mesh objects that are made of triangle-facets. The hierarchal organization of 3D authoring tools provides a way of managing the complexity of models.  The table-based structure of GIS has advantages in terms of scalability.  When transferring a model from its native 3D editing environment into GIS, best results are obtained when the authoring tool is used to flatten the model into a simple triangulated mesh, which translates directly into a multipatch object.  
@@ -414,39 +416,77 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
           In cases where a model is available in its original authoring format, the edtitable source document (manuscript) is worth keeping, because the layering and group hierarchy is useful but lost when the model is translated to an exchange format like OBJ format.
           </div>
         
-       <p>
-        When the Model Management workspace is retired, all of the model batch folders are moved to the City3D_Archive folder is the home of all of the source material that has gone into the city-wide 3d model since the beginning. 
-
+<div class="feature procedure">
+<h3>Prepare Model Batch Folder and Geodatabase</h3>
+<p>This procedure makes use of the geoprocessing tools in the <b>2. Import ~ Edit Models</b> tool group and the <b>Import Models</b> task group.  
+</p> 
+<figure class="right">
+  <img class="scaled" src="./images/import_tools.jpg">
+  <figcaption>Tools for Importing and Enrolling models</figcaption>
+</figure>
+  <figure class="right">
+    <img class="scaled" src="./images/import_tasks.jpg">
+    <figcaption>Tasks for Importing and Enrolling Models.</figcaption>
+  </figure>
         <ol>
           <li><b>Create a new model batch folder.</b> This is done manually.  The batch name consists of the name of the source and then a date string in the form YYYYMMDD.  The source name could be the name of the contributing firm or individual, the name of a project, or in the case of a batch of edits, it the name might begin with "edits".  These folders wil be created manually using windows explorer.
           
-        <li>Create a new batch geodatabase.  This tasks has two steps.  First a new geodatabase is created in the selected Batch Folder.  It should be named "Geodatabse.gdb".  Next, the <b>1b. Create Models MP FC</b> tool (previously explained) is called twice to create two new feature classes: Prep_MP to hold provisional models and Ready_MP.  These feature classes are made according to the latest model template and have all of the latest coded domains for Status and QA_Flag.
-         
-        <li><b>Inspect and Repair Model in SketchUp.</b> Sorry to say, you should always expect problems when importing hand-made models created with design-oriented 3D modeling tools.  Many of these problems wil be difficult or impossible to fix in ArcGIS.  Therefore, it is recommended to begin the model import process by carryig out the following steps.  If you have a contributor who has been properly trained and produces reliable models, you may be able to skip these.
+        <li>Create a new batch geodatabase.  This tasks has two steps.  First a new geodatabase is created in the selected Batch Folder.  It should be named "Geodatabse.gdb".  
+        <li>Next, the <b>1b. Create Models MP FC</b> tool (previously explained) is called twice to create two new feature classes: 
+          <ul>
+            <li><b>Prep_MP</b> feature class will receive provisional models for checking and assigning identifiers 
+            <li><b>Ready_MP</b> feature class is for the multipatch models that have had all of their attributes assigned. 
+            </ul>
+        <p>Having these two-stage feature classes is useful in situations where the automatic attribute assignment tool needs to be run more than once.  These feature classes are made according to the latest model template and have all of the latest coded domains for Status and QA_Flag.
+        </ul>
+      </div>
+
+      <div class="feature procedure">
+        <h3 id="inspect">Inspect,  Adjust and Repair Source Models</h3>
+        <p>There are many possible workflows one might use for assimilating 3D models depending on the source formatting.  This is an area where experience matters.  For the purposes of keeping this description from running off the rails or getting too deep in the weeds, we will cover the sort of model submission that conforms with the <a href="../submissions/index.htm" target="metadata">citySchema Model Submission Guidelines</a>.  These would be models in simple triangulated OBJ format.
+        </p><p>
+        Sorry to say, you should always expect problems when importing hand-made models created with design-oriented 3D modeling tools.  Many of these problems wil be difficult or impossible to fix in ArcGIS.  Therefore, it is recommended to begin the model import process by carrying out the following steps.  If you have a contributor who has been properly trained and produces reliable models, you may be able to skip these.
           <ol>
-          <il>Copy the original model into the batch folder.  I recommend that you save this in a folder named "ms" for manuscript.  
-          <li>Copy whatever source information that you might have into the ms/src folder.   This might even include a saved copy of the email that you received with the model -- which contains a lot of very useful information. 
-          <li>register the model in the appropriate SketchUp tile.  You may have a stash of these working tiles on your PC somewhere.  It is not necessary to have the entire tiles in your ModelWork folder.
+          <il>Copy the original model into the batch folder. You wil lprobably have a sub-folder in the batch that refers to the name of the model file. 
+          <li>Copy whatever source information that you might have -- such as the proponent's slide-deck with plans and elevation drawings --  into the same folder.  You might also include a saved copy of the email that you received with the model -- which contains a lot of very useful contact information. 
+          <li>Register the model in the appropriate SketchUp tile.  You may have a stash of these working tiles on your PC somewhere.  It is not necessary to have the entire tiles in your ModelWork folder.
           <li>heck and adjust the X,Y and Z placement and make geometric changes, such as adding a basement to make sure that the model does not have floating corners when displayed on terrain models of varying accuracy.  
         <li>Turn all of the faces (both sides) to white. 
           <li> If your source model contains multiple buildings, cut these apart as necessary into separate groups.  
         <li>Export the groups to individual SketchUp components into a folder named <b>skp</b> in your model batch folder. If you are using some other tool for your inspection and clean-up, you may have a different convention. 
-          <li>Finally, export each building model as a triangulated OBJ file. 
-            <P>Consult the <a href="../submissions/index.htm" target="outboard">Model SUbmission Guidelines</a>. for hints on formatting.  Export into a sub-directory named <b>obj</b> within your batch folder.  
+          <li>Finally, export each building model as a triangulated OBJ file.  Export into a sub-directory named <b>obj</b> within your batch folder.  
           </ol>
-      <p>Now you have some triangulated OBJ models that are confirmed to be in the correct coordinate system.  
+        </div>
+      <p>You now have some triangulated OBJ models that are confirmed to be in the correct coordinate system.  
 
-      <li><b>Import Models: </b> The tool, <b>2b. Import Models</b> provides user-settable variables for a bunch of model attributes related to model provenance.  It also takes a list of models, which could be in any format that ArcMap imports. The results are put into the Prep_MP feature class in the target batch folder. 
-      </ol>
+
+  
+
+      <h3>Import, Double-Check and Identify Multipatch Models</h3> 
+
+      <p>The tool, <b>2b. Import Models</b> provides user-settable variables for a bunch of model attributes related to model provenance.  It also takes a list of models.  The tool uses the ArcGIS <b>Import 3D Files</b> tool to import the models.  into the Prep_MP feature class that was created above.  Out tool assumes that the input models are already properly located in the BosMetro 3D coordinate system -- which they will be if you went through the process of <a href="#inspect"> Inspection and Adjustment</a> described above. 
+      </p><p>
+        We recommend that you initiate the import process with the <b>Import Models</b> task, which provides a handy interface for assigning values for the model batch, model credit, levelof detail and others.  ANy of these values can also be set or modified on a model-by-model basis in the next stage. 
+      </p><p>If all goes well, you should now have one or more models in your Prep_MP geodatabase in your model batch folder!  
+      </p>
+        
+ 
+
+
       <h3>Inspect and Prepare Multipatch Models</h3>
-      <p>Once models have been imported into the Prep_MP feature class, they should be inspected again. SOme common problems include:  </p>
+      <p>Once models have been imported into the Prep_MP feature class, they should be inspected again. Some common problems include:  </p>
     <ul>
-      <li>Some or all of the faces are in-side out. 
+      <li>Some or all of the faces are in-side out or missing. 
       <li>Some or all of the faces are not pure white.
       </ul>
-      <p>Either of these problems will prevent the model from having colors assigned by ArcMap.  The problem with wrong-way faces is a sign of model corruption which will probably prevent the model from being exported correctly. Either of these conditions can be fixed with tools in the <b>pbcUtils</b> tool-set (see below). 
+      <p>Either of these problems will prevent the model from having colors assigned by ArcMap.  The problem with wrong-way faces is a sign of model corruption which will probably prevent the model from being exported correctly. If all of the faces look dull as if they are not reflecting light properly, you may be able to fix the model using a tool in the <b>4a. Fix Normals</b> tool.  This tool uses a City Engin CGA rule to flip all of the faces. So if your problem is that only some of the faces are bad, then you will need to open the model in your favorite editing tool to fix the faces. 
+      </p>
+      <p>If model faces are anything but pure white on both sides, they will not accept programmatic styles assigned by ArcGIS.  The tool, 
+        
+        
+        Either of these conditions can be fixed with tools in the <b>pbcUtils</b> tool-set (see below). 
       </p><p>
-      If need-be, you can fix the models in your 3D editing tool, and re-import into the same Prep_MP feature class.  Once you have a good version of each model, just delete the bad versions frm Prep_MP.
+      If need-be, you can fix the models in your 3D editing tool, and re-import into the same Prep_MP feature class.  Once you have a good version of each model, just delete the bad versions from the Prep_MP feature class.
       </p><p>
       Now there are a few attributes you should set:
       </p>
@@ -456,19 +496,42 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
         <li>Set the Appear_Dt and Appear_Src to reflect the critical approval or submission dates from the development log. These values should support the validity of the Status.
         <li>Use the <b>3d. Assign Model_ID</b> tool to assign new model IDs to each of the models in the Prep_MP feature class.
       </ul>
-      <h3>3e. Assign Geometric Attributes</h3>
+
+     
+      <div class="feature funfact">
+        <h3>Problems with Surface Normals</h3> 
+        <p>One thing that makes 3D models tricker than flat points, lines, and polygons is the problem of lighting and shading.  In GIS, 3D objects are made of triangulated faces. Your computer needs to figure out which direction each triangle is facing in order to shade it correctly.  The orientation of a face with regard to the light source is known as the <b>Surface Normal</b>.  Normal in this sense refers to a perpendicular line.
+        </P><p>
+         It happens that one of the most common forms of corruption in multipatch models happens when surface normals for some or all of the faces in a model are not identified correctly.  ANother way of saying this is that the face or faces are <b>pointing in the wrong direction</b> or <b>Inside-out</b>
+         When this happens it may show up as faces that appear to be invisible or not there) when looked at from one side,or faces that appear to be dark and not reflecting light as they should.  These objects also behave badly when you try to color them with symbology.
+        </p><p>
+         <b>What is the cause?</b> It happens that multipatch objects do not store information about surface normals.  Instead, the direction faces are pointing is inferred, on the fly, by a convention called the <b>Right Hand Rule</b> that says that the vertices of each face are listed in an order that looks like counter-clockwise from the perspective of the lighted side.    With this in mind, it is not difficult to imagine how these inferences might break.  Especially when a less-then-perfect 3D editing tool is used to create new faces by intersecting complicated 3d objects.  
+         <p>To the human eye, problems with normals are not hard to spot.  For automated procedures that create hundreds of new faces  by cutting complex mesh objects there are situations where the algorithm has know way of knowing.  This is especially true when the original mesh objects are not validated as closed solids.  
+        </p><p>
+      </div>
+
+
+
+      <h3>3e. Assign Geometric and Reference Attributes</h3>
       <p>The next step in enrolling new models is to assign attributes that are calculated based on the model geometry.  This includes assignment of the Parcel ID and Assessor's link, Assignment of the model centroid coordinates and associated links to the oblique imagery in Google Maps and Nearmap; and the Tile ID. 
       </p><p>
         The <b>3e. Assign Geometric Attributes </b> tool takes all of the features in the Prep_MP feature class and assigns the attributes, placing the fully attributed models into the Ready_MP feature class.   
         </p>
-        <h3>2d. Append Ready to NewModels_MP</h3>
-        <p>After checking the models in the Ready_MP feature class, it is time to append them to the Stage/NewModels_MP feature class.
+
+
+        <h3>2d. Append Ready_MP models to NewModels_MP</h3>
+        <p>After checking the models in the Ready_MP feature class, it is time to append them to the Stage/NewModels_MP feature class.  Use the task, <b>Append Model Batch to Stage New Models FC</b> to accomplish this. 
         </p>
 
-<hr>
 
-      <h1 id="stage">Promote and Demote Models</h1>
-      <p>At this point, we have the collection of prior-archived models and newly imported models in several feature classes in <b>Stage.gdb</b>.  We can now begin the process of checking and updating the values of model status attributes for these models.  To begin with, it is important to have a clear understanding of the purpose for each of the attributes.  So please review the <a href="../model_collection/index.htm#datadictionary">Model Collection Data Dictionary</a>.  
+        At this point, we have the collection of prior-archived models and newly imported models in several feature classes in <b>Stage.gdb</b>. 
+
+
+
+        <hr>
+
+      <h2 id="stage">Promote and Demote Status Attributes of Active Models</h2>
+      <p> We can now begin the process of checking and updating the values of model status attributes for these models.  To begin with, it is important to have a clear understanding of the purpose for each of the attributes.  So please review the <a href="../model_collection/index.htm#datadictionary">Model Collection Data Dictionary</a>.  
       </p>
       <h3>Overview</h3>
       <ol>
@@ -519,17 +582,7 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
       <h2 id="batches" >About Edit Batches</h2>
       <p>The naming of model batches folders in the ModelWork folder is useful for finding the editable manuscript data for hand-made models.  For hand-made models, batch folders should get names prefixed withthe name of the individual or agency credited for the models.  In the case of model edits you might have one edit batch for each edition of the model collection that you make.  When you are fixing or creating a large number of models using an automated procedure, such as the Bottom Extender tool, it may be worthwhile to create an edit batch folder exclusively for keeping the initial models (as Prep_MP) and the finished models, as "Ready_MP."  The geoprocessing scripts for doing the transformation might also be stored with the edit batch.  It is often the case that transformations such as these may need to be revised and repeated. In the case of 3D models, we have seen that problems with bulk transformations may not be detected until weeks later when someone tries to translate the format. 
       </p>
-      <div class="tip">
-        <h3>Problems with Surface Normals</h3> 
-        <p>One thing that makes 3D models tricker than flat points, lines, and polygons is the problem of lighting and shading.  In GIS, 3D objects are made of triangulated faces. Your computer needs to figure out which direction each triangle is facing in order to shade it correctly.  The orientation of a face with regard to the light source is known as the <b>Surface Normal</b>.  Normal in this sense refers to a perpendicular line.
-        </P><p>
-         It happens that one of the most common forms of corruption in multipatch models happens when surface normals for some or all of the faces in a model are not identified correctly.  ANother way of saying this is that the face or faces are <b>pointing in the wrong direction</b> or <b>Inside-out</b>
-         When this happens it may show up as faces that appear to be invisible or not there) when looked at from one side,or faces that appear to be dark and not reflecting light as they should.  These objects also behave badly when you try to color them with symbology.
-        </p><p>
-         <b>What is the cause?</b> It happens that multipatch objects do not store information about surface normals.  Instead, the direction faces are pointing is inferred, on the fly, by a convention called the <b>Right Hand Rule</b> that says that the vertices of each face are listed in an order that looks like counter-clockwise from the perspective of the lighted side.    With this in mind, it is not difficult to imagine how these inferences might break.  Especially when a less-then-perfect 3D editing tool is used to create new faces by intersecting complicated 3d objects.  
-         <p>To the human eye, problems with normals are not hard to spot.  For automated procedures that create hundreds of new faces  by cutting complex mesh objects there are situations where the algorithm has know way of knowing.  This is especially true when the original mesh objects are not validated as closed solids.  
-        </p><p>
-      </div>
+
       <h3>Model Editing</h3>
       <p>A common editing workflow comes into play when an existing model needs to be split to accommodate a new model of a proposed structure that will preserve part of the existing one. At the end of the process, you can have a new model that represents the portion if the existing structure that will return to the Active feature class.  And you may also end up with have a second new model that represents the "historical" portion of the original structure that is to be demolished.  As it happens, this process of model editing may be trickier and more time consuming than we would like.  
       </p>

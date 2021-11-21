@@ -57,6 +57,7 @@
     color: linen;}
   #index { grid-area: index; 
        overflow: auto;
+       scrollbar-width: thin;
        overflow-wrap: normal; 
        padding: 10px 0px 10px 10px;}
   #article { grid-area: article; 
