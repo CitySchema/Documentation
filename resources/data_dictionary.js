@@ -91,7 +91,7 @@ let dictionaries =  `
     <td>This short reference to the person or enterprise responsible for creating the model.</td>
     </tr>
     <tr>
-    <td><b>Model_Batch</b>Text<br></td>
+    <td><b>Model_Batch</b><br>Text</td>
     <td>A folder within the Archive/ModelWork folder where the original source file can be found. </td>
     </tr>
     <tr>
