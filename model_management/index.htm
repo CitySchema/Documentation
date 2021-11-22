@@ -36,7 +36,7 @@
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter. -->
     <h1 class="title">Managing the Building Model Collection using ArcGIS Pro</h1>
   
-<p style="background-color:khaki"><b>This page is currently under development!</b>  <br>November 4, 2021.</p> 
+<p style="background-color:khaki"><b>This page is currently under development!</b>  <br>November 22, 2021.</p> 
 
     <p>This page provides an overview of the procedures and tools for managing the collection of 3D models od buildings, bridges, walls and docks as part of a city model within the <a href="../home.index.htm">citySchema.org framework for developing, sharing and preserving city model assets</a>.
     </p><p> 
@@ -263,11 +263,12 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
 
 <hr>
 
-<figure class="right">
-  <img class="scaled" src="./images/tasks.jpg">
-  <figcaption>ArcGIS Tasks provide a high -level ordering of procedures</figcaption>
-</figure>
+
       <h2 id="tools">Explore Tasks and Tools</h2>
+      <figure class="right">
+        <img class="scaled" src="./images/tasks.jpg">
+        <figcaption>ArcGIS Tasks provide a high -level ordering of procedures</figcaption>
+      </figure>
       <p>  There are several procedures involved managing your model collection.  The ModelCollection_Mgt project uses <b>Tasks</b> to break the model management process into a sequence of stages. Click on <b>View > Tasks </b> to explore how the tasks order the steps organized as task groups.  Expand the groups to reveal the individual tasks.  
       </p><p>
       The technical user should <a href="https://pro.arcgis.com/en/pro-app/latest/help/tasks/whatistask.htm" target="arcdoc"> be familiar with how tasks are put together with geoprocessing tools</a>.  While this new feature of ArcGIS pro does make things a little easier, unexpected issues may crop up that require some trouble-shooting skills.
@@ -384,6 +385,7 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
       <p>None of the changes made to the Stage feature classes involve deletion of features.
       </p>
 
+
         <h2 id="import">Import, Inspect and Enroll Models</h2>
         <p>Importng new models is a useful place to begin the discussion of model updates.  It is often the case that new models create the necessity to do things to existing models and their attributes. This workflow has three stages:</P>
           <ol>
@@ -402,10 +404,10 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
           <img class="scaled" src="./images/model_work.jpg">
           <figcaption>Model sources are stored in Dated ModelBatch folders.</figcaption>
         </figure>
-        <p>The citySchema model management schema preserves original source files for each model imported intothe collection.  Subsequently, the metadata for each model includes a means of locating the source model and associated information in the <b>Archive/ModelWork</b> folder. This capability is useful in case a model may need to be edited later or if corruption is discovered later.  This source-tracking capability is maintained by the use of <b>Model Batch Folders</b> that begin their life in the <b>ModelMgt\ModelWork folder</b>.  A model batch folder is named according to the name of the agency, firm or individual that contributed the model. The name of the batch folder includes a date that reflects the approximate date when the models were created or contributed.  It is not necessary that this date be precise, it is merely a means of making the batches sortable.  
-        <p>
-          Each batch folder contains a geodatabase with multipatch feature classes that are based on the latest model template  for storing intermediate versions of models that are checked and adjusted as necessary, and then pushed through the process of automatically assigning attributes.   One of the attributes that gets assigned to each model is the name of the model batch folder and the file name for the source model.  
+        <p>The citySchema model management scheme preserves original source files for each model imported into the collection.  Subsequently, the metadata for each model includes a means of locating the source model and associated information in the <b>Archive/ModelWork</b> folder. This capability is useful in case a model may need to be edited or if corruption is discovered.  The archiving of source models is arranged through the use of <b>Model Batch Folders</b> that begin their life in the <b>ModelMgt\ModelWork folder</b>.  A model batch folder is named according to the name of the agency, firm or individual that contributed the model. The name of the batch folder includes a date that reflects the approximate date when the models were created or contributed.  It is not necessary that this date be precise, it is merely a means of making the batch folders sortable.  
         </p>
+         Model Batch folders are also used for storing and retrieval models and procedural information associated with modifications to models that had previously come frmo the collection.  These situations will be discussed in the section on Model Modification <LINK!>, below. 
+
         <p>
           When the Model Management workspace is retired, all of the model batch folders are moved to the City3D_Archive folder is the home of all of the source material that has gone into the city-wide 3d model since the beginning. 
         </p>
@@ -442,23 +444,28 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
       </div>
 
       <div class="feature procedure">
-        <h3 id="inspect">Inspect,  Adjust and Repair Source Models</h3>
+        <h3 id="inspect">Inspect, Adjust, and Repair Source Models</h3>
         <p>There are many possible workflows one might use for assimilating 3D models depending on the source formatting.  This is an area where experience matters.  For the purposes of keeping this description from running off the rails or getting too deep in the weeds, we will cover the sort of model submission that conforms with the <a href="../submissions/index.htm" target="metadata">citySchema Model Submission Guidelines</a>.  These would be models in simple triangulated OBJ format.
         </p><p>
-        Sorry to say, you should always expect problems when importing hand-made models created with design-oriented 3D modeling tools.  Many of these problems wil be difficult or impossible to fix in ArcGIS.  Therefore, it is recommended to begin the model import process by carrying out the following steps.  If you have a contributor who has been properly trained and produces reliable models, you may be able to skip these.
+        Sorry to say, you should always expect problems when importing hand-made models created with design-oriented 3D modeling tools.  Many of these problems wil be difficult or impossible to fix in ArcGIS.  Therefore, it is recommended to begin the model import process by carrying out the following steps using the 3D editing tool of your choice.  In our demonstration we are using SketchUp. 
+        </p>
+        If you have a contributor who has been properly trained and produces reliable models, you may be able to skip these.
           <ol>
-          <il>Copy the original model into the batch folder. You wil lprobably have a sub-folder in the batch that refers to the name of the model file. 
+          <il>Copy the original model into the batch folder. You will probably have a sub-folder in the batch that refers to the name of the model file. Since a model batch folder is likely to contain more than one model, you should place each model in a sub-folder named for the model. The model/folder  name ought to say something useful about the project -- like its name perhaps with the project ID appended.   
           <li>Copy whatever source information that you might have -- such as the proponent's slide-deck with plans and elevation drawings --  into the same folder.  You might also include a saved copy of the email that you received with the model -- which contains a lot of very useful contact information. 
           <li>Register the model in the appropriate SketchUp tile.  You may have a stash of these working tiles on your PC somewhere.  It is not necessary to have the entire tiles in your ModelWork folder.
-          <li>heck and adjust the X,Y and Z placement and make geometric changes, such as adding a basement to make sure that the model does not have floating corners when displayed on terrain models of varying accuracy.  
+          <li>Check and adjust the X,Y and Z placement and make geometric changes, such as adding a basement to make sure that the model does not have floating corners when displayed on terrain models of varying accuracy.  
         <li>Turn all of the faces (both sides) to white. 
-          <li> If your source model contains multiple buildings, cut these apart as necessary into separate groups.  
-        <li>Export the groups to individual SketchUp components into a folder named <b>skp</b> in your model batch folder. If you are using some other tool for your inspection and clean-up, you may have a different convention. 
+          <li> If your source model contains multiple buildings, cut these apart as necessary into separate modela and group and name them appropriately.  
+        <li>Make sure that each model is registered properly with the groundplan and terrain. 
+            <li>Export the groups to individual SketchUp components into a folder named <b>skp</b> in your model batch folder. If you are using some other tool for your inspection and clean-up, you may have a different convention. 
           <li>Finally, export each building model as a triangulated OBJ file.  Export into a sub-directory named <b>obj</b> within your batch folder.  
           </ol>
-        </div>
-      <p>You now have some triangulated OBJ models that are confirmed to be in the correct coordinate system.  
-
+       
+      <p>You now have some triangulated OBJ models that are confirmed to be in the correct coordinate system.  </p>
+    </div>
+      <p>Hopefully your contributors will follow our advice about keeping geolocation information with their models, so that you don;t have to go through a lot of trouble to figure out where the model sits in relation to the detailed groundplan.    
+      </p>
 
   
 
