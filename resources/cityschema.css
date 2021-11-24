@@ -419,6 +419,7 @@ font-weight: 100;
 .treeview ul.verses >li {
   padding: 0px 10px;
   margin: 0px;
+  margin-bottom: 2px;
   list-style-position: inside;
   text-indent: -1.5em;
   padding-left: 1em;
