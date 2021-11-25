@@ -372,6 +372,7 @@ table.dictionary p {
   list-style: none;
   cursor: pointer; 
   font-weight: 525;
+  margin-bottom: 2px;
 }
 
 /* Main Level */
@@ -405,10 +406,10 @@ font-weight: 100;
 .treeview ul li.verse:before {
   padding-left: 16px;
   background: url("./images/winupdowndot.png") no-repeat;
-  background-position: -40px top;
-  background-size: 60px, 20px;
+  background-position: -46px top;
+  background-size: 69px, 23px;
   content: "";
-  height: 25px;
+  height: 20px;
 }
 
 .treeview ul.verses {
