@@ -62,8 +62,8 @@ let dictionaries =  `
     </tr>
     <tr>
     <td><b>AppearSrc</b><br>Text</td>
-    <td>The observation or document and the date that established the Appear_Dt.  
-        <br>Example: “Google Earth“
+    <td>The observation or document and the date that confirms the Appear_Dt.  
+        <br>Example: “Google Earth“  <i>Note that the date for the document named here is inferred by the value of <b>AppearDt</b></i>
         </td>
     </tr>
     <tr>
@@ -72,8 +72,10 @@ let dictionaries =  `
     </tr>
     <tr>
     <td><b>DisappSrc</b><br>Text</td>
-    <td>A short reference to the document that established the Dissap_Dt.  The Disappear Date should refer to the same document referred to in the Disappear Source fields.  For models with status of Proposed or Permitted Demolish, this field can be used to record observations that the structure is still there.  
-        <br>Examples: “Nearmap“, or "Building still intact per Nearmap, 03/27/2021" 
+    <td>A short reference to the document that established the Dissap_Dt.  The Disappear Date should refer to the same document referred to in the Disappear Source fields.  
+        <br>Example: “Nearmap“, 
+    <p>For models with status of Proposed or Permitted Demolish, this field can be used to record observations that the structure is still there.  
+    <br> Example: "Building still intact per Nearmap, 03/27/2021" 
         </td>
     </tr>
 </table>

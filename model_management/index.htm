@@ -526,12 +526,75 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
         <h3>2d. Append Ready_MP models to NewModels_MP</h3>
         <p>After checking the models in the Ready_MP feature class, it is time to append them to the Stage/NewModels_MP feature class.  Use the task, <b>Append Model Batch to Stage New Models FC</b> to accomplish this. 
         </p>
-
-        At this point, we have the collection of prior-archived models and newly imported models in several feature classes in <b>Stage.gdb</b>. 
+<p>
+        At this point, our Stage.gdb includes several feature classes representing the prior-archived state of the model collection, and a <b>NewModels_MP</b> feature class with several new models. 
+      </p>
 
         <hr>
 
-      <h2 id="stage">Promote and Demote Status Attributes</h2>
+      <h1 id="stage">Updating the Model Collection</h1>
+      <p>Keep in mind that in the life-span of a Model Management workspace folder there may be many batches of new models introduced into the collection.  Each time models are imported, there are several things that need to be checked and it is likely that models that are part of the prior archived collection will need to be updated and perhaps even edited geometrically to complete the updates.  
+      </p>
+      The process of updating the model collection begins by visiting each of the new models and investigating its  context among the other models in the collection. Information sources such as aerial photos may be consulted, to see if current models may be candidates for promotions or demotions in their status.  During this process you wil discover that pre-existing models may require updates to their <b>Model Status</b> attributes, or may require 3D edits.    
+    </p><p>
+      ANother stage of the curation project involves looking through the <b>Stage_Proposed_MP</b> and <b>Stage_Internal_MP</b> feature classes to look for models that may be candidates for promotion owing to their advancement through the approval, permitting or construction process.  Models in the Stage_Proposed_MP feature class may have been superseded by newer proposals now represented in the New_Models_MP feature class. Other Prior_Proposed models are likely to need status updates to reflect their advance through the review, permitting process. 
+      </p><p>
+
+      <div class="feature funfact">
+      <h3>Model Collection Stewardship and Research</h3>
+      <p>There are several aspects of managing the model collection that can be thought of as historical research. This is a useful mind-set for understanding the reason and the right sorts of values for the <b>Model Status</b> and <b>Model Provenance</b> attributes.  In the setting of a typical municipal GIS or urban planning department, the business and time investment is oriented predominantly toward the present and future situations.  Care has been taken in the design of the model collection schema and management workflows to streamline the update tasks so that preservation of historical information is a side-product that leaves a priceless historical record with practically no additional work on the part of the curator. 
+      </p><p>
+      The model collection schema is built to support research.  The process of updating the model to reflect current conditions requires the consultation of reference materials such as aerial photos or the development log, permitting and assessing records, etc.  The automated attribute assignment procedure, described above streamlined access to reference resources such as the latest Google Maps or NearMap and Assessing department viewers. The Appear Date, Dissapear Date Appear Source and Dissapear Source attributes provide a place to record the source documents that confirm these observations.   Proper attribution of this kind is a big time-saver practically speaking.  Reference material must be checked. It is easy to fill in these attributes when the references are at hand.  Recording the facts in the catalog means that the references wil not have to be checked again. 
+      </p><p>
+      The same model collection schema is useful for pure historical research and development of models of past street-scapes that do not exist anymore.  Over most of the city, we may not have the knowledge and date integrity to be able to zoom back in time with a time-slider.  One difficulty is that we do not know the true appear date for most of the models. Nor do we have models of past structures dating to earlier than 2003.  Nevertheless, the model collection schema would allow an interested person to add historical models and to data to annotate the appear and disappear dates for structures using historical maps.   
+      </p>
+      <p>Keep in mind that Appear and Disappear dates do not necessarily reflect "year built" or "year demolished". Rather, these attributes reflect the sources that record the date that the structure is first confirmed to exist or to have gone missing. Understanding the source ofthe information provides essential information that may help to articulate and clarify matters when and if new information becomes available.  Most importantly,recording the information when you have it, eliminates the need to check sources again.  
+      </div>
+
+      <h3>Understanding the Stage Edit Views and the Status Routing Process</h3>
+      <p>As described in more detail in the <a href="../model_collection/index.htm" target="outboard">The Building Model Collection</a>. The geodatabase view of the model collection is segmented into feature classes according to <b>Model Status</b> This segmentation by status streamlines applications that are focused on the current or near-future views of the model collection.   It is important to keep in mind that each of the feature classes has exactly the same attribute schema.  When we look at the collection from the archival asset management viewpoint, all of the status classes are viewed as a single collection (segmented by tile). 
+      </p><p>
+      The GIS-based segmentation of the collection is useful but requires a little trickery in the development of new editions, since updating the status of a model can cause the model to jump from one feature class to another.  
+      Experience has shown that trying to accomplish changes of this kind by copy/pasting multipatch models from one feature class to another is a recipe for disaster -- some of which may not come to light until weeks or months later, whereupon, one has a sickening feeling of wondering how many other models may have failed to copy or paste properly. 
+      </p><p>
+      The way we avoid this problem is by setting up the Stage feature classes so that any attribute edits including status changes may be made in the Prior_MP feature classes, where they may be reviewed and reconciled.  Deletions of models form the collection are flagged by setting the <b>Model Status</b>  to <b>Retired</b> or by setting the value of <b>QA_Flag</b> to <b>Stop</b> When the next edition is published, the models in the Stage feature classes are routed to their new feature classes using the <b>StatusRouter</b> tool, which will be discussed below. [LINK].
+      </p><p>
+      <h3>The Stage Edit Views</h3>
+      <p>The process of updating the status of models canbe confusing, since it is often the case that new models completely cover previous models.  It is helpful to be able to turn classes of models on and off according to their new status values.  This can be troublesome, because the Active_MP layer takes a long time to draw.  Many hours of trying to work around these awkward problems has led to the development of a set of <a href="https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/definition-query.htm" target="arcdoc">Definition Query Views</a> that allow for sets features in the Stage feature classes to be quickly turned on and off according to their status values.  The neat thing about this, is that picking a new status for a model causes it to automatically disappear from one definition query view and appear in another.  
+      </p>
+      <div class="feature tour">
+      <h3>Explore the Stage Edit Views</h3>
+      <figure class="right">
+        <img class="scaled" src="./images/stage_edit_views.jpg">
+        <figcaption>The Stage Edit Views Permit the Quick Toggling of Features according to their new Status values.</figcaption>
+      </figure>
+      <p>The Stage Edit Views have <b>DQV</b> appended to their names so that you don;t forget that their contents are filtered by definition queries.  
+      </p><p>
+        With practice you will discover how to turn specific layers on and off to expose, for example, the models that have a value of Current or Under Construction from the Active, Proposed or New Models  feature classes.
+        This combination of definition query views makes it easy to check the logical consistency of the models involved and to spot models that need to be modified.  When such a model is discovered, its Status might be set to <b>Demolished</b> which wil cause this model to disappear from the view and appear in the <B>Active Demo Candidates DQV</b> view.   
+        </p><p>
+        To examine new models that have a status of <b>Board Approved</b> or <b>Permitted</b> you may want to leave the <B>Active Stable DQV</b>  turned on turn off the <B>Active Demo Candidates DQV</b> and turn on the <b>Proposed Stable DQV</b>, the and the <b>New Models Proposed DQV</b>, which shoud expose any conflicts between the New Models feature class with models in the Proposed feature class -- that may need to have therir status set to <b>Superseded Proposal</b>.  Adjusting the status this way wil cause the affectedmodel to jump to the <b>Proposed Internal DQV</b>.  
+      </p><p>
+        When you encounter a model that requires editing for any reason, its <b>QA_Flag</b> should be set to <b>3D_Edit_Candidate</b>, which wil make it jup to one of the DQV layers in the <b>Stop Edit Retired</b> layer group.   
+    </p>
+      </div>
+      <div class="feature funfact">
+     <h3>Never Delete Models from the Stage Feature Classes</h3>
+     <p>The principle of reversibility for all edits made in this model collection management workflow requires that models not be deleted from any of the Stage feature classes.  To prevent a model from making it to the next edition, you can set its status to <b>Retired</b> which is the normal procedure.  Or for models that are exact duplicates or corrupted, you can set the QA Flag to <b>Stop</b> or <b>3D Edit Candidate</b>  which will cause the model to be ignored by the <b>Status Router</b> tool when the next edition is produced.   
+     </p><p>
+      The exception to this rule is that you are allowed to delete models from the <b>NewModels_MP</b> feature class. 
+     </div>
+       
+
+
+
+        During the model creation process, 
+        The status-based segmentation of the model collection is useful during 
+
+
+        City-wide multipatch feature classes   
+
+
 
       <h3>Visit each New Model and Update Status of Existing Models</h3>
       <p>It is common that the insertion of a new models into a collection calls for changes to existing models.    
@@ -565,7 +628,7 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
               </uL>
       <li>Notice that when models in the Active feature class have their Model Status values changed to <b>Demolished</b>, <b>Modified</b> or their QA Flag set to <b>3d Edit Candidate</b> or <b>Stop</b>, these models disappear from the <b>Stage Active DQV</b> layer to one of the other definition query views.  This allows you to quickly toggle these alternate views to expose any small models that may otherwise be hidden under other models.  
       </ol>
-     <div class="tip">
+     <div class="feature procedure">
        <h3>Time-Series Imagery in Google Earth</h3>
        <p>Google Earth is a free tool that includes a deep store of recent and historical aerial imagery. The historical imagery can be viewed by clicking the button shown at number 2 in the image below.</p>
         <figure class="middle"> 
@@ -575,7 +638,7 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
       <p>You can quickly zoom to a site in Google Earth by copy-pasting the latitude and longitude from the model's attributes into the Google Earth search box as shown at number 1 in the figure, above.  
      </div>
 
-      <h3>Reviewing, Promoting and Demoting Models in the Project Pipeline</h3>
+      <h3>Review Models in the Project Pipeline</h3>
       <p>Reviewing the New models results in setting new values for models in the Active, Proposed and Internal feature classes.  But there may be other status changes that are called for as other models move through the review process.  To evaluate these, it is helpful to join development log table with the Active, Proposed and Internal feature classes reflected in the Stage Edit Views.  Select by attribute queries or new definition query views can be created to highlight models that are candidates for promotion or demotion based on the comparison of the value Model Status tothe latest Project Status.  These change candidates should be checked one-by one.  With reference to the most current aerials.  Then the same update procedure as described above, can be carried out. 
       </p>
 
@@ -603,10 +666,12 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
       <h3>Model Editing</h3>
       <p>A common editing workflow comes into play when an existing model needs to be split to accommodate a new model of a proposed structure that will preserve part of the existing one. At the end of the process, you can have a new model that represents the portion if the existing structure that will return to the Active feature class.  And you may also end up with have a second new model that represents the "historical" portion of the original structure that is to be demolished.  As it happens, this process of model editing may be trickier and more time consuming than we would like.  
       </p>
+      <p>[Illustration Needed]</p>
+
       <div class="feature funfact">
       <h3>How the <b>Modified</b> Model Status Saves You Time</h3> 
         <p> 
-      For model curators who are primarily future-oriented, there may not be a clear business case for spending half a day trying to neatly dissect both sides of this complex cutting procedure.  Asit happens, cutting models canbe very difficult -- especially when the models donot verify as being fully closed, or "wat6er tight."   
+      For model curators who are primarily future-oriented, there may not be a clear business case for spending half a day trying to neatly dissect both sides of this complex cutting procedure.  Asit happens, cutting models can be very difficult -- especially when the models do not verify as being fully closed, or "water tight."   
       </p><p>
       In consideration of this fact, we have established the <b>Modified</b> status for models.  The first task is to cut the existing model and to end up with a model that represents the portion that persists.  The original model, in its entirety has its status set to <b>Modified</b>.  This status will cause the entire old model to be shifted to the <b>History_MP</b> feature class.  The new partial model willhave its status set to "Current" and after going through the process of editing and importing through a model batch, it will move through the <b>NewModels_MP</b> feature class and eventually wind up in the <b>Active_MP</b> feature class. 
       </p><p>
