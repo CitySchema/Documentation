@@ -651,36 +651,18 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
 <hr>
 
       <h1 id="edit">Model Editing Workflows</h1>
-      <p>There are several sorts of situations that call for edits to the multipatch models.  We have already discussed the situation where an active model needs to be split to make room for a new project that may replace part of an existing structure.  Another situation arises when you discover some sort of model corruption such as faces that seem to be missing, or faces that are in-side out and not reacting to light properly.  You may also encounter situations where a large group of models needs to have their bottoms extended to fill in illogical gaps between the models and a low-resolution terrain model.  Situations may arise where a new model is created or split using the model editing tools in ArcGIS.
-      </p>
-         
-      <p>
-      Whatever the case, all edits should be dealt with in a Model Batch and treated as new models with new Model Identifiers as described above in the section on <a href="#import">Importing Models</a>.  Once an existing model has had its QA Flag set to <b>3D Edit Candidate</b> it will be ignored when migrating to the next edition.  Processing edited models through the prep, inspect and ready pipeline provides quality assurance and audit tracking capability.  We have found that editing models in the Active feature class canlead to corruption and promulgation of invisible phantom models that are nearly impossible to get rid of. 
-      </p>
-      
-      
-      <h2 id="batches" >About Edit Batches</h2>
-      <p>The naming of model batches folders in the ModelWork folder is useful for finding the editable manuscript data for hand-made models.  For hand-made models, batch folders should get names prefixed withthe name of the individual or agency credited for the models.  In the case of model edits you might have one edit batch for each edition of the model collection that you make.  When you are fixing or creating a large number of models using an automated procedure, such as the Bottom Extender tool, it may be worthwhile to create an edit batch folder exclusively for keeping the initial models (as Prep_MP) and the finished models, as "Ready_MP."  The geoprocessing scripts for doing the transformation might also be stored with the edit batch.  It is often the case that transformations such as these may need to be revised and repeated. In the case of 3D models, we have seen that problems with bulk transformations may not be detected until weeks later when someone tries to translate the format. 
-      </p>
 
-      <h3>Model Editing</h3>
-      <p>A common editing workflow comes into play when an existing model needs to be split to accommodate a new model of a proposed structure that will preserve part of the existing one. At the end of the process, you can have a new model that represents the portion if the existing structure that will return to the Active feature class.  And you may also end up with have a second new model that represents the "historical" portion of the original structure that is to be demolished.  As it happens, this process of model editing may be trickier and more time consuming than we would like.  
-      </p>
-      <p>[Illustration Needed]</p>
-
-      <div class="feature funfact">
-      <h3>How the <b>Modified</b> Model Status Saves You Time</h3> 
-        <p> 
-      For model curators who are primarily future-oriented, there may not be a clear business case for spending half a day trying to neatly dissect both sides of this complex cutting procedure.  Asit happens, cutting models can be very difficult -- especially when the models do not verify as being fully closed, or "water tight."   
-      </p><p>
-      In consideration of this fact, we have established the <b>Modified</b> status for models.  The first task is to cut the existing model and to end up with a model that represents the portion that persists.  The original model, in its entirety has its status set to <b>Modified</b>.  This status will cause the entire old model to be shifted to the <b>History_MP</b> feature class.  The new partial model willhave its status set to "Current" and after going through the process of editing and importing through a model batch, it will move through the <b>NewModels_MP</b> feature class and eventually wind up in the <b>Active_MP</b> feature class. 
-      </p><p>
-        The <b>Disappear Date</b> for modified models should be set to the date when the partial demolition occurs.  For the "Current" portion of the model, the Appear Date should be set to the same date. If you think about how a time-slider will work, you can imagine that when rendering a past scenario, the original, whole, model will be displayed up until that date.  When the slider moves through the curren time, the modified model will disappear and the new model and the remaining portion of the old model will appear. 
-        <p>
-          It <b><i>is</i></b> confusing that the Appear date of the current portion of the modified model is recent, when the actual structure may be 100 years old.  This is one reason why this Appear Date is not called <b>Year Built</b>.  The original year built for the structure, if it is known could be preserved as the Appear Date on the historical version of the modified model.    
-        <p>This situation is an illustration of why the model collection and its attributes is primarily concerned with <b>Models</b> and not with <b>Buildings</b>. 
-        </div>
-        <h2>The Model Modification Workflow Scenariops</h2>
+      <p>There are several sorts of situations that call for edits to the multipatch models.  
+        <ol>
+          <li>A model needs to be split to make way for a new building that leaves part of the original model.
+          <li>A model may need some sort of geometric repair.
+          <li>A Model has a few faces pointed the wrong way. 
+          <li>A model has applied materials or textures other than the default plain white required if you wish to change symbology in ArcMap.
+          <li>A model has all of its faces pointed the wrong way.
+        </ol>
+        
+      
+        <h2>The Model Modification Workflow Scenarios</h2>
         <p>Lets take a look at the example of an existing model that needs to be edited.   If you have a very simple model that you would like to try splitting with the <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/slice-a-multipatch-feature.htm" target="arcdoc"> ArcGIS Split Multipatch tool</a>, then follow these steps:
         
           <ol>
@@ -690,14 +672,49 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
             <li>Follow the procedures for <a href="#import">Importing a model</a>, outlined above.
             </ol>
         <p>I expect that the ArcGIS model editing tools will be improved as time marches on.  At the current writing, the author finds it preferable to use a purpose-built 3D authoring tool for editing 3D models.       
-        </p><p>
-          <h3>Edit a Current Model with Your Favorite Authoring Tool</h3>
-          Typically, models that need to be modified are in the <b>Active_MP</b> feature class. Therefore these models are reflected in one of the published SketchUp tiles or as an OBJ file in the Repository / Catalog.  Using one of these representations may be the best starting place for editing in your preferred 3D authoring tool. In this case, the procedure for editing is identical to the procedure outlined in  <a href="#import">Importing a model</a>.
-      </p>
-          <h3>Exporting an OBJ Model from ArcMap</h3>
-          In a case where all you have is a multipatch model that has not already been converted to a SketchUp or OBJ file, it may be possible to export from Multipatch to a single OBJ file that is in our Metro-Shift coordinate system. Using the <b>MultiPatch to OBJ</b> tool in the <b>pbc_3DUtils</b> tool group in our <b>ModelMgt.tbx</b>. Not that this tool requires a licensed copy of Safe Software's FME Desktop, and may require a bit of python trobleshooting to make work in your environment.      
         </p>
+        <div class="feature procedure">
+          <h3>Edit a Current Model with Your Favorite Authoring Tool</h3>
+          Typically, models that need to be modified are in the <b>Active_MP</b> feature class. Therefore these models are reflected in one of the published SketchUp tiles or as an OBJ file in the Repository / Catalog.  Using one of these representations may be the best starting place for editing in your preferred 3D authoring tool. Or you may be able to find the original source model in the folder designated by the model's <b>ModelBatch</b> attribute. In this case, the procedure for editing is identical to the procedure outlined in  <a href="#import">Importing a Model</a>.
+      </p><p>
+        <ol>
+          <li>Update the model's <b>Status</b> to <b>Retired</b> or <b>Reject</b>.
+          <li>Set the model's <b>QA_Flag</b> to <b>3D Edit Candidate</b>.  
+          <li>Set the model's <b>Edit_Action</b> to reflect the change that is going to be made. 
+          <li>Start a model batch folder and geodatabase as described above in the section on <a href="#import">Importing Models</a>
+          <li>Find an editable model in the location specified as the original <b>ModelBatch</b>.  Or if the model was previously exported with a Sketchup tile, you might edit it in the context of that tile.
+          <li>Follow the instructions for <a href="#import">Importing Models</a>, above to import the edited model.
+        </ol>
+        <p>Note that all new models recieve new <b>Model_ID</b>s, as this change is how changed models are discovered by applications that are looking to detect updates. 
+        </p>
+      </div>
         
+        <div class="feature funfact">
+          <h3>How the <b>Modified</b> Model Status Saves You Time</h3> 
+          <p>A common editing workflow comes into play when an existing model needs to be split to accommodate a new model of a proposed structure that will preserve part of the existing one. At the end of the process, you can have a new model that represents the portion if the existing structure that will return to the Active feature class.  And you may also end up with have a second new model that represents the "historical" portion of the original structure that is to be demolished.  As it happens, this process of model editing may be trickier and more time consuming than we would like.  
+          </p>
+          <p>[Illustration Needed]</p>
+          <p> 
+          For model curators who are primarily future-oriented, there may not be a clear business case for spending half a day trying to neatly dissect both sides of this complex cutting procedure.  Asit happens, cutting models can be very difficult -- especially when the models do not verify as being fully closed, or "water tight."   
+          </p><p>
+          In consideration of this fact, we have established the <b>Modified</b> status for models.  The first task is to cut the existing model and to end up with a model that represents the portion that persists.  The original model, in its entirety has its status set to <b>Modified</b>.  This status will cause the entire old model to be shifted to the <b>History_MP</b> feature class.  The new partial model willhave its status set to "Current" and after going through the process of editing and importing through a model batch, it will move through the <b>NewModels_MP</b> feature class and eventually wind up in the <b>Active_MP</b> feature class. 
+          </p><p>
+            The <b>Disappear Date</b> for modified models should be set to the date when the partial demolition occurs.  For the "Current" portion of the model, the Appear Date should be set to the same date. If you think about how a time-slider will work, you can imagine that when rendering a past scenario, the original, whole, model will be displayed up until that date.  When the slider moves through the curren time, the modified model will disappear and the new model and the remaining portion of the old model will appear. 
+            <p>
+              It <b><i>is</i></b> confusing that the Appear date of the current portion of the modified model is recent, when the actual structure may be 100 years old.  This is one reason why this Appear Date is not called <b>Year Built</b>.  The original year built for the structure, if it is known could be preserved as the Appear Date on the historical version of the modified model.    
+            <p>This situation is an illustration of why the model collection and its attributes is primarily concerned with <b>Models</b> and not with <b>Buildings</b>. 
+            </div>
+
+
+
+
+<h2>Automating Batch Edits with ArcGIS Pro </h2>
+<p>There are a few use-cases where you can apply geoprocessing tools to accomplish editing Tasks.  Theswe include case where applied textures need to be removed or all of the model's <a href="#normals">surface normals</a> need to be flipped. Or you may want to add basements to a bunch of models to make sure that they extend through the terrain.  The latter case is useful for models whose corners appear to be floating when viewedonlow-resolution terrain models.
+For these cases, you can use tools in the <b>4. Export Edit Models</b> tool group. 
+</p><p>
+
+
+
        <h3>Finishing your Edits</h3>
        <p>
       In any case, whenever you edit a model, it is important to assign a new Model_ID and enter a short summary of the edit opreration in the <b>Edit_Action</b> field.  These details are necessary for applications that use the Repository Catalog to discover and apply updates to their remote model collections.  
