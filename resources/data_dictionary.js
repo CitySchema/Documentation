@@ -4,7 +4,7 @@
 // variabgle that you see here.
 
 
-let dictionaries =  `
+let datadictionary =  `
 <br><hr>
 <h2>3D Model Attribute Data Dictionary</h2>
     <p>Note: field names have 10 or few characters to retain compatibility with ESRI Shapefile format. </p>
@@ -238,20 +238,46 @@ let dictionaries =  `
     </tr>
 
 </table>
+`
 
-<br><hr>
 
-<h2 id="status">Model Status Domain</h2>
-<p>The Model Status attribute is a category scheme that reflects the life-cycle state of the the building or proposal that the model represents.  This field controls when the model is rendered in applications.. 
+let status_domain =  `
+
+<h2 id="status_domain">Model Status Domain</h2>
+<p>The Model Status attribute is a category scheme that reflects the life-cycle state of the the building or proposal that the model represents.  This field controls when the model is rendered in applications.  
 </p>
-<p>In the Geodatabase view, the collection is segmented into feature classes according to the value of Status.  
+<p>The GIS-Based model management applications use Model Status to segment the collection into feature classes that streamline applications that may be focused on the current, proposed or historic views.
+</p>
 <table class="dictionary">
     <tr>
     <td width="20%"><b>Status</b></td>
     <td width="20%"><b>Feature Class</b></td>
     <td width="60%"><b>Description</b></td>
     </tr>
+    <tr>
+        <td><b>Current</b></td>
+        <td>Active</td>
+        <td>This status is for models of existing structures that are based on measurements.</td>
+    </tr>
 
+   <tr>
+   <td><b>Under Construction</b></td>
+   <td>Active</td>
+   <td>The foundation (or more) of the new building is visible.</td>
+</tr>
+
+
+<tr>
+    <td><b>Approved Demo</b></td>
+    <td>Active</td>
+    <td>The model should not be rendered when portraying Approved projects.  The building still exists according to the latest observation. 
+    </td>
+</tr>
+<tr>
+    <td><b>Permitted Demo</b></td>
+    <td>Active</td>
+    <td>The model should not be rendered when portraying Permitted projects.  The building still exists according to the latest observation. </td>
+</tr>
     <tr>
         <td><b>Board Approved</b></td>
         <td>Proposed</td>
@@ -263,52 +289,29 @@ let dictionaries =  `
         <td>The building project has recieved construction permits. </td>
     </tr>
     <tr>
-        <td><b>Under Construction</b></td>
-        <td>Active</td>
-        <td>The foundation (or more) of the new building is visible.</td>
-    </tr>
+    <td><b>Construction Complete</b></td>
+    <td>Proposed</td>
+    <td>The status value for models of finished projects. After they have been replaced by measured as-built models.  These are returned to the Proposed feature class. Note that a status value of <b>Current</b> is reserved for models that have been measured.  All of the models in the Proposed feature class are hand-made from drawings. </td>
+   </tr>
+
     <tr>
-        <td><b>Current</b></td>
-        <td>Active</td>
-        <td>This status is for models of existing structures that are based on measurements.</td>
-    </tr>
-    <tr>
-        <td><b>Construction Complete</b></td>
-        <td>Proposed</td>
-        <td>The status value for models of finished projects. After they have been replaced by measured as-built models.  These are returned to the Proposed feature class. Note that a status value of <b>Current</b> is reserved for models that have been measured.  All of the models in the Proposed feature class are hand-made from drawings. </td>
-    </tr>
-    <tr>
-        <td><b>Approved Demo</b></td>
-        <td>Active</td>
-        <td>The model should not be rendered when portraying Approved projects.  The building still exists according to the latest observation. 
-        </td>
-    </tr>
-    <tr>
-        <td><b>Permitted Demo</b></td>
-        <td>Active</td>
-        <td>The model should not be rendered when portraying Permitted projects.  The building still exists according to the latest observation. </td>
-    </tr>
+    <td><b>Demolished</b></td>
+    <td>History</td>
+    <td>A model that has been completely replaced in the Active collection because the real-word structure has been demolished. </td>
+   </tr>
     <tr>
         <td><b>Modified</b></td>
         <td>History</td>
         <td>Model has been partially replaced in the Active collection because the real-world structure(s) represented have been substantially modified due to renovation or demolition of attached structures. The replacement model may be a revised version of this one, which has pieces cut out of it to make room for the models of new buildings or building parts.  </td>
     </tr>
-    <tr>
-        <td><b>Demolished</b></td>
-        <td>History</td>
-        <td>A model that has been completely replaced in the Active collection because the real-word structure has been demolished. </td>
-    </tr>
+
 
     <tr>
         <td><b>Alt Model</b></td>
         <td>Alt</td>
         <td>The alt feature class holds models that represent buildings that are of a different level of detail or for some reason redundant with other models of the same structure in the Active feature class -- but still useful. </td>
     </tr>
-    <tr>
-        <td><b>Fiction</b></td>
-        <td>Internal</td>
-        <td>The model represents a completely fictitious scenario not an official proposal </td>
-    </tr>
+
     <tr>
     <td><b>Pre-File</b></td>
     <td>Internal</td>
@@ -320,9 +323,14 @@ let dictionaries =  `
 <td>The model represents a proposal that is under review by the planning board.  </td>
 </tr>
 <tr>
-<td><b>Proposal Superceded </b></td>
+<td><b>Proposal Superseded </b></td>
 <td>Internal</td>
 <td>The model represents a proposal that has been superseded by a new proposal.  </td>
+</tr>
+<tr>
+<td><b>Fiction</b></td>
+<td>Internal</td>
+<td>The model represents a completely fictitious scenario not an official proposal </td>
 </tr>
 
     <tr>
@@ -330,9 +338,18 @@ let dictionaries =  `
     <td>Retired</td>
     <td>The retired feature class preserves models that are redundant with other models of the same structure.  The real-world structure is represented perfectly well by another model in another feature class. The models are preserved for the purposes of possible recovery and as they reflect a valuable record of observations or creative work.</td>
 </tr>
+<tr>
+<td><b>Expunge</b></td>
+<td>N/A</td>
+<td>If a model is an exact duplicate of another model that is in the active collection or the new models pipeline, or if the model is corrupt and being replaced by a repaired model then setting its Status toExpunghed will cause it to be diregarded in the process of building the next edition of the collection.  This is the way to "delete" a model while retaining the ability for someone to go back and understand what it was and why it was deleted.   
+</td>
+</tr>
+
     </table>
 
-    <br><hr>
+`
+
+let lod_dictionary =  `
     <h2 id="models">Guidelines for 3D Model Structure and Level of Detail</h2> 
     <p>
         The architecture of this schema, where we use one Multipatch or .Obj file to represent a building, bridge or wall is well suited to handling mesh objects that represent only the exterior shell of the structure.  It is preferable that the mesh be a closed “solid” that has all of its faces oriented toward to outside.  Within this guideline, there are many possibilities for levels of detail – as listed in the table below.  
@@ -392,5 +409,7 @@ let dictionaries =  `
 
     $(function() {
         console.log("ready!");
-        $("#datadictionary").html(dictionaries);
+        $("#datadictionary").html(datadictionary);
+        $("#status_domain").html(status_domain);
+        $("#lod_dictionary").html(lod_dictionary);
     });

@@ -297,7 +297,8 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
     
       <hr>
  
-    <h2>Getting Started: Inspect the Config Data and Establish Reference Schema</h2> 
+    <h2>Getting Started: </h2>
+    
 
     <p>The best way to get started with the model management workflow is to start with the demonstration repository on gitHub. <b>Add Link!</b>.  Work through all of the procedures documented here just to see that they all work with the demonstration data provided. Once you are comfortable with the workflow, you can make a copy of the template, remove the geodatabases in the <b>Prior_Archive</b> folder and the <b>Stage/Stage.gdb</b>  
     </p><p>
@@ -323,7 +324,7 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
 
     <hr>
 
-    <h2>Initialize the Stage Collection</h2>
+    <h3>Initialize the Stage Feature Classes</h3>
     
     <figure class="right">
       <img class="scaled" src="./images/stage_gdb.jpg">
@@ -373,8 +374,8 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
 <hr>
 
        <h2>Staging Changes to the Model Collection</h2>
-       <p><b>Staging</b> is a common pattern in computing that provides a way of making and reviewing and potentially rolling back changes before putting a product into production.  While the <b>Editing</b> process for GIS data allows for changes to be rolled back durng an edit session, changes that are staged using the citySchema Model Management workflow are always traceable back to the corresponding records in the reference collection for the life of the model management workspace.  
-       </p><p>It is useful to consider four potential categories of changes thatmight be made to models in the collection:</p>
+       <p><b>Staging</b> is a common pattern in computing that provides a way of making and reviewing and potentially rolling back changes before putting a product into production.  While the <b>Editing</b> process for GIS data allows for changes to be rolled back during an edit session, changes that are staged using the citySchema Model Management workflow are always traceable back to the corresponding records in the reference collection for the life of the model management workspace.  
+       </p><p>It is useful to consider four potential categories of changes that might be made to models in the collection:</p>
        <ul>
        <li>Add New Models
        <li>Update Model Status Attributes
@@ -510,7 +511,7 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
       <ul>
         <li><b>Proj_ID:</b> for model tha represent projects that are in the review process, Proj_ID should be populated with the corresponding ID and the Proj_URL from the Development log. 
         <li><b>Model Name</b> Each model should have a name that may reflect the name of the project given by the development log.  Or it might be the name of a landmark buildnig, vanity address or merely the street address for the building. 
-        <lI><b>Status</b> should reflect the model status.  Consult the <a href="../model_collection/index.htm#status" target="outboard">Model Status Domain</a>.
+        <lI><b>Status</b> should reflect the model status.  Consult the <a href="../model_collection/index.htm#status_domain" target="datadictionary">Model Status Domain</a>.
         <li>Set the Appear_Dt and Appear_Src to reflect the critical approval or submission dates from the development log. These values should support the validity of the Status.
         <li>Use the <b>3d. Assign Model_ID</b> tool to assign new model IDs to each of the models in the Prep_MP feature class.
         <li>The <b>Model_Batch</b>, <b>Model_File</b> and </b>Model_Date</b> should have been filled in correctly by the model import procedure. 
@@ -532,12 +533,24 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
 
         <hr>
 
-      <h1 id="stage">Updating the Model Collection</h1>
-      <p>Keep in mind that in the life-span of a Model Management workspace folder there may be many batches of new models introduced into the collection.  Each time models are imported, there are several things that need to be checked and it is likely that models that are part of the prior archived collection will need to be updated and perhaps even edited geometrically to complete the updates.  
-      </p>
-      The process of updating the model collection begins by visiting each of the new models and investigating its  context among the other models in the collection. Information sources such as aerial photos may be consulted, to see if current models may be candidates for promotions or demotions in their status.  During this process you wil discover that pre-existing models may require updates to their <b>Model Status</b> attributes, or may require 3D edits.    
-    </p><p>
-      ANother stage of the curation project involves looking through the <b>Stage_Proposed_MP</b> and <b>Stage_Internal_MP</b> feature classes to look for models that may be candidates for promotion owing to their advancement through the approval, permitting or construction process.  Models in the Stage_Proposed_MP feature class may have been superseded by newer proposals now represented in the New_Models_MP feature class. Other Prior_Proposed models are likely to need status updates to reflect their advance through the review, permitting process. 
+      <h2 id="stage">Updating the Model Collection</h2>
+      <p>Importing new models is one aspect of updating the model collection.  Next we will visit each new model to see how existing models may be affected by these new additions. Other changes may have occurred since the last update with regard to existing proposals having been propmoted through the approval,permitting or construction process. 
+      </p><p>
+      All of these changes will call for updates to the <b>Model Status Attibutes</b> which includes <b>Status</b>, <b>Appear Date</b>, <b>Disappear Date</b>, <b>Appear Source</b> and <b>Disappear Source</b>.  These attribute updates may be called for ano any of the feature classes in the Stage Geodatabase.   
+
+
+    <p>Keep in mind that in the life-span of a Model Management workspace folder there may be many batches of new models introduced into the collection.  Each time models are imported, there are several things that need to be checked and it is likely that models that are part of the prior archived collection will need to be updated and perhaps even edited geometrically to complete the updates.  
+    </p>
+
+    <div class="feature funfact">
+     <h3>Update Attributes with the Attributes Pane</h3>
+     <p>Most of the tasks involved with updating the model collection involve selecting one or more features from the 3D view and changing their attributes.  The <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/edit-feature-attributes.htm" target="arcdocs"> Attributes Pane </a> is the right tool for this job. This method is easier and safer than trying to edit attributes from the table or with the Calculate Values tool.    
+     </div> 
+
+
+
+    <p>
+      Another stage of the curation project involves looking through the <b>Stage_Proposed_MP</b> and <b>Stage_Internal_MP</b> feature classes to look for models that may be candidates for promotion owing to their advancement through the approval, permitting or construction process.  Models in the Stage_Proposed_MP feature class may have been superseded by newer proposals now represented in the New_Models_MP feature class. Other Prior_Proposed models are likely to need status updates to reflect their advance through the review, permitting process. 
       </p><p>
 
       <div class="feature funfact">
@@ -557,7 +570,7 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
       The GIS-based segmentation of the collection is useful but requires a little trickery in the development of new editions, since updating the status of a model can cause the model to jump from one feature class to another.  
       Experience has shown that trying to accomplish changes of this kind by copy/pasting multipatch models from one feature class to another is a recipe for disaster -- some of which may not come to light until weeks or months later, whereupon, one has a sickening feeling of wondering how many other models may have failed to copy or paste properly. 
       </p><p>
-      The way we avoid this problem is by setting up the Stage feature classes so that any attribute edits including status changes may be made in the Prior_MP feature classes, where they may be reviewed and reconciled.  Deletions of models form the collection are flagged by setting the <b>Model Status</b>  to <b>Retired</b> or by setting the value of <b>QA_Flag</b> to <b>Stop</b> When the next edition is published, the models in the Stage feature classes are routed to their new feature classes using the <b>StatusRouter</b> tool, which will be discussed below. [LINK].
+      The way we avoid this problem is by setting up the Stage feature classes so that any attribute edits including status changes may be made in the Prior_MP feature classes, where they may be reviewed and reconciled.  Deletions of models form the collection are flagged by setting the <b>Model Status</b>  to <b>Retired</b> or <b>Expunge</b> When the next edition is published, the models in the Stage feature classes are routed to their new feature classes using the <b>StatusRouter</b> tool, which will be discussed below. [LINK].
       </p><p>
       <h3>The Stage Edit Views</h3>
       <p>The process of updating the status of models canbe confusing, since it is often the case that new models completely cover previous models.  It is helpful to be able to turn classes of models on and off according to their new status values.  This can be troublesome, because the Active_MP layer takes a long time to draw.  Many hours of trying to work around these awkward problems has led to the development of a set of <a href="https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/definition-query.htm" target="arcdoc">Definition Query Views</a> that allow for sets features in the Stage feature classes to be quickly turned on and off according to their status values.  The neat thing about this, is that picking a new status for a model causes it to automatically disappear from one definition query view and appear in another.  
@@ -573,14 +586,14 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
         With practice you will discover how to turn specific layers on and off to expose, for example, the models that have a value of Current or Under Construction from the Active, Proposed or New Models  feature classes.
         This combination of definition query views makes it easy to check the logical consistency of the models involved and to spot models that need to be modified.  When such a model is discovered, its Status might be set to <b>Demolished</b> which wil cause this model to disappear from the view and appear in the <B>Active Demo Candidates DQV</b> view.   
         </p><p>
-        To examine new models that have a status of <b>Board Approved</b> or <b>Permitted</b> you may want to leave the <B>Active Stable DQV</b>  turned on turn off the <B>Active Demo Candidates DQV</b> and turn on the <b>Proposed Stable DQV</b>, the and the <b>New Models Proposed DQV</b>, which shoud expose any conflicts between the New Models feature class with models in the Proposed feature class -- that may need to have therir status set to <b>Superseded Proposal</b>.  Adjusting the status this way wil cause the affectedmodel to jump to the <b>Proposed Internal DQV</b>.  
+        To examine new models that have a status of <b>Board Approved</b> or <b>Permitted</b> you may want to leave the <B>Active Stable DQV</b>  turned on turn off the <B>Active Demo Candidates DQV</b> and turn on the <b>Proposed Stable DQV</b>, the and the <b>New Models Proposed DQV</b>, which shoud expose any conflicts between the New Models feature class with models in the Proposed feature class -- that may need to have therir status set to <b>Superseded Proposal</b>.  Adjusting the status this way wil cause the affected model to jump to the <b>Proposed Internal DQV</b>.  
       </p><p>
         When you encounter a model that requires editing for any reason, its <b>QA_Flag</b> should be set to <b>3D_Edit_Candidate</b>, which wil make it jup to one of the DQV layers in the <b>Stop Edit Retired</b> layer group.   
     </p>
       </div>
       <div class="feature funfact">
      <h3>Never Delete Models from the Stage Feature Classes</h3>
-     <p>The principle of reversibility for all edits made in this model collection management workflow requires that models not be deleted from any of the Stage feature classes.  To prevent a model from making it to the next edition, you can set its status to <b>Retired</b> which is the normal procedure.  Or for models that are exact duplicates or corrupted, you can set the QA Flag to <b>Stop</b> or <b>3D Edit Candidate</b>  which will cause the model to be ignored by the <b>Status Router</b> tool when the next edition is produced.   
+     <p>The principle of reversibility for all edits made in this model collection management workflow requires that models not be deleted from any of the Stage feature classes.  To prevent a model from making it to the next edition, you can set its status to <b>Retired</b> which is the normal procedure.  Or for models that are exact duplicates or corrupted, you can set the status to <b>Expunge</b> or <b>3D Edit Candidate</b>  which will cause the model to be ignored by the <b>Status Router</b> tool when the next edition is produced.   
      </p><p>
       The exception to this rule is that you are allowed to delete models from the <b>NewModels_MP</b> feature class. 
      </div>
@@ -588,16 +601,10 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
 
 
 
-        During the model creation process, 
-        The status-based segmentation of the model collection is useful during 
-
-
-        City-wide multipatch feature classes   
-
-
-
-      <h3>Visit each New Model and Update Status of Existing Models</h3>
-      <p>It is common that the insertion of a new models into a collection calls for changes to existing models.    
+     <h3>Visit Each New Model</h3>
+     The process of updating the model collection begins by visiting each of the new models and investigating its  context among the other models in the collection. Information sources such as aerial photos may be consulted to see if current models may be candidates for promotions or demotions in their status.  During this process you wil discover that pre-existing models may require updates to their <b>Model Status</b> attributes, or may require 3D edits.    
+   </p>
+  
 
       <h3>Promote Status of Proposed Models</h3>
       <p>After adding new models to the collection, the next phase of model management is checking through the models in the <b>Stage_Proposed_MP</b> feature class and promote value of </b>Model Status</b> according to new information in the development log.  There are some tricks you might apply to make this easier, like joining the development log to the Stage_Proposed_MP feature class and checking for status values that have changed. 
@@ -626,7 +633,7 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
               <li>It is often the case that models affected by new development may have to be modified since the new project may call for the removal of parts of existing models while leaving other parts intact.  These models should have their <B>QA Flag</b> set to <b>3D Edit Candidate</b>.  These will be dealt with later. 
               <li>If a new model is a new project proposal that supersedes an existing proposal on the same site, the firmer model may have its status changed to <b>Superseded Proposal</b> and the <b>Disappear Date</b> should be the same as the appear date for the new proposal. 
               </uL>
-      <li>Notice that when models in the Active feature class have their Model Status values changed to <b>Demolished</b>, <b>Modified</b> or their QA Flag set to <b>3d Edit Candidate</b> or <b>Stop</b>, these models disappear from the <b>Stage Active DQV</b> layer to one of the other definition query views.  This allows you to quickly toggle these alternate views to expose any small models that may otherwise be hidden under other models.  
+      <li>Notice that when models in the Active feature class have their Model Status values changed to <b>Demolished</b>, <b>Modified</b> or their QA Flag set to <b>3d Edit Candidate</b>, these models disappear from the <b>Stage Active DQV</b> layer to one of the other definition query views.  This allows you to quickly toggle these alternate views to expose any small models that may otherwise be hidden under other models.  
       </ol>
      <div class="feature procedure">
        <h3>Time-Series Imagery in Google Earth</h3>
@@ -654,16 +661,50 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
 
       <p>There are several sorts of situations that call for edits to the multipatch models.  
         <ol>
-          <li>A model needs to be split to make way for a new building that leaves part of the original model.
+          <li>A model needs to be trimmed or split to make way for a new building that leaves part of the original model.  This is the <b>Modification Scenario</b> 
           <li>A model may need some sort of geometric repair.
           <li>A Model has a few faces pointed the wrong way. 
           <li>A model has applied materials or textures other than the default plain white required if you wish to change symbology in ArcMap.
           <li>A model has all of its faces pointed the wrong way.
         </ol>
         
+        <h3>General Model Edit Pattern</h3>
+        <p>Most edits of models form the Stage feature classes follow a pattern of changing the model's status to:
+          <ul>
+            <li><b>Retired</b>: which saves the original model in the Retired_MP feature class for future reference.
+            <li><b>Modified</b>: which is used inthe case of models that need to be split or trimmed to make way for new models. 
+            <li><b>Expunge</b>: which is used for models that are exact duplicates of other models or hopelessly corrupt.
+            </ul>
+          </p><p>
+            In any of the above cases, the next step is to set the value of <b>QA Flag</b> to <b>3D Edit Candidate</b>.
+          </p><p> 
+            At this point,there are a couple of divergent scenarios.  
+            <ul>
+            <li>If the models in question need to have <b>all</b> their faces flipped or to have materials removed, then you can use the appropriate tool from the <b>4. Edit Models Toolbox</b>  (more below)
+              These tools put their result directly into the <b>Stage_NewModels_MP</b> feature Class.
+              <li>In the case of models that have to be edited geometrically, there are a couple of choices depending on whether you want to do edits using ArcGIS Pro or some other editing tool.   As explained below. 
+            </ul>
+  
+
+<div class="feature, funfact">
+          <h3>Never Delete models during the staging process</h3>
+            <p><b>Never Delete models during the staging process.</b>. Doing so negates the recoverability features of this workflow and will show up as an error during the audit process.  Using the Status falues described above will allow you to preview the collection in the Stage Edit Views as if the models were retired or expunged. 
+            </p>
+</div>
       
-        <h2>The Model Modification Workflow Scenarios</h2>
-        <p>Lets take a look at the example of an existing model that needs to be edited.   If you have a very simple model that you would like to try splitting with the <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/slice-a-multipatch-feature.htm" target="arcdoc"> ArcGIS Split Multipatch tool</a>, then follow these steps:
+
+       <h2>Geometric Edits to Models</h2>
+       <p>In cases where models need to be modified or repaired geometrically you have choices tomake regardng what editing tool you want to use.  ArcGIS Pro has some tools for editing multipatches, such as <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/slice-a-multipatch-feature.htm" target="arcdoc"> ArcGIS Split Multipatch tool</a>.  These are worth a try.  In the past, I have found that they sometimes cause problems with surface normals, and mysterious phantom models that can be tricky to delete.  Admitedly, I have not tried these tools inthe latest versionof ArcGIS Pro, so all of this may be fixed. 
+       </p><p>
+        I personally like to use SketchUp as an editing tool.  Others wil prefer their own favorite tool.  The workflows for either of these are slightly different. But each of them utilizes a <b>Model Batch</b> which has been described previously [LINK].  The model batch provides a sandbox where new models can be inspected and attributes can be assigned before bringiing the changed models back into the Stage_NewModels_MP feature class. 
+       </p>
+         
+        
+          <h3>Start a New Edit Batch</h3>
+
+
+        <h3>The Modifying Models in ArcGIS Pro</h3>
+        <p>  If you have a very simple model that you would like to try splitting with the <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/slice-a-multipatch-feature.htm" target="arcdoc"> ArcGIS Split Multipatch tool</a>, then follow these steps:
         
           <ol>
             <li>Select the model and set its status to <b>Modified</b> and its <b>Disappear Date</b> as concurrent with the appear date of the model that is causing the modification. 
@@ -673,13 +714,16 @@ Stages in the lifesycle of a model management worspace are depicted in the slide
             </ol>
         <p>I expect that the ArcGIS model editing tools will be improved as time marches on.  At the current writing, the author finds it preferable to use a purpose-built 3D authoring tool for editing 3D models.       
         </p>
+        
+        
+        
         <div class="feature procedure">
           <h3>Edit a Current Model with Your Favorite Authoring Tool</h3>
           Typically, models that need to be modified are in the <b>Active_MP</b> feature class. Therefore these models are reflected in one of the published SketchUp tiles or as an OBJ file in the Repository / Catalog.  Using one of these representations may be the best starting place for editing in your preferred 3D authoring tool. Or you may be able to find the original source model in the folder designated by the model's <b>ModelBatch</b> attribute. In this case, the procedure for editing is identical to the procedure outlined in  <a href="#import">Importing a Model</a>.
       </p><p>
         <ol>
-          <li>Update the model's <b>Status</b> to <b>Retired</b> or <b>Reject</b>.
-          <li>Set the model's <b>QA_Flag</b> to <b>3D Edit Candidate</b>.  
+          <li>Update the model's <b>Status</b> to <b>Modified</b>, <b>Retired</b> or <b>Reject</b> depending on the circumdtances.  See the <a href="../model_collection/index.htm#status_dictionnary">Staus Domain Dictionary</a> for clarification.
+          <li>Use the Flag Edits task to Set the model's <b>QA_Flag</b> to <b> 3d Edit Candidate</b>. 
           <li>Set the model's <b>Edit_Action</b> to reflect the change that is going to be made. 
           <li>Start a model batch folder and geodatabase as described above in the section on <a href="#import">Importing Models</a>
           <li>Find an editable model in the location specified as the original <b>ModelBatch</b>.  Or if the model was previously exported with a Sketchup tile, you might edit it in the context of that tile.
@@ -744,7 +788,7 @@ For these cases, you can use tools in the <b>4. Export Edit Models</b> tool grou
     Theoretically, each count should be zero,provided all new  status values have been set form the pull-down menus.  Nevertheless, it is helpful to check, since any records with an unorthodox Status value will not make it into the next edition collection.  
     </p>
     <h3>Create Summary Audit Report</h3>
-    <p>The tool, <b>5c. Create Summary Audit Report</b> compares each of the feature classes in the Stage geodatabase, against the corresponding feature classes in the Prior Archived collection.  For each of these a count is recorded for each combination of Status changes that have been made.  A count is also made for any models that appear to have been accidentally deleted.  Remember that the process of eliminating models is to retire them or set their QA flag to <b>Stop</b> The  edit process forbids deleting models.
+    <p>The tool, <b>5c. Create Summary Audit Report</b> compares each of the feature classes in the Stage geodatabase, against the corresponding feature classes in the Prior Archived collection.  For each of these a count is recorded for each combination of Status changes that have been made.  A count is also made for any models that appear to have been accidentally deleted.  Remember that the process of eliminating models is to set their status to <b>Retire</b> or <b>Expunge</b> The  edit process forbids deleting models.
     </p><p>
     It is a good idea to review tis summary report / audit log before proceeding to publishing the next edition.  If discrepancies are found, they may be fixed.  Mistakenly deleted models can be added back to the Stage Geodatabase and properly updated if necessary. 
     </p><p>
@@ -775,7 +819,7 @@ For these cases, you can use tools in the <b>4. Export Edit Models</b> tool grou
         <h3>The Status Router Tool</h3>
         <p>The heart of the process for migrating the stage feature classes to the next edition is a tool named <b>5.c. StatusRouter</b>.  This tool uses an iterator function that brings up each of the six multipatch feature classes in the Stage geodatabase.  This includes the usual five plus the NewModels_MP feature class.  
         </p><p>
-        For each feature class, a sequence of selections is made to route multipatch feature to the appropriate destination feature class according to the value of the model's Status. For each iteration of the tool, one of the feature classes in Stage.gdb is subjected to five SQL queries corresponding to the Status Classes described in the <a href="../model_collection/index.htm#status">Status Class Dictionary</a>
+        For each feature class, a sequence of selections is made to route multipatch feature to the appropriate destination feature class according to the value of the model's Status. For each iteration of the tool, one of the feature classes in Stage.gdb is subjected to five SQL queries corresponding to the Status Classes described in the <a href="../model_collection/index.htm#status_domain" target="datadictionary">Status Class Dictionary</a>
         </p>
 
 

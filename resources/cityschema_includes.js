@@ -54,7 +54,7 @@ If you are interested in being notified with announcements, email paul b cote (n
       <li class="verse"><a href="../model_collection/index.htm#gdb">Geodatabase Format Collection and Catalog</a>
       <li class="verse"><a href="../model_collection/index.htm#obj">Open Source Format Collection and Catalog</a>
       <li class="verse"><a href="../model_collection/index.htm#datadictionary">Data Dictionary for Model Catalog</a> 
-      <li class="verse"><a href="../model_collection/index.htm#status">Model Status Dictionary</a>
+      <li class="verse"><a href="../model_collection/index.htm#status_domain">Model Status Dictionary</a>
       <li class="verse"><a href="../model_collection/index.htm#LOD">Levels of Detail and other Recommendations for Model Structure</a>
 
    </ul>

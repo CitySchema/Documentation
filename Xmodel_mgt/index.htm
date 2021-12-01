@@ -353,7 +353,7 @@ New and edited models are always brought in through a Batch folder within the MO
       </p>
       <ul>
         <li><b>Proj_ID:</b> for model tha represent projects that are in the review process, Proj_ID should be populated with the corresponding ID and the Proj_URL from the Development log. 
-        <lI><b>Status</b> should reflect the model status.  Consult the <a href="../model_collection/index.htm#status" target="outboard">Model Status Domain</a>.
+        <lI><b>Status</b> should reflect the model status.  Consult the <a href="../model_collection/index.htm#status_domain" target="datadictionary">Model Status Domain</a>.
         <li>Set the Appear_Dt and Appear_Src to reflect the critical approval or submission dates from the development log. These values should support the validity of the Status.
         <li>Use the <b>3d. Assign Model_ID</b> tool to assign new model IDs to each of the models in the Prep_MP feature class.
       </ul>
@@ -524,7 +524,7 @@ New and edited models are always brought in through a Batch folder within the MO
         <h3>The Status Router Tool</h3>
         <p>The heart of the process for migrating the stage feature classes to the next edition is a tool named <b>5.c. StatusRouter</b>.  This tool uses an iterator function that brings up each of the six multipatch feature classes in the Stage geodatabase.  This includes the usual five plus the NewModels_MP feature class.  
         </p><p>
-        For each feature class, a sequence of selections is made to route multipatch feature to the appropriate destination feature class according to the value of the model's Status. For each iteration of the tool, one of the feature classes in Stage.gdb is subjected to five SQL queries corresponding to the Status Classes described in the <a href="../model_collection/index.htm#status">Status Class Dictionary</a>
+        For each feature class, a sequence of selections is made to route multipatch feature to the appropriate destination feature class according to the value of the model's Status. For each iteration of the tool, one of the feature classes in Stage.gdb is subjected to five SQL queries corresponding to the Status Classes described in the <a href="../model_collection/index.htm#status_domain" target="datadictionary>Status Class Dictionary</a>
         </p>
 
 
