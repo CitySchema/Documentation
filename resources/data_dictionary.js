@@ -259,25 +259,40 @@ let status_domain =  `
         <td>Active</td>
         <td>This status is for models of existing structures that are based on measurements.</td>
     </tr>
-
+    <tr>
+    <td><b>Construction Complete</b></td>
+    <td>Active</td>
+    <td>Hand-made models of proposals. The shell of the building including external finishes appear to be complete.  These models remain in the Active feature class until they are replaced with measured models. 
+     </td>
+   </tr>
    <tr>
    <td><b>Under Construction</b></td>
    <td>Active</td>
    <td>The foundation (or more) of the new building is visible.</td>
-</tr>
-
-
-<tr>
-    <td><b>Approved Demo</b></td>
-    <td>Active</td>
-    <td>The model should not be rendered when portraying Approved projects.  The building still exists according to the latest observation. 
-    </td>
 </tr>
 <tr>
     <td><b>Permitted Demo</b></td>
     <td>Active</td>
     <td>The model should not be rendered when portraying Permitted projects.  The building still exists according to the latest observation. </td>
 </tr>
+<tr>
+    <td><b>Approved Demo</b></td>
+    <td>Active</td>
+    <td>The model should not be rendered when portraying Approved projects.  The building still exists according to the latest observation. 
+    </td>
+</tr>
+
+<tr>
+<td><b>Demolished</b></td>
+<td>History</td>
+<td>A model that has been completely replaced in the Active collection because the real-word structure has been demolished. </td>
+</tr>
+<tr>
+    <td><b>Modified</b></td>
+    <td>History</td>
+    <td>Model has been partially replaced in the Active collection because the real-world structure(s) represented have been substantially modified due to renovation or demolition of attached structures. The replacement model may be a revised version of this one, which has pieces cut out of it to make room for the models of new buildings or building parts.  </td>
+</tr>
+
     <tr>
         <td><b>Board Approved</b></td>
         <td>Proposed</td>
@@ -288,55 +303,48 @@ let status_domain =  `
         <td>Proposed</td>
         <td>The building project has recieved construction permits. </td>
     </tr>
-    <tr>
-    <td><b>Construction Complete</b></td>
-    <td>Proposed</td>
-    <td>The status value for models of finished projects. After they have been replaced by measured as-built models.  These are returned to the Proposed feature class. Note that a status value of <b>Current</b> is reserved for models that have been measured.  All of the models in the Proposed feature class are hand-made from drawings. </td>
-   </tr>
+    
 
     <tr>
-    <td><b>Demolished</b></td>
-    <td>History</td>
-    <td>A model that has been completely replaced in the Active collection because the real-word structure has been demolished. </td>
-   </tr>
-    <tr>
-        <td><b>Modified</b></td>
-        <td>History</td>
-        <td>Model has been partially replaced in the Active collection because the real-world structure(s) represented have been substantially modified due to renovation or demolition of attached structures. The replacement model may be a revised version of this one, which has pieces cut out of it to make room for the models of new buildings or building parts.  </td>
+    <td><b>Under Review</b></td>
+    <td>Internal</td>
+    <td>The model represents a proposal that is under review by the planning board.  </td>
     </tr>
 
-
-    <tr>
-        <td><b>Alt Model</b></td>
-        <td>Alt</td>
-        <td>The alt feature class holds models that represent buildings that are of a different level of detail or for some reason redundant with other models of the same structure in the Active feature class -- but still useful. </td>
-    </tr>
-
-    <tr>
+<tr>
     <td><b>Pre-File</b></td>
     <td>Internal</td>
     <td>The model is a draft that has not yet been formally submitted for review. </td>
 </tr>
 <tr>
-<td><b>Under Review</b></td>
-<td>Internal</td>
-<td>The model represents a proposal that is under review by the planning board.  </td>
+<td><b>Internal Study</b></td>
+  <td>Internal</td>
+  <td>The model represents a completely fictitious scenario not an official proposal </td>
 </tr>
 <tr>
-<td><b>Proposal Superseded </b></td>
-<td>Internal</td>
-<td>The model represents a proposal that has been superseded by a new proposal.  </td>
+  <td><b>Proposal Superseded </b></td>
+  <td>Internal</td>
+  <td>The model represents a proposal that has been superseded by a new proposal.  </td>
 </tr>
 <tr>
-<td><b>Fiction</b></td>
-<td>Internal</td>
-<td>The model represents a completely fictitious scenario not an official proposal </td>
+<td><b>Proposal Built </b></td>
+  <td>Internal</td>
+  <td>The model represents a proposal that has been built.  The model has been replaced by a measured model.  </td>
 </tr>
+
+
 
     <tr>
     <td><b>Retired</b></td>
     <td>Retired</td>
     <td>The retired feature class preserves models that are redundant with other models of the same structure.  The real-world structure is represented perfectly well by another model in another feature class. The models are preserved for the purposes of possible recovery and as they reflect a valuable record of observations or creative work.</td>
+</tr>
+
+<tr>
+<td><b>Alt Model</b></td>
+<td>Alt</td>
+<td>The alt feature class holds models that represent buildings that are of a higher level of detail -- such as textures.  As opposed to Retired models, these are usually hand-made documents. 
+ </td>
 </tr>
 <tr>
 <td><b>Expunge</b></td>
