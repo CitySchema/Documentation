@@ -40,7 +40,7 @@
 
     <p>This page provides an overview of the procedures and tools for managing the collection of 3D models od buildings, bridges, walls and docks as part of a city model within the <a href="../home.index.htm">citySchema.org framework for developing, sharing and preserving city model assets</a>.
     </p><p> 
-    The workflow and tools described on this page ca nbe demonstrated using the <b>citySchema: Model-Management-ArcGIS repository shared on github (soon)</b>.  We start with the ArcGIS Pro workflow because our municipalGIS managers tend to have licenses for this tool-kit.  The ArcGIS model for representing 3D geometry as geographic features is well suited to the task. We anticipate that the concepts and procedures described here may be implemented on other platforms with the same result. 
+    The workflow and tools described on this page can be demonstrated using the <b>citySchema: Model-Management-ArcGIS repository shared on github (soon)</b>.  We start with the ArcGIS Pro workflow because our municipalGIS managers tend to have licenses for this tool-kit.  The ArcGIS model for representing 3D geometry as geographic features is well suited to the task. We anticipate that the concepts and procedures described here may be implemented on other platforms with the same result. 
     </p> 
     <h3>Table of Contents</h3>
     <ol>
@@ -62,17 +62,21 @@
 
 
     <h2 id="roles">Enterprise and Technical Viewpoints</h2>
-    Before digging into the technical details of <b>How</b> to manage a city-wide collection of 3D models, it will be uesful to have a picture of the sorts of people for whom this scheme has been designed, and the personal and institutional <b>motivations</b> that make this effort worthwhile.  The <b>Technical User</b>, is the sort of person who you find making edits to geographic data in a municipality. 
+    Before digging into the technical details of <b>How</b> to manage a city-wide collection of 3D models, it will be useful to have a picture of the sorts of people for whom this scheme has been designed, and the personal and institutional <b>motivations</b> that make this effort worthwhile.  
+</p><p>
+    The <b>Technical User</b> is the sort of person who you find making edits to geographic data in a municipality.  This is a person who knows how to use 3D modeling tools, and issues that come up with 3D models in various formats.  The technical user also has an understanding of GIS, relational database fundamentals and basic programming with ArcGIS model builder.  Basic programming with python is useful, as well.
   </p><p>
     
     The <b>IT Manager</b> is accountable for taking care of the institution's information.  This role involves hiring and evaluating the work of technical users who may be employees or contractors.   
     For the IT manager, a successful architecture results in a collection of assets that is sustainable even without the particular individuals holding the position of technician or manager. For the IT manager, it will be useful to understand the essential pieces of the city model, where they are stored, and the sorts of problems that are likely to occur.
-  </p><p>
-    <b>Managing a collection of 3D models is different from managing traditional two-dimensional GIS data.</b> Points, Lines and Polygons are easy to visually inspect and to repair with a few strokes of the cursor.  Rules of 2D topology can be evaluated automatically.  Many of the problems that occur with GIS-based 3D model collections are more difficult to discover.  There are many data-sets involved, including historical models, alternative models, superseded proposals, retired models, etc, which are rarely looked at.  3D models are tricky to repair and replace -- particularly if the source files are no longer available.  When a 3D model is corrupt, the effect is sometimes invisible in one context,such as the desktop GIS application, but becomes evident when the model is translated to another format.  it is often the case that problems such as lost or corrupted models are not discovered for weeks, and when they are, it can be difficult to trace the problem or to know how many other models may have been affected.  
+  </p>
+  <h3>Special Problems of Managing 3D Models in ArcGIS</h3>
+  <p>
+    <b>Managing a collection of 3D models is different from managing traditional two-dimensional GIS data.</b> Points, Lines and Polygons are easy to visually inspect and to repair with a few strokes of the cursor.  Rules of 2D topology can be evaluated automatically.  Many of the problems that occur with GIS-based 3D model collections are more difficult to discover.  There are many data-sets involved, including historical models, alternative models, superseded proposals, retired models, etc, which are rarely looked at.  3D models are tricky to repair and replace -- particularly if the source files are no longer available.  When a 3D model is corrupt, the effect is sometimes invisible in one context, such as the desktop GIS application, but becomes evident when the model is translated to another format.  it is often the case that problems such as lost or corrupted models are not discovered for weeks, and when they are, it can be difficult to trace the problem or to know how many other models may have been affected.  
   </p><p>
     The special problems of managing temporally and geographically extended collections of 3d models explain the importance of the special pains taken in designing the model management workflow to safeguard against accidental data loss, to maintain an audit trail for all changes,  to assure a roll-back capability, and to keep track of source data.  
     </p><p>
-    Managers and technicians should each read this documentation to understand the scheme for naming and labeling assets. To be aware that there is a place for storing and finding every piece of the city model.  This will relieve the technician from having to make thousands of new decisions, and learning from the unsuccessful ones.  It will also assure the manager that the information resources are recoverable even after the technician unexpectedly "wins the lottery". 
+    Managers and technicians should each read this documentation to understand the scheme for naming and labeling assets. To be aware that there is a place for storing and finding every piece of the city model.  This will relieve the technician from having to make thousands of new decisions, and learning from the unsuccessful ones.  It will also assure the manager that the information resources are recoverable even after the technician moves on to other jobs. 
     </p>
   
 
@@ -84,16 +88,15 @@
       </p><p>
     The Building model collection the most intensively managed component of the city-wide 3D model. The model collection framework supported by this workflow prepares the model collection to become one of the components of the <a href="../repocat/index.htm">citySchema Repository Catalog</b>  city model publishing and archiving strategy.
     </p>    <p>
-    <a href="https://github.com/CitySchema" target="github">citySchema templates shared on GitHub</a> are a recommendation.  Your organization may develop its own data dictionary and metadata.  Doing this, will probably require modifying many of the tools that are shared by citySchema.org.  So we recommend trying the demonstrations before digging in and modifying the schema. 
+    <a href="https://github.com/CitySchema" target="github">citySchema templates shared on GitHub</a> are a recommendation.  Your organization may develop its own data dictionary and metadata.  Doing this, will probably require modifying many of the tools that are shared by citySchema.org.  Nevertheless, we recommend trying the demonstrations before digging in and modifying the schema. 
     </p>
 
 
+    <h2 id="context">Filesystem Context </h2>
     <figure class="right">
       <img src="images/filesystem_context.jpg">
       <figcaption>Figure 1: City Model Filesystem Context</figcaption>
     </figure>
-
-    <h2 id="context">Filesystem Context </h2>
     <p>The diagram below illustrates a simple view of the file system context of the model management workspace.  The <b>Bos3dMaster</b> folder holds much of the prepared source material for the city model, including city-wide terran and groundplan information.  These data-sets originate in GIS workflows described elsewhere.  Bos3d_Master is where users and applications reference the currently active 3d model collection. 
     <b>The Bos3dArchive</b> folder is used to preserve information that is not routinely used -- including the source files for 3D models that have been imported, previous versions of the development log, and selected archived snapshots of the 3D model collection. 
     </p>
@@ -102,7 +105,7 @@
       Workflow folders are backed up by zipping them.  Subsequent management activity might then proceed with a new dated copy of the workflow folder.  When these new generations take place, selected information, such as source files for 3D models or the last published edition of the 3D model collection would be copied to the <b>Bos3d_Archive</b> folder.   
     </p>
  <h3>Local vs Remote Filesystem References</h3>
-
+<p>
     All of the resources used for our demonstration project keep all of the resources for a city model are under a single directory.  In your environment, you might have the City3d master folder and the City3D_Dev files on different disks.  For the sake of portability,  our demonstration of the model management tools and procedures will be work with all resources in a single workflow folder. as shown in Figure 2. 
   </p>
 
@@ -117,31 +120,34 @@
   
  
 
+
+  <h3>Filesystem and Folders</h3>
   <div class="feature tour">
     <figure class="right">
       <img src="images/model_mgt_files.jpg">
       <figcaption>Figure 2: Model Management Workspace</figcaption>
     </figure>
-  <h3>Filesystem and Folders</h3>
   <p>The model management workspace demo is provided as a self-contained workspace with every tool and file accessible via relative path-names. In your environment, it may be beneficial to store multi-purpose resources in other places on your network file-system. 
   </p> 
   <ul>
-    <li><b>ArcDocs folder: </b> contains ArcGIS Pro projects where the processing takes place.  There also may be layer files stored here, to save styling of layers and group layers for re-use within the maps and scenes within the project.  Also contans the arcGIS Task files that hold the step-by-step interactive guide for managing your model collection.  
+    <li><b>ArcDocs folder: </b> contains ArcGIS Pro projects where the processing takes place.  There also may be layer files stored here, to save styling of layers and group layers for re-use within the maps and scenes within the project.  Also contains the arcGIS Task files that hold the step-by-step interactive guide for managing your model collection.  
 
-    <li><b>ModelWork folder: </b> contains the source model files for new models that have been submitted for inclusion into the collection.  Or models that are edited during model management operations.  WIthin the ModelWork folder, models are stored in batch folders named according to the source and date.  This organization allows for source models to be referenced in the model catalog and easily retrieved in case anyone wants revisit and modify a model using the original sources.  When a ModlCopllectio_Mgt workflow folder is retired, the contents of ModelWork are copied to the modelWork folder in <b>Cty3D_Archive</b>.
-    <li><b>PriorArchive folder:</b> contains the latest archived edition of the Cty3D_Models_YYYYMMDD.gdb.  The date string in the name og the geodatabase reflects the date that the geodatabase was issued a prior ModelCollection_Mgt. The capability to recover from corruption and errors requires that the lineage of PriorArchive models be continuous.  Note that all of the NextEditon modelcollections are spawned from one priorArchive geodatabase.  If you want to start form a newer collection, then the ModelCollection_Mgt workflow folder should be retired, and a fresh one started. 
-    <p>
-      It is often the case that the next edition of the model collection calls for changes to the table schema for 3D models.  It would take a while to explain why, but for the purposes of maintaining the audit and rollback capability, it is necessary to apply whatever schema changes you intend to make to the prior archived model collection, before you begin making changes.  Therefore, the PriorArchive folder may contain a geodatabase named Cty3D_Models_YYYYMMDD_Migrated.gdb.  
+    <li><b>ModelWork folder: </b> contains the source model files for new models that have been submitted for inclusion into the collection.  New models that are the result of edits to previously existing models are also stored in the ModelWork folder.  WIthin the ModelWork, models are organized in batch folders named according to the source and date.  This organization allows for the locatons of source models to be referenced in the model catalog and easily retrieved in case anyone wants re-visit and modify a model using the original sources.  When a ModelMgt workflow folder is retired, the model batch folders are copied to <b>Cty3D_Archive</b>.
+    <li><b>PriorArchive folder:</b> contains the latest archived edition of the Cty3D_Models_YYYYMMDD.gdb.  The date string in the name of the geodatabase reflects the date that the geodatabase was issued from a previously retired Model_Mgt workflow. 
+    </p><p>The capability to recover from corruption and errors requires that the lineage of PriorArchive models be continuous from one ModelMgt workflow to the next.  This means that edits tothe collection that are made ouside of a modelMagt workflow will be unrecoverable later.
     </p>
+    <!--p>
+      It is often the case that the next edition of the model collection calls for changes to the table schema for 3D models.  It would take a while to explain why, but for the purposes of maintaining the audit and rollback capability, it is necessary to apply whatever schema changes you intend to make to the prior archived model collection, before you begin making changes.  Therefore, the PriorArchive folder may contain a geodatabase named Cty3D_Models_YYYYMMDD_Migrated.gdb.  
+    </p -->
     </p><p>The PriorArchive folder contains geodatabases and ArcGIS layer (.lyrx) files that are used to view and inspect the model collection.  
     <li><b>NextEdition folder:</b> is the destination for the new editions of City3D_Model geodatabases.  A single ModeCollection_Mgt workflow folder may spawn several new editions, each one carrying a new date string in its name.  Each new edition also comes with its lyrx files.
-    <li></b>Stage folder:</b> contains two geodatabases: <b>Stage.gdb</b> which contains copies of all of the prior_archived feature classes which have had edits made to them.  There is also a newModels_mp feature class that contains all of the new models that have been imported or new models that are the results of edits to models frm the Prior_Archived collection.  Models from the Stage geodatatabase are used to generate the next edition of the model collection.  
+    <li><b>Stage folder:</b> contains two geodatabases: <b>Stage.gdb</b> which contains copies of all of the prior_archived feature classes which have had edits made to them.  There is also a newModels_mp feature class that contains all of the new models that have been imported or new models that are the results of edits to models frm the Prior_Archived collection.  Models from the Stage geodatatabase are used to generate the next edition of the model collection.  
     </p><p>
     The <b>config.gdb</b> contains the template multipatch feature class reflecting the latest schema for 3D model feature classes. Tables representing domain values are also stored in config.gdb. 
     <li><b>Sources folder:</b> the sources folder contains parcel information, the latest development log and a terrain raster that covers the extent of the city model.  These datasets are used tp attach attributes to new building models. 
     </p><p>
-      In your production environment, these datasets may be referenced form other places.  It is useful tohave copies of them here so that thee is never any doubt about which version of these data-sets have been used. 
-    <li><b>Tools folder:</b> ArcGIS tool boxes, FME workbench folders, Python scripts, projection files, and lyrx files used in workflows that wil be discussed below. 
+      In your production environment, these source datasets may be referenced from other places -- most likely fro within the <b>Bos3d_Master</b> folder  
+    <li><b>Tools folder:</b> ArcGIS tool boxes, FME workbench folders, Python scripts, projection files, and lyrx files used in workflows that will be discussed below. 
     </p>
     <li><b>Scratch folder:</b> is the destination for all intermediate datasets generated by tools.
     </ul>  
@@ -152,9 +158,9 @@
 <hr>
 
 <h1 id="lifecycle">Lifecycle of a Model Management Workspace</h1>
-<p>The citySchema system uses workspace folders to organize tools and data into self-contained packages that may be re-used, modified and archived.  While in use these workspaces provide an environment for re-purposing and customizing tools.  After a preriod of use, a workspace can be zipped and retired to become a frozen container for all of the decisions and procedures that were applied and may be revisited. </p>   
+<p>The citySchema system uses workspace folders to organize tools and data into self-contained packages that may be re-used, modified and archived.  While in use these workspaces provide an environment for re-purposing and customizing tools.  After a period of use, a workspace can be zipped and retired to become a frozen container for all of the decisions and procedures that were applied and may be revisited. </p>   
 <p>A model management workspace is intended to produce new editions of the model collection that represent updates to the Prior Archived model collection.  In the lifespan of a model management workspace several new editions can be made based on the same Prior Archived collection.  The changes reflected by the Stage feature classes are cumulative. 
-Stages in the lifesycle of a model management worspace are depicted in the slideshow, below. 
+Stages in the lifesycle of a model management workspace are depicted in the slideshow, below. 
 
     <!-- Slideshow container -->
     <div id="moreslides" class="slideshow in-page" 
