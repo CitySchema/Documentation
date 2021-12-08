@@ -487,7 +487,7 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
       <h3>Import, Double-Check and Identify Multipatch Models</h3>
       <p>
 
-      <p>The tool, <b>Import Models</b> task provides user-settable variables for a bunch of model attributes related to model provenance.  The procedure is based on the tool <b>2b. Import Models</b>.  The core of the tool is the ArcGIS <b>Import 3D Files</b> tool which can take one or more models and convert them multipatch features.  You should chose the <b>Prep_MP</b> feature class in your batch folder for the output. </p>
+      <p>The <b>Import Models</b> task provides user-settable variables for a bunch of model attributes related to model provenance.  The procedure is based on the tool <b>2b. Import Models</b>.  The core of the tool is the ArcGIS <b>Import 3D Files</b> tool which can take one or more models and convert them multipatch features.  You should chose the <b>Prep_MP</b> feature class in your batch folder for the output. </p>
         
       The Import Models tool assumes that the input models are already properly located in the BosMetro 3D coordinate system -- which they will be if you went through the process of <a href="#inspect"> Inspection and Adjustment</a> described above.  In case the reference for this coordinate system gets broken, you can find the <b>Bos_MaSP_USFt_Shift.prj</b> in your <b>ModelMgt/Tools/Projections</b> folder.  The Vertical coordinate system should always be <b>Navd88 US Feet (Height)</b>  
       </p><p>
@@ -548,12 +548,25 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
         At this point, our Stage.gdb includes several feature classes representing the prior-archived state of the model collection, and a <b>NewModels_MP</b> feature class with several new models. 
       </p>
 
+      <h3>Revising a Model Batch</h3>
+      <p>If you need to revise a model batch because you discovered a mistake or a few more models turn up that you wish to add and you don't want to start another batch.  Here's what you do:</p>
+      <ol>
+         <li>Use the <b>ModelBatch</b> and the <b>RecInit_Dt</b> fileds tofind the records in <b>Stage_NewModel_MP</b> associated with the batch -- and delete them from Stage_NewModels_MP. 
+        <li>If you need to import new models, these canbe appended to the <b>Prep_MP</b> feature class without anydamage to the models that are already in there.  If any of the new models are redundant withones already imported,you will need to clean these up in Prep_MP.  
+        <li>Run the <b>Assign Geometric and Reference Attributes</b> task again.  This wipes out whatever was in Ready_MP.
+        <li>Finally, append Ready_MP to Stage_NewModels_MP again. 
+      </ol>
+
+
+
         <hr>
 
       <h2 id="stage">Updating the Model Collection</h2>
-      <p>Importing new models is one aspect of updating the model collection.  Next we will visit each new model to see how existing models may be affected by these new additions. Other changes may have occurred since the last update with regard to existing proposals having been promoted through the approval,permitting or construction process. 
+      <p>Importing new models is one aspect of updating the model collection.  Next, we will visit each new model to see how existing models may be affected by these new additions. For example, new models may land ontop of old models that may need their Status demoted to some phase of demolition. 
       </p><p>
-      All of these changes will call for updates to the <b>Model Status Attibutes</b> for existing models in any of the Stage feature classes.      Model Status attributes include: 
+      The update process also involves looking for models in <b>Stage_Proposed_MP</b> and <b>Stage_INternal_MP</b> that may have been promoted through the approval,permitting or construction process since the last update.  This search may be facilitated by joining these feature classes with the <b>Development Log</b>.   
+      </p><p>
+      As we look at each of these models, we can refer to current aerial photography to see what we can see.  When changes to status are warranted, we should be ready to update any of the <b>Model Status Attributes</b> as follows: 
       <ul>
         <li><b>Status</b>, 
           <li><b>Appear Date</b>, 
@@ -563,10 +576,6 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
                 </ul>.  
         <p>It is crucial at this stage that you have made yourself familiar with the <a href="../model_collection/index.htm#datadictionary">Model Attribute Dictionary</a>.  Keep it handy so that you understand how to fill in these fields which are crucial to the integrity of the 3D models collection!
         </p>
-  
-
-
-
 
       <div class="feature funfact">
       <h3>Model Collection Stewardship and Research</h3>
