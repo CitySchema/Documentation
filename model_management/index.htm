@@ -733,11 +733,11 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
           <h3>Start a New Edit Batch</h3>
 
 
-        <h3>The Modifying Models in ArcGIS Pro</h3>
+        <h3>Modifying Models in ArcGIS Pro</h3>
         <p>  If you have a very simple model that you would like to try splitting with the <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/slice-a-multipatch-feature.htm" target="arcdoc"> ArcGIS Split Multipatch tool</a>, then follow these steps:
         
           <ol>
-            <li>Select the model and set its status to <b>Modified</b> and its <b>Disappear Date</b> as concurrent with the appear date of the model that is causing the modification. 
+            <li>Select the model and set its status to <b>Modified</b> and its <b>Disappear Date</b> as concurrent with the Appear Date of the model that is causing the modification. 
             <li>Use the Append tool to copy the model into to the <b>Prep_MP</b> feature class in your edit batch. 
             <li>Use the ArcGIS 3D editing tools to <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/modify-a-multipatch-feature.htm" target="arcdoc">Modify</a> or <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/slice-a-multipatch-feature.htm" target="arcdoc">Split</a> the model in Prep_MP. 
             <li>Follow the procedures for <a href="#import">Importing a model</a>, outlined above.
@@ -752,14 +752,14 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
           Typically, models that need to be modified are in the <b>Active_MP</b> feature class. Therefore these models are reflected in one of the published SketchUp tiles or as an OBJ file in the Repository / Catalog.  Using one of these representations may be the best starting place for editing in your preferred 3D authoring tool. Or you may be able to find the original source model in the folder designated by the model's <b>ModelBatch</b> attribute. In this case, the procedure for editing is identical to the procedure outlined in  <a href="#import">Importing a Model</a>.
       </p><p>
         <ol>
-          <li>Update the model's <b>Status</b> to <b>Modified</b>, <b>Retired</b> or <b>Reject</b> depending on the circumdtances.  See the <a href="../model_collection/index.htm#status_dictionnary">Staus Domain Dictionary</a> for clarification.
+          <li>Update the model's <b>Status</b> to <b>Modified</b>, <b>Retired</b> or <b>Reject</b> depending on the circumstances.  See the <a href="../model_collection/index.htm#status_dictionnary">Staus Domain Dictionary</a> for clarification.
           <li>Use the Flag Edits task to Set the model's <b>QA_Flag</b> to <b> 3d Edit Candidate</b>. 
           <li>Set the model's <b>Edit_Action</b> to reflect the change that is going to be made. 
           <li>Start a model batch folder and geodatabase as described above in the section on <a href="#import">Importing Models</a>
           <li>Find an editable model in the location specified as the original <b>ModelBatch</b>.  Or if the model was previously exported with a Sketchup tile, you might edit it in the context of that tile.
           <li>Follow the instructions for <a href="#import">Importing Models</a>, above to import the edited model.
         </ol>
-        <p>Note that all new models recieve new <b>Model_ID</b>s, as this change is how changed models are discovered by applications that are looking to detect updates. 
+        <p>Note that all new models receive new <b>Model_ID</b>s, as this change is how changed models are discovered by applications that are looking to detect updates. 
         </p>
       </div>
         
@@ -778,14 +778,6 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
               It <b><i>is</i></b> confusing that the Appear date of the current portion of the modified model is recent, when the actual structure may be 100 years old.  This is one reason why this Appear Date is not called <b>Year Built</b>.  The original year built for the structure, if it is known could be preserved as the Appear Date on the historical version of the modified model.    
             <p>This situation is an illustration of why the model collection and its attributes is primarily concerned with <b>Models</b> and not with <b>Buildings</b>. 
             </div>
-
-
-
-
-<h2>Automating Batch Edits with ArcGIS Pro </h2>
-<p>There are a few use-cases where you can apply geoprocessing tools to accomplish editing Tasks.  Theswe include case where applied textures need to be removed or all of the model's <a href="#normals">surface normals</a> need to be flipped. Or you may want to add basements to a bunch of models to make sure that they extend through the terrain.  The latter case is useful for models whose corners appear to be floating when viewedonlow-resolution terrain models.
-For these cases, you can use tools in the <b>4. Export Edit Models</b> tool group. 
-</p><p>
 
 
 
