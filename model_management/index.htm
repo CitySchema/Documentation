@@ -74,9 +74,9 @@
   <p>
     <b>Managing a collection of 3D models is different from managing traditional two-dimensional GIS data.</b> Points, Lines and Polygons are easy to visually inspect and to repair with a few strokes of the cursor.  Rules of 2D topology can be evaluated automatically.  Many of the problems that occur with GIS-based 3D model collections are more difficult to discover.  There are many data-sets involved, including historical models, alternative models, superseded proposals, retired models, etc, which are rarely looked at.  3D models are tricky to repair and replace -- particularly if the source files are no longer available.  When a 3D model is corrupt, the effect is sometimes invisible in one context, such as the desktop GIS application, but becomes evident when the model is translated to another format.  it is often the case that problems such as lost or corrupted models are not discovered for weeks, and when they are, it can be difficult to trace the problem or to know how many other models may have been affected.  
   </p><p>
-    The special problems of managing temporally and geographically extended collections of 3d models explain the importance of the special pains taken in designing the model management workflow to safeguard against accidental data loss, to maintain an audit trail for all changes,  to assure a roll-back capability, and to keep track of source data.  
+    The special problems of managing temporally and geographically extended collections of 3d models are the reason for the special pains taken in designing the model management workflow to safeguard against accidental data loss, to maintain an audit trail for all changes,  to assure a roll-back capability, and to keep track of source data.  
     </p><p>
-    Managers and technicians should each read this documentation to understand the scheme for naming and labeling assets. To be aware that there is a place for storing and finding every piece of the city model.  This will relieve the technician from having to make thousands of new decisions, and learning from the unsuccessful ones.  It will also assure the manager that the information resources are recoverable even after the technician moves on to other jobs. 
+    Managers and technicians should each read this documentation to understand that there is a place for storing and finding every piece of the city model.  This will relieve the technician from having to make thousands of new decisions, save the cost of learning from unsuccessful ones.  This understanding, along with periodic quality checks will assure the IT manager that the information resources are recoverable even after the technician moves on to other jobs. 
     </p>
   
 
@@ -321,7 +321,7 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
     <hr>
 
     <h3>Prepare Prior Archive Feature Classes</h3>
-    <p>The geodatabases in the Prior Archive folder provide the read-only base-line reference for the updates and additions that are carried out during the lifecycle of the Model Management workspace.  To assure that all of the changes made to the model collection are traceable and reversable, it is important that the prior archived collection be latest edition created by the previously retired Model Management Workspace. 
+    <p>The geodatabases in the Prior Archive folder provide the read-only base-line reference for the updates and additions that are carried out during the lifecycle of the Model Management workspace.  To assure that all of the changes made to the model collection are traceable and reversible, it is important that the prior archived collection be latest edition created by the previously retired Model Management Workspace. 
       
     <p>If you are making changes to the table schema for multipatches, you should make these changes to each of your prior archived feature classes. The model management workflows require that the schema for each of the model feature classes is exactly the same. You might find it useful to make a copy of the tool, <b>1c. Migrate Prior FCs</b> to make a consistent migration for each of the prior feature classes.  Do not alter the original tool which is used for initializing the stage feature classes based on the working model template.  
     </p>
@@ -538,7 +538,7 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
       <h3>3e. Assign Geometric and Reference Attributes</h3>
       <p>The next step in enrolling new models is to assign attributes that are calculated based on the model geometry.  This includes assignment of the Parcel ID and Assessor's link, Assignment of the model centroid coordinates and associated links to the oblique imagery in Google Maps and Nearmap; and the Tile ID. 
       </p><p>
-        The <b>3e. Assign Geometric Attributes </b> tool takes all of the features in the Prep_MP feature class and assigns the attributes, placing the fully attributed models into the Ready_MP feature class.   
+        The Assign Geometric Attributes tool takes all of the features in the Prep_MP feature class and assigns the attributes, placing the fully attributed models into the Ready_MP feature class.   
         </p>
 
         <h3>2d. Append Ready_MP models to NewModels_MP</h3>
@@ -561,7 +561,7 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
 
         <hr>
 
-      <h2 id="stage">Updating the Model Collection</h2>
+      <h2 id="stage">Updating Existing Models </h2>
       <p>Importing new models is one aspect of updating the model collection.  Next, we will visit each new model to see how existing models may be affected by these new additions. For example, new models may land ontop of old models that may need their Status demoted to some phase of demolition. 
       </p><p>
       The update process also involves looking for models in <b>Stage_Proposed_MP</b> and <b>Stage_INternal_MP</b> that may have been promoted through the approval,permitting or construction process since the last update.  This search may be facilitated by joining these feature classes with the <b>Development Log</b>.   
@@ -579,13 +579,13 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
 
       <div class="feature funfact">
       <h3>Model Collection Stewardship and Research</h3>
-      <p>There are several aspects of managing the model collection that can be thought of as historical research. This is a useful mind-set for understanding the reason and the right sorts of values for the <b>Model Status</b> and <b>Model Provenance</b> attributes.  In the setting of a typical municipal GIS or urban planning department, the business and time investment is oriented predominantly toward the present and future situations.  Care has been taken in the design of the model collection schema and management workflows to streamline the update tasks so that preservation of historical information is a side-product that leaves a priceless historical record with practically no additional work on the part of the curator. 
+      <p>There are several aspects of managing the model collection that can be thought of as historical research. This is a useful mind-set for understanding the right sorts of values for the <b>Model Status</b> and <b>Model Provenance</b> attributes.  In the setting of a typical municipal GIS or urban planning department, the business and time investment is oriented predominantly toward the present and future situations.  Care has been taken in the design of the model collection schema and management workflows to streamline the update tasks so that preservation of historical information is a side-product that leaves a priceless historical record with practically no additional work on the part of the curator. 
       </p><p>
-      The model collection schema is built to support research.  The process of updating the model to reflect current conditions requires the consultation of reference materials such as aerial photos or the development log, permitting and assessing records, etc.  The automated attribute assignment procedure, described above streamlined access to reference resources such as the latest Google Maps or NearMap and Assessing department viewers. The Appear Date, Dissapear Date Appear Source and Dissapear Source attributes provide a place to record the source documents that confirm these observations.   Proper attribution of this kind is a big time-saver practically speaking.  Reference material must be checked. It is easy to fill in these attributes when the references are at hand.  Recording the facts in the catalog means that the references wil not have to be checked again. 
+      The model collection schema is built to support research.  The process of updating the model to reflect current conditions requires the consultation of reference materials such as aerial photos or the development log, permitting and assessing records, etc.  The automated attribute assignment procedure, described above streamlined access to reference resources such as the latest Google Maps or NearMap and Assessing department viewers. The Appear Date, Disappear Date Appear Source and Disappear Source attributes provide a place to record the source documents that confirm these observations.   Proper attribution of this kind is a big time-saver practically speaking.  Reference material must be checked. It is easy to fill in these attributes when the references are at hand.  Recording the facts in the catalog means that the references wil not have to be checked again. 
       </p><p>
-      The same model collection schema is useful for pure historical research and development of models of past street-scapes that do not exist anymore.  Over most of the city, we may not have the knowledge and date integrity to be able to zoom back in time with a time-slider.  One difficulty is that we do not know the true appear date for most of the models. Nor do we have models of past structures dating to earlier than 2003.  Nevertheless, the model collection schema would allow an interested person to add historical models and to data to annotate the appear and disappear dates for structures using historical maps.   
+      The same model collection schema is useful for pure historical research and development of models of past streetscapes that do not exist anymore.  Over most of the city, we may not have the knowledge and date-integrity to be able to zoom back in time with a time-slider.  One difficulty is that we do not know the true appear date for most of the models. Nor do we have models of past structures dating to earlier than 2003.  Nevertheless, the model collection schema would allow an interested person to add historical models and to data to annotate the appear and disappear dates for structures using historical maps.   
       </p>
-      <p>Keep in mind that Appear and Disappear dates do not necessarily reflect "year built" or "year demolished". Rather, these attributes reflect the sources that record the date that the structure is first confirmed to exist or to have gone missing. Understanding the source ofthe information provides essential information that may help to articulate and clarify matters when and if new information becomes available.  Most importantly,recording the information when you have it, eliminates the need to check sources again.  
+      <p>Keep in mind that Appear and Disappear dates do not necessarily reflect "year built" or "year demolished". Rather, these attributes reflect the sources that record the date that the structure is first confirmed to exist or to have gone missing. Recording this reference information when you have it eliminates the need to check sources again until a better source of information becomes available.  
       </div>
 
 
@@ -598,16 +598,16 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
  
 
       <h3>Understanding the Stage Edit Views and the Status Routing Process</h3>
-      <p>As described in more detail in the <a href="../model_collection/index.htm" target="outboard">The Building Model Collection</a>. The geodatabase view of the model collection is segmented into feature classes according to <b>Model Status</b> This segmentation by status streamlines applications that are focused on the current or near-future views of the model collection.   It is important to keep in mind that each of the feature classes has exactly the same attribute schema.  When we look at the collection from the archival asset management viewpoint, all of the status classes are viewed as a single collection (segmented by tile). 
+      <p>As described in more detail in the <a href="../model_collection/index.htm" target="outboard">The Building Model Collection</a>, the geodatabase view of the model collection is segmented into feature classes according to <b>Model Status</b> This segmentation by status streamlines applications that are focused on the current or near-future views of the model collection.   It is important to keep in mind that each of the feature classes has exactly the same attribute schema.  When we look at the collection from the archival asset management viewpoint, all of the status classes are viewed as a single collection (segmented by tile). 
       </p><p>
       The GIS-based segmentation of the collection is useful but requires a little trickery in the development of new editions, since updating the status of a model can cause the model to jump from one feature class to another.  
       Experience has shown that trying to accomplish changes of this kind by copy/pasting multipatch models from one feature class to another is a recipe for disaster -- some of which may not come to light until weeks or months later, whereupon, one has a sickening feeling of wondering how many other models may have failed to copy or paste properly. 
       </p><p>
-      The way we avoid this problem is by setting up the Stage feature classes so that any attribute edits including status changes may be made in the Stage feature classes, where they may be reviewed and made logically consistent.  Deletions of models from the collection are flagged by setting the <b>Model Status</b>  to <b>Retired</b> or to <b>Expunge</b> When the next edition is published, the models in the Stage feature classes are routed to their new feature classes using the <b>StatusRouter</b> tool, which will be discussed below. [LINK].
+      The way we avoid this problem is by setting up the Stage feature classes so that any attribute edits including status changes may be made in the Stage feature classes, where they may be reviewed and made logically consistent.  Deletions of models from the collection are flagged by setting the <b>Model Status</b>  to <b>Retired</b> or to <b>Expunge</b>. When the next edition is published, the models in the Stage feature classes are routed to their new feature classes using the <b>StatusRouter</b> tool, which will be discussed below. [LINK].
       </p>
       <p>
       <h3>The Stage Edit Views</h3>
-      <p>The process of updating the status of models can be confusing, since it is often the case that new models completely cover previous models.  It is helpful to be able to turn classes of models on and off according to their new status values.  This can be troublesome, because the Active_MP layer with its 140,000 models takes a long time to draw.  Many hours of trying to work around these awkward problems has led to the development of a set of <a href="https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/definition-query.htm" target="arcdoc">Definition Query Views</a> that allow for sets features in the Stage feature classes to be quickly flicked on and off according to their status values.  The neat thing about this, is that picking a new status for a model causes it to automatically disappear from one definition query view and appear in another.  
+      <p>The process of updating the status of models can be confusing, since it is often the case that new models completely cover previous models.  It is helpful to be able to turn classes of models on and off according to their new status values.  This can be troublesome, because the Active_MP layer with its 140,000 models takes a long time to draw.  Many hours of trying to work around these awkward problems has led to the development of a set of <a href="https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/definition-query.htm" target="arcdoc">Definition Query Views</a> that sort the features in the Stage feature classes into previews of the target feature classes.   The neat thing about this, is that picking a new status for a model causes it to automatically disappear from one definition query view and appear in another.  This allows a very convenient way of checknig the logical consistency of the collection as we are updating it. 
       </p>
       <div class="feature tour">
       <h3>Explore the Stage Edit Views</h3>
@@ -622,10 +622,6 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
         </p><p>
         To examine new models that have a status of <b>Board Approved</b> or <b>Permitted</b> you may want to leave the <B>Active Stable DQV</b>  turned on, while the <B>Active Demo Candidates DQV</b> is unchecked.  Turn on the <b>Proposed Stable DQV</b>, and the <b>New Models Proposed DQV</b>, which should expose any conflicts between the New Models feature class with models in the Proposed feature class -- that may need to have therir status set to <b>Superseded Proposal</b>.  Adjusting the status this way wil cause the affected model to jump to the <b>Proposed Internal DQV</b>.  
       </p>
-        <p>Notice that each of the layers that is basedon the <b>Stage_Proposed_MP</b> feature class is joined to the development log which makes it easy to check whether models have advanced inthe review process since the last update. 
-        </p> <p>
-        When you encounter a model that requires editing for any reason, its <b>QA_Flag</b> should be set to <b>3D_Edit_Candidate</b>, which wil make it jup to one of the DQV layers in the <b>Expunged ~ 3DEdit ~ Retired</b> layer group. 
-    </p>
       </div>
 <h3>Regenerating or Modifying the Stage Edit Layers</h3>
 <p> It is inevitable that you will lose or want to modify or recover one or more Stage Edit Views.  The masters of the current working version of the entire group layer is stored in the <b>ArcDocs/Layers</b> folder in the current Model Management workspace. If you make changes to yours, be sure tosave the group layer there!    
@@ -637,7 +633,7 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
 
       <div class="feature funfact">
      <h3>Never Delete Models from the Stage Feature Classes</h3>
-     <p>The principle of reversibility for all edits made in this model collection management workflow requires that models not be deleted from any of the Stage feature classes.  To prevent a model from making it to the next edition, you can set its status to <b>Retired</b> which is the normal procedure.  Or for models that are exact duplicates or corrupted, you can set the status to <b>Expunge</b> or <b>3D Edit Candidate</b>  which will cause the model to be ignored by the <b>Status Router</b> tool when the next edition is produced.   
+     <p>The principle of reversibility for all edits made in this model collection management workflow requires that models not be deleted from any of the Stage feature classes.  To prevent a model from making it to the next edition, you can set its status to <b>Retired</b> which is the normal procedure.  Or for models that are exact duplicates or corrupted, you can set the status to <b>Expunge</b>, which will cause the model to be ignored by the <b>Status Router</b> tool when the next edition is produced.   
      </p><p>
       The exception to this rule is that you are allowed to delete models from the <b>NewModels_MP</b> feature class. 
      </div>
@@ -650,10 +646,6 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
      The process of updating the model collection begins by visiting each of the new models in <b>Stage_NewModels_MP</b> and investigating its context among the other models in the collection. Information sources such as aerial photos and the <b>Development_Log</b> may be consulted to see if current models may be candidates for promotions or demotions in their status.  During this process you will discover that pre-existing models may require updates to their <b>Model Status</b> attributes, or may require 3D edits. 
    </p>
   
-  
-
-
-
       <h3>Check Proposed Models for Construction / Demolition Activity</h3>
 
         Notice that Proposed models that have changed their status to <b>Under Construction</b>     
@@ -662,7 +654,7 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
       </p>
       <h3>Overview</h3>
       <ol>
-        <li>Visit each of the new models.  If you have had more than one batch, it can be helpful to sort the NewModels feature class according to the Record Initialization Date.
+        <li>Visit each of the new models.  If you have had more than one batch, it can be helpful to sort the NewModels feature class according to the Record Initialization Date (RecInitDt).
         <li>Use your most current reference image, which could be Google Maps, Google Earth or NearMap to see what has been happening in the context of the new model. 
         <li>Update the Model Status attributes to reflect the status of the new model and other models that may be affected by the new project.  While you have the reference material in front of you, update the values Appear Date, Appear Source and Disappear Date and Disappear Source.  For example, 
             <ul>
@@ -672,7 +664,7 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
               <li>It is often the case that models affected by new development may have to be modified since the new project may call for the removal of parts of existing models while leaving other parts intact.  These models should have their <B>QA Flag</b> set to <b>3D Edit Candidate</b>.  These will be dealt with later. 
               <li>If a new model is a new project proposal that supersedes an existing proposal on the same site, the older model may have its status changed to <b>Superseded Proposal</b> and the <b>Disappear Date</b> should be the same as the appear date for the new proposal. 
               </uL>
-      <li>Notice that when models in the Active feature class have their Model Status values changed to <b>Demolished</b>, <b>Modified</b> or their QA Flag set to <b>3d Edit Candidate</b>, these models disappear from the <b>Stage Active DQV</b> layer to one of the other definition query views.  This allows you to quickly toggle these alternate views to expose any small models that may otherwise be hidden under other models.  
+      <li>Notice that when models in the Active feature class have their Model Status values changed to <b>Demolished</b>, <b>Modified</b>, these models disappear from the <b>Stage Active Preview</b> group layer to one of the definition query views in the <b>History Preview</b> group layer. This allows you to quickly toggle these alternate views to expose any small models that may otherwise be hidden under other models.    
       </ol>
      <div class="feature procedure">
        <h3>Time-Series Imagery in Google Earth</h3>
@@ -684,9 +676,6 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
       <p>You can quickly zoom to a site in Google Earth by copy-pasting the latitude and longitude from the model's attributes into the Google Earth search box as shown at number 1 in the figure, above.  
      </div>
 
-
-
-
      <h3>Promote Status of Proposed Models</h3>
       <p>Reviewing all of the new models and their context wil have led to many changes in other feature classes.  But there may be other changes needed to reflect the advancement of projects through the design review process.  These changes canbe found by comparing the value of <b>Status</b> with the <b>Project Status</b> attribute in the Development Log.  The fact that the Stage_Proposed_MP attribute table is already joined to the Development_Log makes this fairly easy to do.  Select by attribute queries or new definition query views can be created to highlight models that are candidates for promotion or demotion based on the comparison of the value Model Status to the latest Project Status.  These change candidates should be checked one-by one.  With reference to the most current aerials.  Then the same update procedure as described above, can be carried out. 
       </p>
@@ -695,11 +684,11 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
         </p><p> It's possible that new models that you have imported call for changes in status to proposed models.  For example, where a new model supersedes an earlier proposal.
         </p>
 
-     <h3>Don't forget to update the edit fields!</h3>
+     <!-- h3>Don't forget to update the edit fields!</h3>
      <p>As described in the data dictionary, the Reord Modification fields are updated automatically by ArcGIS.  These are very useful for traching and sorting recent modifications.  For better or worse, there is no way to stop these fields from being re-set when the model collection is migrated to the next edition.  Yet, it is important for users and managers tobe able to understand the changes that have been made to the models and their attributes.  Therefore, it is up to you to set the values for <b>Editor</b>, <b>Edit Date</b> and <b>Edit Action</b>.  
      </p><p>
       Most of the <b>Edit Actions</b> that happen to the stage feature classes during the staging process can be described as "Updated Status Attributes". The <b>3b. Update Edit Fields</b> tool facilitates updating the Edit fields by letting you select a date/time that reflects the time when you began your staging procedures.  You can fill in your user name and a value for <b>Edit Action</b> and the tool will update the edit fields for each of the five stage feature classes.  This tool uses a clever trick to copy the Record Update time stamp before it gets over-written due to the update of the edit fields.  This means that you are still able to order the records according to when the update actually happened by using the static <b>Edit Date</b> field.
-     </p>
+     </p -->
 
 <hr>
 
@@ -715,7 +704,7 @@ Stages in the lifesycle of a model management workspace are depicted in the slid
         </ol>
         
         <h3>General Model Edit Pattern</h3>
-        <p>Most edits of models form the Stage feature classes follow a pattern of changing the model's status to:
+        <p>Most edits of models from the Stage feature classes follow a pattern of changing the model's status to:
           <ul>
             <li><b>Retired</b>: which saves the original model in the Retired_MP feature class for future reference.
             <li><b>Modified</b>: which is used inthe case of models that need to be split or trimmed to make way for new models. 

@@ -130,7 +130,13 @@ p {
   margin-bottom: 8px; 
 }
 
+h1 {
+  font-size: 23px;
+  margin-bottom: 8px; 
+}
+
 h2 {
+  font-size: 19px;
   margin-bottom: 8px; 
 }
 
