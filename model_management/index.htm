@@ -86,34 +86,15 @@
     <a href="https://github.com/CitySchema" target="github">citySchema templates shared on GitHub</a> are a recommendation.  Your organization may develop its own data dictionary and metadata.  Doing this, will probably require modifying many of the tools that are shared by citySchema.org.  Nevertheless, we recommend trying the demonstrations before digging in and modifying the schema. 
     </p>
 
-    <h2 id="context">Filesystem Context </h2>
-    <figure class="right">
-      <img src="images/filesystem_context.jpg">
-      <figcaption>City Model Filesystem Context</figcaption>
-    </figure>
-    <p>The figure to the right illustrates the file system context of the model management workspace.  The folders are prefixes with <b>Bos3D</b> because this architecture template us based on the city of Boston 3D model.  Your organization may use another prefix.  It is recommended that you do use a prefix for your folders since eventually, your city model may incorporate assets form other organizations, suchas neighboring towns or campus in-holdings. 
-    </p> 
-    <p>The <b>Bos3dMaster</b> folder holds much of the prepared source material for the city model, including city-wide terran and groundplan information.  These data-sets originate in GIS workflows described elsewhere.  Bos3dMaster is where users and applications reference the currently active 3d model collection. 
-    <b>The Bos3dArchive</b> folder is used to preserve information that is not routinely used -- including the source files for 3D models that have been imported, previous versions of the development log, and selected archived snapshots of the 3D model collection. 
-    </p>
-    <p>The <b>Bos3dDev</b> folder contains workflow folders used for creating and maintaining components of the city model.  <b>Workflow Folders</b> are usually self-contained packages of ArcGIS projects, tools, source data, scratch folders and folders for data that is produced in the workflow.  The <b>ModelMgt Workflow</b> is such a folder.  A deeper dive into this folder is provided below. 
-    </p><p>
-      Workflow folders are backed up by zipping them.  Subsequent management activity might then proceed with a new dated copy of the workflow folder.  When these new generations take place, selected information, such as source files for 3D models or the last published edition of the 3D model collection would be copied to the <b>Bos3d_Archive</b> folder.   
-    </p>
-    <p>Different users in an organization may have their own  
- <h3>Local vs Remote Filesystem References</h3>
-<p>
-    All of the resources used for our demonstration project keep all of the resources for a city model are under a single directory.  In your environment, you might have the City3d master folder and the City3D_Dev files on different disks.  For the sake of portability,  our demonstration of the model management tools and procedures will be work with all resources in a single workflow folder. as shown in Figure 2. 
-  </p>
+<h2>File System Contect</h2>
+<p>The citySchema architecture makes use of a modular file-system that has evolved over time to provide a scheme for storing assets that does not gro more complicated as the number of assets or their spatial or temporal extent grows.  The file system facilitates sharing and syncing of assets between in-house and off-site installations where parts of the city model may be worked on. 
+</p><p>
+  The organization of the ModelManagement workspace folder is described below. The gitHub repo demonstration is intended to be completely self-contained.  In a production environment, it will be desirable to referenc frequently re-used assets, such as terrain models and groundplans and parcel layers from more central locations to avoid duplication.  Visit <a href="../filesystem/index.htm" target="outboard"> cityScchema Modular File System</a> to learn more about the recommended filesystem context for the ModelMgt workspace.
 
-<HR>
 
-  <h2 id="tour">Tour of the Model Management Workspace</h2>
-
-  <p>A tour of the ModelMgt workflow folder is useful for orientation to the file organization.  It also introduces the main components of the workflow.  You can watch the tour on youtube (soon) or follow along with your local copy of the workspace <a href="http://github.com/CitySchema/ModelMgt" target="github">available on github</a>.  
-  </p>
-  
- 
+<h3 id="tour">Tour of the Model Management Workspace</h3>
+<p>A tour of the ModelMgt workflow folder is useful for orientation to the file organization.  It also introduces the main components of the workflow.  You can watch the tour on youtube (soon) or follow along with your local copy of the workspace <a href="http://github.com/CitySchema/ModelMgt" target="github">available on github</a>.  
+</p>
 
   <div class="feature tour">
   <h3>Filesystem and Folders</h3>
