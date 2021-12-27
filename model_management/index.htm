@@ -36,7 +36,7 @@
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter. -->
     <h1 class="title">Managing the Building Model Collection using ArcGIS Pro</h1>
   
-<p style="background-color:khaki"><b>This page is currently under development! </b>  <br>December 22, 2021.</p> 
+<p style="background-color:khaki"><b>This page is currently under development! </b>  <br>December 27, 2021.</p> 
 
     <p>This page provides an overview of the procedures and tools for managing the collection of 3D models of buildings, bridges, walls and docks as part of a city model within the <a href="../home.index.htm">citySchema.org framework for developing, sharing and preserving city model assets</a>.
     </p><p> 
@@ -598,31 +598,38 @@ Stages in the lifecycle of a model management workspace are depicted in the slid
       The way we avoid this problem is by setting up the Stage feature classes so that any attribute edits including status changes may be made in the Stage feature classes, where they may be reviewed and made logically consistent.  Deletions of models from the collection are flagged by setting the <b>Model Status</b>  to <b>Retired</b> or to <b>Expunge</b>. When the next edition is published, the models in the Stage feature classes are routed to their new feature classes using the <b>StatusRouter</b> tool, which is discussed in more detail below.
       </p>
       <p>
-      <h3>The Stage Edit Views</h3>
-      <p>The process of updating the status of models can be confusing, since it is often the case that new models completely cover previous models.  It is helpful to be able to turn classes of models on and off according to their new status values.  This can be troublesome, because the Active_MP layer with its 140,000 models takes a long time to draw.  Many hours of trying to work around these awkward problems has led to the development of a set of <a href="https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/definition-query.htm" target="arcdoc">Definition Query Views</a> that sort the features in the Stage feature classes into previews of the target feature classes.   The neat thing about this is that picking a new status for a model causes the model to immediately disappear from one definition query view and appear in another with the appropriate symbology.  This allows a very convenient way of checking the logical consistency of the collection as we are updating it. 
-      </p>
+      
       <div class="feature tour">
+        <h3>The Stage Edit Views</h3>
+        <figure class="right">
+          <img  src="./images/stage_edit_views.jpg">
+          <figcaption>The Stage Edit Views Permit the Quick Toggling of Features according to their new Status values.</figcaption>
+        </figure>
+        <p>The process of updating the status of models can be confusing, since it is often the case that new models completely cover previous models.  It is helpful to be able to turn classes of models on and off according to their new status values.  This can be troublesome, because the Active_MP layer with its 140,000 models takes a long time to draw.  Many hours of trying to work around these awkward problems has led to the development of a set of <a href="https://pro.arcgis.com/en/pro-app/latest/help/mapping/layer-properties/definition-query.htm" target="arcdoc">Definition Query Views</a> that sort the features in the Stage feature classes into previews of the final sorted feature classes.   The neat thing about this is that picking a new status for a model causes the model to immediately disappear from one definition query view and appear in another with the appropriate symbology.  This allows a very convenient way of checking the logical consistency of the collection as we are updating it. 
+        </p>
+
       <h3>Explore the Stage Edit Views</h3>
-      <figure class="right">
-        <img  src="./images/stage_edit_views.jpg">
-        <figcaption>The Stage Edit Views Permit the Quick Toggling of Features according to their new Status values.</figcaption>
-      </figure>
-      <p>The Stage Edit Views have <b>DQV</b> appended to their names so that you don't forget that their contents are filtered by definition queries.  
-      </p><p>
-        With practice you will discover how to turn specific layers on and off to expose, for example, the models that have a value of Current or Under Construction from the Active, Proposed or New Models  feature classes.
-        This combination of definition query views makes it easy to check the logical consistency of the models involved and to spot models that need to be modified.  When such a model is discovered, its Status might be set to <b>Demolished</b> which wil cause this model to disappear from the view and appear in the <B>Active Demo Candidates DQV</b> view.   
-        </p><p>
-        To examine new models that have a status of <b>Board Approved</b> or <b>Permitted</b> you may want to leave the <B>Active Stable DQV</b>  turned on, while the <B>Active Demo Candidates DQV</b> is unchecked.  Turn on the <b>Proposed Stable DQV</b>, and the <b>New Models Proposed DQV</b>, which should expose any conflicts between the New Models feature class with models in the Proposed feature class -- that may need to have therir status set to <b>Superseded Proposal</b>.  Adjusting the status this way wil cause the affected model to jump to the <b>Proposed Internal DQV</b>.  
-      </p>
+      <p>The illustration to the right shows how the stage edit views use group layers and definition query views to sort the Stage feature classes into group layers that simulate the final status layers.  
+      <p>The <b>Stage_Active_MP</b> feature class is further broken down into the <b>Stable</b> features (those that continue to have a status of Current) and <b>Demolition Candidates</b> those that have a status that is some variation of <b>Demolished</b> It is handy to be able to toggle the demo candidates with the models in the <b>Proposed Preview</b> group layer while checking to make sure that your updates are logically consistent. 
+      <p>Working with these layers while making updates takes some practice. You may decide to modify these definition queries once you have fooled around with these.  
       </div>
+
+      <div class="feature funfact">
 <h3>Regenerating or Modifying the Stage Edit Layers</h3>
 <p> It is inevitable that you will lose or want to modify or recover one or more Stage Edit Views.  The masters of the current working version of the entire group layer is stored in the <b>ArcDocs/Layers</b> folder in the current Model Management workspace. If you make changes to yours, be sure to save the group layer there!    
 </p><p>
   It took a while for me to figure out that it is very important to uncheck the the option <b>Remove layers that have been overwritten by geoprocessing tools</b> in the ArcGIS Pro <b>Project > Geoprocessing</b> Options.  Otherwise these layers keep disappearing!  
 </p> 
-  
-  
-
+<h3>Odd behavior of Sticky Definition Querys</h3>
+<p>At ArcGIS Pro 2.9 we have a problem of queries that seem to be edited but then revert back totheir old values once you save them.  I have found that it is sometimes helpful to:
+  <ol>
+    <li>Change the query
+    <li>Then click the green checkmark above the query window.
+    <li>Look at the values againtomake sure that they reflect your changes.
+    <li>If not, remove the query and build a new one from scratch.
+  </ol>
+</div>
+     
       <div class="feature funfact">
      <h3>Never Delete Models from the Stage Feature Classes</h3>
      <p>The principle of reversibility for all edits made in this model collection management workflow requires that models not be deleted from any of the Stage feature classes.  To prevent a model from making it to the next edition, you can set its status to <b>Retired</b> which is the normal procedure.  Or for models that are exact duplicates or corrupted, you can set the status to <b>Expunge</b>, which will cause the model to be ignored by the <b>Status Router</b> tool when the next edition is produced.   
@@ -635,9 +642,9 @@ Stages in the lifecycle of a model management workspace are depicted in the slid
 <p>Enough chitchat.  Lets continue updating the collection!</p>
 
      <h3>Visit Each New Model</h3>
-     The process of updating the model collection begins by visiting each of the new models in <b>Stage_NewModels_MP</b> and investigating its context among the other models in the collection. Information sources such as aerial photos and the <b>Development_Log</b> may be consulted to see if current models may be candidates for promotions or demotions in their status.  During this process you will discover that pre-existing models may require updates to their <b>Model Status</b> attributes, or may require 3D edits. 
-   </p>
-  
+     <p>Assuming that you have imported some new models, and appended them to the <b>Stage_NewModels_MP</b> feature class, a usefulway of structuring the task of integrating these is to zoom to each one.  A handy way of doing this is to open the attribute table of unfiltered NewModels feature class, sort it according to its Object_ID, then zoom to each model.  While you are looking at it in the 3D Scene, you can check sources like aerial photography (links provided in the model attributes.)  This will confirm the model status and the demolition status of the other buildings in its context. Some of these extant models may require edits to make them logically consistent with the new models. 
+
+ 
       <h3>Check Proposed Models for Construction / Demolition Activity</h3>
 
         Notice that Proposed models that have changed their status to <b>Under Construction</b>     
@@ -669,19 +676,19 @@ Stages in the lifecycle of a model management workspace are depicted in the slid
      </div>
 
      <h3>Promote Status of Proposed Models</h3>
-      <p>Reviewing all of the new models and their context wil have led to many changes in other feature classes.  But there may be other changes needed to reflect the advancement of projects through the design review process.  These changes canbe found by comparing the value of <b>Status</b> with the <b>Project Status</b> attribute in the Development Log.  The fact that the Stage_Proposed_MP attribute table is already joined to the Development_Log makes this fairly easy to do.  Select by attribute queries or new definition query views can be created to highlight models that are candidates for promotion or demotion based on the comparison of the value Model Status to the latest Project Status.  These change candidates should be checked one-by one.  With reference to the most current aerials.  Then the same update procedure as described above, can be carried out. 
+      <p>Reviewing all of the new models and their context will have led to many changes in other feature classes.  There may be other changes needed to reflect the advancement of projects through the design review process.  These changes can be found by looking at models in the <b>Stage_Proposed_MP</b> and <b>Stage_Internal_MP</b> feature classes and comparing the value of <b>Status</b> in these feature classes with the <b>Project Status</b> attribute in the Development Log.  To facilitate this, it may be helpfulto join these feature classes with the current Development Log using the <b>Project ID</b>. Select by attribute queries or new definition query views can be created to highlight models that are candidates for promotion or demotion.  These change candidates should be checked one-by one.  With reference to the most current aerials.  Then the same update procedure as described above, can be carried out. 
       </p>
       <p>
-        Remember that the values of <B>Appear Date</b> and <b>Appear Source</b> attributes should also be updated to reflect the change in status. 
-        </p><p> It's possible that new models that you have imported call for changes in status to proposed models.  For example, where a new model supersedes an earlier proposal.
+        Remember that the values of <B>Appear Date</b>, <b>Appear Source</b>, <b>Disapp_Dt</b> and <b>Disapp_Src</b> attributes should also be updated to reflect the change in status while you have all of the source material at hand. 
         </p>
 
-     <!-- h3>Don't forget to update the edit fields!</h3>
-     <p>As described in the data dictionary, the Reord Modification fields are updated automatically by ArcGIS.  These are very useful for traching and sorting recent modifications.  For better or worse, there is no way to stop these fields from being re-set when the model collection is migrated to the next edition.  Yet, it is important for users and managers tobe able to understand the changes that have been made to the models and their attributes.  Therefore, it is up to you to set the values for <b>Editor</b>, <b>Edit Date</b> and <b>Edit Action</b>.  
+     <h3>Don't forget to update the edit fields!</h3>
+     <p>As described in the data dictionary, the Record Modification fields are updated automatically by ArcGIS.  These are very useful for traching and sorting recent modifications.  For better or worse, there is no way to stop these fields from being re-set when the model collection is migrated to the next edition.  Yet, it is important for users and managers tobe able to understand the changes that have been made to the models and their attributes.  Therefore, it is up to you to set the values for <b>Editor</b>, <b>Edit Date</b> and <b>Edit Action</b>.  
      </p><p>
-      Most of the <b>Edit Actions</b> that happen to the stage feature classes during the staging process can be described as "Updated Status Attributes". The <b>3b. Update Edit Fields</b> tool facilitates updating the Edit fields by letting you select a date/time that reflects the time when you began your staging procedures.  You can fill in your user name and a value for <b>Edit Action</b> and the tool will update the edit fields for each of the five stage feature classes.  This tool uses a clever trick to copy the Record Update time stamp before it gets over-written due to the update of the edit fields.  This means that you are still able to order the records according to when the update actually happened by using the static <b>Edit Date</b> field.
-     </p -->
-
+      Most of the <b>Edit Actions</b> that happen to the stage feature classes during the staging process can be described as "Updated Status Attributes". The <b>Update Edit Fields</b> task facilitates updating the Edit fields by looking for records in each of the Stage feature classes (except for Stage_NewModels_MP) that have a Record Modify date later than both the Recode Init Date and the Edit Date. These are records that have been modified during at somepoint inthe lifespan of the ModelMgt workspace, but that have not yet had their edit fields updated.  These records have a new Edit Date assigned and the value of Edit User is set to be the same as the Record Modified user.  
+     </p><p>
+       It would be cool to be able to preserve the original Record Modified date, but unfortunately ArcGis updates the modification date before doing the modification.  
+       
 <hr>
 
       <h1 id="edit">Model Editing Workflows</h1>
