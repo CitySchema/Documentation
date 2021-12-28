@@ -28,9 +28,9 @@
 
 let index_htm = `
 <span class="title">Templates & Tools</span>
-<!--p>This site is not yet officially open.  Feel free to look around.  Watch this space for the grand opening.
+<p>This site is not yet officially open.  Feel free to look around.  Watch this space for the grand opening.
 If you are interested in being notified with announcements, email paul b cote (no spaces) at gmail.com.
-</p -->  
+</p>  
 <ul class="treeview">
 <li class="chapter"><a href="../home/index.htm">Home Page</a></li>
     <ul class="verses">

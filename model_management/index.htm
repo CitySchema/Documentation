@@ -691,34 +691,48 @@ Stages in the lifecycle of a model management workspace are depicted in the slid
        
 <hr>
 
-      <h1 id="edit">Model Editing Workflows</h1>
+      <h1 id="edit">Model Edit Flagging and Workflows</h1>
 
-      <p>There are several sorts of situations that call for edits to the multipatch models.  
-        <ol>
-          <li>A model needs to be trimmed or split to make way for a new building that leaves part of the original model.  This is the <b>Modification Scenario</b> 
-          <li>A model may need some sort of geometric repair.
-          <li>A Model has a few faces pointed the wrong way. 
-          <li>A model has applied materials or textures other than the default plain white required if you wish to change symbology in ArcMap.
-          <li>A model has all of its faces pointed the wrong way.
-        </ol>
-        
-        <h3>General Model Edit Pattern</h3>
-        <p>Most edits of models from the Stage feature classes follow a pattern of changing the model's status to:
+      <p>In the course of your adventures trying to fit new models into their urban context you wil have come across various situations where models need to be edited or created.  Normally these situations are flagged for attention later.  There are four model editing scenarios that eachhave their own workflows soitmakes sense to accumulate this work and handle edits when you can shift intoa different mode. 
+      </p><p>
+      Here are the edit workflows and how to flag them:
+      </p>
+      <ul>
+        <li><b>New Model:</b> Flag in <b>Issue Points</b> feature class. 
           <ul>
-            <li><b>Retired</b>: which saves the original model in the Retired_MP feature class for future reference.
-            <li><b>Modified</b>: which is used inthe case of models that need to be split or trimmed to make way for new models. 
-            <li><b>Expunge</b>: which is used for models that are exact duplicates of other models or hopelessly corrupt.
-            </ul>
-          </p><p>
-            In any of the above cases, the next step is to set the value of <b>QA Flag</b> to <b>3D Edit Candidate</b>.
-          </p><p> 
-            At this point,there are a couple of divergent scenarios.  
-            <ul>
-            <li>If the models in question need to have <b>all</b> their faces flipped or to have materials removed, then you can use the appropriate tool from the <b>4. Edit Models Toolbox</b>  (more below)
-              These tools put their result directly into the <b>Stage_NewModels_MP</b> feature Class.
-              <li>In the case of models that have to be edited geometrically, there are a couple of choices depending on whether you want to do edits using ArcGIS Pro or some other editing tool.   As explained below. 
-            </ul>
-  
+            <li>Create in external editor, handle with model import workflow. 
+            <li>ArcGIS Model Creation Workflow.
+          </ul>
+        <li><b>Model 3D Edit:</b> Flag with <b>QA Flag</b> = <b>3D Edit</b>
+          <ul>
+            <li>Modify in in external editor, handle with model import workflow. 
+            <li>ArcGIS model editing workflow. 
+          </ul>
+        <li><b>Surface Edits:</b>
+          <ul>
+          <li><b>Remove Materials (Textures or Colors):</b>   <b>QA Flag</b> = <b>Remove Color</b>
+            <ul> <li>Use surface edit workflow</ul>
+          <li><b>Flip Surface Normals (all faces):</b> <b>QA Flag</b> = <b>Flip Faces</b>
+            <ul> <li>Use surface edit workflow</ul>
+          <li><b>Flip Surface Normals (subset of faces):</b> Flag with <b>QA Flag</b> = <b>3D Edit</b>
+              <ul> <li>Must be edited with external editor and imported with model import workflow. .</ul>
+          </ul>
+        </ul>
+        
+      <h3>Setting Status for Edited Models</h3>
+      <p>When models are flagged for editing, there are two options for dealing with the status of the prior version of the model.  
+      </p><p>
+        In the case of 3D model edits, if a model is being split to reflect a demolition of part of the real world structure, then the status for the prior model should be set to<b>Modified</b> so that the original model of the prior condition will be routed to the <b>History_MP</b> feature class. See the note on <a href="#modified">How the <b>Modified</b> Model Status Saves You Time</a>.
+      </p><p>
+        If a model is flagged for 3d Edits for a repair, or if themodel splitting operation is going to produce complete models of the persistent part of the structure as well as a model of the portion of the structure that will be removed, then the status of the prior model should be set to <b>Retired</b> 
+      </p><p>
+        In the case of surface edits when the new model is geometrically identical with the prior version, the status of the prior model would be set to <b>Expunge</b>.
+      </p>
+
+
+      <h2>Model Edit Workflows</h2>
+      
+
 
 
 
@@ -763,7 +777,7 @@ Stages in the lifecycle of a model management workspace are depicted in the slid
       </div>
         
         <div class="feature funfact">
-          <h3>How the <b>Modified</b> Model Status Saves You Time</h3> 
+          <h3 id="modified">How the <b>Modified</b> Model Status Saves You Time</h3> 
           <p>A common editing workflow comes into play when an existing model needs to be split to accommodate a new model of a proposed structure that will preserve part of the existing one. At the end of the process, you can have a new model that represents the portion if the existing structure that will return to the Active feature class.  And you may also end up with have a second new model that represents the "historical" portion of the original structure that is to be demolished.  As it happens, this process of model editing may be trickier and more time consuming than we would like.  
           </p>
           <p>[Illustration Needed]</p>
