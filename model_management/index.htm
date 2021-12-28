@@ -497,7 +497,7 @@ Stages in the lifecycle of a model management workspace are depicted in the slid
 
 
       <div class="feature funfact">
-        <h3>Problems with Surface Normals</h3> 
+        <h3 id="normals">Problems with Surface Normals</h3> 
         <p>One thing that makes 3D models tricker than flat points, lines, and polygons is the problem of lighting and shading.  Multipatch objects are made of triangulated faces. Your computer needs to figure out which direction each triangle is facing in order to shade it correctly.  The orientation of a face with regard to the light source is known as the <b>Surface Normal</b>.  The term "Normal" in this sense refers to vector perpendicular to the face.
         </P><p>
          It happens that one of the most common forms of corruption in multipatch models occurs when surface normals for some or all of the faces in a model are pointed in the wrong direction.  Another way of saying this is that the face or faces are <b>flipped</b> or <b>inside-out</b>.
@@ -730,51 +730,42 @@ Stages in the lifecycle of a model management workspace are depicted in the slid
       </p>
 
 
-      <h2>Model Edit Workflows</h2>
-      
-
-
-
-
-       <h2>Geometric Edits to Models</h2>
-       <p>In cases where models need to be modified or repaired geometrically you have choices tomake regardng what editing tool you want to use.  ArcGIS Pro has some tools for editing multipatches, such as <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/slice-a-multipatch-feature.htm" target="arcdoc"> ArcGIS Split Multipatch tool</a>.  These are worth a try.  In the past, I have found that they sometimes cause problems with surface normals, and mysterious phantom models that can be tricky to delete.  Admitedly, I have not tried these tools inthe latest versionof ArcGIS Pro, so all of this may be fixed. 
-       </p><p>
-        I personally like to use SketchUp as an editing tool.  Others wil prefer their own favorite tool.  The workflows for either of these are slightly different. But each of them utilizes a <b>Model Batch</b> which has been described previously [LINK].  The model batch provides a sandbox where new models can be inspected and attributes can be assigned before bringiing the changed models back into the Stage_NewModels_MP feature class. 
-       </p>
-         
-        
-          <h3>Start a New Edit Batch</h3>
-
-
-        <h3>Modifying Models in ArcGIS Pro</h3>
-        <p>  If you have a very simple model that you would like to try splitting with the <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/slice-a-multipatch-feature.htm" target="arcdoc"> ArcGIS Split Multipatch tool</a>, then follow these steps:
-        
-          <ol>
-            <li>Select the model and set its status to <b>Modified</b> and its <b>Disappear Date</b> as concurrent with the Appear Date of the model that is causing the modification. 
-            <li>Use the Append tool to copy the model into to the <b>Prep_MP</b> feature class in your edit batch. 
-            <li>Use the ArcGIS 3D editing tools to <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/modify-a-multipatch-feature.htm" target="arcdoc">Modify</a> or <a href="https://pro.arcgis.com/en/pro-app/latest/help/editing/slice-a-multipatch-feature.htm" target="arcdoc">Split</a> the model in Prep_MP. 
-            <li>Follow the procedures for <a href="#import">Importing a model</a>, outlined above.
-            </ol>
-        <p>I expect that the ArcGIS model editing tools will be improved as time marches on.  At the current writing, the author finds it preferable to use a purpose-built 3D authoring tool for editing 3D models.       
-        </p>
-        
-        
-        
-        <div class="feature procedure">
-          <h3>Edit a Current Model with Your Favorite Authoring Tool</h3>
-          Typically, models that need to be modified are in the <b>Active_MP</b> feature class. Therefore these models are reflected in one of the published SketchUp tiles or as an OBJ file in the Repository / Catalog.  Using one of these representations may be the best starting place for editing in your preferred 3D authoring tool. Or you may be able to find the original source model in the folder designated by the model's <b>ModelBatch</b> attribute. In this case, the procedure for editing is identical to the procedure outlined in  <a href="#import">Importing a Model</a>.
+      <h2>Workflow Creating Editing Models Outside of ArcGIS</h2>
+      <p>3D editing tools are very diverse in terms of their capabilities and interfaces.  It makes sense that people are inclined to use tools that they are familiar with.  The capabilities of ArcGIS Pro for 3D model creation and editing are a moving target.  It has been my experience that there are some models that are not easy to edit in ArcGIS.  But I know that this is an area that ESRI is working on.   
+      </p><p>For any of the model creation or editing workflows, it should be easy to use the downloadable models from <a href="../repocat/index.htm" target="outboard">The Repository Catalog</a> to use as source material.  Inmost cases, recent orthophotography is available for use with the tiled models.
+      </p><p> 
+        The products of these edits would then be introduced through the normal model import process described above. 
+      </p>
+      <h2>Workflow for Editing and Creating Models with ArcGIS Pro</h2>
+      <figure class="right">
+        <img  src="./images/arcgis_edit_tasks.jpg">
+        <figcaption>The Edit Models with ArcGIS task group.</figcaption>
+      </figure>
+      <p>Creating and editing models with ArcGIS is carried out in a Model Batch folder.  I recommend starting a new batch for this purpose.  If you are editing model from the pre-existing Stage feature classes, you may begin by copying these to a feature class in the Batch Geodatabase.  Then you have freedom to try things and make mistakes and check and revise your altered models before pasting or appending them into the <b>Prep_MP</b> feature class.  Once there, the procedure for adding model-specific attributes and the automatically generated attributes is the same as outlined in the section on <a href="#import">Importing Models</b>.
       </p><p>
-        <ol>
-          <li>Update the model's <b>Status</b> to <b>Modified</b>, <b>Retired</b> or <b>Reject</b> depending on the circumstances.  See the <a href="../model_collection/index.htm#status_dictionnary">Staus Domain Dictionary</a> for clarification.
-          <li>Use the Flag Edits task to Set the model's <b>QA_Flag</b> to <b> 3d Edit Candidate</b>. 
-          <li>Set the model's <b>Edit_Action</b> to reflect the change that is going to be made. 
-          <li>Start a model batch folder and geodatabase as described above in the section on <a href="#import">Importing Models</a>
-          <li>Find an editable model in the location specified as the original <b>ModelBatch</b>.  Or if the model was previously exported with a Sketchup tile, you might edit it in the context of that tile.
-          <li>Follow the instructions for <a href="#import">Importing Models</a>, above to import the edited model.
+        Models created this way are appended to the <b>Stage_NewModels_MP</b>  feature class and integrated into their context just like new models.  
+      </p>
+      <h2>WOrkflows for Surface Edits</h2>
+      <figure class="right">
+        <img  src="./images/surface_edit_tasks.jpg">
+        <figcaption>The Edit Models with ArcGIS task group.</figcaption>
+      </figure>
+
+      <p>If a model is completely inside-out as described in the sidebar: <a href="#normals"> Problems with Surface Normals</a> you can fix it with the geoprocessing tool, <b>4a. Flip Faces</b>. This tool is accessible through the <b>Surface Edits > Flip Normals </b> task.  Note that this tool flips all of the surfaces in all of the input models. 
+      </p><p>
+      Similarly, the task <b>Surface Edits > Remove Materials / Colors</b> will turn all the faces of all of the input models to white -- which is a requirement if you wish to apply thematic colors to models in ArcGIS Pro. 
+      </p><p>
+      Both of these workflows can be handled in a ModelBatch folder/geodatabase, but they also can be dealt with with the following steps:
+      </p><ol>
+        <li>Select the affected models from their Stage feature class.
+        <li>Set the value of QA Flag appropriately. 
+        <li>Run the task or tool to flip the normals or remove materials.
+        <li>The tool creates a new feature class in the Scratch folder and adds it to the table of contents of the 3d scene. New model IDs and and the values for <b>Edit User</b>, <b>Edit Action</b> and <b>Edit Date</b> are appropriately set. 
+        <li>Check the models.
+        <li>Append the fixed models to the <b>Stage_NewModels_MP</b> feature class.
+        <li>Set the <b>Status</b> forthe original models to <b>Expunge</b>.
         </ol>
-        <p>Note that all new models receive new <b>Model_ID</b>s, as this change is how changed models are discovered by applications that are looking to detect updates. 
-        </p>
-      </div>
+
         
         <div class="feature funfact">
           <h3 id="modified">How the <b>Modified</b> Model Status Saves You Time</h3> 
@@ -792,15 +783,6 @@ Stages in the lifecycle of a model management workspace are depicted in the slid
             <p>This situation is an illustration of why the model collection and its attributes is primarily concerned with <b>Models</b> and not with <b>Buildings</b>. 
             </div>
 
-
-
-       <h3>Finishing your Edits</h3>
-       <p>
-      In any case, whenever you edit a model, it is important to assign a new Model_ID and enter a short summary of the edit opreration in the <b>Edit_Action</b> field.  These details are necessary for applications that use the Repository Catalog to discover and apply updates to their remote model collections.  
-      </p>
-      <h3>Edit Tracking Fields for Edited Models</h3>
-      <p>The <b>Edit User</b>, <b>Edit Action</b> and <b>Edit Date</b> fields are assigned to new models in the <b>Prep_MP</b> feature class.  When models are imported, these are set by the Import Models tool. The various way of modifying existing models offer many oppoerunities for models to get into <b>Prep_MP</b> through other avenues.  It is therefore necessary to be extra careful to remember set the edit fields when you have the information at hand. 
-      </p>
 
 <HR>      
     
