@@ -28,7 +28,7 @@
 
 let index_htm = `
 <span class="title">Templates & Tools</span>
-<p>This site is not yet officially open.  Feel free to look around.  Watch this space for the grand opening.
+<p style="background-color: white">This site is not yet officially open.  Feel free to look around.  Watch this space for the grand opening.
 If you are interested in being notified with announcements, email paul b cote (no spaces) at gmail.com.
 </p>  
 <ul class="treeview">
