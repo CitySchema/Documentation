@@ -48,6 +48,7 @@
   border-right-color: rgb(28, 87, 121);
   border-right-width: 1px;
   font-family: 'Roboto Condensed', sans-serif;
+
 }
 
 
@@ -59,7 +60,8 @@
        overflow: auto;
        scrollbar-width: thin;
        overflow-wrap: normal; 
-       padding: 10px 0px 10px 10px;}
+       padding: 10px 0px 10px 10px;
+  }
   #article { grid-area: article; 
        /*background-color: green;*/
        padding: 10px 35px 10px 25px;}
