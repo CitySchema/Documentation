@@ -35,7 +35,6 @@ If you are interested in being notified with announcements, email paul b cote (n
 <li class="chapter"><a href="../home/index.htm">City Model Stewardship</a></li>
     <ul class="verses">
     <li class="verse"><a href="../home/index.htm#roles">Stakeholder Roles and Motivations</a></li>
-    <li class="verse"><a href="../home/index.htm#challenges">City Modeling Challenges</a></li>
     <li class="verse"><a href="../home/index.htm#oais">Archival Asset Management Approach</a></li>
     <li class="verse"><a href="../home/index.htm#fab">Features and Benefits</a></li>
     <li class="verse"><a href="../home/index.htm#why">Coordination of Effort</a></li>
