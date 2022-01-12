@@ -4,7 +4,7 @@
 <!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
 <head> <!-- Edit the following for each page -->
     <title>Template</title>
-    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation avout cross-siciplinary collaboration on city models. ">
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation avout cross-disciplinary collaboration on city models. ">
     <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
     <meta name="author" content="Paul B. Cote">
     

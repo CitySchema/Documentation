@@ -28,10 +28,15 @@
 
 let index_htm = `
 <span class="title">Templates & Tools</span>
-<p style="background-color: white; margin-left: -10px; padding-left: 10px;">This site is not yet officially open.  Feel free to look around.  Watch this space for the grand opening.
-If you are interested in being notified with announcements, email paul b cote (no spaces) at gmail.com.
+<p style="background-color: white; margin-left: -10px; padding-left: 10px;">Now Open! 
 </p>  
 <ul class="treeview">
+<li class="chapter"><a href="../whatsnew/index.htm">Whats New: Recent Updates</a></li>
+    <ul class="verses">
+    <li class="verse"><a href="../whatsnew/index.htm#coordinationvid">Intro Video Posted</a></li>
+    <li class="verse"><a href="../whatsnew/index.htm#2022funding">A year of new funding!</a></li>
+    <li class="verse"><a href="../whatsnew/index.htm#modelmgt_git">ArcGIS Pro Model Management Tools Posted</a></li>
+</ul>
 <li class="chapter"><a href="../home/index.htm">City Model Stewardship</a></li>
     <ul class="verses">
     <li class="verse"><a href="../home/index.htm#roles">Stakeholder Roles and Motivations</a></li>
