@@ -37,10 +37,19 @@
 <!-- Page content goes inside the article div -->
   <div id="article">
 
+<h2>Predictable File Management Reduces Stress</h2>
+<p>The city model has <b><i>a lot of parts</b></i>.  The conventions for file naming and location suggested throughout this documentation are oriented toward relieving the model technician and curator and their colleagues from having to make a lot of decisions, and toward letting one enjoy a situation where one generally knows where to find things. Following a convention such as this provides the management with the confidence that the critical city model assets are not subject to predictable silent entropy.  
+</p>
+ 
   <h2 id="context">citySchema Modular File System</h2>
-  <p>The citySchema architecture makes use of a modular file-system that has evolved over time to provide a scheme for storing assets that does not gro more complicated as the number of assets or their spatial or temporal extent grows.  The file system facilitates sharing and syncing of assets between in-house and off-site installations where parts of the city model may be worked on. 
-  </p><p>
+  <p>The citySchema architecture makes use of a modular file-system that has evolved over time to provide a scheme for storing assets that does not grow more complicated as the number of assets or their spatial or temporal extent grows.  The file system facilitates sharing and syncing of assets between in-house and off-site installations where parts of the city model may be worked on. 
+  </p>
   
+  <h3>File Re-Use and Local Backup Strategy</h3>
+<p>Every agency or project will have its local file-systems that have their own arrangements for sharing, permissions, regular backups and restore capability. There are basically twoclasses of file security that ought to be considered.  We wil revisit these issues after introducing the major components of the citySchema file management architecture. 
+  <p>
+ 
+
   <figure class="right">
     <img src="images/filesystem_context.jpg">
     <figcaption>City Model Filesystem Context</figcaption>
@@ -52,21 +61,15 @@
   <b>The Bos3dArchive</b> folder is used to preserve information that is not routinely used -- including the source files for 3D models that have been imported, previous versions of the development log, and selected archived snapshots of the 3D model collection. 
   </p>
   <p>The <b>Bos3dDev</b> folder contains workflow folders used for creating and maintaining components of the city model.  <b>Workflow Folders</b> are usually self-contained packages of ArcGIS projects, tools, source data, scratch folders and folders for data that is produced in the workflow.  The <b>ModelMgt Workflow</b> is such a folder.  A deeper dive into this folder is provided below. 
-  </p><p>
-    Workflow folders are backed up by zipping them.  Subsequent management activity might then proceed with a new dated copy of the workflow folder.  When these new generations take place, selected information, such as source files for 3D models or the last published edition of the 3D model collection would be copied to the <b>Bos3d_Archive</b> folder.   
   </p>
-  <p>Different users in an organization may have their own  
-<h3>Local vs Remote Filesystem References</h3>
-<p>
-  All of the resources used for our demonstration project keep all of the resources for a city model are under a single directory.  In your environment, you might have the City3d master folder and the City3D_Dev files on different disks.  For the sake of portability,  our demonstration of the model management tools and procedures will be work with all resources in a single workflow folder. as shown in Figure 2. 
-</p>
+ 
 
 <h2 id="dev">The Cty3dDev Folder</h2>
 <figure class="right">
   <img src="images/dev_folder.jpg" style="height: 350px; width: auto;">
   <figcaption>City Model Filesystem Context</figcaption>
 </figure>
-<p>City model maintenance and development projects make use of source data from the Cty3d_Master folder.  There may be other sources that different projects have in common that are not yet in the Master repository.  Project workflows may be cloned and forked from time to time. We don't want to have to make duplicates of shared resources every time a workflow id cloned.  This is one example illustrating the need for a modular system for organizing development work. 
+<p>City model maintenance and development projects make use of source data from the Cty3d_Master folder.  There may be other sources that different projects have in common that are not yet in the Master repository.  Project workflows may be cloned and forked from time to time. We don't want to have to make duplicates of shared resources every time a workflow is cloned.  This is one example illustrating the need for a modular system for organizing development work. 
 </p> <p>
 Because you may have more than one person or agency sharing development work, it is customary to for each of them to append an identifier name to their Development folder, e.g. <b>Cty3dDev_pbc</b>.
 
@@ -74,28 +77,46 @@ Because you may have more than one person or agency sharing development work, it
 
 <p><b>ArcDocs Folder:</b> Holds ArcGIS projects and layer files that may be re-used by different projects and possibly uploaded to the <b>Cty3d_master/ArcDocs</b> folder.
 
-<p><b>RepoCat_Stage Folder:</b> is where various workflows place the resources that are destined for the next edition of the <a href="../repocat/index.htm" target="sidecar">Repository Catalog </a>. This includes the tiled download files and the city-wide files.
-
   <p><b>Documentation Folder:</b> The place where user documentation is stored.  
   
-    <p><b>The RepoCat_Stage Folder:</b> is where various workflows place the resources that are destined for the next edition of the <a href="../repocat/index.htm" target="sidecar">Repository Catalog </a>. This includes the tiled download files and the final city-wide download files.
-
-    <p><b>SandBoxModels Folder:</b> Sandbox models are extracts frmothe city model that are issued in formats editable by 3D modeling tools.  These are produced by subject-specific variations on the SandBoxClipper workflow, stored in this central location, possibly tobe copied to the CtyArchive folder.  Some of these sandbox models may be in their original condition.  Others may be used for placing models or editing models during edit procedures associated with the ModelMgt workflows. 
-
     <p><b>ServicePack Folder:</b> The way that changes get shared between a developer and the Cty3dMaster or Cty3dArchive folder is through service packs, that bundle new assets with installation instructions.  Service packs are folders that incorporate a date string into the name e.g. <b>Cty3d_SrcvicePack_20211221</b>.  
       
     <p><b>Sources Folder:</b> Many workflows incorporate shared sources, such as terrain models or parcel dat6abases. Where possible the tools and documents in a workflow would reference these form the Cty3dMaster folder.  In cases where the sources do not exist in the Master folder, they may be placed here and referred to with relative path references, as usual.
   
     <p><b>Tools Folder:</b> Most tools are workflow-specific and stored within specific workflow folders.  There are some tools that are useful in many workflows.  These may be stored in the Cty3dDev_usr folder.  In the cae of ArcGIS toolboxes or FME workbenches or Python classes, these would be referenced with relative pathnames from within the workflow folders where they are used.  This makes it easy to keep one up-to-date version of these utilities. 
   
-      <p><b>Workflows Folder:</b> Workflow folders contain documents, tools and sources that produce new derived data.  For ecample, the <b>SandBoxClipper workflow folder</b> includes an arcGIS project and toolbox that provides the setting fro clipping out a rectangular extract form the city model which may then be exported to an editable 3D model by an FME workbench that is also included in the <b>Tools</b> folder within that workflow.  
+      <p><b>Workflows Folder:</b> Workflow folders contain documents, tools and sources that produce new derived data.  For example, the <b>SandBoxClipper workflow folder</b> includes an arcGIS project and toolbox that provides the setting fro clipping out a rectangular extract form the city model which may then be exported to an editable 3D model by an FME workbench that is also included in the <b>Tools</b> folder within that workflow.  
       <p>Workflow folders are designed to use relative path references so that they may be cloned and renamed.  
       </p>
+
       
-      
+    <h2>Modular Structure of a WorkFlow Folder</h2>  
+    <p>The citySchema project has four primary workflows:  
+      <span style="text-align: center">
+      <table class="dictionary">
+        <tr><th>Long Name</th><th>Workspace Name</th></tr>
+        <tr><td>Building Model Management</td><td>ModelMgt</td></tr> 
+        <tr><td>Terrain Assembly and Tiling</td><td>ModularTerrain</td></tr> 
+        <tr><td>Groundplan Tiling</td><td>GroundplanTiler</td></tr>
+        <tr><td>Preparation of Custom Sandbox Models</td><td>SandboxClipper</td></tr>
+      </table>
+    </span>
+      <p>It is helpful to think of each of these workflows as several patterns in common.  
 
 
-    
+      <h3>Workspace Patterns</h3>
+      <figure class="right">
+      <img src="images/generic_workflow.jpg" style="height: 180px; width: auto;">
+     <figcaption>Folders in a workspace</figcaption>
+    </figure>
+      <ul>
+        <li>Each workspace serves as a sort of factory that processes Source data with Tools that produce Derived Data and Scratch Data.
+        <li>  Sources unique to a project are contained within the local Sources folder.  But other sources may be referenced from the Cty3dDev_xyz/Sources folder or from the Cty3DMaster folder.
+        </h3>Each project uses relative path names to refer to sources. Choices about the storage location of projects should consider maintaining the integrity of path references in order to make workspaces forkable and re-useable. 
+        <li>Working documents provide a context for applying the tools to the sources and savng re-useable project data -- in our case these project documents are stored in the <b>ArcDocs folder</b>.  If you are using some other software like Rhino, you would keep those documents in your RhinoDocs folder.   
+        <li>When a project has served its purpose, it can be retired by zipping it.  And the same project can then be forked to re-use the latest tools, etc for the next application.
+        </ul> 
+
 
     
 
