@@ -51,6 +51,7 @@
       <li><a href="#project">Tour of the ArcGIS Pro Project: Properties, Layers and Views</a>
       <li><a href="#initialize">Initializing the Workspace</a>
       <li><a href="#import">Import, Inspect and Enroll Models</a>
+      <li><a href="#normals">Surface Normals: Why models may not be reflecting light correctly.</a>
       <li><a href="#stage">Promote and Demote Models</a>
       <li><a href="#edit">Model Editing Workflows</a>
       <li><a href="#nextedition">Publishing the Next Edition Model Collection</a>
@@ -497,12 +498,21 @@ Stages in the lifecycle of a model management workspace are depicted in the slid
 
       <div class="feature funfact">
         <h3 id="normals">Problems with Surface Normals</h3> 
+        <figure class="right">
+          <img  src="./images/goodnormals.jpg">
+          <figcaption>A model with correctly-oriented surface normals.</figcaption>
+        </figure>
+        <figure class="right">
+          <img  src="./images/badnormals.jpg">
+          <figcaption>A model with bad surface normals.</figcaption>
+        </figure>
         <p>One thing that makes 3D models tricker than flat points, lines, and polygons is the problem of lighting and shading.  Multipatch objects are made of triangulated faces. Your computer needs to figure out which direction each triangle is facing in order to shade it correctly.  The orientation of a face with regard to the light source is known as the <b>Surface Normal</b>.  The term "Normal" in this sense refers to vector perpendicular to the face.
-        </P><p>
+        </P>
+        <p>
          It happens that one of the most common forms of corruption in multipatch models occurs when surface normals for some or all of the faces in a model are pointed in the wrong direction.  Another way of saying this is that the face or faces are <b>flipped</b> or <b>inside-out</b>.
          When this happens, faces appear to be invisible when viewed from one side or may appear to be dull -- not reflecting light as they should.  These objects also behave badly when you try to color them with ArcGIS symbology.
         </p><p>
-         <b>What is the cause?</b> Multipatch objects do not store surface normals explicitly.  Instead, the normal for each face is inferred by a convention called the <b>Right Hand Rule</b> that says that the vertices are recorded in counter-clockwise order from the perspective of the lighted side.  With this in mind, it is not difficult to imagine how these inferences might become incorrect.  Especially when a less-then-perfect 3D editing tool is used to create hundreds of new faces by cutting or intersecting complex mesh objects.  There are situations where the ordering of vertices becomes corrupt causing all subsequent faces to be flipped.  This is especially true when the original mesh objects are not validated as closed solids.  
+         <b>What is the cause?</b> Multipatch objects do not store surface normals explicitly.  Instead, the normal for each face is inferred by a convention called the <a href="https://en.wikipedia.org/wiki/Right-hand_rule" target="outboard">Right Hand Rule</a> that says that the vertices are recorded in counter-clockwise order from the perspective of the lighted side.  With this in mind, it is not difficult to imagine how these inferences might become incorrect.  Especially when a less-then-perfect 3D editing tool is used to create hundreds of new faces by cutting or intersecting complex mesh objects.  There are situations where the ordering of vertices becomes corrupt causing all subsequent faces to be flipped.  This is especially true when the original mesh objects are not validated as closed solids.  
         </p>
       </div>
 

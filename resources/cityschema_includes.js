@@ -82,6 +82,7 @@ let index_htm = `
       <li class="verse"><a href="../model_management/index.htm#initialize">Initializing the Workspace</a>
       <li class="verse"><a href="../model_management/index.htm#import">Import, Inspect and Enroll Models</a>
       <li class="verse"><a href="../model_management/index.htm#stage">Promote and Demote Models</a>
+      <li class="verse"><a href="../model_management/index.htm#normals">About Surface Normals</a>
       <li class="verse"><a href="../model_management/index.htm#edit">Model Editing Workflows</a>
       <li class="verse"><a href="../model_management/index.htm#nextedition">Publishing the Next Edition Model Collection</a>. 
    </ul>
