@@ -80,8 +80,9 @@ let index_htm = `
       <li class="verse"><a href="../model_management/index.htm#lifecycle">Lifecycle of a Model Management Workspace</a>
       <li class="verse"><a href="../model_management/index.htm#project">Tour of the ArcGIS Pro Project: Properties, Layers and Views</a>
       <li class="verse"><a href="../model_management/index.htm#initialize">Initializing the Workspace</a>
+      <li class="verse"><a href="../model_management/index.htm#batches">Model Work Batches</a>
       <li class="verse"><a href="../model_management/index.htm#import">Import, Inspect and Enroll Models</a>
-      <li class="verse"><a href="../model_management/index.htm#stage">Promote and Demote Models</a>
+      <li class="verse"><a href="../model_management/index.htm#stage">Promote and Demote Model Status Attributes</a>
       <li class="verse"><a href="../model_management/index.htm#normals">About Surface Normals</a>
       <li class="verse"><a href="../model_management/index.htm#edit">Model Editing Workflows</a>
       <li class="verse"><a href="../model_management/index.htm#nextedition">Publishing the Next Edition Model Collection</a>. 
