@@ -1,0 +1,80 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Style Guide</title>
+    <meta name="description" content="Useful concepts frm the Reference Model for Open Archive Information System ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/cityschema.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/cityschema.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Features of Self Destructing Systems </h1>
+  <ul>
+    <li>Depend on circumstances beyond the control of some future user.
+    <br>e.g. Licensed software that locks you out if you don;t have proper authentication or on-going support. 
+    <br>The organization of complicated arrangements of assets is undocumented and known only to a few individuals. 
+    </ul>
+
+  <h3>Proprietary Tools and Data Formats</h3>
+  <p>People who build digital assets often use cutting-edge proprietary tools.  These commercial tools are often the best with lots of competitive innovative labor-saving features that are embedded in proprietary data formats. That can easily become unaccessible.
+  <p> To have a stable means of storing assets and related information that depends only on open source software is one way of avoiding this otherwise inevitable trap presented by license-protected software and proprietary data formats. 
+  <p> 
+  Designing an asset management system that serves users of commercial tools while also accommodating open formats and tools sometimes requires a distinction and dual-support between technical management formats and open exchange formats.  
+  </p> 
+  <h3>Open Archival Information Systems</h3>
+  <a href="https://en.wikipedia.org/wiki/Open_Archival_Information_System" target="outboard"> >The Reference Model for Open Archival Systems </a> is a set of principles for designing archival systems (which are organizations of people with information, tools and collections of assets.) that support the necessary and state-of the art tools business practices of today's users and enterprises, while at the same time built to resist the tendency of systems to disintegrate.
+</p>
+<h3>Archival Information Packages (AIP) and Embedded Documentation</h3>
+<p>One of the fundamental concepts of the RM-OAIS is the notion of Archival Information Packages.  At the most basic level you can think of a digital asset like a 3D model as being more than a collection of vertices.  Inorder to use it, there are also attributes about the model and also its relationship to other models -- e.g. what is the coordinate system?  
+<p>
+A good OAIS will have a way of packaging assets with all of the  metadata that is necessary for using the asset for today's users and users of the future.  
+
+<h3>Collections of Assets can also be AIPs</h3>
+<p>The notion of assets expands like a telescope or a tree.  So the notion of AIP can also be applied to <b><i>collections</b></i> of terrain models or building or wall models.  There is a lot of important information in and about the collection that is not captured in individual model metadata. Often several models originate with a single data-set (e.g. terrain), so it makes sense to think of collections thjemselves as nested AIP's.
+</p>
+
+
+
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
