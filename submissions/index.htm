@@ -37,68 +37,76 @@
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
   <h1 class="title">Model Submission Guidelines</h1>
 
-<p>The page that describes the <a href="../model_collection/index.htm">Architecture of the agency's Model Collection </a> is important background for understanding how we manage a collection of spatially and temporally referenced 3D models using a geographic information system.  The vast majority of our models of buildings, walls and docks that existed prior to 2011 were  generated from a stereo aerial photography, vectorized by photogrammetry and re-formatted for the city model with a variety of procedures geographic information systems.  Most of the models of large projects built since about 2004 were created using 3D design tools for the agency's the design review process.  
-</p>
-<p>
-One of the trickiest parts of this project is trying to make a smooth and predictable exchange of 3D information from the tools used by designers into geographic information systems (GIS) and archival asset management systems.  There are a few predictable problems which we have tried to sort out in this latest release of our city-wide model sharing scheme. 
-</p>  
-<ul>
-    <li><b>Spatial Coordination / Registration of Models:</b>  Geographic information in the state of Massachusetts is exchanged through a state-wide coordinate system (Massachusetts State Plane).  Design tools loose their precision and become very klutzy when working far form the origin of the coordinate system.  Our tile scheme anc coordinate system have been designed with a coordinate system and adjustable insertion points that should allow us all to share updates without a lot of guess work.   
-    <li><b>Control of Level of Detail:</b> The scheme we have devised for managing models treats building models as singular objects that have no internal divisions.   
-    <li><b>Data Formats:</b> Design tools have amazing capabilities for generating and organizing geometry.  The unique capabilities of favorite tool-kits makes it difficult to move models from one tool to another.  Developing a smooth, predictable exchange involves choosing a common denominator that can be moved all the way around the tool-chain. After a review of many alternatives, we have chosen the simple triangulated Wavefront Object format as the exchange format for 3d models.  
-    </ul>
-
-
-<h2>Very Simple Model Content Standard </h2>
-<p>Building and Bridge models in the BPDA's city model collection are managed in a geographical database that treats models as singular objects associated with attributes. In this context, models do not have any subdivisions such as Layers or nested groups.  This makes the model collection simple to manage without much need for a detailed specification or normalization of model organization.  Building models are mesh objects representing the exterior shell of the building.  
+<p>Building and Bridge models in the BPDA's city model collection are managed in a geographical database that treats models as singular objects associated with attributes. Building models are triangulated mesh objects representing the exterior shell of the building.  
 
 <h2 id="lod">Model Level of Detail</h2> 
+
+<figure class="right">
+  <img src="images/submission_rear_view.png">
+  <figcaption>Model Level of Detail</figcaption>
+</figure>
+
 <p>Here are some additional guidelines for model geometry level of detail:
 </p>
 <ul>
+<li>Our model includes a detailed terrain model.  If ground-level details such as entryways are at different elevations, these must be represented correctly.
+<li>You are welcome to represent the underground portions of your structure.  But this is not required.  
+<li>To eliminate floating corners whenusing terrainsettings of diffent quality, it is helpful to extend your model a few feet below the ground.  
+<li>If a building is attached to pre-existing structures it is helpful to represent these as discretely grouped geometry. 
 <li>If a project has multiple buildings or construction / permitting phases it is best if these are separated into individual .OBJ files.
-<li>If a building is separated into separate functional spaces that can be visualy distinguished from the outside, like parking structures, these can be submitted as individual OBJ files but this is not a requirement.  
-<li>Our preferred level of detail is LOD 3.0 (See our <a href="../model_collection/index.htm#LOD">Level of Detail dictionary</a>) Which may potentially represent overhangiing elements like porticos and entryways.  If parts of the building protrude beyond the vertical facade by more than a foot and are more than a foot tall, they may be included.
+
+<li>Parts of the building that protrude or recess from the vertical facade by more than a foot and are more than a foot tall, like porticos and entryways should be represented.
 <li>Window openings should not be cut out or indented.
-<li>Please do not divide your model into stories.   
-<li>Representing below-ground portions of the building is OK.
-<li>If your building is attached to other buildings, it would be helpful to have separate models for the attached buildings. 
-<li>If your project has involved making improvements to themodels of other buildings in the neighborhood, it would be great to have those, too!
+<li>It is OK to divide your model into stories.    
 </ul>
+
 <h2 id="obj">Simple Wavefront Object Format</h2>
-<p>We have found that various 3D model formats allow geometry types that do not translate well when we import them into our GIS-Based management scheme. This is why we prefer that models be submitted as the simplest possible triangulated mesh in Wavefront Object format. 
-<p>
-Our model asset management system treats OBJ format as a primary asset which are leveraged to various proxy formats, including GLTF, ESRI Multipatch and SketchUp.  Each of these translations has potential for difficulty and corruption to creep in.  Therefore we prefer that designers use their modeling tool to produce a simplified view of their building shells that can be exported as a simple triangulated mesh. </p>
+<p>We have found that various 3D model formats allow geometry types that do not translate well when we import them into our GIS-Based management scheme. This is why we prefer that models be submitted as the simplest possible triangulated mesh in Wavefront Object (OBJ) format. 
+</p>
+  <ul>
+    <li>Triangulate all faces on export. 
+    <li>Orient axes: Z Up, Y Forward.
+    <li>Please do not use single faces that would have both sides exposed.  Many tools wil represent these as invisible from one side or the other. 
+    <li>Use a plain white flat shader for all faces in your model, and include the .mtl file with your export.  
+    <li>If your model uses materials and or textures, we would be happy to accept a textured as an alternate version. 
+    </ul>
+
+  <p>Use the links below to view screen-shots of the export options for your favorite tool.  If we don;t have a screenshot for your favorite tool, feel free to send one to paulbcote at gmail.  
+</p>
+<h3>OBJ Export Option Dialogs</h3>
 <ul>
-<li>Triangulate all faces (no parametric curves please)
-<li>Orient axes: Z Up, Y Forward.
-<li>Please do not use single faces that would have both sides exposed.  Many tools wil represent these as invisible from one side or the other. Even if your software has an option for exportng "Two-Sided Faces"
-<li>If your model uses materials and or textures, we would be happy to have these, although at this time, our workflow has to remove these.  We will keep your textured model in the archive.  
-</ul>
-<p>Production of a simple shell view is routine if the modeler anticipates the need and has access to the model in its original format. </p>
+  <li><a href="./images/3ds-Obj-Export-Options_mtl.PNG" target="outboard">3D Max OBJ Export Options</a>
+    <li><a href="./images/skp-Obj-Export-Options.PNG" target="outboard">Sketchup OBJ Export Options</a>
+  </ul>
 
-
-<figure class="middle"> 
-  <img class="scaled" src="./images/submission_both.jpg"> 
-  <figcaption>Triangulated shell model and groundplan reference image</figcaption>
-</figure>
 
 
 <h2 id="georef">Context and Geo-Location</h2>
-<p>We need some means of verifying the placement of your model in the context of our existing city model.  This is tricky, since most modeling tools have trouble with geometry in very expansive coordinate systems that are used in state and local agencies.  The agency has developed a tiling and coordinate referencing scheme that bridges between design tools and GIS.  In short, keeping our tile frame in your model permits you to have your origin wherever works best in your project, but to re-register your model exports back and forth with the collaborative city model coordinate system. </p>
-    You can read all about it on our <a href="./tile_scheme.htm#coordinates" target = "_new">Tile Grid and Coordinate System</a> page.  
-    <ul>
-        <li> if it is possible for you to submit your model using our Metro Boston 3D coordinate referencing system, that would be preferred.  If you have difficulties doing this, we would like to hear more about that. 
-        <li>We know that you wil be working in a project-based coordinate system.  If shifting back to the Metro 3D Boston coordinate system is too much to ask, it could be very helpful to include the tile boundary in your model -- which would give us a dependable registration.   
-        <li>If possible, include a ground-plan with a draped image texture as shown in the illustration above. The groundplan should show enough of the edge of pavement in the context area to verify that the model is registered correctly.  
-    </ul>
 
-<h2 id="sources">Source Material</h2>
-<p>Our archival system is capable of storing source material, including the plans and elevations and other information that may be part of the project proposal.  We can also keep working models -- for example SketchUp or .3DS files.  We are Sketchuip Users, so if you have a SketchUp file of your model this may be helpful in case we need to do any trouble-shooting.
+<p>The citySchema project has developed a tiling and coordinate referencing scheme that bridges between design tools and GIS.  The BPDA uses this coordinate frame for exporting its detailed base models that will be convenient for situating your model.
+The <a href="./tile_scheme/index.htm#coordinates" target = "outboard">Tile Grid and Coordinate System</a> page provides the tile referencing grid in many popular 3D formats.   
+
+<p>Watch the <a href="https://www.youtube.com/watch?v=IeyYV5W5u94&t=86s" target="outboard">video demonstration of using the metro3D tile grid</a> to coordinate exchange of models between the BPDA's model collection and your project models.  This technique allows you to keep whatever local site origin you might be using.  
+
+<h3>Preferred:</h3> 
+<p>If it is possible for you to submit your model using our Metro Boston 3D coordinate referencing system, that would be preferred.  
+
+  <h3>Fallback</h3>
+  <figure class="right">
+    <img src="images/submission_on_plan.png">
+    <figcaption>Model Level of Detail</figcaption>
+  </figure>
+<p>If it is not possible to export your model using the metro-3D coordinate system, please include a ground-plan reference image as shown in the illustration above. The groundplan should show enough of the edge of pavement in the context area to verify that the model is registered correctly.  
+
+<h2>Optional Source Material</h2>
+<p>Our archival system is capable of storing source material, including the plans and elevations and other information that may be part of the project proposal.  We can also keep working models -- for example SketchUp or .3DS files.  We are SketchUp Users, so if you have a SketchUp file of your model this may be helpful in case we need to do any trouble-shooting.
 </p>
 
 <h2>On-Going Work In Progress</h2>
 <p>This submission procedure is a work in progress, so we anticipate problems and hope to work with the development community to make it as easy as possible to participate in building our collaborative open=-source city model!</p>
+
+
+
 
 </div> <!-- Closes #article div -->
 
