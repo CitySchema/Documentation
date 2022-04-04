@@ -37,7 +37,12 @@
     <h1 class="title">Managing the Building Model Collection using ArcGIS Pro</h1>
   
 
-    <p>This page provides an overview of the procedures and tools for managing the collection of 3D models of buildings, bridges, walls and docks as part of a city model within the <a href="../home.index.htm">citySchema.org framework for developing, sharing and preserving city model assets</a>.
+    <p>The collection of 3D building models is the most actively developed and maintained component of the city model. Simple models can be made by extruding building roof-prints, but the best looking models, more accurate models are contributed by designers or photogrammetry specialists.  These models originate outside the world of GIS, and therefore are associated with a lineage of source files and procedures.  The model collection is discussed in depth on the page <a href="../model_collection/index.htm">The Building Model Collection</a>.
+    <p>
+    As the model collection moves through time, there are many files and procedures to keep track of!  Ideally, we would have a few easy-to-understand principles and patterns for file management that permit any model collection curator to add new models, to promote and demote existing models in such a way that the every decision and resource in the lineage of any model can be re-traced and if need-be, undone.   The file management schema should be scalable in such a way that itdoes not become more complicated as the model grows in terms of numbers or spatial extent. Whan managed accrding to these principles, the model collection will serve as a clear memory of the history of the places that have been measured, or dreamed up over the life-span of the model. 
+    <p>
+    
+    The purpose of this page is to try to explain these simple principles and patterns in hopes that the user will be able to apply them in almost any model management situation.  Properly applied, this system should allow any other model curator who  understands these principles to pick up the model curation task exactly where the former curator left off. 
     </p><p> 
     The workflow and tools described on this page can be demonstrated and forked for local customizations using the <a href="http://github.com/CitySchema/ModelMgt" target="github">Model Management GitHub repository</a>.  We start with the ArcGIS Pro workflow because our municipal GIS managers tend to have licenses for this tool-kit.  The ArcGIS model for representing 3D geometry as geographic features is well suited to the task. We anticipate that the concepts and procedures described here may be implemented on other platforms with completely interoperable results. 
     </p> 
@@ -66,7 +71,7 @@
     
     The <b>IT Manager</b> is accountable for taking care of the institution's information.  This role involves hiring and evaluating the work of technical users who may be employees or contractors.   For the IT manager, a successful architecture results in a collection of assets that is sustainable without dependencies on particular individuals holding the position of technician or manager. For the IT manager, it will be useful to understand the essential pieces of the city model, where they are stored, and the sorts of problems that are likely to occur -- including the possibility that the digital assets associated with the city model may need to be migrated from one software platform to another.
   </p>
-  <h3>Special Problems of Managing 3D Models in GIS</h3>
+  <!-- h3>Special Problems of Managing 3D Models in GIS</h3>
   <p>
     <b>Managing a collection of 3D models is different from managing traditional two-dimensional GIS data.</b> Points, Lines and Polygons are easy to visually inspect and to repair with a few strokes of the cursor.  Rules of 2D topology can be evaluated automatically.  Problems that occur with GIS-based 3D model collections may be more difficult to discover.  There are many data-sets involved, including historical models, alternative models, superseded proposals, retired models, etc, which are rarely looked at.  3D models are tricky to repair and replace -- particularly if the original source files are no longer available.  When a 3D model is corrupt, the effect is sometimes invisible in one context, such as the desktop GIS application, but becomes evident when the model is translated to another format.  it is often the case that problems such as lost or corrupted models are not discovered for weeks, and when they are, it can be difficult to trace the problem or to know how many other models may have been affected.  
   </p><p>
@@ -76,7 +81,7 @@
     </p>
   
 
-<HR>
+<HR -->
 
     <h2 id="foundation">Foundation Concepts</h2>
 
