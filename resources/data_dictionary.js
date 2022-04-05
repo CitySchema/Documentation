@@ -256,28 +256,23 @@ let status_domain =  `
     </tr>
     <tr>
         <td><b>Current</b></td>
-        <td>Active</td>
+        <td>Existing</td>
         <td>This status is for models of existing structures that are based on measurements.</td>
     </tr>
     <tr>
-    <td><b>Construction Complete</b></td>
-    <td>Active</td>
-    <td>Hand-made models of proposals. The shell of the building including external finishes appear to be complete.  These models remain in the Active feature class until they are replaced with measured models. 
+    <td><b>Complete</b></td>
+    <td>Existing</td>
+    <td>Hand-made models of proposals. The shell of the building including external finishes appear to be complete.  These models remain in the Existing feature class until they are replaced with measured models. 
      </td>
    </tr>
    <tr>
    <td><b>Under Construction</b></td>
-   <td>Active</td>
+   <td>Existing</td>
    <td>The foundation (or more) of the new building is visible.</td>
 </tr>
 <tr>
-    <td><b>Permitted Demo</b></td>
-    <td>Active</td>
-    <td>The model should not be rendered when portraying Permitted projects.  The building still exists according to the latest observation. </td>
-</tr>
-<tr>
     <td><b>Approved Demo</b></td>
-    <td>Active</td>
+    <td>Existing</td>
     <td>The model should not be rendered when portraying Approved projects.  The building still exists according to the latest observation. 
     </td>
 </tr>
@@ -285,23 +280,23 @@ let status_domain =  `
 <tr>
 <td><b>Demolished</b></td>
 <td>History</td>
-<td>A model that has been completely replaced in the Active collection because the real-word structure has been demolished. </td>
+<td>A model that has been completely replaced in the Existing collection because the real-word structure has been demolished. </td>
 </tr>
 <tr>
     <td><b>Modified</b></td>
     <td>History</td>
-    <td>Model has been partially replaced in the Active collection because the real-world structure(s) represented have been substantially modified due to renovation or demolition of attached structures. The replacement model may be a revised version of this one, which has pieces cut out of it to make room for the models of new buildings or building parts.  </td>
+    <td>Model has been partially replaced in the Existing collection because the real-world structure(s) represented have been substantially modified due to renovation or demolition of attached structures. The replacement model may be a revised version of this one, which has pieces cut out of it to make room for the models of new buildings or building parts.  </td>
 </tr>
 
     <tr>
         <td><b>Board Approved</b></td>
-        <td>Proposed</td>
+        <td>Approved</td>
         <td>The building project has been approved by the planning board. </td>
     </tr>
     <tr>
         <td><b>Permitted</b></td>
-        <td>Proposed</td>
-        <td>The building project has recieved construction permits. </td>
+        <td>Approved</td>
+        <td>The building project has received construction permits. </td>
     </tr>
     
 
@@ -349,7 +344,7 @@ let status_domain =  `
 <tr>
 <td><b>Expunge</b></td>
 <td>N/A</td>
-<td>If a model is an exact duplicate of another model that is in the active collection or the new models pipeline, or if the model is corrupt and being replaced by a repaired model then setting its Status toExpunghed will cause it to be diregarded in the process of building the next edition of the collection.  This is the way to "delete" a model while retaining the ability for someone to go back and understand what it was and why it was deleted.   
+<td>If a model is an exact duplicate of another model that is in the Existing collection or the new models pipeline, or if the model is corrupt and being replaced by a repaired model then setting its Status to Expunged will cause it to be disregarded in the process of building the next edition of the collection.  This is the way to "delete" a model while retaining the ability for someone to go back and understand what it was and why it was deleted.   
 </td>
 </tr>
 
