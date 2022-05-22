@@ -1,0 +1,115 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Model Buying Guide</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/cityschema.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/cityschema.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Contracting for 3D Buildng Models</h1>
+
+
+<h2>3D City Modeling Request for Capabilities and Cost Estimates</h2>
+<p>The BPDA has been maintaining a collection of 3D building and bridge models from various sources.  Our <a href="http://www.cityschema.org">model management tools and schema</a> makes it possible manage a collection of diverse 3d buildng models, incorporating updates and models of development proposals while preserving historical information.
+
+<h3>Existng Model Collection to be Updated</h3>
+  <ul>
+  <li>  Wholesale LOD 2 models form a city-wide 2011 photogrammetric survey
+  <li> Articulted LOD 3 models for specific planning areas created using the same 2011 survey
+  <li>  Hand-made models representing large projects that have been proposed.  Many of these are now standing in for actual buildings that have been built.
+  <li> Hand-made models of bridges.
+  <li> Photogrammetrically-captured models of demolished buildings are preserved as a historical record. 
+  </ul>
+
+<h3>Ideal Specification for Updates</h3>
+  <p>
+  We are now hoping to update the model collection with 3D models of buildngs that have been built since 2011.
+<ul>
+
+<li>We are not planning to do a special fly-over for this project.  We are hoping to provide already-licensed stereo imagery with control and or LIDAR as needed.  If a 3D model provider had access to recent source data covering Boston, Massachusetts, this would be great. 
+
+<li>We do not need to generate 3d models of every building in the city, but would consider this, if the quality of the new models is substantially improved over our existing models.
+
+<li>We would be able to outline specific new buildings that need to be modeled, but if a vendor was able to discover changes that would be interesting.
+
+<li>We hope to have models with true 3D roof details, and a decent representation of the sides of buildings.  
+
+<li>We require efficient low-polygon models.  Preferably the model wil be jeneralized so that flat planes are represented with a minimum of triangles and with an angular tolerance that maintains right-angles and parallel features. 
+
+<li>Textures are not necessary, but would be interesting to see what the extra charge would be for this.
+
+<li>We recognize that it can be difficult to capture details near ground level. Ideally, the new models could be created with a below-ground margin to avoid floating corners that appear when different terrain models are used. 
+
+<li>Extra consideration is given to modelers who are able to provide closed/water-tight models that perform as 3d solids in boolean operations. 
+
+<li>We are interested in models that are free of use-restrictions.
+  
+<li>We prefer models to be deliverd in OBJ format, but may be able to use collada or multipatch.
+
+<li>It would be useful to have an estimate that includes a set-up fee and a charge per building or square kilometer. 
+
+</ul>
+
+<h3>Potential Vendors</h3>
+<ul>
+  <li><a href="https://www.cybercity3d.com/">Cybercity3D</a>
+    <li><a href="https://aerometrex.com/3d-modeling/">Aerometrex</a>
+  Austrailean firm with US HQ in Denver
+
+  <li><a href="https://www.vu.city/models">VU.City</a>
+  seems to specialize in UK?
+
+  <li><a href="https://www.accucities.com/buy-3d-models/">AccuCities</a>
+  Anothr UK firm  LOD3
+
+  <li><a href="https://www.fugro.com/">Fugro</a>
+
+    <li><a href="https://twitter.com/geogen_io">GeoGen.io</a>  Once ESRI recommended this guy to Carolyn.  Appears to be inactive since 2020.
+    </ul>
+
+    <h3>Sources of Stereo Imagery with Control Info</h3>
+<ul>  
+  <li>MassGIS has spring 2021 aerials.  Jeff Amero says that he was able to get the stereo and control info for these. 
+    <li>It may be possible to obtain and use NEarmap aerials and control for ths purpose. 
+    </ul>
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
