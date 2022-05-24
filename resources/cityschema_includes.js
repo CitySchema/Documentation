@@ -68,6 +68,7 @@ let index_htm = `
    <ul class="verses">
       <li class="verse"><a href="../filesystem/index.htm#master">Cty3D_Master Folder</a></li>
       <li class="verse"><a href="../filesystem/index.htm#dev">Cty3D_Dev Folder</a></li>
+      <li class="verse"><a href="../filesystem/index.htm#workspace">Workspace Patterns</a></li>
    </ul>
 
    <li class="chapter"><a href="../model_management/index.htm">Managing the Building Model Collection in ArcGIS</a></li>
