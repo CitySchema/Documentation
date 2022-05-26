@@ -66,7 +66,7 @@ let index_htm = `
 
    <li class="chapter"><a href="../data_dictionary/index.htm">Data Dictioanry</a></li>
    <ul class="verses">
-      <li class="verse"><a href="../model_collection/index.htm#status_domain">Status Domain</a>
+      <li class="verse"><a href="../data_dictionary/index.htm#status_domain">Status Domain</a>
    </ul>
 
 
