@@ -64,6 +64,12 @@ let index_htm = `
 
    </ul>
 
+   <li class="chapter"><a href="../data_dictionary/index.htm">Data Dictioanry</a></li>
+   <ul class="verses">
+      <li class="verse"><a href="../model_collection/index.htm#status_domain">Status Domain</a>
+   </ul>
+
+
    <li class="chapter"><a href="../filesystem/index.htm">citySchema Modular File System</a></li>
    <ul class="verses">
       <li class="verse"><a href="../filesystem/index.htm#master">Cty3D_Master Folder</a></li>
