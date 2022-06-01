@@ -3,7 +3,7 @@
 <html lang="en">
 <!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
 <head> <!-- Edit the following for each page -->
-    <title>Style Guide</title>
+    <title>City Tiler</title>
     <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
     <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
     <meta name="author" content="Paul B. Cote">
@@ -35,7 +35,13 @@
 <!-- Page content goes inside the article div -->
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
-  <h1 class="title">Modular Terrain Mesh</h1>
+  <h1 class="title">City Tiler</h1>
+
+  <p style="background: lightgray;">
+    <b>Notice: </b> this documentation is in work.  The repository has been checked and all of the tools work.  The documentation will be brought up to date soon.
+  </p>
+
+
   <p>The citySchema city model management framework makes use of very detailed terrain data that is broken into rectagular tiles that can be snapped together seamlessly. The rectangular tiling scheme facilitates the integration of the terrain models with groundplan information shared as high-resolution images -- including the latest true ortho photography.  These snap-together texture-mapped terrain tiles are very compatible in exchanges between GIS and 3d modeling tools used by designers. They also can be shared as raster elevation models that have the same image-draping and edge-matching capabilities.
 
   <p> This page describes the terrain modeling strategy, including a description of the data-sets and tools provides in the 
@@ -45,7 +51,7 @@
   
     
     <h3 id=anatomy">The Anatomy of a Digital Terrain Model</h3>
-    <p>The source source data behind the most efficent and editable <b>Digital Terrain Models (DTM)</b> consists of <b>3D Hard Break Lines</b> that trace the edges of slopes and flat places that have a more or less continuous grade.  <b>Soft Break Lines</b> are lines that the terrain passes through without a crease.  <b>Mass Points </b> provide a way of marking the elevation od peaks and depressions and other locations between the break lines.
+    <p>The source source data behind the most efficient and editable <b>Digital Terrain Models (DTM)</b> consists of <b>3D Hard Break Lines</b> that trace the edges of slopes and flat places that have a more or less continuous grade.  <b>Soft Break Lines</b> are lines that the terrain passes through without a crease.  <b>Mass Points </b> provide a way of marking the elevation od peaks and depressions and other locations between the break lines.
     </p><p>
     DTM break lines and mass points are the most efficient way of describing the shape of a terrain surface. Because they describe only the critical locations, they are the best source material to use in terrain editing and in exchanges where the number of bytes is an issue.    
     </p><p>
@@ -63,7 +69,7 @@
       <div class="feature procedure">
        <h3>To Use:</h3>
           <ol>
-            <li>Clone the workspace from git-hub <a href="https://github.com/CitySchema/Modular-Terrain" target="github">CitySchema/Modular-Terrain</a>Repository.
+            <li>Clone the workspace from git-hub <a href="https://github.com/CitySchema/cityscema-citytiler" target="github">CitySchema/Modular-Terrain</a>Repository.
             <li>Open the ArcGIS Pro project form the ArcDocs folder. 
             <li>Before attempting to create a custom terrain model, I recommend testing the 
               <b> 
