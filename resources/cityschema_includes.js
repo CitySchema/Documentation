@@ -111,7 +111,7 @@ let index_htm = `
             <li class="verse"><a href="../tile_scheme/index.htm#download" target="metadata">Download City-Wide Tile-Grid in various formats</a>
             <li class="verse"><a href="../tile_scheme/index.htm#datadictionary" target="metadata">Tile Grid Data Dictionary</a>
      </ul>
-     <li class="chapter"><a href="../citytiler/index.htm">Modular Terrain Models</a></li>
+     <li class="chapter"><a href="../citytiler/index.htm">City Tiler</a></li>
     <ul class="verses">
       <li class="verse"><a href="../citytiler/index.htm#anatomy">Anatomy of a DTM</a>
       <li class="verse"><a href="../citytiler/index.htm#sources">Source Data</a>
