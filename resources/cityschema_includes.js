@@ -52,6 +52,49 @@ let index_htm = `
   <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
     <li class="verse"><a href="../repocat/index.htm#github">Explore, Clone and Customize on GitHub.</a></li>
    </ul>
+
+   <li class="chapter"><a href="../tile_scheme/index.htm">Tile Scheme and Coordinate System</a></li>
+   <ul class="verses">
+           <li class="verse"><a href="../tile_scheme/index.htm#purpose" target="metadata">Tiling Strategy</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#coordinates" target="metadata">Metro Boston 3D Coordinate System</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#tips" target="metadata">Tips for maintaining georeferencing in your projects</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#download" target="metadata">Download City-Wide Tile-Grid in various formats</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#datadictionary" target="metadata">Tile Grid Data Dictionary</a>
+    </ul>
+
+
+    <li class="chapter"><a href="../submissions/index.htm">Model Submission Guidelines</a></li>
+    <ul class="verses">
+       <li class="verse"><a href="../submissions/index.htm#lod">Level of Detail</a>
+       <li class="verse"><a href="../submissions/index.htm#obj">Triangulated OBJ Format</a>
+       <li class="verse"><a href="../submissions/index.htm#georef">Context and/or Geolocation</a>
+       <li class="verse"><a href="../submissions/index.htm#sources">Source Material</a>
+    </ul>
+ 
+    <li class="chapter"><a href="../model_batches/index.htm">Model Batches</a></li>
+    <ul class="verses">
+ 
+      <li class="verse"><a href="../mmgt_batch/index.htm#batches">Model Work Batches</a>
+  
+      </ul>
+
+   <li class="chapter"><a href="../filesystem/index.htm">citySchema Modular File System</a></li>
+   <ul class="verses">
+      <li class="verse"><a href="../filesystem/index.htm#master">Cty3D_Master Folder</a></li>
+      <li class="verse"><a href="../filesystem/index.htm#dev">Cty3D_Dev Folder</a></li>
+      <li class="verse"><a href="../filesystem/index.htm#workspace">Workspace Patterns</a></li>
+   </ul>
+
+
+
+     <li class="chapter"><a href="../citytiler/index.htm">City Tiler</a></li>
+    <ul class="verses">
+      <li class="verse"><a href="../citytiler/index.htm#anatomy">Anatomy of a DTM</a>
+      <li class="verse"><a href="../citytiler/index.htm#sources">Source Data</a>
+      <li class="verse"><a href="../citytiler/index.htm#process">The Process</a>
+   </ul>
+
+<h3>Managing the Building Model Collection</h3>  
 <li class="chapter"><a href="../model_collection/index.htm">Building Model Collection</a></li>
    <ul class="verses">
       <li class="verse"><a href="../model_collection/index.htm#overview">Conceptual Overview</a>
@@ -64,59 +107,70 @@ let index_htm = `
 
    </ul>
 
-   <li class="chapter"><a href="../data_dictionary/index.htm">Data Dictioanry</a></li>
+
+
+   <li class="chapter"><a href="../data_dictionary/index.htm">Data Dictionary</a></li>
    <ul class="verses">
       <li class="verse"><a href="../data_dictionary/index.htm#status_domain">Status Domain</a>
    </ul>
 
 
-   <li class="chapter"><a href="../filesystem/index.htm">citySchema Modular File System</a></li>
+   <li class="chapter"><a href="../mmgt_project/index.htm">Model Collection Management Workspace & Project</a></li>
    <ul class="verses">
-      <li class="verse"><a href="../filesystem/index.htm#master">Cty3D_Master Folder</a></li>
-      <li class="verse"><a href="../filesystem/index.htm#dev">Cty3D_Dev Folder</a></li>
-      <li class="verse"><a href="../filesystem/index.htm#workspace">Workspace Patterns</a></li>
+      <li class="verse"><a href="../mmgt_project/index.htm#tour">Tour of the Model Management Workspace Folder</a>
+      <li class="verse"><a href="../mmgt_project/index.htm#lifecycle">Lifecycle of a Model Management Workspace</a>
+      <li class="verse"><a href="../mmgt_project/index.htm#project">Tour of the ArcGIS Pro Project Properties</a>
    </ul>
 
-   <li class="chapter"><a href="../model_management/index.htm">Managing the Building Model Collection in ArcGIS</a></li>
+
+   <li class="chapter"><a href="../mmgt_init/index.htm">Initializing a New Model Management Workspace</a></li>
    <ul class="verses">
 
-      <li class="verse"><a href="../model_management/index.htm#roles">Enterprise and Technical Viewpoints</a>
-      <li class="verse"><a href="../model_management/index.htm#foundation">Foundation Concepts and Data Dictionary</a>
-      <li class="verse"><a href="../model_management/index.htm#context">Filesystem Context </a>
-      <li class="verse"><a href="../model_management/index.htm#tour">Tour of the Model Management Workspace Folder</a>
-      <li class="verse"><a href="../model_management/index.htm#lifecycle">Lifecycle of a Model Management Workspace</a>
-      <li class="verse"><a href="../model_management/index.htm#project">Tour of the ArcGIS Pro Project: Properties, Layers and Views</a>
-      <li class="verse"><a href="../model_management/index.htm#initialize">Initializing the Workspace</a>
-      <li class="verse"><a href="../model_management/index.htm#batches">Model Work Batches</a>
-      <li class="verse"><a href="../model_management/index.htm#import">Import, Inspect and Enroll Models</a>
-      <li class="verse"><a href="../model_management/index.htm#stage">Promote and Demote Model Status Attributes</a>
-      <li class="verse"><a href="../model_management/index.htm#normals">About Surface Normals</a>
-      <li class="verse"><a href="../model_management/index.htm#edit">Model Editing Workflows</a>
-      <li class="verse"><a href="../model_management/index.htm#nextedition">Publishing the Next Edition Model Collection</a>. 
-   </ul>
+      <li class="verse"><a href="../mmgt_init/index.htm#initialize">Initializing the Workspace</a>
+    </ul>
 
-   <li class="chapter"><a href="../submissions/index.htm">Model Submission Guidelines</a></li>
-   <ul class="verses">
-      <li class="verse"><a href="../submissions/index.htm#lod">Level of Detail</a>
-      <li class="verse"><a href="../submissions/index.htm#obj">Triangulated OBJ Format</a>
-      <li class="verse"><a href="../submissions/index.htm#georef">Context and/or Geolocation</a>
-      <li class="verse"><a href="../submissions/index.htm#sources">Source Material</a>
-   </ul>
-
-<li class="chapter"><a href="../tile_scheme/index.htm">Tile Scheme and Coordinate System</a></li>
+<li class="chapter"><a href="../mmgt_import/index.htm">Importing Building Models</a></li>
+  
     <ul class="verses">
-            <li class="verse"><a href="../tile_scheme/index.htm#purpose" target="metadata">Tiling Strategy</a>
-            <li class="verse"><a href="../tile_scheme/index.htm#coordinates" target="metadata">Metro Boston 3D Coordinate System</a>
-            <li class="verse"><a href="../tile_scheme/index.htm#tips" target="metadata">Tips for maintaining georeferencing in your projects</a>
-            <li class="verse"><a href="../tile_scheme/index.htm#download" target="metadata">Download City-Wide Tile-Grid in various formats</a>
-            <li class="verse"><a href="../tile_scheme/index.htm#datadictionary" target="metadata">Tile Grid Data Dictionary</a>
-     </ul>
-     <li class="chapter"><a href="../citytiler/index.htm">City Tiler</a></li>
+    
+    <li class="verse"><a href="../model_management/index.htm#import">Import, Inspect and Enroll Models</a>
+
+ </ul>
+
+ <li class="chapter"><a href="../mmgt_stage/index.htm">Promoting / Demoting Model Status</a></li>
+  
+ <ul class="verses">
+ <li class="verse"><a href="../mmgt_stage/index.htm#stage">Promote and Demote Model Status Attributes</a>
+
+</ul>
+    
+<li class="chapter"><a href="../mmgt_edit/index.htm">Editing Building Models</a></li>
+  
     <ul class="verses">
-      <li class="verse"><a href="../citytiler/index.htm#anatomy">Anatomy of a DTM</a>
-      <li class="verse"><a href="../citytiler/index.htm#sources">Source Data</a>
-      <li class="verse"><a href="../citytiler/index.htm#process">The Process</a>
+    
+    <li class="verse"><a href="../mmgt_edit/index.htm#normals">About Surface Normals</a>
+    <li class="verse"><a href="../mmgt_edit/index.htm#edit">Model Editing Workflows</a>
+    <li class="verse"><a href="../mmgt_edit/index.htm#nextedition">Publishing the Next Edition Model Collection</a>. 
+ </ul>
+
+
+ <li class="chapter"><a href="../mmgt_compile/index.htm">Compile Next Edition of the Collection </a></li>
+  
+    <ul class="verses">
+
+    <li class="verse"><a href="../model_management/index.htm#nextedition">Publishing the Next Edition Model Collection</a>. 
+ </ul>
+
+
+ 
+      <li class="chapter"><a href="../mmgt_layers/index.htm">Layers, Popups and Web Scenes</a></li>
+  
+      <ul class="verses">
+      <li class="verse"><a href="../mmgt_layers/index.htm#layers">Re-useable Layers</a>. 
    </ul>
+
+
+   <hr>
      <li class="chapter"><a href="../template/index.htm">Documentation Template</a></li>
      <ul class="verses">
              <li class="verse"><a href="../template/index.htm#early">An internal Link</a>

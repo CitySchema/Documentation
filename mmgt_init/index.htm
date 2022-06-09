@@ -1,0 +1,125 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head>
+    <title>Initializing the Model Management Project</title>
+    <meta name="description" content="Covers the procedures formanaging a collection of 3D building models as part od a GIS-based city modeling project.  Par of the citySchema.org framework foo developing, sharing and preserving city model assets. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography, citySchema">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/cityschema.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/cityschema.js"></script>
+</head>
+<body>
+    <div id="grid-container">
+      <div id="index-container">
+         <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+      </div> 
+      <div id="main-container">
+        <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+<div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter. -->
+    <h1 class="title">Initializing the Model Collection Management Project</h1>
+  
+
+    
+    <h2>Getting Started: </h2>
+    
+
+    <p>The best way to get started with the model management workflow is to download the <a href="http://github.com/CitySchema/ModelMgt" target="github">demonstration repository on gitHub. </a>.  Work through all of the procedures documented here just to see that they all work with the demonstration data provided. Once you are comfortable with the workflow, you can make a copy of the template, remove the geodatabases in the <b>Prior_Archive</b> folder and the <b>Stage/Stage.gdb</b>.  Then youcan initialize a fresh workspace and make whatever modifications you need. 
+    </p><p>
+
+
+    <h3>Inspect and Modify ModelMgt_Config Data</h3>
+    <figure class="right">
+      <img  src="./images/config_data.jpg">
+      <figcaption>Model Management Config Data</figcaption>
+    </figure>
+    <p>Before any work is carried out toward the next edition of the model collection, you have an opportunity to modify the schema for model feature classes.  The master template for all multipatch feature classes and the tables that establish the coded domain fields for model status and QA Flags are kept in the <b>Stage/ModelMgt_Config.gdb</b>.  If you are going to make changes to any of these, it is critical to make them when you are initializing the workspace.      
+      <p>Any changes you want to make to the multipatch feature class schema should be made to the <b>Model_Mgt_Config/Model_Template_MP</b> feature class. As we work through the tools in the first tool group, you will see how changes the domain tables are propagated to all new feature classes.  The tool <b>1a. Create Model Template </b> can be helpful for creating and modifying a new model template based on an existing model feature class. 
+    </p>
+    <hr>
+
+    <h3>Prepare Prior Archive Feature Classes</h3>
+    <p>The geodatabases in the Prior Archive folder provide reference for initial state of models before any  updates and additions are carried out during the lifecycle of the Model Management workspace.  To assure that all of the changes made to the model collection are traceable and reversible, it is important that the prior archived collection be latest edition created by the previously retired Model Management Workspace. Feature classes in this folder are strictly read-only. 
+      
+    <p>If you are making changes to the table schema for multipatches, you should make these changes to each of your prior archived feature classes to make them conform to the ModelMgt_Config\ModelTemplate_MP feature class.  The model management workflows require that the schema for each of model feature class is exactly the same as the template. You might find it useful to make a copy of the tool, <b>1c. Migrate Prior FCs</b> to make a consistent migration for each of the prior feature classes.  Do not alter the original tool which is used for initializing the stage feature classes based on the working model template.  
+    </p>
+    <p>If you are beginning a model collection from scratch, it is not necessary to have anything in the Prior_Archive folder. 
+    </p> 
+
+    <hr>
+
+    <h3>Initialize the Stage Feature Classes</h3>
+    
+    <figure class="right">
+      <img  src="./images/stage_gdb.jpg">
+      <figcaption>The Stage Geodatabase</figcaption>
+    </figure>
+    <p>All of the changes made to the model collection are carried out on the feature classes in the <b>Stage Geodatabase</b>.  This collection is initialized by copying each feature class from the prior archived collection. An additional multipatch feature class is created for <b>New Models</b>.  The Stage.gdb also contains point feature classes representing the Development Tracking Log and <b>Issue Points</b> which are useful for noting issues such as missing models. 
+    </p>
+  
+
+    <div class="feature tour">
+      <h3>The Initialize Workspace Tasks</h3>
+      <figure class="right">
+        <img  src="./images/initialize_tasks.jpg">
+        <figcaption>Initialize Workspace Tasks</figcaption>
+      </figure>
+       <p>These tasks are organized to help guide the set-up for a new model management workspace. As discussed above.  
+        <ol>
+          <li><b>Update Domains:</b> If you have changes to make to the Status or the QA_Flag domains, edit the corresponding tables in the Stage\Congig.gdb.  Then run this tool.  This should be run on the Stage.gdb Config.GDB and any active ModelBatch geodatabases.  This task makes use of the Update Domains tool described above.  
+          <li><b>Initialize Stage feature classes</b>.  Each time you initialize a model management workspace, each of the prior model feature classes is copied to the stage geodatabase. This uses the <b>1c. Migrate Prior Archived FCs </b> tool, but changes the name of the output worlkpace and prepends the string <b>Stage</b> to the name of each to avoid confusion.</a> 
+          <li><b>Initialize Stage NewModels FC:</b> The newModels feature class in the Stage geodatabase holds any new model that might be imported or created by editing a pre-existing model.  This task uses the <b>1b. Create Models MP</b> tools to create a new empty feature class for the purpose using the current model template feature class.
+          </ol>
+  
+      <p>At this point in the workflow, the stage feature classes should reflect all of the models and attributes as they appear in the prior archived collection.  You are now ready to stage changes!  
+      </div>
+
+
+    <div class="feature tour">
+      <h3 id="initialize">Tool Group 1: Initialize the Stage Feature Classes</h3>
+      <figure class="right">
+        <img  src="./images/initialize_tools.jpg">
+        <figcaption>Initialize Workspace Tools</figcaption>
+      </figure>
+
+      <p>The tools in the <b>1. Initialize</b> tool group 1 and the tasks in the <b>Initialize Model Management Workspace</b> help out with getting your Stage geodatabase up and running. These tools are called on by the <b>Initialize Model Management Workspace</b> tasks.  And some of them are incorporated in other tools and tasks.    
+      </p>
+        <ul>
+        <li><b>1a. Create New Model Template</b> is handy for creating a new model template based onthe schema of an existing model feature class. .   
+        <li><b>1b. Create Models MP FC</b> This tool is incorporated in several other tools and tasks throughout the Model Management process.  It takes the model template and creates a new empty feature class for storing new models. At the same time, it makes sure that the target geodatabase has the proper domains for <b>Model Status</b> and <b>QA Flag</b>.   
+        <li><b>1c. Migrate Prior FCs</b> uses the <b>Create Models MP FC</b> tool to create a new models feature class and then takes an input model and appends it to the new feature class.  It uses an iterator to do this once for each of the five feature classes.  
+        <li> <b>1d. Update Domains</b>.  In case you just want to update the domains in a geodatabase that contains a 3D model multipatch feature class, this tool is for you.  Note that before you run it, you should update the domain tables in the <b>Stage/ModelMgt_Config.gdb</b>.  
+        <li><b>1e. Create Issue Points</b>.  The Issue Points feature class is used to flag places where new models need to be made.  This tool will create a new one.  If the prior archived model collection comes with unresolved issue points, it may be best to copy these over so that you can address the issues during your model management sessions.
+        <li><b> 1e. Initialize Development Log</b>.  The development log is a table that includes a row for each development project and contains the latest status for that project and a URL for the agency's web home page for the project.    It is important that the Project ID be a unique key in this table.  I've included the tool here that I created for the Boston Planning and Development Agency. Each agency will have its own variation on this.
+        </ul>
+      </div>
+
+<hr>
+
+ 
+
+</div> <!-- Closes #article div -->
+
+    <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+  </div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+</html>
+    

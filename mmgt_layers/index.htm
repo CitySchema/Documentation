@@ -1,0 +1,63 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head>
+    <title>Layers Popups and WebScenes</title>
+    <meta name="description" content="Covers procedures for producing and publishing Layers with custom pop-ups. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography, citySchema">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/cityschema.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/cityschema.js"></script>
+</head>
+<body>
+    <div id="grid-container">
+      <div id="index-container">
+         <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+      </div> 
+      <div id="main-container">
+        <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+<div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter. -->
+    <h1 class="title">Managing and Publishing Layers Pop-Ups and Web Scenes</h1>
+
+<p>Visually presenting and sorting subsets of the building model collection is a necessary aspect of most applications of the city model within ArcGIS, public web-scenes and through ArcGIS Urban applications. The citySchema Model Management workspace provides a style palette for coloring models according to status that provides a familiar, intuitive legend for quickly understanding the status of building models.  This pallette is used for every visualization of building models on all platforms.
+<p>
+Because ArcGIS Pro and ArcGIS on-line do not have a means of eliminating un-used classes from legends, it has been necessary  to create variations of the master template layer to produce web-scenes with streamlined lagends that do not contain lots of distracting un-used status classes. 
+
+<p>This document describes how to manage the symbology of building model layers, definition query views and web-scenes.
+</p>
+
+<div class="feature funfact">
+  <h3>About Re-usable Layers</h3>
+  <p>All of the layers for viewing 3d models use the same symbolization for models according to status.  The master layer for this symbology can be found in the <b>ArcDocs\Layers\MP_Status.lyrx</b> file.  This symbology can be applied to any multipatch layer using the <b>Appearance\Import function </b> as described in <a href="https://pro.arcgis.com/en/pro-app/2.7/help/mapping/layer-properties/import-symbology-from-another-layer.htm" target="arcdoc">ImportSymbology from another Layer</a>.
+ <p>Any time you change the treatment of the status symbology, it would be a good idea to re-save this master layer. 
+   <p>Many group layers are also saved in the layers folder.  It is a good habit to save any of the major group layers to this location any time you make changes to them.
+  <p>The project option  <b>Geoprocessing > Remove Layers that are overwritten by geoprocessing tools</b> should always be un-checked.  Unfortunately this is not the default, and even un-sets itself when a project is copied. As a result, the symbology for layers will get wiped out when geoprocessing tools delete and re-generate data-sets.  You will learn this the hard way many times but be happy that the prior state of these layers and group layers can be recovered. 
+  <p><i><b>Note to ESRI:</b></i> it would be great if there was a way for layers to reference the symbology from a saved layer and update themselves automatically. 
+  </div>
+
+
+</div> <!-- Closes #article div -->
+
+    <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+  </div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+</html>
+    

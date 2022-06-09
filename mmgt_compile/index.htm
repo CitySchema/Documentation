@@ -1,0 +1,76 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head>
+    <title>Compile the Next Edition Model Collection</title>
+    <meta name="description" content="Covers the procedures formanaging a collection of 3D building models as part od a GIS-based city modeling project.  Par of the citySchema.org framework foo developing, sharing and preserving city model assets. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography, citySchema">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/cityschema.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/cityschema.js"></script>
+</head>
+<body>
+    <div id="grid-container">
+      <div id="index-container">
+         <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+      </div> 
+      <div id="main-container">
+        <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+<div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter. -->
+    <h1 class="title">Compile the Next Edition Model Collection</h1>
+  
+
+<HR>      
+    
+    <h1 id="nextedition">Preparing the Next Edition Model Collection</h1>
+    <p>All of the data wrangling discussed above has brought newmodels into the collection and many of the previously existing models have had their model status attributes updated.  To finally produce the next edition of the model collection, all of these models need to be sorted into new feature classes according to their new status values.  These newfeature classes can then be used to create new web scenes, published on-line or exported to tiled model collections.   
+    </p><p>Each editionof the collection also contains a model catalog -- a table of all of the models that is not segmented by status -- whcih can be used by applications that help model users discover updated models andmodels that have been retired or expunged. 
+    </p>
+
+    <h2>Tasks and Tools for Publising the Next Edition</h2> 
+    <figure class="right">
+      <img  src="./images/next_edition_tasks.jpg">
+      <figcaption>Produce NextEdition Tasks.</figcaption>
+      <br>
+      <img  src="./images/next_edition_tools.jpg">
+      <figcaption>Produce Next Edition Tools.</figcaption>
+    </figure>
+    <p>The <b>Produce Next Edition</b> task group makes use of the tools inthe similarly named tool group.  The basic workflow steps are outlined below:
+    </p>
+   <ol>
+    <li>The <b>Initialize Next Edition GDB Task</b> Creates an geodatabase in the <b>ModelMgt\NextEdition</b> folder.  The new geodatabase includes a set of  empty feature classes based on the currentmodeltemplate ready to recieve the new collection.  As discussed under the heading <a href="#lifecycle">Lifecycle of the Model Management Workspace</a>, the <b>NextEdition</b> folder can contain several updated editions of the model collections based off of the same PriorArchived collection. Each of these new editions is distinguished by a YYYYMMDD date stamp that reflects the date that the new edition was initialized.
+    <li>The task, <b>Check for Bad Status Values</b> should now be run to make sure that none of the Stage feature classes include non-standard values for Status.  These can creep into the mix if aperson updates status values outside ofthe Attributes panel.  The danger of letting badvaluespersistbefore the next step is that models with bad statusvalues will dissappear without a trace.  (They can be recovered, but only after someone notices that they are missing.)
+    <p>This task will halt with an error if a bad status value is encountered.  Looking through the task's messages will reveal which feature class has a bad status value.   
+    <li>The task, <b>Sort Models into New Feature Classes</b> uses the geoprocessing tool, <b>5d. Status Router</b> to iterate through eachof the multipatch feature classes inthe Stage geodatabase, selecting models according tostatus class, and appending each set to the appropriate feature class.   
+    <li>The <b>Copy Misc FCs and Create Building Footprints</b> task copies the Issue Points and Development Log table from Stage into the next edition feature class.  These are useful to include for reference.  The building models from the Active_MP feature class (excluding walls) are alsorendered as apolygon feature class with this task.
+    <li>Finally, the <b>Generate Model Catalog</b> task produces the one-table comprehensive catalog of models.  The table starts as a geodatabase point feature class, and is also rendered as a CSV table and a GeoJson file. 
+    <ul>
+    
+    
+    <hr>
+
+</div> <!-- Closes #article div -->
+
+    <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+  </div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+</html>
+    

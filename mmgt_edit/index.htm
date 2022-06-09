@@ -1,0 +1,151 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head>
+    <title>Editing Building Models</title>
+    <meta name="description" content="Covers the procedures formanaging a collection of 3D building models as part od a GIS-based city modeling project.  Par of the citySchema.org framework foo developing, sharing and preserving city model assets. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography, citySchema">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/cityschema.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/cityschema.js"></script>
+</head>
+<body>
+    <div id="grid-container">
+      <div id="index-container">
+         <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+      </div> 
+      <div id="main-container">
+        <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+<div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter. -->
+    <h1 class="title">Editing Building Models</h1>
+  
+
+  <p>
+      Most of the <b>Edit Actions</b> that happen to the stage feature classes during the staging process can be described as "Updated Status Attributes". The <b>Update Edit Fields</b> task facilitates updating the Edit fields by looking for records in each of the Stage feature classes (except for Stage_NewModels_MP) that have a Record Modify date later than both the Recode Init Date and the Edit Date. These are records that have been modified during at somepoint inthe lifespan of the ModelMgt workspace, but that have not yet had their edit fields updated.  These records have a new Edit Date assigned and the value of Edit User is set to be the same as the Record Modified user.  
+     </p><p>
+       It would be cool to be able to preserve the original Record Modified date, but unfortunately ArcGis updates the modification date before doing the modification.  
+       
+<hr>
+
+      <h1 id="edit">Model Edit Flagging and Workflows</h1>
+
+      <p>In the course of your adventures trying to fit new models into their urban context you wil have come across various situations where models need to be edited or created.  Normally these situations are flagged for attention later.  There are four model editing scenarios that eachhave their own workflows soitmakes sense to accumulate this work and handle edits when you can shift intoa different mode. 
+      </p><p>
+      Here are the edit workflows and how to flag them:
+      </p>
+      <ul>
+        <li><b>New Model:</b> Flag in <b>Issue Points</b> feature class. 
+          <ul>
+            <li>Create in external editor, handle with model import workflow. 
+            <li>ArcGIS Model Creation Workflow.
+          </ul>
+        <li><b>Model 3D Edit:</b> Flag with <b>QA Flag</b> = <b>3D Edit</b>
+          <ul>
+            <li>Modify in in external editor, handle with model import workflow. 
+            <li>ArcGIS model editing workflow. 
+          </ul>
+        <li><b>Surface Edits:</b>
+          <ul>
+          <li><b>Remove Materials (Textures or Colors):</b>   <b>QA Flag</b> = <b>Remove Color</b>
+            <ul> <li>Use surface edit workflow</ul>
+          <li><b>Flip Surface Normals (all faces):</b> <b>QA Flag</b> = <b>Flip Faces</b>
+            <ul> <li>Use surface edit workflow</ul>
+          <li><b>Flip Surface Normals (subset of faces):</b> Flag with <b>QA Flag</b> = <b>3D Edit</b>
+              <ul> <li>Must be edited with external editor and imported with model import workflow. .</ul>
+          </ul>
+        </ul>
+        
+      <h3>Setting Status for Edited Models</h3>
+      <p>When models are flagged for editing, there are two options for dealing with the status of the prior version of the model.  
+      </p><p>
+        In the case of 3D model edits, if a model is being split to reflect a demolition of part of the real world structure, then the status for the prior model should be set to<b>Modified</b> so that the original model of the prior condition will be routed to the <b>History_MP</b> feature class. See the note on <a href="#modified">How the <b>Modified</b> Model Status Saves You Time</a>.
+      </p><p>
+        If a model is flagged for 3d Edits for a repair, or if themodel splitting operation is going to produce complete models of the persistent part of the structure as well as a model of the portion of the structure that will be removed, then the status of the prior model should be set to <b>Retired</b> 
+      </p><p>
+        In the case of surface edits when the new model is geometrically identical with the prior version, the status of the prior model would be set to <b>Expunge</b>.
+      </p>
+
+
+      <h2>Workflow Creating Editing Models Outside of ArcGIS</h2>
+      <p>3D editing tools are very diverse in terms of their capabilities and interfaces.  It makes sense that people are inclined to use tools that they are familiar with.  The capabilities of ArcGIS Pro for 3D model creation and editing are a moving target.  It has been my experience that there are some models that are not easy to edit in ArcGIS.  But I know that this is an area that ESRI is working on.   
+      </p><p>For any of the model creation or editing workflows, it should be easy to use the downloadable models from <a href="../repocat/index.htm" target="outboard">The Repository Catalog</a> to use as source material.  Inmost cases, recent orthophotography is available for use with the tiled models.
+      </p><p> 
+        The products of these edits would then be introduced through the normal model import process described above. 
+      </p>
+      <h2>Workflow for Editing and Creating Models with ArcGIS Pro</h2>
+      <figure class="right">
+        <img  src="./images/arcgis_edit_tasks.jpg">
+        <figcaption>The Edit Models with ArcGIS task group.</figcaption>
+      </figure>
+      <p>Creating and editing models with ArcGIS is carried out in a Model Batch folder.  I recommend starting a new batch for this purpose.  If you are editing model from the pre-existing Stage feature classes, you may begin by copying these to a feature class in the Batch Geodatabase.  Then you have freedom to try things and make mistakes and check and revise your altered models before pasting or appending them into the <b>Prep_MP</b> feature class.  Once there, the procedure for adding model-specific attributes and the automatically generated attributes is the same as outlined in the section on <a href="#import">Importing Models</a>.
+      </p><p>
+        Models created this way are appended to the <b>Stage_NewModels_MP</b>  feature class and integrated into their context just like new models.  
+      </p>
+      <h2>Workflows for Surface Edits</h2>
+      <figure class="right">
+        <img  src="./images/surface_edit_tasks.jpg">
+        <figcaption>The Edit Models with ArcGIS task group.</figcaption>
+      </figure>
+
+      <p>If a model is completely inside-out as described in the sidebar: <a href="#normals"> Problems with Surface Normals</a> you can fix it with the geoprocessing tool, <b>4a. Flip Faces</b>. This tool is accessible through the <b>Surface Edits > Flip Normals </b> task.  Note that this tool flips all of the surfaces in all of the input models. 
+      </p><p>
+      Similarly, the task <b>Surface Edits > Remove Materials / Colors</b> will turn all the faces of all of the input models to white -- which is a requirement if you wish to apply thematic colors to models in ArcGIS Pro. 
+      </p><p>
+      Both of these workflows can be handled in a ModelBatch folder/geodatabase, but they also can be dealt with with the following steps:
+      </p><ol>
+        <li>Select the affected models from their Stage feature class.
+        <li>Set the value of QA Flag appropriately. 
+        <li>Run the task or tool to flip the normals or remove materials.
+        <li>The tool creates a new feature class in the Scratch folder and adds it to the table of contents of the 3d scene. New model IDs and and the values for <b>Edit User</b>, <b>Edit Action</b> and <b>Edit Date</b> are appropriately set. 
+        <li>Check the models.
+        <li>Append the fixed models to the <b>Stage_NewModels_MP</b> feature class.
+        <li>Set the <b>Status</b> forthe original models to <b>Expunge</b>.
+        </ol>
+
+        
+        <div class="feature funfact">
+          <h3 id="modified">How the <b>Modified</b> Model Status Saves You Time</h3> 
+          <p>A common editing workflow comes into play when an existing model needs to be split to accommodate a new model of a proposed structure that will preserve part of the existing one. At the end of the process, you can have a new model that represents the portion if the existing structure that will return to the Active feature class.  And you may also end up with have a second new model that represents the "historical" portion of the original structure that is to be demolished.  As it happens, this process of model editing may be trickier and more time consuming than we would like.  
+          </p>
+          <p>[Illustration Needed]</p>
+          <p> 
+          For model curators who are primarily future-oriented, there may not be a clear business case for spending half a day trying to neatly dissect both sides of this complex cutting procedure.  Asit happens, cutting models can be very difficult -- especially when the models do not verify as being fully closed, or "water tight."   
+          </p><p>
+          In consideration of this fact, we have established the <b>Modified</b> status for models.  The first task is to cut the existing model and to end up with a model that represents the portion that persists.  The original model, in its entirety has its status set to <b>Modified</b>.  This status will cause the entire old model to be shifted to the <b>History_MP</b> feature class.  The new partial model willhave its status set to "Current" and after going through the process of editing and importing through a model batch, it will move through the <b>NewModels_MP</b> feature class and eventually wind up in the <b>Active_MP</b> feature class. 
+          </p><p>
+            The <b>Disappear Date</b> for modified models should be set to the date when the partial demolition occurs.  For the "Current" portion of the model, the Appear Date should be set to the same date. If you think about how a time-slider will work, you can imagine that when rendering a past scenario, the original, whole, model will be displayed up until that date.  When the slider moves through the curren time, the modified model will disappear and the new model and the remaining portion of the old model will appear. 
+            <p>
+              It <b><i>is</i></b> confusing that the Appear date of the current portion of the modified model is recent, when the actual structure may be 100 years old.  This is one reason why this Appear Date is not called <b>Year Built</b>.  The original year built for the structure, if it is known could be preserved as the Appear Date on the historical version of the modified model.    
+            <p>This situation is an illustration of why the model collection and its attributes is primarily concerned with <b>Models</b> and not with <b>Buildings</b>. 
+            </div>
+
+
+
+    
+    <hr>
+
+</div> <!-- Closes #article div -->
+
+    <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+  </div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+</html>
+    

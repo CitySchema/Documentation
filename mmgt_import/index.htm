@@ -1,0 +1,226 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head>
+    <title>Importing Building Models </title>
+    <meta name="description" content="Covers the procedures formanaging a collection of 3D building models as part od a GIS-based city modeling project.  Par of the citySchema.org framework foo developing, sharing and preserving city model assets. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography, citySchema">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/cityschema.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/cityschema.js"></script>
+</head>
+<body>
+    <div id="grid-container">
+      <div id="index-container">
+         <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+         <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+      </div> 
+      <div id="main-container">
+        <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+<div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter. -->
+    <h1 class="title">Importing Building Models</h1>
+  
+
+  
+        <h2 id="import">Task Group 2: Import, Inspect and Enroll Models</h2>
+        <figure class="right">
+          <img src="./images/import_tasks.jpg">
+          <figcaption>Tasks for Importing and Enrolling Models.</figcaption>
+          <br>
+          <img src="./images/import_tools.jpg">
+          <figcaption>Tools for Importing and Enrolling models</figcaption>
+        </figure>
+
+
+        <p>Importing new models is a useful place to begin the discussion of model updates.  It is often the case that new models create the necessity to do things to existing models and their attributes. This workflow has three stages:</P>
+          <ol>
+            <li> Create a batch folder for preserving the source files for future reference. This folder contains a geodatabase with two feature classes that conform to the current model template. (described in more detail below. )
+            <li> Import one or more models from original source files into the <b>Prep_MP</b> feature class. 
+            <li>Check the models and position or repair as necessary.  Assign identifiers and status attributes. 
+            <li>Automatically assign geometric and reference attributes.
+            <li>Append the models to the <b>Stage\New_Models_MP</b> feature class.  
+          </ol>
+         <p>It happens that model batch folders are also used to manage the process of editing / modifying existing multipatch models -- which wil be discussed in another section of this documentation. 
+         </p> 
+
+
+        <h3 id="batches">Model Batch Folders</h3>
+        <figure class="right">
+          <img  src="./images/model_work.jpg">
+          <figcaption>Model sources are stored in Dated ModelBatch folders.</figcaption>
+        </figure>
+        <p>The citySchema model management scheme preserves original source files for each model that is imported into the collection.  Subsequently, each model's attributes include a reference to the location of the source model in the <b>Archive/ModelWork</b> folder. This capability is useful in case a model needs to be edited or if corruption is discovered.  The staging and archiving of source models is arranged through the use of <b>Model Batch Folders</b> that begin their life in the <b>ModelMgt\ModelWork folder</b>.  A model batch folder is named according to the name of the agency, firm or individual that contributed the model. The name of the batch folder includes a date that reflects the approximate date when the models were created or contributed.  It is not necessary that this date be precise, it is merely a means of making the batch folders sortable.  
+        </p><p>
+          When the Model Management workspace is retired, all of the model batch folders are moved to the Cty3D_Archive folder --  the home of all of the source material that has gone into the city-wide 3d model since the beginning. 
+        </p>
+
+        
+<div class="feature procedure">
+<h3>Prepare Model Batch Folder and Geodatabase</h3>
+<p>This procedure makes use of the geoprocessing tools in the <b>2. Import ~ Edit Models</b> tool group and the <b>Import Models</b> task group.  
+</p> 
+
+
+  <p>The task, <b>Create Batch GDB</b> includes three steps.
+        <ol>
+          <li><b>Create a new model batch folder.</b> This is done manually.  The batch name consists of the name of the source and then a date string for example: <b>Sasaki_20211225</b>.  The source name could be the name of the contributing firm or individual, the name of a project, or in the case of a batch of edits e.g. <b>Edits_20211225</b>.  These folders wil be created manually using windows explorer. 
+          <ol>
+        <li>Create a new batch geodatabase.  Use the <b>Create the GDB</b> task to create a new geodatabase in your batch folder. 
+            It should be named "batch.gdb".  
+        <li>The third step is to create a feature class named "Prep" that will hold imported models. This step uses the tool <b>1b: Create Models MP FC</b> to create the feature class using the current models template and sets up the domains and edit tracking fields. 
+          <ul>
+            <li><b>Prep_MP</b> feature class will receive provisional models for checking and assigning identifiers 
+            <li><b>Ready_MP</b> feature class is for the multipatch models that have had all of their attributes assigned. 
+            </ul>
+          </ol>
+        <p>Having these two feature classes is necessary in situations where you may run the Import tool more than once.  These feature classes are made according to the latest model template and have all of the latest coded domains for Status and QA_Flag.
+        </ol>
+
+      </div>
+
+      <p>With a new batch folder and geodatabase prepared, you are now ready to import some models!
+      </p>
+      <div class="feature procedure">
+        <h3 id="inspect">Inspect, Adjust, and Repair Source Models</h3>
+        <p>There are many possible workflows one might use for assimilating 3D models depending on the source formatting.  This is an area where experience matters.  For the purposes of keeping this description from  getting too deep in the weeds, we will cover the sort of model submission that conforms with the <a href="../submissions/index.htm" target="outboard">citySchema Model Submission Guidelines</a>.  These would be models in simple triangulated OBJ format that conform to the <a href="../tile_scheme/index.htm#coordinates" target="outboard">Boston Metro Shift coordinate system. </a>
+        </p><p>
+        Sorry to say, you should always expect problems when importing hand-made models created with design-oriented 3D modeling tools.  Many of these problems will be difficult or impossible to fix in ArcGIS.  Therefore, it is recommended to begin the model import process by carrying out the following steps using the 3D editing tool of your choice.  In our demonstration we are using SketchUp. 
+        </p>
+
+          <ol>
+          <li>Copy the original model into the batch folder. You will probably have a sub-folder in the batch that refers to the name of the model file. Since a model batch folder is likely to contain more than one model, you should place each model in a sub-folder named for the model. The model/folder  name ought to say something useful about the project -- like its name perhaps with the project ID appended.   
+          <li>Copy whatever source information that you might have -- such as the proponent's slide-deck with plans and elevation drawings --  into the same folder.  You might also include a saved copy of the email that you received with the model -- which contains a lot of very useful contact information. 
+          <li>Register the model in the appropriate SketchUp tile.  You may have a stash of these working tiles on your PC somewhere.  It is not advisable to have the entire tiles in your ModelMgt folder for the sake of keeping these light.
+          <li>Check and adjust the X,Y and Z placement and make geometric changes, such as adding a basement to make sure that the model does not have floating corners when displayed on low-precision terrain models.  
+        <li>Use the Materials editor to make all of the faces (both sides) white (rgb 255,255,255). 
+          <li> If your source model contains multiple buildings, cut these apart as necessary into separate models and group and name them appropriately.  
+            <li>If you have used groups or layers for organizing the geometry of building models, and you think that this organization will be helpful in for people wishing to modify the model in the future, you should save the SketchUp model containing just the new building models into a folder named <b>skp</b> in your model batch folder. 
+          <li>Finally, select and export each building model as a triangulated OBJ file.  Export into a sub-directory named <b>obj</b> within your batch folder.  
+          <li>It is helpful to name the OBJ files according to the name of the project.  If it is a project that appears inthe Development Log, you might want to include the <b>Project_ID</b> in the name -- e.g. <b>Constitution_Wharf_4568</b> do not include spaces in file names. 
+          </ol>
+       
+      <p>You now have some triangulated OBJ models that are confirmed to be in the correct coordinate system.  </p>
+    </div>
+      <p>Hopefully your contributors will follow our advice about keeping geolocation information with their models, so that you don't have to go through a lot of trouble to figure out where the model sits in relation to the detailed groundplan.    
+      </p>
+
+  <div class="feature funfact">
+    <h3>Use Your Favorite Editing Tool</h3>
+    <p>Everybody who has spent much time working with 3D has their favorite editing tool.  For simple tasks it may be simple to edit geometry directly in ArcGIS.  When geometry gets complicated, you might prefer another tool that allows for the isolation of geometry into groups and layers that are specific for your model.</p>
+    <p>The citySchema project does not make any assumptions about what editing tool you use.  Any tool that can open our SketchUp format tiles or OBJ format models, and can in turn export models in triangulated OBJ format can be used in our model editing and import workflow.  
+    </p><p>For our demonstrations we use SketchUp.  We also use the Sketchup Plugion <b>Skimp</b> which allows for the import of OBJ format files. 
+    </p>
+  </div>
+  <div class="feature funfact">
+    <h3>Manuscript Models</h3>
+    <p>Tools for authoring 3D models typically provide a hierarchal means of organizing geometry in layers and as nested groups. 3D authoring tools also provide ways of describing curves or other shapes in terms of parameters as opposed to explicit vertices. These mechanisms are different from the table-based organization used by ArcGIS -- in which multipatch objects are stored as single mesh objects that are made of triangle-facets. The hierarchal organization of 3D authoring tools provides a way of managing the complexity of models.  The table-based structure of GIS has advantages in terms of scalability.  When transferring a model from its native 3D editing environment into GIS, best results are obtained when the authoring tool is used to flatten the model into a simple triangulated mesh, which translates directly into a multipatch object.  
+    </p><p>
+    In cases where a model is available in its original authoring format, the editable source document (manuscript) is worth keeping, because the layering and group hierarchy is useful but lost when the model is translated to an exchange format like OBJ format.
+    </div>
+
+      <h3>Import, Double-Check and Identify Multipatch Models</h3>
+      <p>
+      <p>The <b>Import Models</b> task provides user-settable variables for a bunch of model attributes related to model provenance.  The procedure is based on the geoprocessing tool <b>2b. Import Models</b>.    You should chose the <b>Prep_MP</b> feature class in your batch folder for the output. </p>
+        
+      The Import Models tool assumes that the input models are already properly located in the BosMetro 3D coordinate system -- which they will be if you went through the process of <a href="#inspect"> Inspection and Adjustment</a> described above.  In case the reference for this coordinate system gets broken, you can find the <b>Bos_MaSP_USFt_Shift.prj</b> in your <b>ModelMgt/Tools/Projections</b> folder.  The Vertical coordinate system should always be <b>Navd88 US Feet (Height)</b>  
+      </p><p>
+        We recommend that you initiate the import process with the <b>Import Models</b> task, which provides a handy interface for assigning values for the <b>Model Batch</b>, <b>Model Credit</b>, <b>Level of Detail</b> and others.  Any of these values can also be set or modified on a model-by-model basis in the next stage. Check the <a href="../model_collection/index.htm#datadictionary" target="datadict">Data Dictionary</a>  for details about these fields.
+      </p><p>If all goes well, you should now have one or more models in your Prep_MP geodatabase in your model batch folder!  
+      </p>
+      <p>The second step of the Import Models task will create new <b>Model_ID</b> values for each of your new models.  
+      </p> 
+
+
+      <div class="feature funfact">
+        <h3 id="normals">Problems with Surface Normals</h3> 
+        <figure class="right">
+          <img  src="./images/goodnormals.jpg">
+          <figcaption>A model with correctly-oriented surface normals.</figcaption>
+        </figure>
+        <figure class="right">
+          <img  src="./images/badnormals.jpg">
+          <figcaption>A model with bad surface normals.</figcaption>
+        </figure>
+        <p>One thing that makes 3D models tricker than flat points, lines, and polygons is the problem of lighting and shading.  Multipatch objects are made of triangulated faces. Your computer needs to figure out which direction each triangle is facing in order to shade it correctly.  The orientation of a face with regard to the light source is known as the <b>Surface Normal</b>.  The term "Normal" in this sense refers to vector perpendicular to the face.
+        </P>
+        <p>
+         It happens that one of the most common forms of corruption in multipatch models occurs when surface normals for some or all of the faces in a model are pointed in the wrong direction.  Another way of saying this is that the face or faces are <b>flipped</b> or <b>inside-out</b>.
+         When this happens, faces appear to be invisible when viewed from one side or may appear to be dull -- not reflecting light as they should.  These objects also behave badly when you try to color them with ArcGIS symbology.
+        </p><p>
+         <b>What is the cause?</b> Multipatch objects do not store surface normals explicitly.  Instead, the normal for each face is inferred by a convention called the <a href="https://en.wikipedia.org/wiki/Right-hand_rule" target="outboard">Right Hand Rule</a> that says that the vertices are recorded in counter-clockwise order from the perspective of the lighted side.  With this in mind, it is not difficult to imagine how these inferences might become incorrect.  Especially when a less-then-perfect 3D editing tool is used to create hundreds of new faces by cutting or intersecting complex mesh objects.  There are situations where the ordering of vertices becomes corrupt causing all subsequent faces to be flipped.  This is especially true when the original mesh objects are not validated as closed solids.  
+        </p>
+      </div>
+
+
+      <h3>Inspect and Prepare Multipatch Models</h3>
+      <p>Once models have been imported into the Prep_MP feature class, they should be inspected in your ArcGIS 3D Scene. Check for problems with surface normals and textures that may not be pure white.  These can be fixed in your editing tool or -- if all faces need to be flipped, you may be able to fix the coloring and surface normals of multipatch models with the <b>Surface Editing tools described below. 
+      </p><p>
+        There are a few attributes that you should check and set at this time.
+      </p>
+
+      <div class="feature procedure">
+      <h3>Hand-Set Model Identifiers and Status Attributes</h3>
+      <p>
+      Now there are a few attributes you should set while your new models are in the <b>Prep_MP</b> feature class"
+      </p>
+      <ul>
+        <li><b>Proj_ID and Proj_Lnk:</b> for model tha represent projects that are in the review process, Proj_ID should be populated with the corresponding ID and the working URL for the project from the Development log. 
+        <li><b>Model Name</b> Each model should have a name that may reflect the name of the project given by the development log.  Or it might be the name of a landmark building, vanity address or merely the street address for the building. 
+        <lI><b>Status</b> should reflect the model status.  Consult the <a href="../model_collection/index.htm#status_domain" target="datadictionary">Model Status Domain</a>.
+        <li>Set the Appear_Dt and Appear_Src to reflect the critical approval or submission dates from the development log. These values should support the validity of the Status.
+        <li>Use the <b>3d. Assign Model_ID</b> tool to assign new model IDs to each of the models in the Prep_MP feature class.
+        <li>The <b>Model_Batch</b>, <b>Model_File</b> and </b>Model_Date</b> should have been filled in correctly by the model import procedure. 
+      </ul>
+    </div>
+     
+      <h3>3e. Assign Geometric and Reference Attributes</h3>
+      <p>The next step in enrolling new models is to assign attributes that are calculated based on the model geometry.  This includes assignment of the Parcel ID and Assessor's link, Assignment of the model centroid coordinates and associated links to the oblique imagery in Google Maps and NearMap; and the Tile ID. 
+      </p><p>
+        The Assign Geometric Attributes tool takes all of the features in the Prep_MP feature class and assigns the attributes, placing the fully attributed models into the Ready_MP feature class.   
+        </p>
+
+        <h3>2d. Append Ready_MP models to NewModels_MP</h3>
+        <p>After checking the models in the Ready_MP feature class, it is time to append them to the Stage/NewModels_MP feature class.  Use the task, <b>Append Model Batch to Stage New Models FC</b> to accomplish this. 
+        </p>
+<p>
+        At this point, our Stage.gdb includes several feature classes representing the prior-archived state of the model collection, and a <b>NewModels_MP</b> feature class with several new models. 
+      </p>
+
+      <h3>Revising a Model Batch</h3>
+      <p>If you need to revise a model batch because you discovered a mistake or a few more models turn up that you wish to add and you don't want to start another batch.  Here's what you do:</p>
+      <ol>
+         <li>Use the <b>ModelBatch</b> and the <b>RecInit_Dt</b> fields to find the records in <b>Stage_NewModel_MP</b> associated with the batch -- and delete them from Stage_NewModels_MP. 
+        <li>If you need to import new models, these can be appended to the <b>Prep_MP</b> feature class without any damage to the models that are already in there.  If any of the new models are redundant with ones already imported,you will need to clean these up in Prep_MP.  
+        <li>Run the <b>Assign Geometric and Reference Attributes</b> task again.  This wipes out whatever was in Ready_MP.
+        <li>Finally, append Ready_MP to Stage_NewModels_MP again. 
+      </ol>
+
+        <hr>
+
+      
+    <hr>
+
+</div> <!-- Closes #article div -->
+
+    <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+  </div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+</html>
+    
