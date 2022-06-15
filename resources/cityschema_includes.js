@@ -71,12 +71,12 @@ let index_htm = `
        <li class="verse"><a href="../submissions/index.htm#sources">Source Material</a>
     </ul>
  
-    <li class="chapter"><a href="../model_batches/index.htm">Model Batches</a></li>
+    <!--li class="chapter"><a href="../model_batches/index.htm">Model Batches</a></li>
     <ul class="verses">
  
       <li class="verse"><a href="../mmgt_batch/index.htm#batches">Model Work Batches</a>
   
-      </ul>
+      </ul -->
 
    <li class="chapter"><a href="../filesystem/index.htm">citySchema Modular File System</a></li>
    <ul class="verses">
