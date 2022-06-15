@@ -1,0 +1,118 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>About DocuTree</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon-16px.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article come from the docutree_includes.js.
+          When you add a new page or internalachcor, you should update the index in docutree_includes.js.-->
+    <script src="../resources/docutree_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by docutree_includes.js--> </div>
+          <div id="index">        <!-- Content provided by docutree_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by docutree_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by docutree_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">DocuTree:  Very Simple Documentation Module </h1>
+  <p> Docutree is a very simple framework for organizing a hierarchy of topics in a static collection of html pages.
+  Pages and sub-headings accessible as a folding index in a sidebar. 
+  
+  
+    <h2 id="static">Modular HTML Documentation</h2>
+    <p>Docutree is designed to create a static web-site that behaves the same way when previewed on a local file-system or on git-hub pages without any need for a web server.
+    <h3 id="fab">Features and Benefits</h3>
+      <ul>
+      <li>Any web browser serves as a viewer. Easy to preview locally without any special software.
+      <li>Easy to publish on the web (for reading & instant updates). Drag and Drop onto your web server or Use the free GitPages mechanism. 
+      <li>Easy to describe hierarchal cross-linked ideas with hypertext and illustrations. 
+      <li>Easy to read: Handy index sidebar makes it easy to navigate, discover and search for topics, to understand broad-scale design patterns and nitty-gritty details.  
+      <li>Ready made styling elements make your content consistently presentable and graphically concise.
+      <li>Easy to share project documentation with collaborators (for collaboration on updates or forked versions) as simple zipped archive or as part of a gitHub project. 
+      <li>Standards based: Simple HTML, CSS, and Javascript.
+      <li>Compose and revise with your favorite code editor.
+      <li>Re-Use and Improve!
+      </ul>
+  
+
+  
+  <h2 id="publish">Easy to Publish and Update</h2>
+   <p>Documentation is always slipping out of date.  Errors and other opportunities for improvement become evident as soon as someone tries to understand it.  Web-based documentation allows you to live at peace in a world where documentation is always being improved.  Publishing on the web allows updates to be published frequently.  Users are always looking at the latest document each time they refresh the page. 
+  
+  <h2 id="add">Add docuTree to your Git Project</h2>
+  <p>DocuTree provides a re-useable documentation module for creating and sharing documentation for software projects that you are already managing on gitHub. GitPages makes docuTree documentation is accessible as a web site for users -- or as code for collaborators. Collaborators who wish to branch or fork their projects can easily fork the concurrent documentation.  So much more straight-forward than trying to use publishing media like PDF.
+  <p>A project may have several related repositories and one <b>documentation</b> repo -- which might start out as a clone of this repository. You add folders with index.htm files and potentially images, to extend the documentation for your project.  Using Git to publish the html as a web site -- using GitPages.  It is all free for open-source, public repositories.
+  <p>Your clients and collaborators enjoy having immediate access to the latest documentation -- they are also welcome to clone it as their own should they ever decide to fork the project. 
+
+<h3 id="preview">Preview Local Documentation in Browser</h2> 
+  <p>Here are some steps for using docuTree to start a documentation repo for your project:
+    <ul>
+      <li>Create a project on gitHub. A project is a namespace that can contain several repositories
+      <li>Clone github.com/pbcgis/docutree to a new repository in your project.   Name the new repository <b>documentation</b>
+      <li>Clone your new remote documentation repository to the file-system that you use for development.  Hint: keep your project documentation with the other local repos associated with your project.
+      <li>Preview the docuTree/index.htm in your favorite browser.  This should render the docutree home page and index side-bar as pictured, below. 
+      </ul>
+
+    <h2 id="gitpages">Publish On-Line Docs with GitHub Pages</h2>
+  <p>The <a href="https://pages.github.com/" target="outboard">GitPages</a> feature of GitHub is a very handy way of publishing a simple, static web site like docuTree.  Not only is it something like free hosting, but you also get the very efficient mirroring of the related documents and their updates, provided by your git workflows.  Publishing your docs this way also provides collaborators and users of all kinds to use the most up-to-date documentation, to browse its file structure and to download or clone the whole tree.
+  <p>    
+
+  <h2 id="readme">Edit your README.MD File</h2>
+  <p>The first thing you wil want to do is edit your README.MD file -- which is the explanation that people will see when they encounter your documentation tree on GitHub.  You will at least want to change the URL for your GitPages view. 
+  <p>Edit your README.MD page on your local repository, then <b>git commit .</b> then <b>git push origin main</b> to publish your changes to git-hub. 
+
+    <h2 id="chapter">Create a new Chapter with some Sub-Headings </h2>
+    <p>Each page in the document tree is stored in a folder with its images.  It is easy to create a new page by copying the template directory and renaming the new directory something meaningful, like <b>mypage</b>.  Notice that you can preview your new page in your browser immediately, but it is not yet included your side-bar index. 
+      <p>
+
+    <h2 id="chapter">Manage Shared Page Content</h2>  
+    <p>The file <a href="../resources/docutree_includes.js" target="outboard">resources/docutree_includes.js</a> is the source of all of the standard items that are displayed on each page, including the sidebar index.  Open this file in your favorite code editor.  I like to use VSCode a popular free editor made by microsoft. A jhandy way to manage your documentation tree is to right-click on the outer folder that contains the entire document tree, with index.htm and the resources folder and all of your other folders, and choose <b>View in VSCode</b> from the right-click menu. Then you can find your <b>resources/docutree_includes.js</b> file and open int in your editor.
+    <p>
+      The bits of content that determine the content of the headers and footers are included in this file as html snippets written to javascript variables.  It would be easy to change the banner title of your entire site by replacing the word <b>docuTrtee</b> in the <b>index_header</b> variable.  Try it!
+
+    <p>Each of the index.htm pages in docutree he docutree references the <b>resources/docutree_includes.js</b> file. This linking structure allows us to control repeated content on each page.  At the bottom of <b>resources/docutree_includes.js</b> you will find the jquery statements that write all of this master content to the divs that are included in each of the index.htm pages.
+
+    <h2 id="index">Add New Page and Headings to the Index</h2>  
+    <p>While you are looking at files with your text editor, tke a look inside your new <b>mypage/index.htm</b> file.  Notice how it contains a list of internal inks at the top in a div of class="verses" .  These hash-tag references point at headings further down the page.
+    Now, read the comments at the top of the <b>docutree_includes.js</b> file to see how you might create a page heading as a new list item in the index, ans then copy and paste the list of sub-headings from your new page into the index.
+    
+    <h2 id="improve">Bare Bones HTML Javascript CSS Skills Required</h2>
+    <p>The architecture of docuTree was born of necessity.  I needed a way to author and share documentation that would be easy for users to read, that would not be dependent on any hosting environment.  I looked around and could not find any sort of framework that satisfies my design requirements.
+    <p> I admit that I already had basic html, javascript and CSS skills, so putting this scheme together was not a heavy lift.  Some may find it awkward, at first, to edit documentation in plain html.  Among the problems that you may have at first, is odd behavior at the bottom of the page that arises from tags not being properly closed.  It cam be helpful to use your browser's developer tools to trouble-shoot problems. 
+    
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by docutree_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

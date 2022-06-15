@@ -97,8 +97,8 @@ let index_htm = `
 <h3>Managing the Building Model Collection</h3>  
 <li class="chapter"><a href="../model_collection/index.htm">Building Model Collection</a></li>
    <ul class="verses">
-      <li class="verse"><a href="../model_collection/index.htm#overview">Conceptual Overview</a>
-      <li class="verse"><a href="../model_collection/index.htm#interop">Interoperability Strategy</a>
+      <li><a href="../model_collection/index.htm#overview">Conceptual Overview</a>
+      <li><a href="../model_collection/index.htm#interop">Interoperability Strategy</a>
       <li class="verse"><a href="../model_collection/index.htm#gdb">Geodatabase Format Collection and Catalog</a>
       <li class="verse"><a href="../model_collection/index.htm#obj">Open Source Format Collection and Catalog</a>
       <li class="verse"><a href="../model_collection/index.htm#datadictionary">Data Dictionary for Model Catalog</a> 
@@ -160,9 +160,6 @@ let index_htm = `
 
     <li class="verse"><a href="../model_management/index.htm#nextedition">Publishing the Next Edition Model Collection</a>. 
  </ul>
-
-
- 
       <li class="chapter"><a href="../mmgt_layers/index.htm">Layers, Popups and Web Scenes</a></li>
   
       <ul class="verses">
@@ -196,26 +193,14 @@ let header_htm = `
 
 let index_head_htm = `<img height="100%" style="float:left; padding: 0px 5px 15px 5px;" src="../resources/images/favicon_lg.png"><p class="title">citySchema.org</p>`;
 
-let index_footer_htm = `
-<!-- div class="middleflex " >
-   <div>Hide/Show: </div> 
-   <div id="toggle_headings">Pages</div> 
-   <div id="toggle_subjects">Headings</div>
- 
-  
-</div-->
-`
-
 let footer_htm = `<div style="float: left;"><a style="color: black; font-size: 10pt;" href="../resources/mit_license.txt">MIT License</a></div>
 <div class="rightflex" style="color: red; font-size: 10pt; font-family: Arial, Helvetica, sans-serif;"><div><a href="http://pbcgis.com" target="_new">pbcGIS: cultivating spatial intelligence</a> <span style="font-size: 6pt; vertical-align: super;"> &reg;</span></div></div>`;
-
 
 
 
 $(function() {
   $('#index-header').html(index_head_htm);
    $('#index').html(index_htm);
-   $('#index-footer').html(index_footer_htm);
    $('#footer').html(footer_htm);
    $('#header').html(header_htm);
 

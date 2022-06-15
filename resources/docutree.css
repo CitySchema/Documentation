@@ -1,0 +1,526 @@
+  /* Style sheet for citySchema.org documentation library 
+  */
+
+/* The layout is governed by the grid mechanism 
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400&family=Roboto:wght@300&display=swap');
+
+/*** The top section deals with the grid layout.  ***/
+/*** Largest containers first                     ***/
+
+#grid-container {
+  display: grid;
+  grid-template-columns: 250px 750px;
+  grid-template-areas:
+    'index-container main-container '; 
+  background-color: linen;
+  width: 1000px;
+  margin: auto;
+}
+
+#main-container {
+  display: grid;       
+  grid-template-areas:
+    'header header header header header'
+    'article article article article article'
+    'footer footer footer footer footer'; 
+  grid-template-rows: 50px auto 25px;
+  min-height: 100vh;
+  /*overflow: auto;*/
+  /*overflow: hidden;*/
+  /*height: 100vh;*/
+}
+
+#index-container {
+  display: grid;
+  width: 250px;
+  position: fixed;
+  grid-template-areas:
+    'index-header'
+    'index'
+    'index-footer';
+  grid-template-rows: 50px auto 25px;
+  background-color: linen;
+  height: 100vh;
+  border-right-style: ridge;
+  border-right-color: rgb(28, 87, 121);
+  border-right-width: 1px;
+  font-family: 'Roboto Condensed', sans-serif;
+
+}
+
+
+  #header { grid-area: header; 
+    /*citySchema Blue */
+    background-color: rgb(91, 179, 238);
+    color: linen;
+    /*background-color: #E5DFC9;*/
+    padding: 0px 10px 0px 10px;
+    color: linen;
+  }
+  #index { grid-area: index; 
+       overflow: auto;
+       scrollbar-width: thin;
+       overflow-wrap: normal; 
+       padding: 10px 0px 10px 10px;
+  }
+  #article { grid-area: article; 
+       /*background-color: green;*/
+       padding: 10px 35px 10px 25px;}
+  #footer { grid-area: footer; 
+            width: 100%;
+            padding: 0px 10px 10px 10px;}
+  #footer > div.left {
+    width: 50%;
+  }
+  #footer > div.right {
+    width: 50%;
+    margin-left: auto;
+    text-align: right;
+  }
+  #index-header { grid-area: index-header; 
+    /*citySchema Blue */
+    background-color: rgb(91, 179, 238);
+       padding: 10px 0px 0px 0px;
+    }
+  #index-footer { grid-area: index-footer; 
+       padding: 0px 10px 10px 10px;
+      }
+  #main-container { grid-area: main-container; }
+  #index-container { grid-area: index-container; }
+
+
+/*** These flex properties apply in the headers and footers ***/
+/*** Referenced in the docutree_includes.js               ***/
+  .rightflex {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+    }
+    
+  .rightflex > div {
+    padding: 0px 10px 10px 10px;
+    text-align: center;
+    }
+    
+  .middleflex {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    }
+  
+  .middleflex > img {
+      /*padding: 0px 10px 10px 0px; */
+      text-align: center;
+      width:33%;
+      height: auto;
+      }
+
+
+/*** Now the typical DOM elements ***/
+html {
+  scroll-behavior: smooth;
+}
+/* Stops scrolling before target */
+:target:before {
+  content: "";
+  display: block;
+  height: 66px;
+  /*padding-top: -65px; */
+  margin-top: -66px;
+}
+body {
+  margin: 0;  /*Eliminates tab scrollbar */
+  color: rgb(28, 87, 121);
+  background-color:#a7a09a;
+  /*font-family: Arial, sans-serif;*/
+  font-family: 'Roboto', sans-serif;
+}
+p {
+  margin-top: 8px; 
+  margin-bottom: 8px; 
+}
+
+h1 {
+  font-size: 23px;
+  margin-bottom: 8px; 
+}
+
+h2 {
+  font-size: 19px;
+  margin-bottom: 8px; 
+}
+
+h3 {
+  margin-bottom: 8px; 
+}
+ /* Expands images while mouse is down */
+img {
+  transition:transform 0.25s ease;
+}
+img:active {    
+  -webkit-transform:scale(1.7);
+  transform:scale(1.7);
+}
+body a:active {
+  background-color: rgb(247, 223, 15);
+}
+a:link {
+  color: rgb(1, 65, 102);
+  text-decoration: none;
+}
+
+a:visited {
+  color: rgb(1, 65, 102);
+  border-bottom: 1px dashed rgb(60, 173, 238);
+} 
+a:hover {
+  color: rgb(11, 134, 206);
+  background-color:#d4d1ce;
+  text-decoration: none ;
+  border-bottom: 1px dashed rgb(60, 173, 238);
+}
+
+#article a:link {
+  color: rgb(11, 134, 206);
+  /*text-decoration: underline ;*/
+  text-decoration: none ;
+  border-bottom: 1px dashed rgb(60, 173, 238);
+}
+#article a:visited {
+  color: rgb(11, 134, 206);
+  text-decoration: none ;
+  border-bottom: 1px dashed rgb(60, 173, 238);
+}
+
+/*** Brand-specific colors for layout elements ***/
+/* CitySchema */
+#header a:link {
+  color: linen;
+}
+#header a:visited {
+  color: linen;
+} 
+
+#footer a:visited {
+  color: red;
+}
+#footer a {
+  color: red;
+}
+#footer a:active {
+  background-color: rgb(247, 223, 15);
+}
+.title {
+font-family: 'Times New Roman', serif;
+font-size: 27px;
+font-weight: 600;
+margin: 0 0 0 0;
+}
+
+.index-title {
+  font-family: 'Times New Roman', serif;
+font-size: 27px;
+font-weight: 600;
+margin: 10 0 0 0;
+}
+
+/* Tablet:768px. */
+@media (max-width: 991px) {
+  .title {
+    font-size: 24px; /* A wee smaller -- seems to be necessary to keep 
+                     header text from rupturing on my samsung 9" tablet. */
+   }
+ }
+
+.section_title {  /* These are rare,perhaps deprecated */ 
+font-size: 16px;
+font-weight: 600;
+margin: 0;
+}
+
+/*** The following deal with figures and the images contained inside ***/
+
+figure.middle {
+  /*display: flex;*/
+  display: block;
+   width: 95%;
+   margin-left: auto;
+   margin-right: auto;
+  text-align: left;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  padding: 0.5em;
+  background-color: rgb(245, 242, 239);
+}
+
+
+ figure.right {
+  float: right;
+  width: 42%;
+  text-align: left;
+  font-style: italic;
+  font-size: smaller;
+  text-indent: 0;
+  border: thin silver solid;
+  margin: 0.5em;
+  margin-left: 30px;
+  margin-right: 25px;
+  padding: 0.5em;
+  background-color: #EDE9E1;
+  display: flex; 
+  flex-direction: column;
+
+}
+
+img.scaled {
+  width: 100%; 
+  height: auto;
+}  /* I think that this is not necessary any more. */
+
+figure > img {
+  /*width: 100%; */
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  object-fit: contain;
+}
+
+img.triptic {
+  width: 31%; 
+  height: auto;
+}
+
+img.title {
+  padding: 10px 10px 10px 10px;
+}
+
+/*** Feature Divs are indented sections that have a color and a border ***/
+/*** and slightly different typography.                                ***/ 
+
+.feature {
+  display: block;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  /*margin-top: 35px;
+  margin-bottom: 35px; */
+  color: #333399;
+  background-color: #90d7f8;
+  border: 1px solid #1f7ebd;
+  /*padding: 0px 10px 10px 10px;*/
+  /*margin-left: 0.75em;
+  margin-right: 2em; */
+  margin-top: 25px;
+  margin-bottom: 20px;
+
+  padding: 0em 0.5em 0.5em 0.5em;
+  overflow:auto;
+  clear: both;
+}
+
+.feature h3{
+  margin-top: 10px;
+  font-size: 16px;
+}
+
+.feature.funfact {
+  background-color: #f3c8f1;
+  border: 1px solid #d884d8;
+}
+
+.feature.procedure {
+  background-color: #90d7f8;
+  border: 1px solid #1f7ebd;
+}
+
+.feature.tour {
+  background-color: #f8eacb;;
+  border: 1px solid #f7c272;
+}
+
+
+/* I wish this worked,but it doesn't
+:target h3 {
+  background-color: yellow;
+}
+*/
+
+
+
+
+table.dictionary {
+  width: 85%; 
+  margin-left: 25px;
+  margin-right: 50px;
+  border-collapse: collapse;
+  font: 87.5% "myriad-pro", Arial, Helvetica, sans-serif;
+}
+table.dictionary tr:nth-child(even) {
+  background: #f5f3f3;
+}
+table.dictionary tr:nth-child(odd) {
+  background: #e1e1e1;
+}
+
+table.dictionary td {
+   /*padding: .5em 1em;*/
+  vertical-align: top;
+  line-height: 1.5em; 
+  border: 1px solid #B3B2B2;
+}
+table.dictionary th {
+  padding: .5em 1em;
+  vertical-align: top;
+  background:  #bfbfbf;
+  font-weight: normal;
+  padding: .5em 1em;
+  text-align: left;
+  border: 1px solid #b3b2b2;
+  font-weight: bold;
+}
+
+table.dictionary p {
+  margin-bottom: 0.6em;
+  margin-block-end: 0.6em;
+}
+
+/******Everything below here deals with the nav sidebar*******/
+/* These treeview styles regulate the sidebar index. */
+
+.treeview a:link {
+  color: black;
+  /*text-decoration: underline ;*/
+  text-decoration: none ;
+}
+.treeview  a:visited {
+  color: black;
+  text-decoration: none ;
+  border-bottom: 1px dashed rgb(60, 173, 238);
+}
+
+.treeview .chapter  {
+  list-style: none;
+  cursor: pointer; 
+  font-weight: 525;
+  margin-bottom: 2px;
+}
+
+.treeview > h3 {
+font-size: 15px;
+font-weight: 600;
+margin-top: 5px;
+margin-bottom: 3px;
+}
+
+
+/* Main Level */
+ul.treeview  {
+  list-style: none;
+  margin-left:0px;
+  margin-top: 0px;
+  padding-left:0px;
+  padding-top: 10px;
+  font-size: 15px;
+}
+
+/* Second Level */
+ul.treeview >ul {
+  margin-left:5px;
+  padding-left:10px;
+}
+
+ul.verses {
+  margin-left:0px;
+  padding-left:15px;
+  list-style-type: none;
+}
+
+.treeview ul li.verse {
+list-style-type: none;
+font-family: "Arial Narrow", Arial, sans-serif;
+font-weight: 100;
+  }
+
+/*
+.treeview ul li.verse:before {
+  padding-left: 16px;
+  background: url("./images/winupdowndot.png") no-repeat;
+  background-position: -46px top;
+  background-size: 69px, 23px;
+  content: "";
+  height: 20px;
+}
+*/
+
+
+
+.treeview ul.verses {
+  padding: 2px 10px;
+  margin: 0px;
+}
+
+.treeview ul.verses li:before {
+  padding-left: 16px;
+  background: url("./images/winupdowndot.png") no-repeat;
+  background-position: -46px top;
+  background-size: 69px, 23px;
+  content: "";
+  height: 20px;
+}
+
+  .treeview ul.verses >li {
+  padding: 0px 10px;
+  margin: 0px;
+  margin-bottom: 4px;
+  list-style-position: inside;
+  text-indent: -1.2em;
+  padding-left: 1em;
+}
+
+.treeview >li.chapter {
+  list-style-position: inside;
+  text-indent: -1.5em;
+  padding-left: 1em;
+}
+
+.treeview .chapter:before {
+  padding-left: 18px;
+  background: url("./images/winupdowndot.png") no-repeat;
+  background-position: 0px top;
+  background-size: 60px, 20px;
+  content: "";
+  height: 25px;
+}
+
+.treeview ul >li {
+  padding: 0px 10px;
+  margin: 0px;
+  list-style-position: inside;
+  text-indent: -1em;
+  padding-left: 1em;
+}
+
+.treeview li.active {
+  background-color: #94cdf3;
+  font-weight: 550;
+
+}
+
+  .treeview .is-open:before {
+      background-position: -20px top;
+  }
+  .treeview ul.verses {  /*Default view is hidden.  This is toggled with jquery. */
+      display: none;
+  }
+
+
+/* End of the treeview styles */
+/******************************/

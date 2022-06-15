@@ -13,14 +13,14 @@
     <meta charset="UTF-8">
     <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
     <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
-    <link href="../resources/cityschema.css" rel="stylesheet"> 
+    <link href="../resources/docutree.css" rel="stylesheet"> 
 
 
     <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
           When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
     <script src="../resources/cityschema_includes.js"></script>
     <!-- THis has to come after the cityschema_includes file-->
-    <script src="../resources/cityschema.js"></script>
+    <script src="../resources/docutree.js"></script>
     </head>
     <body>
       <div id="grid-container">
