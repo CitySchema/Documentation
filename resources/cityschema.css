@@ -471,7 +471,8 @@ font-weight: 100;
 }
 
 .treeview li.active {
-  background-color: #94cdf3;
+  /*background-color: #94cdf3;*/
+  background-color: white;
   font-weight: 550;
 
 }

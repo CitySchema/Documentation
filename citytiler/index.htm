@@ -35,18 +35,39 @@
 <!-- Page content goes inside the article div -->
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
-  <h1 class="title">City Tiler</h1>
-
+  
+  
   <p style="background: lightgray;">
     <b>Notice: </b> this documentation is in work.  The repository has been checked and all of the tools work.  The documentation will be brought up to date soon.
   </p>
+
+  <h1 class="title">Preparing Tiled City Model Resources</h1>
+  <p>One of the main functions of the cityschema framework is the <a href="../repocat/index.htm" target="putboard">Repository/Catalog</a> which provides access to detailed city model resources in various formats that are compatible specialized tools for 3D design, archival and historical applications, open-source tool-chains and gaming engines.  
+  <p>
+  The <a href="../tile_scheme" target="outboard">Metropolitan Tile Grid and Coordinate System</a> are an important piece of the citySchema strategy for loss-less round-trip exchange of city model resources with content creators using design-oriented tools.  
+  </p>
+  <figure class="right">
+    <img src="images/citytiler_toolbox.png">
+    <figcaption>CityTiler Toolbox</figcaption>
+    </figure>
+  <p>
+  The <a href="https://github.com/CitySchema/cityschema-citytiler" target="github">CitySchema-CityTiler Repository.</a> provides the tools for:
+  <ul> 
+    <li>The tile scheme and compact coordinate system
+    <li>Tiled terrain models integrating the most detailed triangulated DTM data covered by the municipality's digital terrain model (DTM), filling in the outer areas with the MassGIS DTM.
+    <li>High resolution groundplan images representing the municipality's planimetric layers or latest orthophotography - -tiled to drape precisely on each tiled terrain models. 
+    </ul>
+
+
+
+
 
 
   <p>The citySchema city model management framework makes use of very detailed terrain data that is broken into rectagular tiles that can be snapped together seamlessly. The rectangular tiling scheme facilitates the integration of the terrain models with groundplan information shared as high-resolution images -- including the latest true ortho photography.  These snap-together texture-mapped terrain tiles are very compatible in exchanges between GIS and 3d modeling tools used by designers. They also can be shared as raster elevation models that have the same image-draping and edge-matching capabilities.
 
   <p> This page describes the terrain modeling strategy, including a description of the data-sets and tools provides in the 
     <ul>
-      <li><a href="https://github.com/CitySchema/Modular-Terrain" target="github">CitySchema/Modular-Terrain Repository.</a>
+      <li><a href="https://github.com/CitySchema/cityschema-citytiler" target="github">CitySchema-CityTiler Repository.</a>
     </ul>
   
     
