@@ -1,0 +1,75 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Extruding LOD 1.5 Models </title>
+    <meta name="description" content="Level of Detail 1.5 models are extrusions that may represent the massing of structures out of made of multiple parts that have different heights.">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Extrudng LOD 1.5 Models</h1>
+  <p>LOD 1.5 models are extrusions that may represent the massing of structures out of made of multiple parts that have different heights.
+  </p>
+
+  <h3>Quality Concerns</h3>
+  <ul>
+    <li>Buildng corners that look like 90 degree angles should be exactly 90 degrees.  If you end up trying to modify models, it is much easier to push and pull geometry if paralell faces are exactly paralell.
+    <li>Models that are on the ground should be extruded from flat horizontal bottoms that sit about 10 feet (3 meters) below the elevation of the lowest vertex in the model footprint. 
+  </ul>
+  
+
+
+  https://pro.arcgis.com/en/pro-app/latest/help/editing/create-features-with-right-angles.htm  
+
+  
+
+
+
+<h3>Work and Tools Conducted in a Stand-Alone Model Batch Project</h3>
+<p>The development of new lod 1.5 models will take some time, wil involve procedures and source data that may be adjusted according to the project at hand.  It is very likely that after the procedure is "finished" that errors or improvements wil be discovered that will call for making adjustments to the procedures and re-running the models. 
+<p>
+This is why we are going to create a new project workspace that will allow us to keep a unique toolbox and sources folder associated with the project.  This self-contained workspace will be treated as a Model Batch workspace (as described in the section on <a href="../mmgt_import/index.htm">Model Management</a>.)  Once these models are integrated into the building model collection, their Model_Src attribute will refer to the archived model batch so that a model manager wil lknow where to look in case there are questions about the methodology.
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

@@ -101,25 +101,25 @@ let index_htm = `
       <li><a href="../model_collection/index.htm#interop">Interoperability Strategy</a>
       <li class="verse"><a href="../model_collection/index.htm#gdb">Geodatabase Format Collection and Catalog</a>
       <li class="verse"><a href="../model_collection/index.htm#obj">Open Source Format Collection and Catalog</a>
-      <li class="verse"><a href="../model_collection/index.htm#datadictionary">Data Dictionary for Model Catalog</a> 
-      <li class="verse"><a href="../model_collection/index.htm#status_domain">Model Status Dictionary</a>
-      <li class="verse"><a href="../model_collection/index.htm#LOD">Levels of Detail and other Recommendations for Model Structure</a>
+
 
    </ul>
-
-
 
    <li class="chapter"><a href="../data_dictionary/index.htm">Data Dictionary</a></li>
-   <ul class="verses">
-      <li class="verse"><a href="../data_dictionary/index.htm#status_domain">Status Domain</a>
-   </ul>
+      <ul class="verses">
+        <li class="verse"><a href="../data_dictionary/index.htm#datadictionary">Data Dictionary for Model Catalog</a> 
+        <li class="verse"><a href="../data_dictionary/index.htm#status_domain">Model Status Dictionary</a>
+        <li class="verse"><a href="../data_dictionary/index.htm#LOD">Levels of Detail and other Recommendations for Model Structure</a>
+      </ul>
 
 
-   <li class="chapter"><a href="../mmgt_project/index.htm">Model Collection Management Workspace & Project</a></li>
+   <li class="chapter"><a href="../mmgt_project/index.htm">Model Management Workspace</a></li>
    <ul class="verses">
       <li class="verse"><a href="../mmgt_project/index.htm#tour">Tour of the Model Management Workspace Folder</a>
       <li class="verse"><a href="../mmgt_project/index.htm#lifecycle">Lifecycle of a Model Management Workspace</a>
       <li class="verse"><a href="../mmgt_project/index.htm#project">Tour of the ArcGIS Pro Project Properties</a>
+      <li><a href="../mmgt_project/index.htm#scenes">Tour of the Scenes, Maps Layers and Views</a>
+      <li><a href="../mmgt_project/index.htm#tools"> Explore Tasks and Tools</a>
    </ul>
 
 
@@ -150,7 +150,6 @@ let index_htm = `
     
     <li class="verse"><a href="../mmgt_edit/index.htm#normals">About Surface Normals</a>
     <li class="verse"><a href="../mmgt_edit/index.htm#edit">Model Editing Workflows</a>
-    <li class="verse"><a href="../mmgt_edit/index.htm#nextedition">Publishing the Next Edition Model Collection</a>. 
  </ul>
 
 

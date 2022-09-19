@@ -1,0 +1,142 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Terrain, Groundplan and Structures</title>
+    <meta name="description" content="The interplay of terrain models with draped ground-plan information with 3d models of structures is a critical aspect of city models.  This page describes how to avoid predictable problems that arise when applications use terrain models of varying resolution.">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography, terrain, 3D Building Models, 3D Bridge Models">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Fitting Terrain Groundplan and Structure Models</h1>
+  <p>
+    The interplay of terrain models with draped groundplan information with 3d models of structures is a critical aspect of city models.  This page describes how to avoid predictable problems that arise when trying to combine all of these together.
+  </p>
+  <h3>Applications use terrain models of varying resolution.</h3>
+  <h3>Vector and Raster Terrain Models</h3>
+  <p>
+    The most accurate terrain models are vector digital terrain models (DTM) that express specific measured spot elevations and 3D break lines that coincide with creases in the terrain, such as the top and bottom of slopes and the edges of graded areas and the center of drainage features.    
+    <p>
+      Typically, DTMs are turned into triangulated  (TIN, or Triangulated Irregular Network) surfaces that provide an interpolated elevation for any X,Y point.  Tringulated mesh surfaces, such as TINs are preferred by engineers and architects because of their high level of detail and very concise and precise expression of the shape of the terrain and hard-scape.      Surface models provide the visualization of the terrain that can be shaded or can be draped with imagery representing planimetric groundplan or orthophotographs.  
+
+    <p>Figure 1: TIN Terrain Surface.   
+<p>
+      Many applications prefer to use raster terrain models that express elevation as a regular array of square pixels (cells). Raster digital elevation models (DEM) can easily be made from TIN surface models at any resolution needed. A very detailed raster terrain model might have a resolution of one foot, or 20 centimeters.   Applications for visualization of extensive areas often use raster DEMs having a resolution of 10 feet or more.  
+   
+      <h3>Terrain Model Quality</h3>
+      The best vector DTM models with breaklines and masspoints are usually the product of human-assisted photogrammetry work.  Because the real terrain is usually cluttered with cars and trees and buildings, it takes intelligence to trace terrain breaklines and to drop mass points.  In the age of LIDAR you find many raster terrain models that have been cleaned up using algorithms and delivered as rasters.  
+      <p>
+      Automated terrain modeling procedures get better and better, but they do not come with the precise breaklines and masspoints.  Therefore, it is difficult if not impossible to develop streamlined triangulated models from these.     
+      
+
+      <p>Figure 2: Terrain Precision
+
+<p>Although content creators and managers prefer to use the highest quality terrain models, it is often the case that models of buildings and bridges and walls will be displayed on terrain models of much lower quality.  For many purposes, are not affected by the loss of detail -- except the discrepancy shows up as floating building corners or bridges that do not reach all the way to the bank.
+  
+  <p>Figure: Problems with bridges and building models meeting terrain. 
+
+<h3>Easy Steps for Avoiding Problems<h3>
+
+  <p>Gaps and illogical walls across road bridges stand out as obvious errors that grab the attention of users.  Thankfully, it is not hard to avoid these if the creators of models add a margin of error to the bottoms of buildings and walls and extend bridges along the grade of approaching roads as illustrated and discussed below.  The beauty of these techniques is that the city model is designed for viewing above the terrain. so that the extended parts of models will be hidden and no gaps above the terrain wil be seen -- even if the terrain model has erroneous depressions. 
+    
+    
+
+
+
+
+  </p>
+
+ <!-- Slideshow container -->
+    <div id="ooslides" class="slideshow in-page" 
+    data-imgheight = "250px" 
+    data-title = "I'm a Slideshow with a title and No Captions" 
+    data-playpaused = "playing"
+    data-fadespeed = "10" >
+  
+    <div class="slidecontainer" data-title="Wide Image" data-caption="Away up to tree-line.">
+      <div class="slide"><img src="./images/wide.jpg" ></div>
+      <div class="caption"></div>
+      <div class="learnmore"><a href='#early'>Learn More about Wide Images</a></div>
+   </div>
+    <div class="slidecontainer" data-title="Tall Image" >
+      <div class="slide"> <img src="./images/tall.jpg"></div>
+      <div class="caption"></div>
+      <div class="learnmore"><a href='#late'>Learn More about Tall Images</a></div>
+    </div>
+</div> <!-- Closes ooslideshow-->
+
+
+
+<hr>
+
+
+
+      <figure class="right">
+        <img src="images/tall.jpg">
+        <figcaption>Fig Right</figcaption>
+      </figure>
+
+ 
+      
+      <figure class="middle">
+      <div class="middleflex"> 
+        <img src="images/tall.jpg"> 
+        <img src="images/tall.jpg"> 
+        <img src="images/tall.jpg"> 
+      </div>
+        <figcaption>Triptic</figcaption>
+      </figure>
+    
+    <h3 id="table">The Dictionary Table Style</h3>
+     <p>Tables with <b>class="dictionary</b> look like this.</p>  
+    <table class="dictionary">
+      <tr><th>Heading 1</th><th>Heading 2</th></tr>
+      <tr><td>Row 1</td><td>Col 2</td></tr>
+      <tr><td>Row 1</td><td>Col 2</td></tr>
+    </table>
+
+
+    </div> <!-- closes feature -->
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
