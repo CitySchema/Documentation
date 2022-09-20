@@ -36,21 +36,55 @@
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter. -->
     <h1 class="title">Layers and Pop-Ups and Web Scenes</h1>
 
-<p>Visually presenting and sorting subsets of the building model collection is a necessary aspect of most applications of the city model within ArcGIS, public web-scenes and through ArcGIS Urban applications. The citySchema Model Management workspace provides a style palette for coloring models according to status that provides a familiar, intuitive legend for quickly understanding the status of building models.  This pallette is used for every visualization of building models on all platforms.
-<p>
-Because ArcGIS Pro and ArcGIS on-line do not have a means of eliminating un-used classes from legends, it has been necessary  to create variations of the master template layer to produce web-scenes with streamlined lagends that do not contain lots of distracting un-used status classes. 
+<p><i>This page is under construction</i>
 
-<p>This document describes how to manage the symbology of building model layers, definition query views and web-scenes.
+<p>Visually presenting and sorting subsets of the building model collection is a necessary aspect of most applications of the city model within ArcGIS, public web-scenes and through ArcGIS Urban applications. The citySchema Model Management workspace provides a style palette for coloring models according to status that provides a familiar, intuitive legend for quickly understanding the status of building models.  This pallette is used for every visualization of building models on all platforms.
+<ul>
+  <li><a href="https://boston.maps.arcgis.com/home/webscene/viewer.html?webscene=80de5aea1a3348bfae7ae4c91659a75e" target="agol">Visit the public web-scene demo</a> 
+  <li>Note the way that the Radio buttons work and how the legend does not contain a lot of excess values.
+</ul>
+
+  <p>
+  Because ArcGIS Pro and ArcGIS on-line do not have a means of eliminating un-used classes from legends, it has been necessary  to create variations of the master template layer to produce web-scenes with <b>streamlined feature selections and legends</b> that do not contain lots of distracting un-used status classes.
+
+<b>Pop-Ups</b> are another aspect of styling that requires simplification. Currently, there seems to be a lot of room for improvement in the way that ArcGIS Pro and ArcGIS OnLine's simple web scene builder handle custom pop-ups (as far as I can tell).  I expect that (hopefully) some of the headaches with styling pop-ups that are portrayed in this workflow, will be obsolete before too long. 
 </p>
 
-<div class="feature funfact">
-  <h3>About Re-usable Layers</h3>
-  <p>All of the layers for viewing 3d models use the same symbolization for models according to status.  The master layer for this symbology can be found in the <b>ArcDocs\Layers\MP_Status.lyrx</b> file.  This symbology can be applied to any multipatch layer using the <b>Appearance\Import function </b> as described in <a href="https://pro.arcgis.com/en/pro-app/2.7/help/mapping/layer-properties/import-symbology-from-another-layer.htm" target="arcdoc">ImportSymbology from another Layer</a>.
- <p>Any time you change the treatment of the status symbology, it would be a good idea to re-save this master layer. 
-   <p>Many group layers are also saved in the layers folder.  It is a good habit to save any of the major group layers to this location any time you make changes to them.
-  <p>The project option  <b>Geoprocessing > Remove Layers that are overwritten by geoprocessing tools</b> should always be un-checked.  Unfortunately this is not the default, and even un-sets itself when a project is copied. As a result, the symbology for layers will get wiped out when geoprocessing tools delete and re-generate data-sets.  You will learn this the hard way many times but be happy that the prior state of these layers and group layers can be recovered. 
-  <p><i><b>Note to ESRI:</b></i> it would be great if there was a way for layers to reference the symbology from a saved layer and update themselves automatically. 
-  </div>
+<h2>Workflow and Resources for  Selecting, Styling and Publishing AGOL Feature Layers</h2>
+<p>It is probably best to have the tool: <b>6a2. Publish Public Scene Layers</b> and the related task open when reading this documentation.
+
+<p>The essential workflow boils down to this:
+  <h3>In ArcGIS Pro</h3>
+  <ol>
+    <li>Copy features and suppress the auto-update fields, which are incompatible with the publish scene layer tool. 
+    <li>Apply feature styling and pop-ups from a template layer file saved previously in <b>ArcDocs/Layers</b>.
+    <li>Publish the scene layers to the the user's chosen staging folder on ArcGIS On-Line
+    </ol>
+  <h3>In ArcGIS On-line</h3>
+  <ol>
+    <li>Replace the currently published scene layers in a AGOL "folder" dedicated for the live scene layers for the public web scene.
+    <li>Check the layer behavior and pop-up content.
+    </ol>
+    
+  <h2>Customizing Popup and Layer Styling</h2>
+  <p>Quick notes and links to be filled in later:
+    <ul>
+      <li>Examine the layer <b>ArcGIS On-Line Public Layers/Bos3d_Existing</b> 
+      <li>Note how the multipatch styling comes from the saved Bos3d_Status style-set.  Read about <a href="https://pro.arcgis.com/en/pro-app/latest/help/projects/styles.htm" target="arcdocs">Styles</a>
+      <li>Right-click and choose <b>Configure Pop-Up</b>
+      <li>The most effective way to style pop-ups with hyperlinks that are based on attribute values, as we do in our demo requires you to edit the pop-up template in HTML mode. 
+      <li>Read more about <a href="https://pro.arcgis.com/en/pro-app/latest/help/mapping/navigation/configure-pop-ups.htm" target=""arcdocs">Configure Pop-Ups</a>
+      </ul>
+<p>This mechanism for styling pop-ups is clunky.   But reliable.
+
+
+<h2>Saving and Re-Using Layers wth various styling and Pop-Up Options</h2>
+  <p>All styling and pop-up customizations are saved with a layer when you right-click and choose <b>Save as Layer File</b> on a layer.
+  <p>These options can be applied to a layer using the <a herf="https://pro.arcgis.com/en/pro-app/2.9/tool-reference/data-management/apply-symbology-from-layer.htm" target=""arcdocs">Apply Symbology from Layer</a> 
+    
+
+
+
 
 
 </div> <!-- Closes #article div -->
