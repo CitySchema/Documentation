@@ -133,7 +133,8 @@ let index_htm = `
   
     <ul class="verses">
     
-    <li class="verse"><a href="../model_management/index.htm#import">Import, Inspect and Enroll Models</a>
+    <li class="verse"><a href="../mmgt_import/index.htm#import">Import, Inspect and Enroll Models</a>
+    <li class="verse"><a href="../mmgt_import/index.htm#batches">Prepare a Batch Folder</a>
 
  </ul>
 
