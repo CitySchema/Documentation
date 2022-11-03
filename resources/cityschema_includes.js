@@ -119,6 +119,7 @@ let index_htm = `
       <li class="verse"><a href="../mmgt_project/index.htm#lifecycle">Lifecycle of a Model Management Workspace</a>
       <li class="verse"><a href="../mmgt_project/index.htm#project">Tour of the ArcGIS Pro Project Properties</a>
       <li><a href="../mmgt_project/index.htm#scenes">Tour of the Scenes, Maps Layers and Views</a>
+      <li><a href="../mmgt_project/index.htm#layers">Managing Re-Useable Layers and Styles</a>
       <li><a href="../mmgt_project/index.htm#tools"> Explore Tasks and Tools</a>
    </ul>
 
