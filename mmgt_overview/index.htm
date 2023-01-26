@@ -1,0 +1,202 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Model Management Overview</title>
+    <meta name="description" content="Managing a Collection of Building Models:  why and how.  An overview ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Managing a Collection of Building Models: Why and How</h1>
+  <!-- p>
+    Even though the development and publication of a three-dimensional city model falls into the domain of a municipal geographic information systems (GIS) agency.  The mindset and principles involved are different from what GIS technicians normally encounter managing and publishing collections of points, lines and polygons.  
+  <p>
+    Three-dimensional models of buildings are much more complicated than polygons.  They are more expensive to create, they are much more difficult to edit.  They can have un-seen corruption and validation issues.  Digital 3d models of buildings are more valuable and tricky to maintain as a historical record of change.  And have a user/contributor community that use a diverse set of non-GIS tools, coordinate referencing schemes and interoperability issues.
+
+
+<h2>Asset Management: Repository / Catalog vs Working Geodatabase Copy</h2> 
+  <p>
+  Relying on proprietary GIS-formats for long-term storage and maintenance of the model collection is a recipe for disaster.  Formats like the ESRI Geodatabase Multipatch format are indispensible for integrating 3D models with geographic databases.  However, we have learned that the ESRI's proprietary viewer for Multipatch models will tolerate a large degree of faultiness in building models which are not so well tolerated by other formats used by other tools. 
+  <p>
+    The fault tolerance of multipatches in ArcGIS seems like an unqualified good thing, except when it comes time to export model assets for use some other tool-set.  If the un-seen corruption of muultipatch models is not caught when models are brought into the collection, then the collection is vulnerable to difficulties in the future, some of which may be impractical to repair.  
+  <p>
+    Another issue with relying on multipatch format for asset preservation is that even if the models are validated and repaired, one never knows what may be happening as the models are copied from one feature class to another through different versions of the software and data format. 
+<p>
+    These predictable hazard of digital asset management highlights the importance of geometry validation and maintenance of a repository of validated building models in a stable, open-format repository that can be read and translated by a variety of open-source and licensed tool-chains. 
+  
+
+
+  <h3>Proxy Objects Mirror the Repository / Catalog</h3> 
+    <p>The reality described above sets out the usefulness of conceiving of the GIS-based collection of 3D models as a handy way of visualizing and developing the actual collection of assets and their catalog. Though this is more complicated than the more direct and superficial idea that the geodatabase is the thing, it is actually much simpler and safer in the long run to keep in mind that the Geodatabase is a tool for building and updating the Repository collection and its Catalog.
+    -->
+  <p>THis document is currently a work in progress
+    <p>The purpose os to write out a narrative that describes an overview of the components and workflows involved with managing the buildnig model collection.  
+
+
+  <h2>Definition of Components</h2>
+  
+  <h3>Geodatabase View of the Model Collection:</h3> 
+  <p><b>Purpose:</b>: The geodatabase multipatch feature class is a very useful way to represent 3d models as geographically referenced data objects.  It provides a great amount of interoperability with essential analytic and visualization tools of the ESRI universe. 
+  <p><b>Parts:</b> Feature Classes Segmented by Status help the manager to focus on Existing, INternal and New models without being bogged down with confusing definition query filters
+  
+
+  <h3>Object Store Folders:</h3> 
+  <p><b>Purpose:</b> Because Multipatch is a proprietary format that is not always interoperable with other tools and requires licenses, it is useful to have each model asset in a format that is open and subject to validation and transformation using open-source tools. We have selected Wavefront OBJ format to serve this purpose. OBJ is the 3d format that is most universally transferrable among popular 3d modeling tools. 
+  <p><b>Parts:</b> 
+    <ul>
+      <li>An Object store folder contains a collection of OBJ files and metadata. 
+      <li>May be subdivided into sub-folders that segment the collection into tiles or status
+      <li>May include javascript/HTML finding aids like clickable maps
+      <li>May include javascript/html preview tools that render individual or tiled models 
+    </ul>
+    <p>The complete Repository Model Store is divided into 3 individual folders:
+      <ul>
+        <li>Measured Public Models (partitioned into individual Tile Model Stores)
+        <li>New Models (City-Wide)  Accumulates between major updates.
+        <li>Internal Model Store (City-Wide)
+      </ul>
+  
+  <h3>Model Catalog Files or Tables: </h3> 
+  <p><b>Purpose:</b> While a geodatabase feature class conveniently welds together 3D models with database tables, there are not many-if-any other formats that lock attributes to models.  To fully preserve the information and functionality of the 3D model collection it is necessary to publish the attributes of models, (<a href="../data/dictionary/index.htm">defined in our schema</a>) as a table.
+  <ul>
+    <li>>The table provides information about the provenance and status of models, but also geometric information necessary for translating models into various geo-registration schemes.  
+    <li>The catalog provides relative path references for the locations of models within the Repository Model Store Folders. This makes the catalog an essential piece of web-based finding aids. 
+    <li>The catalog can consolidate information spanning model status classes and tile schemes to provide an efficient one-stop look-up for any model.
+    <li>A master catalog table should have a record for every model that has not been expunged.
+    <li> Purpose-specific catalog tables can be restrictive of what they reveal -- for example the catalog on the 3d download site does not mention any models that are in the Internal model store. 
+    <li>The catalog is published as CSV and also GeoJSON polygon and point features for simple web viewing.
+  </ul>
+
+  <h3>Model Batch Folders:</h3> 
+  <p>Each building model in the collection goes through an accession process where it is transformed from its source model format, checked position and overall QA, models are tagged with the standard schema of attributes and transformed into validated OBJ and multipatch formats.  All of this information and the tools that perform this work are contained within a Batch Folder.
+    <ul>
+      <li>Batch folders and their tools are designed to plug in to the Model Management workspace described below. 
+      <li>Batch folders usually involve many new models that are frm the same source and in the same or related formats. 
+      <li>Once a batch of models has been assimilated into the collection, the model batch is filed in the project archive.   
+    </ul>
+  
+  <h3>Workspace Folders:</h3>
+  <p>A workspace folder is a collection of tools, data and documents designed to work together.  Workspace folders are largely self-contained or may make references to stable data resources that are in the city model's Master data collection.
+  
+  <h3>The Model Management Workspace Folder</h3>
+  <p>Most of the routine tasks associated with managing the building model collection in its geodatabase and its repository catalog form are carried out using the ArcGIS Pro project with the tools and tasks and reference data that has been set up in the Model Management Workspace.
+    
+      
+
+    <h2>Major Life-Cycle Phases in a 3D Building Model Collection</h2>
+
+    <h3>Model initialization or Major Update</h3>
+      <ol>
+      <li>Build an initial collection by assimilating 3D building information from a variety of measured sources. 
+      <li>Models are validated for geometric integrity.  A validated open-format asset is created for each model and the round-trip exchange between ESRI Multipatch and OBJ format. 
+      <li>Tiled model products are created and published on the 3D download site as a resource for the design and development community.
+      </ol>
+
+    <h3>Applications:</h3>    
+      <ul>
+      <li>Model collection is published as ArcGIS Web Feature layers used internally for planning studies 
+      <li>The model is published in web scenes for the public to visualize new large projects.
+      <li>The model is published as geodatabase feature classes used within GIS applications.
+      <li>The design and development community uses the model as context for design projects.
+      <li>Students and researchers use the open-format models in experiments with gaming engines, VR and AR. 
+      </ul>
+
+    <h3>Accession and Staging of Routine Updates</h3>
+    <p>All activities related to the updates to model status, ascession of new models and splitting or repair of exisrting models are carried out in the Model Management workspace and associated Model Batch folders. 
+      <ul>
+        <li>New models are contributed representing internal design studies 
+        <li>Models of public proposals are submitted for Large Project Review.  These start out as Internal but may become public if their status is promoted to "Approved" or "Under Construction." 
+        <li>Existing models are affected by their juxtaposition with new models: 
+           <ul>
+            <li>Their status may be demoted to Approved Demo, or History as the status of juxtaposed new models is promoted frm Approved to Under Construction.
+            <li>Existing models may need to be split to create a pocket for new models. When this happens, the original model which represents a historic condition is demoted to History and the remaining split pieces end up in the New Models pipeline. 
+            </ul>
+        <li>There is a continuing churn of routine demolitions and new buildings that do not trigger large project review.  These new buildings are find their way into the New Models pipeline. 
+    <li>The progression of status changes accumulate in the feature classes of the Stage geodatabase.  
+    <li>New models (including split and repaired models) accumulate in the Stage_NewModels_MP feature class.
+    </ul>
+
+<h3>Routine New Editions</h3>
+<ul>
+  <li>The web-based views of the model collection can be updated by extracting data directly from the working feature classes in the Stage geodatabase.
+  <li>A new edition of the model collection can also be published as a new set of geodatabase feature classes by re-shuffling the model features in stage into their proper status classes. The resulting new geodatabase can be published for use in desktop GIS applications.
+  <li>Pushing new editions of the model collection fo rth epublic, internal or geodatabase user community may all happen on different schedules.  
+</ul>
+
+<h3>Re-Initializing the Model Management Workspace</h3>
+<ul>
+<li>The same model management workspace can be used for an indefinite period of time.
+<li>Publishing new editions does not re-initialize the Stage feature classes. 
+</ul>
+  <p>Sometimes it becomes necessary or desirable to initialize a new model management workspace.  For example, if the model catalog schema is changed, or if there have been so many changes that the manager wants to re-initialize Stage, then it is time to start a new ModelMgt workspace. 
+<p>
+The new workspace is begun by encapsulating all of the changes from the previous Model Management  workspace into a new geodatabase collection.  This new collection becomes the "Prior_Archived" Geodatabse collection.  In the beginning, the Prior Archived feature classes become the initial version of the Stage geodatabase, and the NewModels_MP feature class is empty. 
+<p>
+It is recommended that any time the Model Management workspace is initialized, the model manager makes sure that all of the models in the prior version of Stage_NewModels_MP have been published to the Repository's Public New Models or Internal Model Store folders and a new catalog file should be published to reflect the latest status of all of the models. 
+
+<h3>Pushing Updates to the Archive Repository</h3>
+<p>The model download site provides access to all of the model resources produced at the time of the last Major Update. However, it is also possible to publish new models and status changes to the download site more frequently. 
+  <p>From a user's perspective, discovery of recent status changes and download of new models is accomplished with the clickable map controlled by check-box filters that allow users to view and download specific models that may be needed to reflect newly approved buildings and, if necessary, neighboring models that have been modified to create the  pocket for the new buildings. 
+  <p>
+    Outside of Major Updates, the vast majority of the of the OBJ files in the Archive Repository are unchanged.  from one year to the next, a few models will undergo status changes: Public Existing models may be demoted to become Historical.  Some models in the Public New Models folder may be promoted to "Under Construction", "Project Complete" or demoted to "Proposal Superseded".  All of these status changes are reflected in the newly published public catalog table as a geoJSON file and/or by publishing the equivelent polygon feature class to a map service on ArcGIS on-line. 
+<p>
+  When updates are pushed to the Archive Repository, any new models that have passed through the Stage_NewModels_MP feature class since the last repository update have their OBJ files pushed to the Public New Models model store folder. 
+<p>
+  When models originally submitted as proposals are superseded by new proposals or by measurefd models, the associated OBJ files may be moved out of the Public New Models model store to the Internal model store. 
+<p>
+  It is advisable to push the new models and catalog files to the Archive Repository every time the Model Management project is initialized, but repository updates can also happen more frequently than that. 
+
+<h3>Major Repository Updates Revisited</h3>
+<p>After a period of time (a year or more) it may become worthwhile to issue another major update to the Archive Repository and 3D download site. When this happens, 
+  <ul>
+    <li>Split and repaired models that have been accumulating in Public New Models should be moved to the Existing model store. 
+    <li>Models that have had their status set to "Expunge" will be removed from the Existing Model Store and moved to the trash Model Store.  
+    <li>The various catalog files are validated to make sure that their file path references properly connect to models in the right targets in the model store folders.
+  </ul>
+
+    
+
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    

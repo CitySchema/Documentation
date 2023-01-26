@@ -26,7 +26,7 @@
     'header header header header header'
     'article article article article article'
     'footer footer footer footer footer'; 
-  grid-template-rows: 50px auto 30px;
+  grid-template-rows: 50px auto 25px;
   min-height: 100vh;
   /*overflow: auto;*/
   /*overflow: hidden;*/
@@ -41,7 +41,7 @@
     'index-header'
     'index'
     'index-footer';
-  grid-template-rows: 50px auto 5px;
+  grid-template-rows: 50px auto 25px;
   background-color: linen;
   height: 100vh;
   border-right-style: ridge;
@@ -53,36 +53,47 @@
 
 
   #header { grid-area: header; 
-    background-color: rgb(91, 179, 238);;
+    /*citySchema Blue */
+    background-color: rgb(91, 179, 238);
+    color: linen;
+    /*background-color: #E5DFC9;*/
     padding: 0px 10px 0px 10px;
-    color: linen;}
+    color: linen;
+  }
   #index { grid-area: index; 
        overflow: auto;
        scrollbar-width: thin;
        overflow-wrap: normal; 
-       padding: 10px 6px 10px 10px;
+       padding: 10px 0px 10px 10px;
   }
   #article { grid-area: article; 
        /*background-color: green;*/
        padding: 10px 35px 10px 25px;}
   #footer { grid-area: footer; 
-            padding: 0px 10px 15px 10px;}
+            width: 100%;
+            padding: 0px 10px 10px 10px;}
+  #footer > div.left {
+    width: 50%;
+  }
+  #footer > div.right {
+    width: 50%;
+    margin-left: auto;
+    text-align: right;
+  }
   #index-header { grid-area: index-header; 
+    /*citySchema Blue */
     background-color: rgb(91, 179, 238);
        padding: 10px 0px 0px 0px;
-        }
+    }
   #index-footer { grid-area: index-footer; 
-       padding: 0px 10px 15px 10px;
-       border-top-style: ridge;
-       border-top-color: rgb(28, 87, 121);
-       border-top-width: 1px;
+       padding: 0px 10px 10px 10px;
       }
   #main-container { grid-area: main-container; }
   #index-container { grid-area: index-container; }
 
 
 /*** These flex properties apply in the headers and footers ***/
-/*** Referenced in the cdash_includes.js               ***/
+/*** Referenced in the docutree_includes.js               ***/
   .rightflex {
     display: flex;
     flex-wrap: nowrap;
@@ -133,23 +144,17 @@ p {
 }
 
 h1 {
-  color: gray;
   font-size: 23px;
   margin-bottom: 8px; 
 }
 
 h2 {
-  color: gray;
   font-size: 19px;
-  font-weight: 600;
-  margin-bottom: 7px; 
+  margin-bottom: 8px; 
 }
 
 h3 {
-  color: gray;
-  font-size: 19px;
-  font-weight: 500;
-  margin-bottom: 0px;
+  margin-bottom: 8px; 
 }
  /* Expands images while mouse is down */
 img {
@@ -191,12 +196,14 @@ a:hover {
 }
 
 /*** Brand-specific colors for layout elements ***/
-/*#header a:link {
+/* CitySchema */
+#header a:link {
   color: linen;
 }
 #header a:visited {
   color: linen;
-} */
+} 
+
 #footer a:visited {
   color: red;
 }
@@ -209,9 +216,15 @@ a:hover {
 .title {
 font-family: 'Times New Roman', serif;
 font-size: 27px;
-color: gray;
 font-weight: 600;
-margin: 0;
+margin: 0 0 0 0;
+}
+
+.index-title {
+  font-family: 'Times New Roman', serif;
+font-size: 27px;
+font-weight: 600;
+margin: 10 0 0 0;
 }
 
 /* Tablet:768px. */
@@ -292,9 +305,6 @@ img.title {
 /*** Feature Divs are indented sections that have a color and a border ***/
 /*** and slightly different typography.                                ***/ 
 
-
-
-
 .feature {
   display: block;
   width: 95%;
@@ -347,12 +357,10 @@ img.title {
 
 
 table.dictionary {
-  width: 90%; 
-  margin-left: 10px;
-  margin-right: 100px;
-
+  width: 85%; 
+  margin-left: 25px;
+  margin-right: 50px;
   border-collapse: collapse;
-  border: none;
   font: 87.5% "myriad-pro", Arial, Helvetica, sans-serif;
 }
 table.dictionary tr:nth-child(even) {
@@ -366,27 +374,14 @@ table.dictionary td {
    /*padding: .5em 1em;*/
   vertical-align: top;
   line-height: 1.5em; 
-  /*border: 1px solid #B3B2B2;*/
-  padding-left: 15px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-right: 10px;
+  border: 1px solid #B3B2B2;
 }
-
-table.dictionary td b{
-  font-weight: 600;
-  color: gray;
-}
-
 table.dictionary th {
+  padding: .5em 1em;
   vertical-align: top;
   background:  #bfbfbf;
   font-weight: normal;
-  color: gray;
-  padding-left: 15px;
-  padding-top: 3px;
-  padding-bottom: 3px;
-  padding-right: 10px;
+  padding: .5em 1em;
   text-align: left;
   border: 1px solid #b3b2b2;
   font-weight: bold;
@@ -411,15 +406,6 @@ table.dictionary p {
   border-bottom: 1px dashed rgb(60, 173, 238);
 }
 
-
-#index h3 {
-  color:gray;
-  font-size: 17px;
-  font-weight: 500;
-  margin-bottom: 2px;
-  margin-top: 6px;
-}
-
 .treeview .chapter  {
   list-style: none;
   cursor: pointer; 
@@ -427,13 +413,21 @@ table.dictionary p {
   margin-bottom: 2px;
 }
 
+.treeview > h3 {
+font-size: 15px;
+font-weight: 600;
+margin-top: 5px;
+margin-bottom: 3px;
+}
+
+
 /* Main Level */
 ul.treeview  {
   list-style: none;
   margin-left:0px;
   margin-top: 0px;
   padding-left:0px;
-  padding-top: 4px;
+  padding-top: 10px;
   font-size: 15px;
 }
 
@@ -446,7 +440,7 @@ ul.treeview >ul {
 ul.verses {
   margin-left:0px;
   padding-left:15px;
-
+  list-style-type: none;
 }
 
 .treeview ul li.verse {
@@ -455,6 +449,7 @@ font-family: "Arial Narrow", Arial, sans-serif;
 font-weight: 100;
   }
 
+/*
 .treeview ul li.verse:before {
   padding-left: 16px;
   background: url("./images/winupdowndot.png") no-repeat;
@@ -463,29 +458,31 @@ font-weight: 100;
   content: "";
   height: 20px;
 }
+*/
+
+
 
 .treeview ul.verses {
-  padding: 2px 6px;
+  padding: 2px 10px;
   margin: 0px;
-  list-style-type: none;
 }
 
-.treeview ul.verses >li {
+.treeview ul.verses li:before {
+  padding-left: 16px;
+  background: url("./images/winupdowndot.png") no-repeat;
+  background-position: -46px top;
+  background-size: 69px, 23px;
+  content: "";
+  height: 20px;
+}
+
+  .treeview ul.verses >li {
   padding: 0px 10px;
   margin: 0px;
   margin-bottom: 4px;
   list-style-position: inside;
   text-indent: -1.2em;
   padding-left: 1em;
-}
-
-.treeview ul.verses li:before {
-  padding-left: 16px;
-  background: url(./images/winupdowndot.png) no-repeat;
-  background-position: -46px top;
-  background-size: 69px, 23px;
-  content: "";
-  height: 20px;
 }
 
 .treeview >li.chapter {
@@ -512,7 +509,7 @@ font-weight: 100;
 }
 
 .treeview li.active {
-  background-color: #E5DFC9;
+  background-color: white;
   font-weight: 550;
 
 }
