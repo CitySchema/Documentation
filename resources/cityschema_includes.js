@@ -53,6 +53,7 @@ let index_htm = `
     <li class="verse"><a href="../repocat/index.htm#github">Explore, Clone and Customize on GitHub.</a></li>
    </ul>
 
+<li class="chapter"><a href="../model_ids/index.htm">Model Identifiers </a></li>
    <li class="chapter"><a href="../tile_scheme/index.htm">Tile Scheme and Coordinate System</a></li>
    <ul class="verses">
            <li class="verse"><a href="../tile_scheme/index.htm#purpose" target="metadata">Tiling Strategy</a>
