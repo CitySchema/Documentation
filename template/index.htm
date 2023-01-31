@@ -9,30 +9,30 @@
     <meta name="author" content="Paul B. Cote">
     
 <!-- don't edit between here and the Article div.  -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
-    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
-    <link href="../resources/docutree.css" rel="stylesheet"> 
-    <script src="../resources/slideshow_pbc.js"></script>
-    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
-    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+<script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+<link href="../resources/docutree.css" rel="stylesheet"> 
+<script src="../resources/slideshow_pbc.js"></script>
+<link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
 
-    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
-          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
-    <script src="../resources/cityschema_includes.js"></script>
-    <!-- THis has to come after the cityschema_includes file-->
-    <script src="../resources/docutree.js"></script>
-    </head>
-    <body>
-      <div id="grid-container">
-        <div id="index-container">
-          <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
-          <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
-          <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
-        </div> 
+
+<!-- The index sidebar and all content other than the main article come from the docutree_includes.js.
+      When you add a new page or internalachcor, you should update the index in docutree_includes.js.-->
+<script src="../resources/cityschema_includes.js"></script>
+<!-- THis has to come after the cityschema_includes file-->
+<script src="../resources/docutree.js"></script>
+</head>
+<body>
+  <div id="grid-container">
+    <div id="index-container">
+      <div id="index-header"> <!-- Content provided by docutree_includes.js--> </div>
+      <div id="index">        <!-- Content provided by docutree_includes.js--> </div>
+      <div id="index-footer"> <!-- Content provided by docutree_includes.js--> </div>
+    </div> 
 <div id="main-container">
-  <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+<div id="header"> <!-- Content provided by docutree_includes.js--> </div>
 
 <!-- Page content goes inside the article div -->
   <div id="article">
@@ -40,30 +40,52 @@
   <h1 class="title">Documentation Template & Style Guide</h1>
   <p>Documentation is a critical part of the city-wide 3d model architecture.  Users that download modules for their own use will probably also want to fork the documentation related to the components because the on-line documentation at citySchema.org is going to evolve and become out of sync with static local versions.  Furthermore, users who make their own improvements and customizations to the architecture and tools will want to modify the documentation.  
   </p><p>
-  The documentation that you are looking at now is designed to be simple and to be completely functional when rendered from a plain file-system without the mediation of a web server. It is based on html, css and javascript.  This page describes and demonstrates the basic elements that are accommodated by the <b><a href="../resources/docutree.css">docutree.css</a></b></p>
-
- <!-- Slideshow container -->
-    <div id="ooslides" class="slideshow in-page" 
-    data-imgheight = "250px" 
-    data-title = "I'm a Slideshow with a title and No Captions" 
-    data-playpaused = "playing"
-    data-fadespeed = "10" >
+  The documentation that you are looking at now is designed to be simple and to be completely functional when rendered from a plain file-system without the mediation of a web server. It is based on html, css and javascript.  
   
-    <div class="slidecontainer" data-title="Wide Image" data-caption="Away up to tree-line.">
-      <div class="slide"><img src="./images/wide.jpg" ></div>
-      <div class="caption"></div>
-      <div class="learnmore"><a href='#early'>Learn More about Wide Images</a></div>
-   </div>
-    <div class="slidecontainer" data-title="Tall Image" >
-      <div class="slide"> <img src="./images/tall.jpg"></div>
-      <div class="caption"></div>
-      <div class="learnmore"><a href='#late'>Learn More about Tall Images</a></div>
-    </div>
+<h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+<ul class="verses">
+  <li><a href="../template/index.htm#css">Basic Styling</a>
+  <li><a href="../template/index.htm#slideshow_element">Slide Shows</a>
+  <li><a href="../template/index.htm#figures">Figures</a>
+  <li><a href="../template/index.htm#table">Tables</a>
+  <li><a href="../template/index.htm#tabtargets">Controlling new Tabs</a>
+  <li><a href="../template/index.htm#blocks">Colored Text Blocks</a>
+  </ul>
+
+
+  <h2 id="css">Basic Styling</h2>
+  This page describes and demonstrates the basic elements that are accommodated by the <b><a href="../resources/docutree.css">docutree.css</a></b></p>
+
+
+
+
+<h2 id="slideshow_element">Slide Shows</h2>
+<p>The script, <b>slideshow_pbc.js</b> looks for any div with <b>class="slideshow:</b> and turns it into a slideshow with lots of features as you can see, bwlow.  
+  
+ <!-- Slideshow container -->
+ <div id="ooslides" class="slideshow in-page" 
+ data-imgheight = "250px" 
+ data-title = "I'm a Slideshow with a title and No Captions" 
+ data-playpaused = "playing"
+ data-fadespeed = "10" >
+
+ <div class="slidecontainer" data-title="Wide Image" data-caption="Away up to tree-line.">
+   <div class="slide"><img src="./images/wide.jpg" ></div>
+   <div class="caption"></div>
+   <div class="learnmore"><a href='#early'>Learn More about Wide Images</a></div>
+</div>
+ <div class="slidecontainer" data-title="Tall Image" >
+   <div class="slide"> <img src="./images/tall.jpg"></div>
+   <div class="caption"></div>
+   <div class="learnmore"><a href='#late'>Learn More about Tall Images</a></div>
+ </div>
 </div> <!-- Closes ooslideshow-->
+  
+  <p>The slideshow div has to contain subdivisions that are <b>class="slideshow_container"</b> with more subdivisions as shown below:</p>
 
 
-<h3 id="slideshow_element">Slideshows</h3>
-<p>The script, <b>slideshow_pbc.js</b> looks for any div with <b>class="slideshow:</b> and turns it into a slideshow with lots of features as you can see, above.  Ther slideshow div has to contain subdivisions that are <b>class="slideshow_container"</b> with more subdivisions as shown below:</p>
+
+
 <p>The value for <b>daya-playpaused</b> should be either <b>"playing"</b> or <b>"paused"</b>.  
 
 <pre>
@@ -192,7 +214,7 @@ data-fadespeed = "10" >
       <tr><td>Row 1</td><td>Col 2</td></tr>
     </table>
 
-<h2 id="tabtargets">Browser Tab Targets for Links</h2>
+<h2 id="tabtargets">Controlling new Tabs</h2>
 <p>Some pages should be opened n specific new tabs as they may be useful refernce info related to other pages.  We don;t want tabs to proliferate, however.  So, for pages of a specific sort, we dlivberately want to replace other pages of the same sort in a particular tab.   
 </p><ul>
   <li><b>target="datadict"</b>: Data dictionary at bottom of the Model Collection Page
@@ -241,11 +263,10 @@ data-fadespeed = "10" >
 
 
   </div> <!-- Closes #article div -->
-  <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
 
 
 
-
+  <div id="footer"> <!-- Content provided by docutree_includes.js--> </div> 
 </div> <!-- Closes main container--> 
 </div> <!-- closes grid container-->
 </body>

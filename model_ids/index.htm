@@ -1,0 +1,103 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Random Model Identifiers</title>
+    <meta name="description" content="Discussion of how random model Identifiers work ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Model Identifiers</h1>
+<p>Model Identifiers serve three functions.  
+  <ol>
+    <li>Provides a unique identifier for a model in the catalog.  
+    <li>Becomes a file-name in the model store.   
+    <li>Becomes an object-name in 3d modeling tools.
+    </ol>
+  <p>These function are essential for linking models with catalog records throughtout their lifecycle and ensuring a round-trip capability in exchanges between design tools and GIS-based model management tools 
+<p>
+  With this in mind, we would prefer to make the identifiers compact.  For example, we don't think it is necessary to use a 32-digit universally unique ID if we can get away with a 5-digit string that will be easy to find.
+<p>
+This page tries to answer the question as to whether an 8-digit string of upper-case letters and 9 numerals will be a long-enough random string to avoid the minutest possibility of a name collision.
+<p>
+The problem is similar to the famous Birthday Problem as described in <a href="https://en.wikipedia.org/wiki/Birthday_problem" target="outboard">Wikipedia</a>  
+<p>
+  The classic description of the Birthday Problem is if you have 23 students in a class, what is the probability of 2 students having the same birthday?  The answer is surprising probability = 0.507 or a 50% chance of a duplicate birthday. 
+<p> 
+<p>The Wikipedia page about the Birthday Problem provides a formula for estimating the probability for other types of events. 
+
+</p>
+  <figure class="middle">
+    <img src="./images/wikipedia_bdayprob_approx.jpg">
+    <figcaption>From <a href="https://en.wikipedia.org/wiki/Birthday_problem" target="outboard">Wikipedia page about the Birthday Problem</a></figcaption>
+    </figure>
+
+<p>
+  In our case we are interested in the probability of two models getting assigned the same random model ID over the lifetime of the boston city model project.  Our variables would be: 
+<ul>
+  <li><b>How many possible model IDs can be randomly generated from a character string of upper-case letters and numerals?</b> Our strings will be made of the characters (1-9,A-Z) 36.  Raised to the power of the number of random characters in the ID would be approximately 6 followed by 21 zeros  This is comparable to the number of days in the year in the classic definition of the birthday problem
+  <li><b>How many possible models may exist in in the building model collection?</b>  This variable corresponds with the number of students. 
+  </ul>
+
+<p>Lets say that the boston model collection has 150,000 models.  Over its lifetime, these are completely changed out 100 times. Since retired models remain in the catalog this scenario we might expect 15,000,000 potential models.  That is sure to be an over-estimate.  This term is comparable to Birthday Problem's  number of students in the class.
+<p>
+
+We devised a spreadsheet with the estimating formula provided on the Wikipedia page which you can download. <a href="./images/birthday_spreadsheet.zip">birthday_spreadsheet.odt</a>
+<p>
+After messing around with this, we determined that a model id with 15 random characters a new model ID would have a vanishingly small, 1 in 2,000,000,000 chance of colliding with another ID in a population of 15,000,000 models.
+</p>
+<p>Anticipating that some applications may mix models from different territories, like Cambridge or Harvard, our ID scheme prepends a three-character territory ID to assure that these foreign identifiers are in a distinct namespace.
+<p>
+  Our model identifier format will be:
+<ul>
+  <li>BOS_A1B2C3D-5E6F7G8H
+</ul>
+
+
+
+
+
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
