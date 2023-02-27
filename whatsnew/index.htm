@@ -72,17 +72,24 @@
     <p>Schema changes expand the list of QA Flags to better support Promo/Demo workflows.
        <ul>
 
-        <li><b>The Modified status has been dropped</b>.  For any model that represents a past shape for a structure, its status simply becomes History. If the Disappear Date is left Null, this date wil be set automatically when the next geodatabase edition is pushed. 
+        <li><b>The Modified and Demolished status have been dropped and merged into the status "History"</b>.  For any model that represents a past shape for a structure, its status simply becomes History. If the Disappear Date is left Null, this date wil be set automatically when the next geodatabase edition is pushed. 
+        <li>Models with status: <b>Under Construction</b>  and <b>Complete</b>  will now remain in the <b>Approved</b> feature class until they are superseded by measured models. This wil lbe more compatible with the lifecycle of hand-made models which stay in the <b> Change Model Store</b> until they are superseded by measured models.    
+        <li>The status-driven symbolization and group layers and definition query views have been updated to reflect the consolidation of the history layers and the new behavior of Approved, Under Construction and  
         <li>Several new values have been added to the QA_Flag domain to support workflows for flagging Promo and Demo candidates and various cases of models needing repair. 
         <li>The Model ID has been expanded to a 21 character string in the form: <b>BOS-A1B2C-3D4E5-F6G7H</b>. This new ID has a 1 in 2 billion chance of drawing a duplicate in a model collection of 50 million models. See <a href="../model_ids/index.htm" target="sidecar">Model Identifiers</a>.
           <li><b>Project_ID</b> will change from an Integer type to a Character string with 20 characters.  
-        <li>A <b>new ModStore field</b>  has been added which wil make it possible to construct a path or URL to the OBJ for any model, some of which may be in the Changed, Internal or Existing ModelStores.
-        <li>Hand-Made models of buildings that have been observed to be "topped out" will now have their status set to Construction Complete.  Models with this status will stay in the Approved_MP feature class until they are replaced by a measured model. Whence their status will become Project Complete which will cause them to be moved to the Internal feature class and model store  
+        <li>A <b>new ModelStore field</b>  has been added which wil make it possible to construct a path or URL to the OBJ for any model, some of which may be in the <b>Change</b>, <b>Internal</b>, or <b>As-Built</b>  ModelStores.  A domain has been added to regulate the values of the ModelStore field.  Domain management tools updated to set this up on MP FCs.
+        <li>Hand-Made models of buildings that have been observed to be "topped out" will now have their status set to Construction Complete.  Models with this status will stay in the Approved_MP feature class until they are replaced by a measured model. Whence their status will become Project Complete which will cause them to be moved to the Internal feature class and model store.  This change requires an update to the <b>Sort Next GDB Edition tools</b>.  
+        <li><b>Created new domain for StructType.</b>
  </ul>
 
+<h3>Updates to Documentation</h3>
+<ul>
+  <li>Need add documentation explaining different sorts of updates:  Major Update, Model Download Update, Model Management Migration, Geodatabase Edition, Public Webscene Edition, Internal WebScene edition.
+  <li>Data Dictionary has been updated.
+  </ul> 
 
-
-<h2>June 15, 2022: Web-Scene Publishing Tasks Provide Model Download Link in ArcGIS On-Line Pop-Ups</h2>
+<h1>June 15, 2022: Web-Scene Publishing Tasks Provide Model Download Link in ArcGIS On-Line Pop-Ups</h1>
     <p>
     We have improved our layer management capability with in the Model Management workspace to automate the production of ArcGIS On-Line Web feature services with streamlined pop-ups -- that provide for model downloads!  <a href="https://boston.maps.arcgis.com/home/webscene/viewer.html?webscene=80de5aea1a3348bfae7ae4c91659a75e" target="outboard"> Visit the demo here.</a>
 
