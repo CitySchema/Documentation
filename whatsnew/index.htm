@@ -74,7 +74,8 @@
 
         <li><b>The Modified and Demolished status have been dropped and merged into the status "History"</b>.  For any model that represents a past shape for a structure, its status simply becomes History. If the Disappear Date is left Null, this date wil be set automatically when the next geodatabase edition is pushed. 
         <li>Models with status: <b>Under Construction</b>  and <b>Complete</b>  will now remain in the <b>Approved</b> feature class until they are superseded by measured models. This wil lbe more compatible with the lifecycle of hand-made models which stay in the <b> Change Model Store</b> until they are superseded by measured models.    
-        <li>The status-driven symbolization and group layers and definition query views have been updated to reflect the consolidation of the history layers and the new behavior of Approved, Under Construction and  
+        <li>The status-driven symbolization and group layers and definition query views have been updated to reflect the consolidation of the history layers.
+      <li>The status filtering procedures for pushing new editions of web scenes and geodatabases are being updated to reflect the new behavior of Approved, Under Construction and Complete. 
         <li>Several new values have been added to the QA_Flag domain to support workflows for flagging Promo and Demo candidates and various cases of models needing repair. 
         <li>The Model ID has been expanded to a 21 character string in the form: <b>BOS-A1B2C-3D4E5-F6G7H</b>. This new ID has a 1 in 2 billion chance of drawing a duplicate in a model collection of 50 million models. See <a href="../model_ids/index.htm" target="sidecar">Model Identifiers</a>.
           <li><b>Project_ID</b> will change from an Integer type to a Character string with 20 characters.  
