@@ -41,7 +41,7 @@
     </p>  </i>
       
 
-    <h2>City Model Stewardship</h2>
+    <h2>Intelligent City Models</h2>
     <p>    <p>Before digging into the technical details of <b>How</b> to manage a city-wide collection of 3D models, it will be useful to have a picture of the sorts of people for whom this scheme has been designed, and the personal and institutional <b>motivations</b> that make this effort worthwhile.  
     </p>
     <figure class="middle"> 
@@ -49,70 +49,25 @@
       <figcaption>A scene from the Boston city model.</figcaption>
       </figure>
     <p>
-    <h2 id="roles">Roles and Motivations for Owners, Users and Contributors</h2>
-    <p>There are many individuals, communities and institutions that are interested in exploring and contributing to a city-wide 3D model that reflects current street-scapes; that remembers past and speculative future scenarios.  Design firms, municipal and campus planning agencies already maintain 3D models of their territories and immediate context.  But currently it is rare to see these resources actually shared or systematically combined or preserved as cultural resources for future reference.  In the case of public agencies, the problem is not a lack of will, but difficulties inherent in the combination of diverse data-sets that may be well-organized individually, but lack the forethought to be easily combined together in a re-useable way. 
-    </p><p>
-    Municipal and campus planning agencies have the mission and means to collect diverse 3D data -- including the current built scenario and information about development proposals.  While planning agencies may not be as interested as others in representing neighborhoods of the past, a good city model architecture will make it simple for municipal and campus planning agencies to preserve information about the present -- which will become historical information as the city develops.
-    </p><p>
-    The goal of the citySchema project is to provide an open-source, interoperable city model architecture that addresses the needs of the municipal and campus planning agencies and designers, that saves municipalities the cost of designing their own city model architecture, and provides a framework for integrating these models together, for long-term archiving, and for re-use of a metropolitan-scale city model in virtual and augmented reality systems.   
-    
-    <h2>Municipal or Campus Planning Agency</h2> 
-    The citySchema architecture was designed to meet the needs of the municipal GIS departments of the City of Cambridge, Massachusetts and the Boston Planning and Development Agency (BPDA).  The BPDA's mission statement:
-    <p style="margin: 20px">
-      In partnership with communities, the BPDA plans Boston’s future while respecting its past. By guiding physical, social, and economic change in Boston’s neighborhoods, the BPDA seeks to shape a more prosperous, resilient and vibrant city for all.
-    </p><p>
-    Among the agency's responsibilities is to guide the public review of large development proposals and to lead the planning and development of for designated special planning areas.  This work involves much collection and two-way sharing of models for the purposes of visualization and as context for editable design models. In the future, 3D models will be part of the public record for development proposals, along with the digital two-dimensional models that are now included with proposals. 
-    </p><p>
-      The BPDA Urban Design group has been maintaining a city-wide 3D model since around 2003.  In 2014 the GIS department and pbcGIS began a project to develop a more detailed city-wide model that includes the building models developed by the UrbanDesign Technology Group.   The GIS-based model enables <a href="https://boston.maps.arcgis.com/apps/webappviewer3d/index.html?id=cf3415dea19d480caa71eb5dbdce185f" target="outboard">web-based visualizations of the city model </a>-- including projects that are approved but not yet built.  In-house applications,such as <a href="https://www.esri.com/en-us/arcgis/products/arcgis-urban/features/development-review" target = "arcdoc"> ArcGIS Urban</a>  make it possible for planners and reviewers to investigate scenarios that are not yet part of the public review process.  
-    </p>
-      <h3>Roles: Agency's Technical Curator</h3>
-      <figure class="right">
-        <img src="images/tall.jpg">
-        <figcaption>Fig Right</figcaption>
-      </figure>
-     <p>
-      The agency's 3D model curator develops the 3D model from GIS data and digital 3D models that originate in design software.  This role creates and re-uses programs that integrate 3D models with information resources including assessing information and content management systems associated with design review. The technical curator translates the GIS-based model into 3D models compatible with a variety of design-oriented 3D modeling tools and application development tool-chains. This role requires experience with 3D modeling and the issues that come up when working with 3D models in various formats.  The technical user also has an understanding of GIS, relational database fundamentals and basic programming using ArcGIS Model Builder. Programming with python and javascript is useful, as well.  The technical curator may be a full time staff member or a specialized contractor. 
-    </p>      
-        <h3>The Agency's Information Technology Manager</h3>
-        The IT Manager is accountable for taking care of the agency's information assets.  This role involves hiring and evaluating the work of technical curator who may be employees or contractors.   For the IT manager, a successful 3D model architecture results in a collection of assets that is sustainable without dependencies on particular individuals holding the position of technical curator. For the IT manager, it will be useful to understand the essential pieces of the city model, where they are stored, and the sorts of problems that are likely to occur -- including the possibility that the digital assets associated with the city model may need to be migrated from one software platform to another.
-      </p>
-      <h3>
-  
-    <h2 id="oais">Standard-Based Archival Asset Management Approach</h2>
-      3D models of building shells or terrain tiles are digital documents reflecting observations and ideas, very similar to scanned photographs and drawings.  In this sense, the architecture for developing, managing and sharing the city model has many of the functional characteristics of a digital asset management system for geographically and temporally referenced digital documents.   When these 3D models become systematically referenced and retrievable, they can be very useful for generating a 3D context for understanding the interrelationships connecting other documents. 
-    </p>
-    <p>The citySchema architecture is based on the <a href="https://www.iso.org/standard/57284.html" target="outboard">International Standards Organization Reference Model for Open Archival Information Systems. </a> 
-    </p>
-
-    <h3 id="fab">Features and Benefits </h3>
-    <ul>
-    <li>Save time and money in developing a city model curation program from scratch.
-    <li>Eliminate redundant effort.  Participate in a resource-sharing and skill-building community. 
-    <li>Preserve historical and source information.  Audit and recovery capabilities for all changes.  
-    <li>Protect against loss of knowledge when data management staff move to other projects or jobs. 
-    <li>Routine QC and validation of 3d models prevents unexpected roadblocks to exchange and migration.
-    <li>Share and re-use city model assets in a variety of applications
-    3D modeling tools
-    <ul>
-      <li>Archival asset management systems
-      <li>Virtual and Augmented reality
-      <li>Open source tool-chains and viewers (e.g. Cesium, ThreeJS)
-      <li>High performance proprietary enterprise GIS.
+ 
+      <h3 id="fab">Features and Benefits </h3>
+      <ul>
+      <li>Save time and money in developing a city model curation program from scratch.
+      <li>Eliminate redundant effort.  Participate in a resource-sharing and skill-building community. 
+      <li>Preserve historical and source information.  Audit and recovery capabilities for all changes.  
+      <li>Protect against loss of knowledge when data management staff move to other projects or jobs. 
+      <li>Routine QC and validation of 3d models prevents unexpected roadblocks to exchange and migration.
+      <li>Share and re-use city model assets in a variety of applications
+      3D modeling tools
+      <ul>
+        <li>Archival asset management systems
+        <li>Virtual and Augmented reality
+        <li>Open source tool-chains and viewers (e.g. Cesium, ThreeJS)
+        <li>High performance proprietary enterprise GIS.
+        </ul>
       </ul>
-    </ul>
 
-
-    <figure class="middle"> 
-      <img class="scaled" src="images/ecosystem.jpg"> 
-      <figcaption>Model asset lifecycle involves GIS, 3D Model Authoring and Archival data structures.</figcaption>
-      </figure>
-    </p><p>
-    As a bridge between the data-driven, expansive range of GIS, and the deeply hierarchal, but spatially limited world of 3D modeling tools, CitySchema substantially removes the difficulty of exchanging updates -- which can be published and subscribed between independent overlapping city models maintained at architecture firms, campus or municipal agencies, or developers of virtual and augmented reality applications.   
-    </p><p>
-      Communication between GIS and fully-functioning 3D modeling tools provides non-proprietary pathways for validation, quality control, and migration for an institution's collection of information assets.     
-    </p><p>
-
-    
+ 
  
     </p>
     <h3 id="streetscapes">Streetscapes are part of our Shared Cultural Heritage</h3> 
@@ -146,6 +101,29 @@
 
     <p>3D models of terrain and buildings are not much different from georeferenced photographs, drawings and maps.  It is only a matter of time before tools like the ones referenced above make use of 3D models as part of our cultural memory -- as observations that can be remembered and also as 3D base maps for contextualizing and connecting old photographs and other resources.  It is phenomenal how much new information emerges when observations from different points of view and points in time are connected together.
     </p>
+   
+
+
+  
+    <h2 id="oais">Standard-Based Archival Asset Management Approach</h2>
+      3D models of building shells or terrain tiles are digital documents reflecting observations and ideas, very similar to scanned photographs and drawings.  In this sense, the architecture for developing, managing and sharing the city model has many of the functional characteristics of a digital asset management system for geographically and temporally referenced digital documents.   When these 3D models become systematically referenced and retrievable, they can be very useful for generating a 3D context for understanding the interrelationships connecting other documents. 
+    </p>
+    <p>The citySchema architecture is based on the <a href="https://www.iso.org/standard/57284.html" target="outboard">International Standards Organization Reference Model for Open Archival Information Systems. </a> 
+    </p>
+
+
+
+
+    <figure class="middle"> 
+      <img class="scaled" src="images/ecosystem.jpg"> 
+      <figcaption>Model asset lifecycle involves GIS, 3D Model Authoring and Archival data structures.</figcaption>
+      </figure>
+    </p><p>
+    As a bridge between the data-driven, expansive range of GIS, and the deeply hierarchal, but spatially limited world of 3D modeling tools, CitySchema substantially removes the difficulty of exchanging updates -- which can be published and subscribed between independent overlapping city models maintained at architecture firms, campus or municipal agencies, or developers of virtual and augmented reality applications.   
+    </p><p>
+      Communication between GIS and fully-functioning 3D modeling tools provides non-proprietary pathways for validation, quality control, and migration for an institution's collection of information assets.     
+    </p><p>
+
    
     
     <h2>How? CitySchema is an Mode of Exchange and a Collection of Tools</h2>

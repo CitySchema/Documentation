@@ -36,15 +36,25 @@
 
 <!-- Page content goes inside the article div -->
   <div id="article">
+
+
     <br><hr>
-    <h2>3D Building Model Data Dictionary</h2>
-    <p>The Bos3d City Model includes a collection of more than 100,000 building models that originate from many different sources.    
+    <h1>3D Building Model Data Dictionary</h1>
+    <p>The Bos3d City Model includes a <b>Model Collection</b> of more than 100,000 building models that originate from many different sources. The Model Management Schema provides a system of attributes that can be used to keep track of models through their life-cycle.  
+    The <b>Model Catalog</b> is a single table with a reference for each model in the collection.  
+    </p>
+    <h3>Table of Contents</h3>
 
-
+    <ul class="verses">
+        <li> <a href="../data_dictionary/index.htm#datadictionary">Data Dictionary for Model Catalog</a> 
+        <li> <a href="../data_dictionary/index.htm#status_classes">Status Classes and Model Stores</a>
+        <li> <a href="../data_dictionary/index.htm#status_domain">Model Status Dictionary</a>
+        <li><a href="../data_dictionary/index.htm#LOD">Levels of Detail and other Recommendations for Model Structure</a>
+      </ul>
 
         <p>Note: field names have 10 or few characters to retain compatibility with ESRI Shapefile format. </p>
     
-    <table class="dictionary">
+    <table class="dictionary" id="dictionary">
         <tr>
             <td colspan="2"><b>Real-World Structure Attributes:</b> These are attributes that refer to the real-world structure represented by the model.  </td>
         </tr>
@@ -288,6 +298,45 @@
     
     </table>
 
+<hr>
+
+    <h2 id="status_classes" id="status_classes">Model Status Classes and Model Stores</h2>
+    <p>The geodatbase view of the Model Collection is segmented into Model Status Classes, which helps to keep clutter out of the way during model management operations.  Individual multipatch features are sorted into these classes according to the value of their <b>Status</b> attribute.  An important mechanism of the Model Management workflow is that changing the Status of models in the <b>Stage</b> feature classes will cause these models to be sorted into a new status class when a new geodatabase edition is pushed.
+    </p>
+    <p><b>Model Store</b> is a more general categorization of models which forms the three classes of obj-format models that are stored in the open-format model store.  These are used as the validated back-up of the collection and the repository for the model download site. 
+    </p>
+        <table class="dictionary">
+            <tr>
+            <td width="20%"><b>Status Class</b></td>
+            <td width="60%"><b>Description</b></td>
+            </tr>
+            <tr>
+                <td><b>Existing_MP</b></td>
+                <td>Holds measured models of structures.  Status <b>Existing</b> or <b>Approved Demo</b>. These models will be shared <b>As-Built</b> model Store.</td>
+            </tr>
+            <tr>
+                <td><b>History_MP</b></td>
+                <td>Holds models reflecting the shapes of structures that once existed. Status: <b>History</b>. These models are selected because they were replaced by newer models that reflect a different shape.  It is not necessary to split historical models to reflect the pocket occupied by new models.  Therefore, some historical models cover one building that changed and also include several neighboring buildings that did not change.  Most of these models will be measuered models, although some projects focused on historical representation may build hand-made models of historical buildings. These models will be shared <b>As-Built</b> model Store. </td>
+            </tr>
+            <tr>
+                <td id="retired_mp"><b>Retired_MP</b></td>
+                <td>Models that have been replaced in the <b>Existing_MP</b> status class by another model of the same structure (same geometric form) that was observed at different dates or modeled with different creator (Model_Credit) with a different modeling technique or level of detail than the model currently chosen for the <b>Existing_MP</b> status class.  Retired models are preserved for the purposes of possible recovery and as they reflect a valuable record of observations or creative work.</td>  Status: <b>Alt</b>.  These models are removed from the <b>As-Built</b> model store on major updates; whence they wil be recoverable form their model batch folders.</td>
+            </tr>
+            <tr>
+                <td><b>Approved_MP</b></td>
+                <td>Holds hand-made models reflecting projects. These These models are shared with the public having  Status <b>Approved</b>, <b>Under Construction</b>, or <B>Current</b>.  When <b>Current</b> models are be replaced by measured models, their status is changed to <b>Project Complete</b> which causes them to be sorted into the <b>Internal_MP</b> status class. These models will be shared <b>Change</b> model Store.  </td>
+            </tr>
+            <tr>
+                <td><b>Internal_MP</b></td>
+                <td>Holds hand-made models that are created for internal investigations. Status <b></b>,<b>Internal Study</b>,<b>Pre-File</b>, <b>Under Review</b>, <b>Proposal Superseded</b>,<b>Proposal Built</b>. These models are shared on public web scenes or in the model download site. hey are stored in the <b>Internal</b> model store.</td>
+            </tr>
+            <tr>
+                <td><b>Alt_MP</b></td>
+                <td>The Alt_MP feature class holds models that represent alternative representations of structures.  For example, these could be models that are higher level of detail than models featured in the Existing feature class -- such as models featuring textures.  These models will be shared in the As-Built model store.  Status: <b>Alt</b>.  These models will be shared <b>As-Built</b> model Store.</td>
+            </tr>
+        </table>
+
+        <hr>
     
     <h2 id="status_domain">Model Status Domain</h2>
     <p>The Model Status attribute is a category scheme that reflects the life-cycle state of the the building or proposal that the model represents.  This field controls when the model is rendered in applications.  
@@ -302,61 +351,57 @@
         </tr>
         <tr>
             <td><b>Current</b></td>
-            <td>Existing</td>
+            <td>Existing_MP</td>
             <td>This status is for models of existing structures that are based on measurements.</td>
         </tr>
 
     <tr>
         <td><b>Approved Demo</b></td>
-        <td>Existing</td>
+        <td>Existing_MP</td>
         <td>The model should not be rendered when portraying Approved projects.  The building still exists according to the latest observation. 
         </td>
     </tr>
     
     <tr>
     <td><b>History</b></td>
-    <td>History</td>
+    <td>History_MP</td>
     <td>A model that has been completely replaced in the Existing collection because the real-word structure has been demolished or altered. </td>
     </tr>
     
         <tr>
             <td><b>Board Approved</b></td>
-            <td>Approved</td>
+            <td>Approved_MP</td>
             <td>The building project has been approved by the planning board. </td>
         </tr>
         <tr>
-            <td><b>Permitted</b></td>
-            <td>Approved</td>
-            <td>The building project has received construction permits. <b>This status has been deprecated.</b></td>
-        </tr>
-        <tr>
             <td><b>Complete</b></td>
-            <td>Approved</td>
+            <td>Approved_MP</td>
             <td>Hand-made models of proposals. The shell of the building including external finishes appear to be complete.  These models remain in the Existing feature class until they are replaced with measured models. 
              </td>
            </tr>
            <tr>
            <td><b>Under Construction</b></td>
-           <td>Approved</td>
+           <td>Approved_MP</td>
            <td>The foundation (or more) of the new building is visible.</td>
         </tr>
-    
+
+
+        <tr>
+            <td><b>Pre-File</b></td>
+            <td>Internal_MP</td>
+            <td>The model is a draft that has not yet been formally submitted for review. </td>
+        </tr>
+        <tr>
+            <td><b>Internal Study</b></td>
+              <td>Internal_MP</td>
+              <td>The model represents a completely fictitious scenario not an official proposal </td>
+            </tr>
         <tr>
         <td><b>Under Review</b></td>
-        <td>Internal</td>
+        <td>Internal_MP</td>
         <td>The model represents a proposal that is under review by the planning board.  </td>
         </tr>
-    
-    <tr>
-        <td><b>Pre-File</b></td>
-        <td>Internal</td>
-        <td>The model is a draft that has not yet been formally submitted for review. </td>
-    </tr>
-    <tr>
-    <td><b>Internal Study</b></td>
-      <td>Internal</td>
-      <td>The model represents a completely fictitious scenario not an official proposal </td>
-    </tr>
+
     <tr>
       <td><b>Proposal Superseded </b></td>
       <td>Internal</td>
@@ -364,18 +409,18 @@
     </tr>
     <tr>
     <td><b>Proposal Built </b></td>
-      <td>Internal</td>
+      <td>Internal_MP</td>
       <td>The model represents a proposal that has been built.  The model has been replaced by a measured model.  </td>
     </tr>
     <tr>
         <td><b>Retired</b></td>
-        <td>Retired</td>
-        <td>Model that has been superseded by another model of the same structure that was observed at different dates or modeled with different technique or level of detail.  Retired models are preserved for the purposes of possible recovery and as they reflect a valuable record of observations or creative work.</td>
+        <td>Retired_MP</td>
+        <td>See the description of <b><a href="./#retired_mp:">Retired_MP</a></b> above. </td>
     </tr>
     <tr>
     <td><b>Alt Model</b></td>
-    <td>Alt</td>
-    <td>The alt feature class holds models that represent buildings that are of a higher level of detail -- such as textures.  As opposed to Retired models, these are usually hand-made documents. The Alt Models collection also includes demonstration models of fictitious scenarios.
+    <td>Alt_MP</td>
+    <td>The Alt feature class holds models that represent alternative representations of buildings.  For example, these could be models that are higher level of detail than current models -- such as models featuring textures.  These models will be shared in the As-Built model store.
      </td>
     </tr>
     <tr>

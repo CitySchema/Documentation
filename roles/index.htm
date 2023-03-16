@@ -1,0 +1,164 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>City Model Stewardship</title>
+    <meta name="description" content="Describes the stakeholders and motivations for collaborative city model development and sharing.">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+    <script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+    <link href="../resources/docutree.css" rel="stylesheet"> 
+    <script src="../resources/slideshow_pbc.js"></script>
+    <link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+    
+
+    <!-- The index sidebar and all content other than the main article coe form the cityschema_includes.js.
+          When you add a new page or internalachcor, you should update the index in cityschema_includes.js.-->
+    <script src="../resources/cityschema_includes.js"></script>
+    <!-- THis has to come after the cityschema_includes file-->
+    <script src="../resources/docutree.js"></script>
+    </head>
+    <body>
+      <div id="grid-container">
+        <div id="index-container">
+          <div id="index-header"> <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index">        <!-- Content provided by cityschema_includes.js--> </div>
+          <div id="index-footer"> <!-- Content provided by cityschema_includes.js--> </div>
+        </div> 
+<div id="main-container">
+  <div id="header"> <!-- Content provided by cityschema_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h1 class="title">City Model Stewardship</h1>
+  <p>    <p>Before digging into the technical details of <b>How</b> to manage a city-wide collection of 3D models, it will be useful to have a picture of the sorts of people for whom this scheme has been designed, and the personal and institutional <b>motivations</b> that make this effort worthwhile.  
+  </p>
+  <h2 id="owners">Roles and Motivations of Intelligent Organizations</h2>
+    
+  <h3>The Enterprise Viewpoint: Situational Awareness, Intelligence </h3>
+  <p>An organization willing to support an expensive city-model development and maintenance program must be heavily invested in information-based decision-making. Another word for this sort of motivation and behavior is <b>Intelligence</b>.  Here are some of the activities that might be associated with an intelligent organization.
+  <ul>
+    <li>Collects observations
+    <li>Makes associations between observations of various situations systems to derive higher-level understanding (intelligence) which supports strategic planning and preparedness. 
+    <li>Develops a culture for learning (information management and development) that involve diverse contributors, and users.
+    <li>Maintains systems for information management that are designed to cultivate and re-use intelligence resources.
+  </ul>
+
+
+  <h2 id="users">Roles for Users and Contributors</h2>
+  <p>There are many individuals, communities and institutions that are interested in exploring and contributing to a city-wide 3D  model that reflects current street-scapes; and remembers past and proposed future scenarios.  Many design firms, municipal and campus planning agencies maintain 3D models of their territories and immediate context, but currently, it is rare to see these resources actually shared or systematically combined or preserved as cultural resources for for future reference.  In the case of public agencies, the problem is not a lack of will, but difficulties inherent in the combination of diverse data-sets that may be well-organized individually, but lack the forethought to be easily combined together in a re-useable way. 
+  </p><p>
+  Municipal and campus planning agencies have the mission and means to collect diverse 3D data -- including the current built scenario and information about development proposals.  While planning agencies may not be as interested as others in representing neighborhoods of the past, a good city model architecture, will make it simple for municipal and campus planning agencies to preserve information about the present -- which will become historical information as the city develops.
+  </p><p>
+  The goal of the citySchema project is to provide an open-source, interoperable city model architecture that addresses the needs of the municipal and campus planning agencies and designers, that saves municipalities the cost of designing their own city model architecture, and provides a framework for integrating these models together, for long-term archiving, and for re-use of a metropolitan-scale city model in virtual and augmented reality systems.   
+  
+  <h2>Municipal or Campus Planning Agency</h2> 
+  The citySchema architecture was designed to meet the needs of the municipal GIS departments of the City of Cambridge, Massachusetts and the Boston Planning and Development Agency (BPDA).  The BPDA's mission statement:
+  <p style="margin: 20px">
+    In partnership with communities, the BPDA plans Boston’s future while respecting its past. By guiding physical, social, and economic change in Boston’s neighborhoods, the BPDA seeks to shape a more prosperous, resilient and vibrant city for all.
+  </p><p>
+  Among the agencies responsibilities is to guide the public review of large development proposals and to lead the planning and development of for designated special planning areas.  This work involves much collection and two-way sharing of models for the purposes of visualization and as context for editable design models. In the future, 3D models will be part of the public record for development proposals, along with the digital two-dimensional models that are now included with proposals. 
+  </p><p>
+    The BPDA Urban Design group has been maintaining a city-wide 3D model since around 2003.  In 2014 the GIS department and pbcGIS began a project to develop a more detailed city-wide model that includes the building models developed by the UrbanDesign Technology Group.   The GIS-based model enables <a href="https://boston.maps.arcgis.com/apps/webappviewer3d/index.html?id=cf3415dea19d480caa71eb5dbdce185f" target="outboard">web-based visualizations of the city model </a>-- including projects that are approved but not yet built.  In-house applications,such as <a href="https://www.esri.com/en-us/arcgis/products/arcgis-urban/features/development-review" target = "arcdoc"> ArcGIS Urban</a>  make it possible for planners and reviewers to investigate scenarios that are not yet part of the public review process.  
+  </p>
+    <h2 id="curators">Technical Curation Team</h2>
+    <figure class="right">
+      <img src="images/tall.jpg">
+      <figcaption>Fig Right</figcaption>
+    </figure>
+   <p>
+    The agencies 3D model curator develops the 3D model from GIS data and digital 3D models that originate in design software.  This role creates and re-uses programs that integrate 3D models with information resources including assessing information and content management systems associated with design review. The technical curator translates the GIS-based model into 3D models compatible with a variety of design-oriented 3D modeling tools and application development tool-chains. This role requires experience with 3D modeling and the issues that come up when working with 3D models in various formats.  The technical user also has an understanding of GIS, relational database fundamentals and basic programming using ArcGIS Model Builder. Programming with python and javascript is useful, as well.  The technical curator may be a full time staff member or a specialized contractor. 
+  </p>      
+      <h2 id="it_dept">The Agency's Information Technology Manager</h3>
+      The IT Manager is accountable for taking care of the agency's information assets.  This role involves hiring and evaluating the work of technical curator who may be employees or contractors.   For the IT manager, a successful 3D model architecture results in a collection of assets that is sustainable without dependencies on particular individuals holding the position of technical curator. For the IT manager, it will be useful to understand the essential pieces of the city model, where they are stored, and the sorts of problems that are likely to occur -- including the possibility that the digital assets associated with the city model may need to be migrated from one software platform to another.
+    </p>
+
+    <!--h3>Information Assets</h3>
+    <ul>
+      <li>Source material:  
+      <li>Working documents:  Often these are techniccally sophisticated, sometimes proprietary files, such as 3D Max, Sketchup, Rhino documents that preserve layers, grouping and transformations. 
+      <li>Exchange Documents:
+      -->
+
+
+<!--
+
+   <h2 id="roles">Roles and Motivations for Owners, Users and Contributors</h2>
+    
+    <h3>The Enterprise Viewpoint: Situational Awareness, Intelligence </h3>
+    <p>An organization willing to support an expensive city-model development and maintenance program must be heavily invested in information-based decision-making. Another word for this sort of motivation and behavior is <b>Intelligence</b>.  Here are some of the activities that might be associated with an intelligent organization.
+    <ul>
+      <li>Collects observations
+      <li>Makes associations between observations of various situations systems to derive higher-level understanding (intelligence) which supports strategic planning and preparedness. 
+      <li>Develops a culture for learning (information management and development) that involve diverse contributors, and users.
+      <li>Maintains systems for information management that are designed to cultivate and re-use intelligence resources.
+    </ul>
+
+
+
+
+      <h3>Collaborators and Economies of Collaboration</h3>
+      <p>There are many individuals, communities and institutions that are interested in exploring and contributing to a city-wide 3D model that reflects current street-scapes; that remembers past and speculative future scenarios.  Design firms, municipal and campus planning agencies already maintain 3D models of their territories and immediate context.  But currently it is rare to see these resources actually shared or systematically combined or preserved as cultural resources for future reference.  In the case of public agencies, the problem is not a lack of will, but difficulties inherent in the combination of diverse data-sets that may be well-organized individually, but lack the forethought to be easily combined together in a re-useable way. 
+      </p><p>
+      Municipal and campus planning agencies have the mission and means to collect diverse 3D data -- including the current built scenario and information about development proposals.  While planning agencies may not be as interested as others in representing neighborhoods of the past, a good city model architecture will make it simple for municipal and campus planning agencies to preserve information about the present -- which will become historical information as the city develops.
+      </p><p>
+      The goal of the citySchema project is to provide an open-source, interoperable city model architecture that addresses the needs of the municipal and campus planning agencies and designers, that saves municipalities the cost of designing their own city model architecture, and provides a framework for integrating these models together, for long-term archiving, and for re-use of a metropolitan-scale city model in virtual and augmented reality systems.   
+      
+      <h2>Municipal or Campus Planning Agency</h2> 
+      The citySchema architecture was designed to meet the needs of the municipal GIS departments of the City of Cambridge, Massachusetts and the Boston Planning and Development Agency (BPDA).  The BPDA's mission statement:
+      <p style="margin: 20px">
+        In partnership with communities, the BPDA plans Boston’s future while respecting its past. By guiding physical, social, and economic change in Boston’s neighborhoods, the BPDA seeks to shape a more prosperous, resilient and vibrant city for all.
+      </p><p>
+      Among the agency's responsibilities is to guide the public review of large development proposals and to lead the planning and development of for designated special planning areas.  This work involves much collection and two-way sharing of models for the purposes of visualization and as context for editable design models. In the future, 3D models will be part of the public record for development proposals, along with the digital two-dimensional models that are now included with proposals. 
+      </p><p>
+        The BPDA Urban Design group has been maintaining a city-wide 3D model since around 2003.  In 2014 the GIS department and pbcGIS began a project to develop a more detailed city-wide model that includes the building models developed by the UrbanDesign Technology Group.   The GIS-based model enables <a href="https://boston.maps.arcgis.com/apps/webappviewer3d/index.html?id=cf3415dea19d480caa71eb5dbdce185f" target="outboard">web-based visualizations of the city model </a>-- including projects that are approved but not yet built.  In-house applications,such as <a href="https://www.esri.com/en-us/arcgis/products/arcgis-urban/features/development-review" target = "arcdoc"> ArcGIS Urban</a>  make it possible for planners and reviewers to investigate scenarios that are not yet part of the public review process.  
+      </p>
+        <h3>Roles: Agency's Technical Curator</h3>
+        <figure class="right">
+          <img src="images/tall.jpg">
+          <figcaption>Fig Right</figcaption>
+        </figure>
+       <p>
+        The agency's 3D model curator develops the 3D model from GIS data and digital 3D models that originate in design software.  This role creates and re-uses programs that integrate 3D models with information resources including assessing information and content management systems associated with design review. The technical curator translates the GIS-based model into 3D models compatible with a variety of design-oriented 3D modeling tools and application development tool-chains. This role requires experience with 3D modeling and the issues that come up when working with 3D models in various formats.  The technical user also has an understanding of GIS, relational database fundamentals and basic programming using ArcGIS Model Builder. Programming with python and javascript is useful, as well.  The technical curator may be a full time staff member or a specialized contractor. 
+      </p>      
+          <h3>The Agency's Information Technology Manager</h3>
+          The IT Manager is accountable for taking care of the agency's information assets.  This role involves hiring and evaluating the work of technical curator who may be employees or contractors.   For the IT manager, a successful 3D model architecture results in a collection of assets that is sustainable without dependencies on particular individuals holding the position of technical curator. For the IT manager, it will be useful to understand the essential pieces of the city model, where they are stored, and the sorts of problems that are likely to occur -- including the possibility that the digital assets associated with the city model may need to be migrated from one software platform to another.
+        </p>
+        
+        <h3>Technical Model Curation Team</h3>
+        <p>The actual day to day work of maintaining the model: Assimilating information from multiple sources; publishing views of the model to web-accessible services, or as aditable base-models used by authors of new model assets, involves a substantial amount of arcane skills and knowledge, 
+          <ul>
+            <li>To deal with inumearble issues that occur with 3D models form multiple sources.
+            <li>a high degree of GIS literacy including tricky several tricky spatial referencing issues that surface when moving georeferenced models around between tools that do not support geospatial referenncing. 
+            <li>Very substantial amount of data organization which software alone does not provide for
+            </ul>
+         <p>More than in most jobs, the task ofd keeping a city model and its various resources organized well enough that it can be taken forward, week to week, involves a <b>heavy</b> amount of understanding an discipline with regard to data organization.  This citySchema.org project is intended to provide a general purpose road map or tool-cabinet so that the organiation for the city model asset collection does not have to be re-invented by every single member of the curation team and their successors.  There is a lot to learn.  It is complicated, but for a person who understands the fundamental principles and the four or five fundamental data organization patterns employed, and the data dictionary, curator can be confident that there is literally a place for everything. 
+         </p>
+         <p>The most critical qualification of a city model curator is <b>Care</b> if the individuals involved in the organizing city model care about the basic enterprise and community goals described above, then it is easy to learn the procedures and to understand how they all fit into the whole picture.  If a member of the curation team does not care fairly deeply about the project. then all of these details may just be too annoyingly complicated.
+        
+         
+
+-->
+
+
+
+
+
+  </div> <!-- Closes #article div -->
+  <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
+
+
+
+
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
