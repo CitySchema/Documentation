@@ -39,22 +39,30 @@
 
 
     <br><hr>
-    <h1>3D Building Model Data Dictionary</h1>
-    <p>The Bos3d City Model includes a <b>Model Collection</b> of more than 100,000 building models that originate from many different sources. The Model Management Schema provides a system of attributes that can be used to keep track of models through their life-cycle.  
-    The <b>Model Catalog</b> is a single table with a reference for each model in the collection.  
+    <h1>Data Dictionary for Models of Built Structures </h1>
+    <p>The Bos3d City Model includes a <b>Model Collection</b> of more than 100,000 models representing built structures.  These models originate from many different sources. The Model Management Schema provides a system of attributes that can be used to understand the provenance of models and to keep track of models through their life-cycle.  
+    <p>The <b>Model Catalog</b> is a single table with a reference for each model in the structure model collection.  
     </p>
     <h3>Table of Contents</h3>
 
     <ul class="verses">
-        <li> <a href="../data_dictionary/index.htm#datadictionary">Data Dictionary for Model Catalog</a> 
+        <li> <a href="../data_dictionary/index.htm#concept">Concept of Built-Structure Model</a> 
+        <li> <a href="../data_dictionary/index.htm#dictionary">Data Dictionary for Model Catalog</a> 
         <li> <a href="../data_dictionary/index.htm#status_classes">Status Classes and Model Stores</a>
         <li> <a href="../data_dictionary/index.htm#status_domain">Model Status Dictionary</a>
+            <li> <a href="../data_dictionary/index.htm#qa_flags">QA_Flags Dictionary</a>
         <li><a href="../data_dictionary/index.htm#LOD">Levels of Detail and other Recommendations for Model Structure</a>
       </ul>
 
+  <h3 id="concept">Concept of Built Structure Models</h3>
+  <p>It is essential to keep in mind that in the context of the model collection and its catalog that each record is related to a model of a built structure.  These models which might represent a single building, a part of a building, a group of buildings, or a wall, a dock, or a bridge.  Referring to these as Building models leads to confusion.  This conceptual definition is necessary, because of the the semi-automated means of creating models is unable to distinquish between discrete "buildings" especially when these are attached to eachother.  This fact creates a difficulty when it comes to linking structure models with information concerned with individual buildings.  Such a one-to-one link may be possible to make for some models.  It is always possible to split or merge structure models to achieve a representation of an individual building, but this can be a labor-intensive process. 
+<p>
+
+
+    <h3 id="dictionary">Model Catalog Attributes Dictionary</h3>
         <p>Note: field names have 10 or few characters to retain compatibility with ESRI Shapefile format. </p>
     
-    <table class="dictionary" id="dictionary">
+    <table class="dictionary">
         <tr>
             <td colspan="2"><b>Real-World Structure Attributes:</b> These are attributes that refer to the real-world structure represented by the model.  </td>
         </tr>
@@ -113,7 +121,7 @@
         </tr>
         <tr>
         <td><b>Disapp_Dt</b><br>Date</td>
-        <td>When the model would be turned off if a time-slider were used.  Usually the date of the earliest observation that confirms that a structure has been demolished or substantially renovated. In the case of models whose status is “Modified”, this date refers to the date when the modification took place.</td>
+        <td>When the model would be turned off if a time-slider were used.  Usually the date of the earliest observation that confirms that a structure has been demolished or substantially renovated. <i>When a model relates to a group of structures, one of which has been demolished, the entire model may have its status set to <b>History</b> and the Disappear Date set to the Appear Date for the new model.  In this case, the original model may be split to create a pocket for the new model.  The remaining portions of the split model would have the same appear Date as the new model.</td>
         </tr>
         <tr>
         <td><b>DisappSrc</b><br>Text</td>
@@ -298,7 +306,9 @@
     
     </table>
 
-<hr>
+    <br>
+    <hr>
+    <br>
 
     <h2 id="status_classes" id="status_classes">Model Status Classes and Model Stores</h2>
     <p>The geodatbase view of the Model Collection is segmented into Model Status Classes, which helps to keep clutter out of the way during model management operations.  Individual multipatch features are sorted into these classes according to the value of their <b>Status</b> attribute.  An important mechanism of the Model Management workflow is that changing the Status of models in the <b>Stage</b> feature classes will cause these models to be sorted into a new status class when a new geodatabase edition is pushed.
@@ -335,8 +345,9 @@
                 <td>The Alt_MP feature class holds models that represent alternative representations of structures.  For example, these could be models that are higher level of detail than models featured in the Existing feature class -- such as models featuring textures.  These models will be shared in the As-Built model store.  Status: <b>Alt</b>.  These models will be shared <b>As-Built</b> model Store.</td>
             </tr>
         </table>
-
+        <br>
         <hr>
+        <br>
     
     <h2 id="status_domain">Model Status Domain</h2>
     <p>The Model Status attribute is a category scheme that reflects the life-cycle state of the the building or proposal that the model represents.  This field controls when the model is rendered in applications.  
@@ -432,7 +443,63 @@
     
         </table>
     
-  
+        <br>
+        <hr>
+        <br>
+        <h2 id="qa_flags">QA Flags Domain</h2>
+        <p>QA Flags are used to provisionally mark models for attention.  For example when assimilating a batch of new models, it can be useful to use a spatial join to look for collisions with Existing or Proposed models in the stage collection.  Or a table join with the development log may indicate a model that is likely to be a candidate for promotion from status <b>Under Review</b> to <b>Approved</b>.  Models that are spatially associated with these may be candidates for status demotion, e.g. from <b>Current</b> to <b>Approved Demolition</b>.   The QA flags and QA Issue fields provide a means of recording the inferences returned by automated methods so that the conditions can be investigated to confirm the correct status values and to identify other issues that may need to be cleared up.  The QA Flag Wireframe view provides a way to quickly identify candidates and set the status attributes.  Setting the QA Flag to <b>Unflagged</b> causes the candidate models to disappear from the Flagged Wireframe view.  
+         
+            <table class="dictionary">
+                <tr>
+                  <th>Code</th>
+                  <th>Description</th>
+                </tr>
+                <tr>
+                    <td><b>Promotion Candidate</b></td>
+                    <td>Model is a candidate for a status promotion. </td>
+                </tr>
+                <tr>
+                    <td><b>Demotion Candidate</b></td>
+                    <td>Model is a candidate for a status demotion. </td>
+                </tr>
+                <tr>
+                    <td><b>History Candidate</b></td>
+                    <td>Models that are considered for replacement by newer models that represent a changed shape are candidates for a status change to <b>History</b></td>
+                </tr>
+                <tr>
+                    <td><b>Retirement Candidate</b></td>
+                    <td>Models that are considerd fo replacement by newer models that have been observed more recently or may be a higher level of detail, but do not reflect a change in shape of the actual structure, are candidates for a change to status: <b>Retired.</b></td>
+                </tr>
+                <tr>
+                    <td><b>3D Edit</b></td>
+                    <td>For models identified as needing to be split or repaired</td>
+                </tr>
+                <tr>
+                    <td><b>Flip Faces</b></td>
+                    <td>Models with some or all faces that are turned the wrong way can be repaired later.</td>
+                </tr>
+                <tr>
+                    <td><b>Remove Color</b></td>
+                    <td>Models that have erroneous colors.</td>
+                </tr>
+                <tr>
+                    <td><b>Expunge Candidate</b></td>
+                    <td>Models that are corrupt or damaged which wil be replaced by repaired models from the same batch of observations are candidates for the status <b>Expunge</b></td>
+                </tr>
+                <tr>
+                    <td><b>Other</b></td>
+                    <td>Models with some other potential issue.</td>
+                </tr>
+                <tr>
+                    <td><b>Unflagged</b></td>
+                    <td>This value is useful for clearing the flag value once status has been updated or whatever issue has been resolved. </td>
+                </tr>
+            </table>
+
+<br>
+<hr>
+<br>
+
         <h2 id="models">Guidelines for 3D Model Structure and Level of Detail</h2> 
         <p>
             The architecture of this schema, where we use one Multipatch or .Obj file to represent a building, bridge or wall is well suited to handling mesh objects that represent only the exterior shell of the structure.  It is preferable that the mesh be a closed “solid” that has all of its faces oriented toward to outside.  Within this guideline, there are many possibilities for levels of detail – as listed in the table below.  
@@ -488,7 +555,10 @@
             <td>Model divides interior spaces: rooms or zones.</td>
             </tr>
             </table>
-  </div> <!-- Closes #article div -->
+ 
+ 
+ 
+        </div> <!-- Closes #article div -->
   <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
 
 

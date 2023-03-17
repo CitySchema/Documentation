@@ -115,9 +115,11 @@ let index_htm = `
 
    <li class="chapter"><a href="../data_dictionary/index.htm">Data Dictionary</a></li>
       <ul class="verses">
-        <li> <a href="../data_dictionary/index.htm#datadictionary">Data Dictionary for Model Catalog</a> 
+      <li> <a href="../data_dictionary/index.htm#concept">Concept of Built-Structure Model</a> 
+        <li> <a href="../data_dictionary/index.htm#dictionary">Data Dictionary for Model Catalog</a> 
         <li> <a href="../data_dictionary/index.htm#status_classes">Status Classes and Model Stores</a>
         <li> <a href="../data_dictionary/index.htm#status_domain">Model Status Dictionary</a>
+        <li> <a href="../data_dictionary/index.htm#qa_flags">QA_Flags Dictionary</a>
         <li><a href="../data_dictionary/index.htm#LOD">Levels of Detail and other Recommendations for Model Structure</a>
       </ul>
 
