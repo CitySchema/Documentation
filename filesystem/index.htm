@@ -92,7 +92,7 @@ Because you may have more than one person or agency sharing development work, it
 <h2>Backup Strategy</h2>
 <p>All filesystems fail eventually.  Often there is no warning.  This is why professional data management organizations have a regular backup policy that is capable of detecting trouble and restoring data without loss.  Backup policies and systems should not be taken for granted.  Their existence should be confirmed with system admininstrators and tested regularly. 
 <p><B>Bos3D_Archive</b> and <b>Bos3D_Master</b> folders will be on a network file share which is accessible to all of the technical staff.
-<p>The Bos3D_Dev folder is likely to be stored on the workstation used by the model curator.  The work in this folder can be intensively managed on a day-to-day basis.  Mistakes and disk failure can be lead to weeks worth of work being erased.  Therefore, this data should be backed up every night, and easily restored.
+<p>The Bos3D_Dev folder is likely to be stored on the workstation used by the model curator.  The work in this folder can be intensively managed on a day-to-day basis.  Mistakes and disk failure can be lead to weeks worth of work being erased.  Therefore, this data should be backed up every night, and easily restored.  Nightly backups on user workstations is probably not standard procedure in most organizations.  But considering the potential cost of disk failure or accidents, these backup policies should be checked, and if they are not practical to arrange, then it is worthwhile to consider moving the 3D_Dev folder to a RAID or some other filesystem that is backed up daily.  
 </p> 
       
     <h2>Modular Structure of a WorkFlow Folder</h2>  
