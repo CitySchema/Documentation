@@ -41,13 +41,14 @@
 <p>The city model has <b><i>a lot of parts</b></i>.  The conventions for file naming and location suggested throughout this documentation are oriented toward relieving the model technician and curator and their colleagues from having to make a lot of decisions, and toward letting one enjoy a situation where one generally knows where to find things. Following a convention such as this provides the management with the confidence that the critical city model assets are not subject to predictable silent entropy.  
 </p>
  
-  <h2 id="context">citySchema Modular File System</h2>
+  <h1 id="context">citySchema Modular File System</h1>
   <p>The citySchema architecture makes use of a modular file-system that has evolved over time to provide a scheme for storing assets that does not grow more complicated as the number of assets or their spatial or temporal extent grows.  The file system facilitates sharing and syncing of assets between in-house and off-site installations where parts of the city model may be worked on. 
   </p>
   
-  <h3>File Re-Use and Local Backup Strategy</h3>
-<p>Every agency or project will have its local file-systems that have their own arrangements for sharing, permissions, regular backups and restore capability. There are basically twoclasses of file security that ought to be considered.  We wil revisit these issues after introducing the major components of the citySchema file management architecture. 
+  <h2>File Re-Use and Local Backup Strategy</h2>
+<p>Every agency or project will have its local file-systems that have their own arrangements for sharing, permissions, regular backups and restore capability. There are basically two classes of file security that ought to be considered.
   <p>
+
  
 
   <figure class="right">
@@ -88,7 +89,11 @@ Because you may have more than one person or agency sharing development work, it
       <p><b>Workflows Folder:</b> Workflow folders contain documents, tools and sources that produce new derived data.  For example, the <b>SandBoxClipper workflow folder</b> includes an arcGIS project and toolbox that provides the setting fro clipping out a rectangular extract form the city model which may then be exported to an editable 3D model by an FME workbench that is also included in the <b>Tools</b> folder within that workflow.  
       <p>Workflow folders are designed to use relative path references so that they may be cloned and renamed.  
       </p>
-
+<h2>Backup Strategy</h2>
+<p>All filesystems fail eventually.  Often there is no warning.  This is why professional data management organizations have a regular backup policy that is capable of detecting trouble and restoring data without loss.  Backup policies and systems should not be taken for granted.  Their existence should be confirmed with system admininstrators and tested regularly. 
+<p><B>Bos3D_Archive</b> and <b>Bos3D_Master</b> folders will be on a network file share which is accessible to all of the technical staff.
+<p>The Bos3D_Dev folder is likely to be stored on the workstation used by the model curator.  The work in this folder can be intensively managed on a day-to-day basis.  Mistakes and disk failure can be lead to weeks worth of work being erased.  Therefore, this data should be backed up every night, and easily restored.
+</p> 
       
     <h2>Modular Structure of a WorkFlow Folder</h2>  
     <p>The citySchema project has four primary workflows:  
