@@ -326,11 +326,7 @@
             </tr>
             <tr>
                 <td><b>History_MP</b></td>
-                <td>Holds models reflecting the shapes of structures that once existed. Status: <b>History</b>. These models are selected because they were replaced by newer models that reflect a different shape.  It is not necessary to split historical models to reflect the pocket occupied by new models.  Therefore, some historical models cover one building that changed and also include several neighboring buildings that did not change.  Most of these models will be measuered models, although some projects focused on historical representation may build hand-made models of historical buildings. These models will be shared <b>As-Built</b> model Store. </td>
-            </tr>
-            <tr>
-                <td id="retired_mp"><b>Retired_MP</b></td>
-                <td>Measured models that have been replaced in the <b>Existing_MP</b> status class by another model of the same structure (same geometric form) that was observed at different dates or modeled by different creator (Model_Credit) with a different modeling technique or level of detail than the model currently chosen for the <b>Existing_MP</b> status class.  Retired models are preserved for the purposes of possible recovery and as they reflect a valuable record of observations or creative work.</td>  
+                <td>Holds models reflecting the shapes of structures that once existed. Status: <b>History</b>. These models are selected because they were replaced by newer models in the Existing_MP feature class or by models in Approved_MP that have been promoted to Under Construction or Complete..  It is not necessary to split historical models to reflect the pocket occupied by new models.  Therefore, some historical models cover one building that changed and also include several neighboring buildings that did not change.  Most of these models will be measured models, although some projects focused on historical representation may build hand-made models of historical buildings. These models will be shared <b>As-Built</b> model Store. </td>
             </tr>
             <tr>
                 <td><b>Approved_MP</b></td>
@@ -343,6 +339,10 @@
             <tr>
                 <td><b>Alt_MP</b></td>
                 <td>The Alt_MP feature class holds models that represent alternative representations of structures.  For example, these could be models that are higher level of detail than models featured in the Existing feature class -- such as models featuring textures.  These models will be shared in the As-Built model store.  Status: <b>Alt</b>.  These models will be shared <b>As-Built</b> model Store.</td>
+            </tr>
+            <tr>
+                <td id="retired_mp"><b>Retired_MP</b></td>
+                <td>This status is used only during Major updates, when massive quantities of models may be replaced by improved models of the same structure that reflects no change in the geometric form.  <b><i>This status is not to be used during routine updates! </b></i> Retired models are preserved for the purposes of possible recovery and as they reflect a valuable record of observations or creative work.</td>  
             </tr>
         </table>
         <br>
@@ -369,16 +369,17 @@
     <tr>
         <td><b>Approved Demo</b></td>
         <td>Existing_MP</td>
-        <td>The model should not be rendered when portraying Approved projects.  The building still exists according to the latest observation. 
+        <td>A structure that overlaps with a model that has status Approved.  The Approved Demo status is used to hide a model when portraying Approved projects.  The building still exists according to the latest observation. This observation can be recoreded using the Disappear Source attribute.   
         </td>
     </tr>
     
     <tr>
     <td><b>History</b></td>
     <td>History_MP</td>
-    <td>A model that replaced in the Existing collection because the real-world structure has changed shape.  This status may be applied to models of groups of structures where a new model is replacing part of the historical model.  In these cases, the entire old model is historical, and it may divided to create a pocket for the new model. </td>
+    <td>A measured model that has been replaced by a newer model in the Existing_MP feature class or by models in Approved_MP that have been promoted to Under Construction or Complete.
+    <p>History status may be applied to models of clumps of structures where a new model is replacing part of the historical model.  In these cases, the entire old model is historical.  Such a model may be flagged for splitting (QA_Flag = 3dEdit) to be divided to create a pocket for the new model.  The original model (the entire clump of structures) has status History.  The remaining part(s) of the model will be kept in the existing collection with status Current.   </td>
     </tr>
-    
+
         <tr>
             <td><b>Board Approved</b></td>
             <td>Approved_MP</td>
@@ -387,13 +388,13 @@
         <tr>
             <td><b>Complete</b></td>
             <td>Approved_MP</td>
-            <td>Hand-made models of proposals. The shell of the building including external finishes appear to be complete.  These models remain in the Existing feature class until they are replaced with measured models. 
+            <td>Hand-made models of proposals. The shell of the building including external finishes appear to be complete.  These models remain in the Existing feature class until they are replaced with measured models. This status is used only for hand-made models of proposed projects/
              </td>
            </tr>
            <tr>
            <td><b>Under Construction</b></td>
            <td>Approved_MP</td>
-           <td>The foundation (or more) of the new building is visible.</td>
+           <td>The foundation (or more) of the new building is visible. </td>
         </tr>
 
 
