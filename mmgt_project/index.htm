@@ -53,6 +53,7 @@
       <li><a href="#context">Filesystem Context </a>
       <li><a href="#tour">Tour of the Model Management Workspace Folder: Data Management</a>
       <li><a href="#lifecycle">Lifecycle of a Model Management Workspace</a>
+        <li><a href="#archiving">Archiving Model Batches and GDB Editions</a>
       <li><a href="#project">Tour of the ArcGIS Pro Project: Properties</a>
       <li><a href="#scenes">Tour of the Scenes, Maps, Layers and Views</a>
      <li><a href="#layers">Managing Re-Useable Layers and Styles</a>
@@ -151,17 +152,22 @@ Stages in the lifecycle of a model management workspace are depicted in the slid
     </div>
     <div class="slidecontainer" data-title="Stage Changes, Produce New Editions" >
       <div class="slide"> <img src="./images/lifecycle_workflow.jpg"></div>
-      <div class="caption"><p>Models may nor be imported and edited, and existing models may have their attributes updated. </p>
+      <div class="caption"><p>Models may now be imported and edited, and existing models may have their attributes updated. </p>
       <p>New editions of the collection are formed by sorting the new models and prior archived models according to their new status values. </div>
       <div class="learnmore"></div>
     </div>
     <div class="slidecontainer" data-title="Archive Resources, Retire Workspace" >
       <div class="slide"> <img src="./images/lifecycle_close.jpg"></div>
       <div class="caption"><p>Several new editions may be produced and several new model batches processed in a single model management workspace. At some point, the workspace wil be retired, with the latest edition and the model batches and the workspace itself being archived.  </p></div>
-      <div class="learnmore"></div>
     </div>
     </div> <!-- Closes moreslides-->
 
+    <div id="archiving" class="feature procedure">
+      <h3>Archiving Batches and GDB Editions</h3>
+      <p><b>Model Batches</b> include source material, tools that transform the sources to attributed multipatches, aalong validated OBJ modelStores reflecting the state of the models.  When the multipatches are fully prepped and added to the Stage_NewModels_MP feature class, the model batch is zipped and the zip is copied to the <b>Bos3D_Archive/ModelWork folder</b>.
+      <p><b>Geodatabase Editions</b> of the model collection are archived to <b>Bos3d_Archive/Bos3d_Models</b> whenever a new PriorArchived edition is initialized in the ModelMgt workspace.  These geodatabase editions include all of the multipatches, including retired and expunghed models and most importantly the catalog information that can be used to regenerate the model collection form the ModelStore if necessary.  Other geodatabase editions can be archived as well. 
+      <p><b>Zip Files are Read-Only</b> The zip files saved in the archive are read-only.  If there is ever a need to recover resources from the zips, they may be expanded in ther archive folders, but the zip files should remain un-touched.  If an important update is made to one of the archived model batches, you may zip it again with a bersion letter appended to the name.  
+    </div>
 
 <hr>
 
