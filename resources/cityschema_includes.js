@@ -157,6 +157,8 @@ let index_htm = `
  <li class="verse"><a href="../mmgt_stage/index.htm#stage">Promote and Demote Model Status Attributes</a>
 
 </ul>
+
+<li class="chapter"><a href="../mmgt_validate/index.htm">Repair and Validate Models</a>
     
 <li class="chapter"><a href="../mmgt_edit/index.htm">Editing Building Models</a></li>
   
