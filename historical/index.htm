@@ -1,0 +1,274 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Four-Dimansional Referencing in Historical Research</title>
+    <meta name="description" content="Temporally referenced 3D models can create new historical information and insights by providing a context for relating independent historical documents.">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+<script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+<link href="../resources/docutree.css" rel="stylesheet"> 
+<script src="../resources/slideshow_pbc.js"></script>
+<link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+
+
+<!-- The index sidebar and all content other than the main article come from the docutree_includes.js.
+      When you add a new page or internalachcor, you should update the index in docutree_includes.js.-->
+<script src="../resources/cityschema_includes.js"></script>
+<!-- THis has to come after the cityschema_includes file-->
+<script src="../resources/docutree.js"></script>
+</head>
+<body>
+  <div id="grid-container">
+    <div id="index-container">
+      <div id="index-header"> <!-- Content provided by docutree_includes.js--> </div>
+      <div id="index">        <!-- Content provided by docutree_includes.js--> </div>
+      <div id="index-footer"> <!-- Content provided by docutree_includes.js--> </div>
+    </div> 
+<div id="main-container">
+<div id="header"> <!-- Content provided by docutree_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Temporally Referenced 3D Models Create New Histocical Insights </h1>
+  <p>Temporally referenced 3D models can create new historical information and insights by providing a context for relating independent historical documents.  
+  </p>
+  
+<h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+<ul class="verses">
+  <li><a href="../template/index.htm#css">Basic Styling</a>
+  <li><a href="../template/index.htm#slideshow_element">Slide Shows</a>
+  <li><a href="../template/index.htm#figures">Figures</a>
+  <li><a href="../template/index.htm#table">Tables</a>
+  <li><a href="../template/index.htm#tabtargets">Controlling new Tabs</a>
+  <li><a href="../template/index.htm#blocks">Colored Text Blocks</a>
+  </ul>
+
+
+  <h2 id="css">Basic Styling</h2>
+  This page describes and demonstrates the basic elements that are accommodated by the <b><a href="../resources/docutree.css">docutree.css</a></b></p>
+
+
+
+
+<h2 id="slideshow_element">Slide Shows</h2>
+<p>The script, <b>slideshow_pbc.js</b> looks for any div with <b>class="slideshow:</b> and turns it into a slideshow with lots of features as you can see, bwlow.  
+  
+ <!-- Slideshow container -->
+ <div id="ooslides" class="slideshow in-page" 
+ data-imgheight = "250px" 
+ data-title = "I'm a Slideshow with a title and No Captions" 
+ data-playpaused = "playing"
+ data-fadespeed = "10" >
+
+ <div class="slidecontainer" data-title="Wide Image" data-caption="Away up to tree-line.">
+   <div class="slide"><img src="./images/wide.jpg" ></div>
+   <div class="caption"></div>
+   <div class="learnmore"><a href='#early'>Learn More about Wide Images</a></div>
+</div>
+ <div class="slidecontainer" data-title="Tall Image" >
+   <div class="slide"> <img src="./images/tall.jpg"></div>
+   <div class="caption"></div>
+   <div class="learnmore"><a href='#late'>Learn More about Tall Images</a></div>
+ </div>
+</div> <!-- Closes ooslideshow-->
+  
+  <p>The slideshow div has to contain subdivisions that are <b>class="slideshow_container"</b> with more subdivisions as shown below:</p>
+
+
+
+
+<p>The value for <b>daya-playpaused</b> should be either <b>"playing"</b> or <b>"paused"</b>.  
+
+<pre>
+  &lt;!-- Slideshow container --&gt;
+  &lt;div id="moreslides" class="slideshow in-page" 
+  data-imgheight = "250px" 
+  data-title = "" 
+  data-playpaused = "paused" &gt;
+  &lt;div class="slidecontainer" data-title="Wide Image" data-caption="Away up to tree-line."&gt;
+    &lt;div class="slide"&gt;&lt;img src="./images/wide.jpg" &gt;&lt;/div&gt;
+    &lt;div class="caption"&gt;&lt;p&gt;Now is the time for all good men to come to the Wide Image.  
+      Lets make this a very long line so that we can see the wrap-around effect..&lt;/p&gt;
+      &lt;p&gt;And then there was that other time
+      &lt;p&gt;But lets focus on right now.
+      &lt;p&gt;OK?  OK!
+    &lt;/div&gt;
+    &lt;div class="learnmore"&gt;&lt;a href='#funfact'&gt;Learn More about wide images&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;
+  &lt;div class="slidecontainer" data-title="Tall Image" &gt;
+    &lt;div class="slide"&gt; &lt;img src="./images/tall.jpg"&gt;&lt;/div&gt;
+    &lt;div class="caption"&gt;&lt;p&gt;That image is mightty tall, but maxes out at 1005 .&lt;/p&gt;&lt;/div&gt;
+    &lt;div class="learnmore"&gt;&lt;a href='#funfact'&gt;Learn More about Tall Images&lt;/a&gt;&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt; &lt;!-- Closes moreslides--&gt;
+</pre>
+
+ 
+<h3>Another Slideshow with no title and Captions</h3>
+<p>If no captions are included in slide containers, then the slideshow element is more compact.  Likewise with the title.
+</p>
+
+<!-- Slideshow container -->
+<div id="moreslides" class="slideshow in-page" 
+data-imgheight = "250px" 
+data-title = "" 
+data-playpaused = "paused" 
+data-fadespeed = "10" >
+
+<div class="slidecontainer" data-title="Wide Image" data-caption="Away up to tree-line.">
+<div class="slide"><img src="./images/wide.jpg" ></div>
+<div class="caption"><p>the wide image fills up the width. that we can see the wrap-around effect..</p>
+<p>And then there was that other time
+<p>But lets focus on right now.
+<p>OK?  OK!
+</div>
+<div class="learnmore"><a href='#funfact'>Learn More about Wide Images</a></div>
+</div>
+
+<div class="slidecontainer" data-title="Tall Image" >
+<div class="slide"> <img src="./images/tall.jpg"></div>
+<div class="caption"><p>That image is mighty tall, but maxes out at 1005 .</p></div>
+<div class="learnmore"><a href='#funfact'>Learn More about Tall Images</a></div>
+</div>
+
+</div> <!-- Closes moreslides-->
+
+<hr>
+
+<h3 id="early">Headings with IDs Are Referenced with Scroll-To Animation</h3>
+<p>The html declaration of the heading above has an id attribute set as <b>id="early"</b>.  This ID can be addressed as an internal link within the page.  For example, it is referred to as <b>a href="../template/index.htm#early"</b> in other pages and most importantly, in the list of "verses" that falls under the chapter, <b>Documentation Template</b> in the navigational sidebar.
+</p> 
+
+
+      <figure class="right">
+        <img src="images/tall.jpg">
+        <figcaption>Fig Right</figcaption>
+      </figure>
+
+      <h3 id="figures">Figures: Left, Right and Middle</h3>
+       <p>The docutree.css has three types of figures.  The one on the right uses the following
+         html:
+  <!-- notice: the indent of <pre> text is expressed by actual whitespace. -->
+  <pre>
+  &lt;figure class="right"&gt;
+  &lt;img src="images/tall.jpg"&gt;
+  &lt;figcaption&gt;Fig Right Caption&lt;/figcaption&gt;
+  &lt;/figure&gt;
+  </pre>
+
+       <p>Makes a right-justified image.  </p>
+       <p>Notice that the heading comes after the image in the html.  This avoids an apparent vacant space above the image. 
+      <p>Normally, there would be plenty of text that pertains to the image, to fill up the half-width column on the left-hand side of the figure.  If not, you can always start the next thing with a <b>style="clear: both;"</b>, as we do with the heading,below. 
+       <h3 id="late" style="clear: both;">Another Internal Link</h3>
+       <p>The link above has <b>id="late"</b>.  It is linked in the sidebar table of contents.  It demonstrates the smooth scroll effect. 
+       </p>Notice also that the <b>style="clear: both"</b> causes it to slip past the right-hand image to the next clear spot on the page.
+
+       <h3 id="midfig">The Middle Figure</h3>
+       <p>Below this text, you will see the rendering of the following code:</p>
+  <pre>
+  &lt;figure class="middle"&gt;
+  &lt; src="images/wide.jpg"&gt;
+  &lt;figcaption&gt;Fig Middle Caption&lt;/figcaption&gt;
+  &lt;/figure&gt;
+  </pre>
+      <figure class="middle">
+        <img src="images/wide.jpg">
+        <figcaption>Middle Figure</figcaption>
+      </figure>
+
+      <p id="triptic"> The next image uses the middle figure with the image <b>class="triptic"</b>.  Coded like so:
+        
+        <pre>
+    &lt;figure class="middle"&gt;
+      &lt;div class="middleflex"&gt;
+        &lt;img src="images/tall.jpg"&gt;
+        &lt;img src="images/tall.jpg"&gt;
+        &lt;img src="images/tall.jpg"&gt;
+      &lt;/div&gt;
+    &lt;figcaption&gt;Fig Middle Caption&lt;/figcaption&gt;
+    &lt;/figure&gt;
+        </pre>
+      
+      <figure class="middle">
+      <div class="middleflex"> 
+        <img src="images/tall.jpg"> 
+        <img src="images/tall.jpg"> 
+        <img src="images/tall.jpg"> 
+      </div>
+        <figcaption>Triptic</figcaption>
+      </figure>
+    
+    <h3 id="table">The Dictionary Table Style</h3>
+     <p>Tables with <b>class="dictionary</b> look like this.</p>  
+    <table class="dictionary">
+      <tr><th>Heading 1</th><th>Heading 2</th></tr>
+      <tr><td>Row 1</td><td>Col 2</td></tr>
+      <tr><td>Row 1</td><td>Col 2</td></tr>
+    </table>
+
+<h2 id="tabtargets">Controlling new Tabs</h2>
+<p>Some pages should be opened n specific new tabs as they may be useful refernce info related to other pages.  We don;t want tabs to proliferate, however.  So, for pages of a specific sort, we dlivberately want to replace other pages of the same sort in a particular tab.   
+</p><ul>
+  <li><b>target="datadict"</b>: Data dictionary at bottom of the Model Collection Page
+  <li><b>target="metadata"</b>: A metadata page from the repo/catalog.
+  <li><b>target="download"</b>: The tiled download page from the repo/catalog.
+  <li><b>target="index"</b>: Documentation Index page from the repo/catalog.
+  <li><b>target="arcdoc"</b>: link to software documentation.
+  <li><b>target="github"</b>: link to a location in github.
+    <li><b>target="outboard"</b>: Link to a reference page outside of citySchema.org.
+  </ul>
+
+    <h3 id="blocks">Feature Blocks</h3>
+    <p>High-order conceptual ideas are discussed in the plain text.  
+    <p>Feature blocks help to break out other sorts of ideas.  
+
+       <div class="feature procedure">
+        <h3>A Procedure</h3>
+         <p>A div with <b>class="feature procedure"</b> has a heading, a short introduction, then a list of numbered steps</p>
+         <ol>
+           <li>First you do <b>Step One</b>.
+           <li>Then you do <b>Step Two</b>.
+         </ol>
+         <p>Then there might be a short statement of the ending condition.
+       </div> <!--closes procedure -->
+    <h3>More Text</h3>
+    <p>Then as things roll along, there is usually more conceptual description.  But before long, there might be a need for another sort of sidebar discussion.   These are topics that may be a zoom-in or a zoom-out.  These may be ideas that get linked to from other documents. These sidebars get a gold box but with the same bluish text.
+    </p>
+    <div id="funfact" class="feature funfact">
+      <h3>A Fun Fact</h3>
+      <p>A div of <b>class="feature funfact"</b> starts out with an &lt;H3&gt; and then has some text explaining a sort of meta-topic that pertains to the ideas that surround it.  It may summarize issues discossed in more detail on another page. 
+      <p>The topic might zoom in or zoom out relative to the context.      
+    </div> <!-- closes sidebar -->
+   <p>Typically, the page would have some more text that closes up the big idea.  Maybe providing pointers about were else to go. 
+    <div id="tour" class="feature tour">
+    <h3>A Tour</h3>
+    <figure class="right">
+      <img src="images/tall.jpg">
+      <figcaption>Fig Right</figcaption>
+    </figure>
+
+    <p>A div of <b>class="feature tour"</b> provides a tour of the file-system or tool-box. 
+    <p>Notice the use of the <b>class="figure right"</b> in this box.  
+    <p>the html for the figure comes after the heading. 
+     
+    </div> <!-- closes feature -->
+
+
+  </div> <!-- Closes #article div -->
+
+
+
+  <div id="footer"> <!-- Content provided by docutree_includes.js--> </div> 
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
