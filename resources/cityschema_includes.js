@@ -150,6 +150,7 @@ let index_htm = `
     <li class="verse"><a href="../mmgt_import/index.htm#batches">Prepare a Batch Folder</a>
 
  </ul>
+ <li class="chapter"><a href="../mmgt_validate/index.htm">Repair and Validate Models</a>
 
  <li class="chapter"><a href="../mmgt_stage/index.htm">Promoting / Demoting Model Status</a></li>
   
@@ -158,7 +159,7 @@ let index_htm = `
 
 </ul>
 
-<li class="chapter"><a href="../mmgt_validate/index.htm">Repair and Validate Models</a>
+
     
 <li class="chapter"><a href="../mmgt_edit/index.htm">Editing Building Models</a></li>
   
