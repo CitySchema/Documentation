@@ -1,0 +1,69 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>Style Guide</title>
+    <meta name="description" content="Home page for the citySchema project.  A gateway for tools, techniques and documentation about cross-disciplinary collaboration on city models. ">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+<script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+<link href="../resources/docutree.css" rel="stylesheet"> 
+<script src="../resources/slideshow_pbc.js"></script>
+<link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+
+
+<!-- The index sidebar and all content other than the main article come from the docutree_includes.js.
+      When you add a new page or internalachcor, you should update the index in docutree_includes.js.-->
+<script src="../resources/cityschema_includes.js"></script>
+<!-- THis has to come after the cityschema_includes file-->
+<script src="../resources/docutree.js"></script>
+</head>
+<body>
+  <div id="grid-container">
+    <div id="index-container">
+      <div id="index-header"> <!-- Content provided by docutree_includes.js--> </div>
+      <div id="index">        <!-- Content provided by docutree_includes.js--> </div>
+      <div id="index-footer"> <!-- Content provided by docutree_includes.js--> </div>
+    </div> 
+<div id="main-container">
+<div id="header"> <!-- Content provided by docutree_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">Model Validation and Repair</h1>
+  <p>Although most of the work we do with building models utilizes ESRI's proprietary multipatch format, which is very well suited to attaching 3d models with a geographically refernced relational database schema, Multipatch has potential disadvantages.
+    <ul>
+      <li>The multipatch version of the model collection is completely reliant on the presense of expansive ESRI licenses.
+      <li>ESRI can change the way ArcGIS structures multipatch objects at any time causing them to behave in ways that may not be advantageous.
+      </ul>
+    Since the assets in the model collection have been the focus of a lot of work over a long period of time, it is important to make sure that we have copies of each of the models in a format that is reliably readable by third party, preferably open-source tool chains. For this archival purposem, we have chosen OBJ format. 
+
+    </p>
+    <h2>Repair and Validation</h2>
+    <p>When models are imported into the collection, we use a couple of FME workbenches.
+      
+      <ul>
+        <li><b>Multipatch2ModelStore.fmw</b> checks the integrity of each model and make whatever repairs it can make then writes the OBJ files to a designamed Batch\ModelStore folder.  The tool also writes validation log, gdb2obj_validation_log.csv</b> is written to the ModelStore folder. 
+        <li><b>ModelStoretoMultipatch</b> reads the OBJ files from the ModelStore and writes them back to Multipatch format.  An <b>objtomp_validation_lig.csv</b> is writtent to the ModelStore folder.  
+      </ul>
+<p>By cycling the models through this process, and checking the validation logs, the model curator can gain confidence that the multipatch collection can be round-tripped to and from  OBJ format and if anything should happen to the Multipatches or the ESRI licenses or future versions of ArcGIS, the collection can be regenerated form the OBJ modelStore. </p> 
+
+
+  </div> <!-- Closes #article div -->
+
+
+
+  <div id="footer"> <!-- Content provided by docutree_includes.js--> </div> 
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
