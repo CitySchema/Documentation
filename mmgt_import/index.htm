@@ -35,17 +35,39 @@
 <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter. -->
     <h1 class="title">Importing Building Models</h1>
-  
+    <div class="feature procedure" style="background-color: lightgrey">
+      <h3>Work in Progress</h3>
+      <p>This page is a bare-bones outline covering the way that models and source material are handled through the import process.  A more thorough explanation of many of the tasks can be found by looking at the prompts embedded in the ArcGIS Pr tasks associated with <b>Model Import and Editing</b>.  This document will become more organized and detailed detailed over the next few weeks. Be sure and check back later!  
+      </div>
 
-  
-        <h2 id="import">Task Group 2: Import, Inspect and Enroll Models</h2>
-        <figure class="right">
-          <img src="./images/import_tasks.jpg">
-          <figcaption>Tasks for Importing and Enrolling Models.</figcaption>
-          <br>
-          <img src="./images/import_tools.jpg">
-          <figcaption>Tools for Importing and Enrolling models</figcaption>
-        </figure>
+  <h2>Overview of the Model Import Procedure</h2>
+  <p>Over the life-span of the building model collection many batches of models wil be brought in from various sources.  Models generally arrive in batches, whether they be 10 or 20 OBJ models from the Urban Design Technology Group, or thousands of Multipatch models from a photogrammetrist or an in-house automatic LIDAR reduction procedure.   In any case, any of these situations follows a similar pattern from the perspective of digital; asset management:
+    <h2 id="import">Import, Inspect and Enroll Models</h2>
+    <figure class="right">
+      <img src="./images/import_tasks.jpg">
+      <figcaption>Tasks for Importing and Enrolling Models.</figcaption>
+    </figure>
+    <ul>
+      <li>A ModelBatch workspace folder is prepared as the production cell for transforming the models and for preserving associated source data and procedures. 
+      <li>One or more models are received or created 
+      <li>There is source material associated with models 
+         <ol>
+          <li>Models in original manuscript format for editing (e.g. .3ds or .skp)
+          <li>Models in exchange formats: e.g. OBJ or multipatch  
+          <li>Documentation, such as 2D site plans, elevations and perspective renderings.
+          </ol>
+      <li>Source Models are Assembled into an <b>AutoAssembled_MP</b> feature class, which is subject to tool-based processing.
+      <li>Model attributes and geometric attributes are applied 
+      <li>Models are validated and repaired to assure their round-trip compatibility with our OBJ modelStore format. The result is written to <b>the Batch\Prep_MP</b> feature class.  
+      <li>Models are prepared for integration with the collection through a process of adjusting model status of the preparatory models and the existing and proposed models currently in the Stage geodatabase.
+      <li>Finally, the batch of models is advanced from the <b>Batch\Prep_MP</b> feature class into the <b>Stage\NewModels_MP</b> feature Class
+      <li>The model batch folder is zipped and moved to the BOS3d_Archive/ModelWork folder. 
+      </ul>
+
+
+
+
+<!--
 
 
         <p>Importing new models is a useful place to begin the discussion of model updates.  It is often the case that new models create the necessity to do things to existing models and their attributes. This workflow has three stages:</P>
@@ -74,7 +96,7 @@
           When the Model Management workspace is retired, all of the model batch folders are moved to the Cty3D_Archive folder --  the home of all of the source material that has gone into the city-wide 3d model since the beginning. 
         </p>
 
-
+      -->
 
 <!-- 
 <div class="feature procedure">

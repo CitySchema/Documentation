@@ -38,22 +38,114 @@
   <div id="article">
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
   <h1 class="title">Model Validation and Repair</h1>
-  <p>Although most of the work we do with building models utilizes ESRI's proprietary multipatch format, which is very well suited to attaching 3d models with a geographically refernced relational database schema, Multipatch has potential disadvantages.
+  <div class="feature procedure" style="background-color: lightgrey">
+    <h3>Work in Progress</h3>
+    <p>This page is a bare-bones tutorial on how to work with the FME workbenches that translate Multipatch models to OBJ format and validate and repair multipatch models.  These workbenches wikll soon be ntegrated nto our ArcGIS tools and tasks.  When this occurs, we will add details about using these to this page.  In any case, it is good to know how to run these workbenches, since it will inevitable become necessary to troubleshoot them at some point. 
+    </div>
+  <figure class="right">
+    <img src="./images/fme_workbenches.jpg">
+    <figcaption>FME Workbenches.</figcaption>
+  </figure>
+
+  <p>Although most of the work we do with building models utilizes ESRI's proprietary multipatch format, which is very well suited to attaching 3d models with a geographically referenced relational database schema, The Multipatch format is not a complete solution for sharing or preserving the model collection.
     <ul>
-      <li>The multipatch version of the model collection is completely reliant on the presense of expansive ESRI licenses.
-      <li>ESRI can change the way ArcGIS structures multipatch objects at any time causing them to behave in ways that may not be advantageous.
+      <li>The multipatch version of the model collection is completely reliant on the presence of expansive ESRI licenses.
+      <li>ArcGIS Pro os the only presentation or authoring too that can read or write Multipatch format. 
+      <li>ESRI can change the way ArcGIS structures Multipatch objects at any time -- potentially causing them to behave in ways that may not be advantageous.
       </ul>
-    Since the assets in the model collection have been the focus of a lot of work over a long period of time, it is important to make sure that we have copies of each of the models in a format that is reliably readable by third party, preferably open-source tool chains. For this archival purposem, we have chosen OBJ format. 
+      <figure class="right">
+        <img src="./images/modelstore.jpg">
+        <figcaption>A ModelStore folder.</figcaption>
+      </figure>
+    <p>To engage with diverse tools for 3D model authoring, and for digital asset management it is necessary to maintain copies of each model in a format that is reliably readable by third party, preferably open-source tool chains. For this archival purpose, the citySchema project have chosen the OBJ format for 3d geometry combined with comma delimited text and geojson foles that preserve the attribute and georeferencing information for models. This open-source exchange arrangement is called the <b>ModelStore</b>.
 
     </p>
     <h2>Repair and Validation</h2>
     <p>When models are imported into the collection, we use a couple of FME workbenches.
       
       <ul>
-        <li><b>Multipatch2ModelStore.fmw</b> checks the integrity of each model and make whatever repairs it can make then writes the OBJ files to a designamed Batch\ModelStore folder.  The tool also writes validation log, gdb2obj_validation_log.csv</b> is written to the ModelStore folder. 
+        <li><b>Multipatch2ModelStore.fmw</b> checks the integrity of each model and make whatever repairs it can make then writes the OBJ files to a designated Batch\ModelStore folder.  The tool also writes validation log, gdb2obj_validation_log.csv</b> is written to the ModelStore folder. 
         <li><b>ModelStoretoMultipatch</b> reads the OBJ files from the ModelStore and writes them back to Multipatch format.  An <b>objtomp_validation_lig.csv</b> is writtent to the ModelStore folder.  
       </ul>
 <p>By cycling the models through this process, and checking the validation logs, the model curator can gain confidence that the multipatch collection can be round-tripped to and from  OBJ format and if anything should happen to the Multipatches or the ESRI licenses or future versions of ArcGIS, the collection can be regenerated form the OBJ modelStore. </p> 
+
+<hr>
+
+<h2>Using the Multipatch to ModelStore Model Store Workbench</h2>
+<p>The <b>Multipatch2ModelStore.fmw</b> does the following things:</p>
+<ol>
+  <li>The user specifies an <b>Input Geodatabase</b> that must contain a multipatch feature class as described below.
+  <li>The user selects a multipatch feature class name frm a pick-list.  The feature class must conform the current model schema (version 4).  The input feature class must have one of the following names:
+    <ul>
+      <li>AutoAssembled_MP
+      <li>Prep_MP
+      <li>ToValidate_MP
+    </ul>
+  If you have a feature class that is not named as above, copy it to <b>Scratch\ToValidate_MP</b> to avoid clutter and confusion.
+  <li>The user also specifies a <b>ModelStore</b> folder that the FME will use to create an <b>OBJ</b> subfolder and the validation logs and a catalog.csv file.  
+  <li>The user should select a <b>Tiling option</b> in most situations, all of the output OBJ files are placed in the OBJ folder.  In situations where you have thousands of features or when you are hoping to coordinate with sketchup tiles, you may choose to segment the output according to tile. 
+  <li>The geometry and face orientation are validated and repairs are attempted.  A mp2obj_validationlog.csv is created in the ModelStore folder. 
+  <li>The Workbench sets all of the materials to plain white.
+</ol>
+
+<p>When running this workbench it is useful to check the settings <b>Run</b> menu to <b>Prompt for User Parameters</b> and <b>Enable Feature Counting</b>
+<p>When running this workbench in FME, It can be useful to watch the progression of the numbers through all of the various transformers.
+
+  <h3>Check the MPtoOBJ Validation Log</h3>
+After the workbench has run, the user should open the modelstore and verify that the OBJ files and mp2obj_validation_log.csv have been created. Open the validation log in ArcGIS and look for Geometric errors (like degenerate faces) that were repaired and especially for ones that weren't/  It can be helpful to right-click the table and use <b>Display XY Data</b> to display the locations of these errors.  
+<ul>
+  <li>Save the error log point layer in the group layer you are making for your batch.
+  <li>Look at the points on a wireframe and shaded view of the pre-validated models while you flick the shaded viw on and off to see if you can find the errors.
+  <li>FME often finds face orientation errors that are "Not Completely Repaired."  We are still trying to figure this out.  In the great majority of cases, these do not seem to create a visible problem.
+</ul>
+
+<hr>
+
+<h2>Using the ModelStore to Multipatch Workbench</h2>
+<p>The <b>ModelStoreToMultipatch.fmw</b> workbench converts a ModelStore repository to a multipatch feature class. The output is a temporary feature class, ordinarily saved in the <b>Scratch</b> geodatabase where it is ready for some final processing to re-integrate it with its attributes and the collection multipatch schema. 
+  
+  The steps for using it are as follows:
+<ol>
+  <li>Enter the following parameters:
+    <ul>
+      <li><b>Input ModelStore Folder</b> containing folder full of OBJ files to be imported. 
+      <li>The <b>Target Geodatabase</b> for the output feature class. (This should be your <b>ModelMgt\Scratch.gdb</b>)
+      <li>The <b>Name of the Output Feature Class</b>. (This should be your <b>Validated_MP</b>)
+    </ul>
+  <li>Run the workbench.
+  </ol>
+<p>  
+    You can check your Scratch.gdb for the new <b>Validated_MP</b> feature class. If you are curious, you can examine it.  Dont; be surprised that the heights and elevations are exaggerated x3 because the vertical coordinate system is not yet defined. 
+  
+<h2>Re-Connect Attributes and Import Validated Models into Model Schema Template</h2>
+<p>The new validated multipatch output from FME is a simple feature class with just one attribute, featuring the ModelIDs from the ModelStore (which originated in the original Multipatch FC.).  We need to run one more tool to add the original attributes and enable all of the domains and all of the auto-update fields that are expected of multipatch models in the collection. 
+<p>The geoprocessing tool, <b>8b. Re-Attribute Validated Models</b> in the ModelMgt toolbox.finishes round-trip of our multipatches through validated OBJ files and back to Multipatch, with all of the original attributes and geodatabase properties restored.  To run it, do as follows.
+<ol>
+  <li>Find the geoprocssing model, <b>8b. Re-Attribute Validated Models</b> in your ModelMgt toolbox.
+  <li>Double-click it to open its dialog and enter the following paremeters:
+    <ul>
+      <li><b>Validated_MP</b> The output of the ModelStore2Multipatch workbench run previously.
+      <li><b>Pre-Validated_MP</b> The original multipatch feature class that ws used in the Multipatch2ModelStore workbench that we started with, above. This wil be the source of the original attributes. 
+      <li><b>Target Geodatabase</b>.  This should be the batch geodatabase that is associated with the models we are importing. 
+      <li><b>Target Feature Class Name</b> The name we want to use for the final validated feature class. This is often "Prep_MP."
+    </ul>
+  <li>Run this model!
+  <li>When the model has run, you should now be able to add your new feature class to the group layer for your batch.  
+  <li>Open the attribute table and count the features to make sure nothing was lost
+  </ol>
+<h3>Check the OBJtoMP Validation Log</h3>
+<p>The procedure of cycling our multipatch models to repaired and validated OBJ files and back again is intended to assure that the multipatches that we use in the ModelMgt workspace can move back and forth to OBJ without any problems.  To make sure we have achieved this goal, we need to checkthe FME validation log created by the ModelStore2Multipatch workbench.  This log, named, <b>OBJ2GDB_Validation_log.csv</b> will be found in the ModelStore folder.  If there is such log to be found there, this may mean that there were no errors.  
+<ol>
+  <li>Add the OBJ2GDB_Validation_log.csv to ArcGIS.
+  <li>Open the table and see if there are any un-repaired geometric errors.  
+  <li>If all the errors refer to <b>Incorrect Surface Orientation</b> then this is regarded as OK.  We are not quite sure what this means, but have found that these are normally not visible.  
+  <li>If you want to look more closely at the locations of errors, Right-click the CSV file in your ArcGIS table of contents and choose <b>Display XY Data</b> 
+  <li>Move the new layer to the group layer for your Batch.
+  <li>Look at the points on a wireframe and shaded view of the pre-validated models while you flick the shaded viw on and off to see if you can find the errors.
+</ol>
+
+
+
 
 
   </div> <!-- Closes #article div -->
