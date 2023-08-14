@@ -40,9 +40,41 @@
 
 <p>Update of of Web feature layers and web scenes may be one of the most frequent activities of managing the model collection.   There are web scenes for the public and internal visualization and a web feature layers issued for ArcGIS Urban applications. There is also a web scene for the model download page. Each of these has a special selection of models, and application-specific styling for model colors and pop-ups.
 <p> Because of the frequency that these web-scenes may be updated, it is handy that they are produced directly form the <b>Stage</b> collection so that they web scenes can reflect the latest changes made within stage.  The ModelMg Tasks under the heading <b>Produce WebScene Snapshot Editions</b> provides access to tools and resources for producing scene layer packages with all of the selection and styling that has been composed using ArcGIS Pro layer files and Look-up tables. 
-<p>Understanding how all of this works, it may be helpful to start at the end-product.
-  
-  
+
+<h2>Tour the Demonstration Web Scene</h2>
+<p>Understanding how all of this works, it may be helpful to start at the end-product: 
+  <ul><li><a href="https://boston.maps.arcgis.com/home/webscene/viewer.html?webscene=868b33a92f87408da58ffeb8c1cd1d70" target="agol">The Demonstration Internal Web Scene</a>. 
+  </ul>
+  <p>Notice the following</p>
+  <ul>
+    <li>There are two scenarios that share the majority of models, but with the click of the <b>Project Review Pipeline</b>  radio button, the <b>Approved Demo</b> models disappear and are replaced with the Approved models.
+    <li>Model styling uses 3d-specific shading that uses the BPDA's red-green-yello convention for Under Construction - Approved - Under Review status.  The colors using a uniform Lightness to assure that none of the classes jumps to the foreground and all behave the same way with regard to the normal illumination model for synthetic shading.   
+  <li>The pop-ups in this demonstration include download links.
+
+  </ul>
+<p>
+  This documentation is in work right now, but eventually there will be illustrations of the Public Web Scene and the ArcGIS Urban feature data layer and the Download Page web scene that use similar styling but different selections of features.  For now, you can take yourself on a guided tour of the resources, tools and tasks involved vy following these steps:
+</p>
+
+<ul>
+<li>Inspect the contents of Tools/WebScene_Layers.  Notice that therre are lyrx files here and also DBF lookup tables and a Webscene_Styles.stylx.
+
+  <li>To your scene, Add the new group layer, "Web Scene Layers" from Tools/WebScene_Layers.
+
+  <li>Remove the old group layer, "Public Scene Layers" 
+
+  <li>Add the lookup tables from Tools/WebScene_Layers to your Stand-Alone Tables group layer.
+
+  <li>Explore all of the above, noting the LegClass field, the layer styling, and the pop-ups. 
+
+  <li>Go to the Produce WebScene Snapshot Editions task group and see if you can understand the prompts.
+
+  <li>If you have been able to make a new web feature layer, see if you can make a web-scene similar to mine, at <a href="https://boston.maps.arcgis.com/home/webscene/viewer.html?webscene=868b33a92f87408da58ffeb8c1cd1d70"target="agol">my Demo Internal Web-Scene</a>
+</ul>
+
+<p>Once you have this working, the idea is that when you need to update a web-scene, you create and upload a new web feature layer, which will have the current date, and then use the ArcGIS On-Line replace function to substitute your new web feature class into your live web-scene. 
+
+  <!--
   
   The basic workflow consists of the following steps:
 
@@ -94,7 +126,7 @@
   <p>All styling and pop-up customizations are saved with a layer when you right-click and choose <b>Save as Layer File</b> on a layer.
   <p>These options can be applied to a layer using the <a herf="https://pro.arcgis.com/en/pro-app/2.9/tool-reference/data-management/apply-symbology-from-layer.htm" target=""arcdocs">Apply Symbology from Layer</a> 
     
-
+-->
 
 
 

@@ -176,12 +176,12 @@ let index_htm = `
 
     <li class="verse"><a href="../model_management/index.htm#nextedition">Publishing the Next Edition Model Collection</a>. 
  </ul>
-      <li class="chapter"><a href="../mmgt_layers/index.htm">Layers, Popups and Web Scenes</a></li>
+      <!--<li class="chapter"><a href="../mmgt_layers/index.htm">Layers</a></li>
   
       <ul class="verses">
       <li class="verse"><a href="../mmgt_layers/index.htm#layers">Re-useable Layers</a>. 
-   </ul>
-   <li class="chapter"><a href="../mmgt_webscenes/index.htm">Layers, Popups and Web Scenes</a></li>
+   </ul> -->
+   <li class="chapter"><a href="../mmgt_webscenes/index.htm">Web Scenes</a></li>
   
    <ul class="verses">
    <li class="verse"><a href="../mmgt_webscenes/index.htm#layers">Re-useable Layers</a>. 
