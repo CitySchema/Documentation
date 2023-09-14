@@ -58,10 +58,10 @@
 
     <h3 id="dictionary">Model Catalog Attributes Dictionary</h3>
         <p>Note: field names have 10 or few characters to retain compatibility with ESRI Shapefile format. </p>
-    
+    <div id="structure_attributes">
     <table class="dictionary">
         <tr>
-            <td colspan="2"><b>Real-World Structure Attributes:</b> These are attributes that refer to the real-world structure represented by the model.  </td>
+            <td colspan="2"><b>Structure Attributes:</b> These are attributes that refer to the real-world or proposed structure/s represented by the model.  </td>
         </tr>
         <tr>
         <td width="20%"><b>Name</b><br>Text</td>
@@ -94,7 +94,28 @@
         <td><b>ProjectLnk</b><br>Text</td>
         <td>A URL linking model to the BostonPlans landing page for the project if applicable. </td>
         </tr>
+        <tr>
+        <td><b>A80Status</b><br>Text</td>
+        <td>The latest status associated with the project in the Article 80 Development Log.  This status is useful for detecting changes in status for Approved models or Internal Models that are actively under consideration.  It does not map exactly to the value for <b>Status</b> </td>
+        </tr>
+        <tr>
+        <td><b>Plan</b><br>Text</td>
+        <td>For models associated with proposed or internal studies, the name of the overall plan that may cover multiple buildings, phases or scenarios.</td>
+        </tr>
+        <tr>
+        <td><b>Scenario</b><br>Text</td>
+        <td>For models that are part of alternative scenarios within a plan. The value for Scenario can be used to identify or select all of the models associated with an alternative scenario.  </td>
+        </tr>
+        <tr>
+        <td><b>Phase</b><br>Text</td>
+        <td>For models within a plan or scenario that are contingent on time and/or grouped by geography. </td>
+        </tr>
+        <tr>
+        <td><b>LegClass</b><br>Text</td>
+        <td>This field provides flexibility of controlling symbolization of models for webscenes and other cartographic products. </td>
+        </tr>
     </table>
+    </div> <!-- closes structure attributes -->
     <br>
     
     <table class="dictionary">
@@ -152,11 +173,14 @@
         </tr>
         <tr>
             <td><b>ModelStore</b><br>Text</td>
-            <td>Name of the model store holding the open-format model in the Archive Repository.  
+            <td>Name of the model store holding the open-format model in the Archive Repository.  The value of this field is normally set automatically when producing Geodatabase and ModelStore snapshots of the collection. The ModelStore string is combined with Model_ID to create path references and URL end-points for open-format models.
                 <ul>
-                    <li><b>Change:</b> Between major updates, new and modified public models belong in the Change store. 
-                    <li><b>As-Built:</b> Measured models of existing and historical structures belong in the As-Built store.
-                    <li><b>Internal:</b> Models created for in-house investigations belong in the Internal model store
+                    <li><b>Recent:</b> Between major updates, new and modified public models belong in the Change store. Also contains all of the models in the Approved_MP feature class, and any new additions to the collection, including split models that have been added since the publication of the Existing and History model stores.
+                    <li><b>Existing:</b> Measured models of existing and historical structures belong in the As-Built store.  This model store is segmented by tile.
+                    <li><b>History:</b> All models with status History. 
+                    <li><b>Internal:</b> Models created for in-house investigations belong in the Internal model store.  This model store is not shared on the web.
+                    <li><b>Retired</b> Models that have been retired are kept for reference and possible recovery.  Not shared on the web.  
+
                     </ul>   
                 </ul></td>
             </tr>
