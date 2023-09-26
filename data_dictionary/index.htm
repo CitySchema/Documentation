@@ -58,69 +58,17 @@
 
     <h3 id="dictionary">Model Catalog Attributes Dictionary</h3>
         <p>Note: field names have 10 or few characters to retain compatibility with ESRI Shapefile format. </p>
-    <div id="structure_attributes">
-    <table class="dictionary">
-        <tr>
-            <td colspan="2"><b>Structure Attributes:</b> These are attributes that refer to the real-world or proposed structure/s represented by the model.  </td>
-        </tr>
-        <tr>
-        <td width="20%"><b>Name</b><br>Text</td>
-        <td>The name of the structure.  If the model reflects one phase of a development project, you can mention it here.</td>
-        </tr>
-        <tr>
-        <td><b>Struct_ID</b><br>Text</td>
-        <td>If there is a table about structures, this would be a reference to the primary key of that table.</td>
-        </tr>
-        <tr>
-        <td><b>Struct_Type</b><br>Text</td>
-        <td>Type of structure. See domain values.  Refers mostly to the physical aspect of the structure.  
-        <br>Must have one of the following values: Building, Bridge, Wall</td>
-        </tr>
-        <tr>
-        <td><b>Struct_Use</b><br>Text</td>
-        <td>Use of the structure.  More specific than Type.  Refers to the functional aspect of the structure. <br>
-            Examples: School, Library, Civic, Residential, Commercial, Subway Headhouse, Bus Shelter</td>
-        </tr>
-        <tr>
-        <td><b>Struct_Lnk</b><br>Text</td>
-        <td>A URL that provides more information about the structure.  
-            <br>For example, a Wikipedia page or a library branch page.</td>
-        </tr>
-        <tr>
-        <td><b>Project_ID</b><br>Text</td>
-        <td>The Project ID in the BPDA’s Article 80 Development log.</td>
-        </tr>
-        <tr>
-        <td><b>ProjectLnk</b><br>Text</td>
-        <td>A URL linking model to the BostonPlans landing page for the project if applicable. </td>
-        </tr>
-        <tr>
-        <td><b>A80Status</b><br>Text</td>
-        <td>The latest status associated with the project in the Article 80 Development Log.  This status is useful for detecting changes in status for Approved models or Internal Models that are actively under consideration.  It does not map exactly to the value for <b>Status</b> </td>
-        </tr>
-        <tr>
-        <td><b>Plan</b><br>Text</td>
-        <td>For models associated with proposed or internal studies, the name of the overall plan that may cover multiple buildings, phases or scenarios.</td>
-        </tr>
-        <tr>
-        <td><b>Scenario</b><br>Text</td>
-        <td>For models that are part of alternative scenarios within a plan. The value for Scenario can be used to identify or select all of the models associated with an alternative scenario.  </td>
-        </tr>
-        <tr>
-        <td><b>Phase</b><br>Text</td>
-        <td>For models within a plan or scenario that are contingent on time and/or grouped by geography. </td>
-        </tr>
-        <tr>
-        <td><b>LegClass</b><br>Text</td>
-        <td>This field provides flexibility of controlling symbolization of models for webscenes and other cartographic products. </td>
-        </tr>
-    </table>
+
     </div> <!-- closes structure attributes -->
     <br>
     
     <table class="dictionary">
         <tr>
             <td colspan="2"><b>Model Status Attributes: </b>: These attributes are used to determine whether or how the model should appear in various scenarios involving the time period, or planning context.  These are the attributes most often used for controlling the styling of models and the attributes most frequently updated in the model management workflows.   </td>
+        </tr>
+        <tr>
+        <td width="20%"><b>Name</b><br>Text</td>
+        <td>The name of the structure.  THis may be the name of an existing or proposed structure or as a default, this could be the address taken from the parcel intersected by a model's centroid.  </td>
         </tr>
         <tr>
         <td width="20%"><b>Status</b><br>Text</td>
@@ -279,9 +227,74 @@
         <td><b>NearMapLnk</b><br>Text</td>
         <td>A hyperlink that brings up an oblique view of the building in NearMap.  Requires a NearMap login.</td>
         </tr>
-    
     </table>
     <br>
+
+    <div id="plan_attributes">
+        <table class="dictionary">
+        <tr>
+            <td colspan="2"><b>Plan Attributes:</b>For hand-made models in the Approved or Internal Feature Class may have attributes related to the role they play in proposals and plans.   </td>
+        </tr>
+        <tr>
+        <td width="20%">><b>Project_ID</b><br>Text</td>
+        <td>The Project ID in the BPDA’s Article 80 Development log.</td>
+        </tr>
+        <tr>
+        <td><b>ProjectLnk</b><br>Text</td>
+        <td>A URL linking model to the BostonPlans landing page for the project if applicable. </td>
+        </tr>
+        <tr>
+        <td><b>A80Status</b><br>Text</td>
+        <td>The latest status associated with the project in the Article 80 Development Log.  This status is useful for detecting changes in status for Approved models or Internal Models that are actively under consideration.  It does not map exactly to the value for <b>Status</b> </td>
+        </tr>
+        <tr>
+        <td><b>Plan</b><br>Text</td>
+        <td>For models associated with proposed or internal studies, the name of the overall plan that may cover multiple buildings, phases or scenarios.</td>
+        </tr>
+        <tr>
+        <td><b>Scenario</b><br>Text</td>
+        <td>For models that are part of alternative scenarios within a plan. The value for Scenario can be used to identify or select all of the models associated with an alternative scenario.  </td>
+        </tr>
+        <tr>
+        <td><b>Phase</b><br>Text</td>
+        <td>For models within a plan or scenario that are contingent on time and/or grouped by geography. </td>
+        </tr>
+        <tr>
+        <td><b>LegClass</b><br>Text</td>
+        <td>This field provides flexibility of controlling symbolization of models for webscenes and other cartographic products. </td>
+        </tr>
+    </table>
+
+    <div id="structure_attributes">
+        <table class="dictionary">
+            <tr>
+                <td colspan="2"><b>Structure Attributes:</b> These are attributes that refer to the real-world or proposed structure/s represented by the model.  </td>
+            </tr>
+ 
+            <tr>
+            <td width="20%">><b>Struct_ID</b><br>Text</td>
+            <td>If there is a table about structures, this would be a reference to the primary key of that table.</td>
+            </tr>
+            <tr>
+            <td><b>Struct_Type</b><br>Text</td>
+            <td>Type of structure. See domain values.  Refers mostly to the physical aspect of the structure.  
+            <br>Must have one of the following values: Building, Bridge, Wall</td>
+            </tr>
+            <tr>
+            <td><b>Struct_Use</b><br>Text</td>
+            <td>Use of the structure.  More specific than Type.  Refers to the functional aspect of the structure. <br>
+                Examples: School, Library, Civic, Residential, Commercial, Subway Headhouse, Bus Shelter</td>
+            </tr>
+            <tr>
+            <td><b>Struct_Lnk</b><br>Text</td>
+            <td>A URL that provides more information about the structure.  
+                <br>For example, a Wikipedia page or a library branch page.</td>
+            </tr>
+
+        </table>
+        <br>
+    
+
     
     <table class="dictionary">
         <tr>
