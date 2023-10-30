@@ -1,0 +1,95 @@
+
+<!doctype html>
+<html lang="en">
+<!-- Hi Folks, this is the template file for pages in the citySchema.org documentation library -->
+<head> <!-- Edit the following for each page -->
+    <title>ModelStore: Open Format Publishing and Archiving</title>
+    <meta name="description" content="The ModelStore is a means of storing collections of geographically referenced 3d models along with a catalog table that carries reference information and attributes of models.">
+    <meta name="keywords" content="City Modeling, Digital Humanities, Geography">
+    <meta name="author" content="Paul B. Cote">
+    
+<!-- don't edit between here and the Article div.  -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<link rel="icon" href="../resources/images/favicon.png" type="image/x-icon">
+<script src="../resources/jquery/jquery-3.6.0.min.js"></script>
+<link href="../resources/docutree.css" rel="stylesheet"> 
+<script src="../resources/slideshow_pbc.js"></script>
+<link href="../resources/slideshow_pbc.css" rel="stylesheet"> 
+
+
+<!-- The index sidebar and all content other than the main article come from the docutree_includes.js.
+      When you add a new page or internalachcor, you should update the index in docutree_includes.js.-->
+<script src="../resources/cityschema_includes.js"></script>
+<!-- THis has to come after the cityschema_includes file-->
+<script src="../resources/docutree.js"></script>
+</head>
+<body>
+  <div id="grid-container">
+    <div id="index-container">
+      <div id="index-header"> <!-- Content provided by docutree_includes.js--> </div>
+      <div id="index">        <!-- Content provided by docutree_includes.js--> </div>
+      <div id="index-footer"> <!-- Content provided by docutree_includes.js--> </div>
+    </div> 
+<div id="main-container">
+<div id="header"> <!-- Content provided by docutree_includes.js--> </div>
+
+<!-- Page content goes inside the article div -->
+  <div id="article">
+  <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
+  <h1 class="title">ModelStore: Open Format Publishing and Archiving</h1>
+  <p>
+    The ModelStore is a means of storing collections of geographically referenced 3d models along with a catalog table that carries reference information and attributes of models.  Whereas we depend on the Multipatch format to serve as a very high-performance means of storing models, Multipatch has a drawback since it is not accessible to the tools and workflows of the design world.  
+  </p>
+  <p>
+  <p>The asset management strategy for the 3D Model Collection uses the ModelStore as a way of mirroring the content of a multipacth feature class as a repository / catalog of open-format model assets.  ModelStores provide a guarantee that if the collection needs to be migrated out of the SESRI software ecosystem it can be done without any risk of loss.  
+  </p>
+  <!-- Creeping Corruption and the Round-Trip Assumption-->
+
+
+
+
+<h2>Anatomy of a ModelStore</h2>
+<p>A single ModelStore is a folder that contains catalog information and one or more sub-folders containing 3D model files.  The default case used by citySchema currently is to use <b>Wavefront Object (.obj)</b> format models.  But the ModelStore architectue can accommodate any other format, ont potentially multiple formats could be supported within a single modelstore. 
+ <p> 
+  Catalogs are tables, which may be formatted as <b>.csv</b>, <b>.json</b>, or <b>ESRI Scene Layer Packages</b>.  Catalog tables have all or some of the attributes that pertain to citySchema multipatch building models.
+<p>
+
+  <h2>Full and Recent ModelStores and Catalogs</h2>
+  <figure class="right">
+    <img src="images/modelstore_full.jpg">
+    <figcaption>A Model Store with Full Collection and Recent Updates.</figcaption>
+  </figure>
+
+  <p> As the citySchema model collection moves through time, it passes milestones of <b>Full Collection Archives</b> and <b>Recent Archive Updates</b>.  This pattern permits updates to be published relatively frequently without the need to re-write and re-upload the entire archive an excessive number of times.  Re-Writing the archive entails QA/QC steps that take time and attention.  So it is better to release updates as streamlined ModelStores of their own until enoughupdates have accured to warrant building the next Full Archive.    
+  <p>  
+  It is not necessary to tie the schedule of full archives to the release of new tiled SketchUp models, but it this could be a useful strategy for design-oriented users who might be working with a particular set of tiles that they would like to check for updates. 
+  </p>
+  
+
+
+
+  <h3>Producing the Archive ModelStores</h3>
+  Two attributes of particular importance in the modelstore catalog include:
+  <ul>
+    <li><b>ModelDate:</b> This date attribute is assigned when each model is imported from its batch into the Stage_NewModels feature class.  This is the date that determines whether any given model has been included in the last Full Collection Archive or should instead be included in the next Recent model archive. 
+    <li><b>ModelStore</b> is string that provides a relative path reference to the sub-folder within the modelstore.  FOr example, the record for a given model may have a ModelStore value equal to <b>Existing/obj/BOS_H_3/BOS-9VF1F-LTEZQ-VPKEX_OBJ.zip</b>.  This string can be used with the Model_ID and some other constants to produce a relative link or a URL to the .obj format version of that models.  E.g. <b>www.bpda.boston.gov/3d/modelstore/Existing/obj/BOS_H_3/BOS-9VF1F-LTEZQ-VPKEX_OBJ.zip</b>.  The ModelStore attribute is set at the time when a new modelStore Catalog is produced.  This is usually when a Full or Recent ModelStore Archive is produced.
+
+
+
+
+
+  
+  where new tiled models are published in SketchUp format.  These models may be uploaded   
+
+  </div> <!-- Closes #article div -->
+
+
+
+  <div id="footer"> <!-- Content provided by docutree_includes.js--> </div> 
+</div> <!-- Closes main container--> 
+</div> <!-- closes grid container-->
+</body>
+
+</html>
+    
