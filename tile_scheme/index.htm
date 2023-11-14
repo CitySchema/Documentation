@@ -62,30 +62,25 @@
 </p><p>
 To facilitate on-going exchange of 3D models, we have chosen a default offset that places the origin to the South-West of Boston and neighboring cities. We expect that modelers will use project-specific coordinate origins.  Preserving the Metro3D insertion point and a tile boundary in models will make it easy to make repeat the precise shift precisely geo-located models back and forth between your project and other citySchema collaborators.
 
-<ul>
-<li><b>Projected Coordinate System:</b> State Plane Massachusetts Mainland (Feet),  North American Datum of 1983.
-<li><b>Vertical Coordinate System for 3D data:</b> North American Vertical Datum, 1988 (NAVD 88) Feet (Height)
-<li>To simplify exchange between GIS and design tools, model asset coordinates for are offset. 
-</ul>
-<p>The origin of the Metro 3D Boston coordinate system serves as the insertion point for models.
- <UL>
-    <LI>Massachusetts State Plane Coordinates (before offsets):</b>
-    <ul> <li><b>X:</b> 731,100 U.S. Feet
-         <li><b>Y:</b> 2,902,900 U.S. Feet
-        <li><b>Elevation:</b> 0 U.S. Feet
-        <li><b>Vertical Datum:</b> North American Vertical Datum 1988 (Height) U.S. Feet.
-    </ul>
-<li><b>Geographic Referencing:</b>
-  <ul><li><b>Longitude:</b> 71.223391 W 
-      <li><b>Latitude:</b> 42.213379 N 
-      <li><b>Earth Model:</b> WGS84
+<p><b>Projected Coordinate System:</b> State Plane Massachusetts Mainland (Feet),  North American Datum of 1983.
+  <p><b>Vertical Datum:</b> North American Vertical Datum, 1988 (NAVD 88) Feet (Height)
+  <p><b>Offset</b> To enable exchange precisely located models with diverse applications, State Plane coordinates are offset to keep all coordinates within limits inherent in most 3D design tools. 
   </ul>
-<li><b>For display in cartesian or global coordinate systems:</b>
-  <ul><li><b>Rotation to align with True North:</b>  Clockwise 0.34 Degrees. 
+  
+  <h3>Coordinate System Origin</h3>
+  
+  <ul> <li>X: 731,100 U.S. MA State Plane Feet
+       <li>Y: 2,902,900 U.S. MA State Plane Feet
+  <li>Longitude: 71.223391 W 
+  <li>Latitude: 42.213379 N
+  <li>Elevation: 0 
+  <li>Earth Model: WGS84
+  <li>Rotation to align with True North:  Clockwise 0.34 Degrees. 
   </ul>
-</ul>
+  
+  <p><b>OBJ Orientation: </b> Many modeling tools treat the Y axis as vertical.  Geographical coordinate systems use a Z-Up, Y-Forward orientation.  If you experience mis-orientation when importing OBJ format models into your design projects, check the orientation oprions in your importer.  The Z-Up orientation is sometimes obtained by rotating the model -90 degrees arouns the X axis.
+  
 
-<p><b>OBJ Orientation: </b> Many modeling tools treat the Y axis as vertical.  Geographical coordinate systems use a Z-Up, Y-Forward orientation.  If you experience mis-orientation when importing OBJ format models into your design projects, check the orientation oprions in your importer.  The Z-Up orientation is sometimes obtained by rotating the model -90 degrees arouns the X axis.
 
  
 
