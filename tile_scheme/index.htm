@@ -87,9 +87,20 @@ To facilitate on-going exchange of 3D models, we have chosen a default offset th
 
 <p><b>OBJ Orientation: </b> Many modeling tools treat the Y axis as vertical.  Geographical coordinate systems use a Z-Up, Y-Forward orientation.  If you experience mis-orientation when importing OBJ format models into your design projects, check the orientation oprions in your importer.  The Z-Up orientation is sometimes obtained by rotating the model -90 degrees arouns the X axis.
 
-<P>To georeference SketchUp tiles for interoperability with SketchUp's geolcoation tools, see the <a href="./sketchup_model.htm#georeference" target="metadata">Notes at the bottom of the SketchUp Models page</a>.  
+ 
 
-
+  <h3 id="skp_geolocation">SketchUp Geo-Location</h3> 
+  <p>To georeference your SketchUp model for interoperability with SketchUp's Geo-Location features, including export of properly located KMZ files:
+    <ul>
+      <li>Load the <a href="./tile_grid.htm#downloads">SketchUp tile grid</a> and see the latitude and longitude references for tile centers and corners.
+      <li>Choose a tile center or corner to be the origin point for your model.  This works best for models that are just one or two tiles wide.
+     <li>Select all and click your chosen origin point with the <b>Move tool</b>. 
+    <li>Type <b>[0,0,0]</b> -- which should appear in the Measurement Box (lower right corner of the SketchUp window.) Your model origin should now be at your chosen point. 
+    <li>Click your origin point with the <b>Rotate tool</b>. and begin a clockwise rotation.  Then enter <b>1.3</b> (degrees) in the Measurement box.  This orients your model to the local Universal Transverse Mercator grid, which SketchUp expects.
+    <li>FInally, Go to Model Info > Geolocation and enter the latitude and longitude for your origin point. 
+    <li>Test your geolocation by trying to add some imagery from <b>File > GeoLocation > Add Imagery</b>
+      
+</ul>
 
 
 <h2 id="download">Download Tile Grid Resources</h2>
