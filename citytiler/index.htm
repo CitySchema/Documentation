@@ -37,72 +37,108 @@
   <h3 class="section_title"></h3>  <!-- Optional: would be the tile of the intro chapter.  -->
   
   
-  <p style="background: lightgray;">
-    <b>Notice: </b> this documentation is in work.  The repository has been checked and all of the tools work.  The documentation will be brought up to date soon.
-  </p>
+
 
   <h1 class="title">Preparing Tiled City Model Resources</h1>
-  <p>One of the main functions of the cityschema framework is the <a href="../repocat/index.htm" target="putboard">Repository/Catalog</a> which provides access to detailed city model resources in various formats that are compatible specialized tools for 3D design, archival and historical applications, open-source tool-chains and gaming engines.  
-  <p>
-  The <a href="../tile_scheme" target="outboard">Metropolitan Tile Grid and Coordinate System</a> are an important piece of the citySchema strategy for loss-less round-trip exchange of city model resources with content creators using design-oriented tools.  
-  </p>
-  <figure class="right">
-    <img src="images/citytiler_toolbox.png">
-    <figcaption>CityTiler Toolbox</figcaption>
-    </figure>
-  <p>
-  The <a href="https://github.com/CitySchema/cityschema-citytiler" target="github">CitySchema-CityTiler Repository.</a> provides the tools for:
-  <ul> 
-    <li>The tile scheme and compact coordinate system
-    <li>Tiled terrain models integrating the most detailed triangulated DTM data covered by the municipality's digital terrain model (DTM), filling in the outer areas with the MassGIS DTM.
-    <li>High resolution groundplan images representing the municipality's planimetric layers or latest orthophotography - -tiled to drape precisely on each tiled terrain models. 
-    </ul>
+  <p>One of the main functions of the cityschema framework is the <a href="../repocat/index.htm" target="outboard">Repository/Catalog</a> which provides access to detailed city model resources in various formats compatible with design-oriented 3d modeling tools, open-source tool-chains and game engines and platform-independent preservation of model assets. 
 
 
 
-
-
-
-  <p>The citySchema city model management framework makes use of very detailed terrain data that is broken into rectagular tiles that can be snapped together seamlessly. The rectangular tiling scheme facilitates the integration of the terrain models with groundplan information shared as high-resolution images -- including the latest true ortho photography.  These snap-together texture-mapped terrain tiles are very compatible in exchanges between GIS and 3d modeling tools used by designers. They also can be shared as raster elevation models that have the same image-draping and edge-matching capabilities.
-
-  <p> This page describes the terrain modeling strategy, including a description of the data-sets and tools provides in the 
+    <h2>Downloads</h2>
+    <p style="background: lightgray;">
+      <b>Pre-Release Notice: </b> This documentation and the associated workspace and tools are almost complete.  They require one more run-through before we are sure that they are ready.
+    </p>
     <ul>
-      <li><a href="https://github.com/CitySchema/cityschema-citytiler" target="github">CitySchema-CityTiler Repository.</a>
-    </ul>
-  
+      <li><a href="http://www.pbcgis.com/bos3d_downloads/CityTiler_6.0.1_20231128.zip">CityTiler_6.0.1_20231128.zip</a> Pre-Release edition of CityTiler Workspace with all of the tools and tasks. 
+      </ul>
+
+  <h2>Tiled framework for cross-platform collaboration</h2>
+    <p>Exchanging precisely located 3d model data between diverse applications is one of the big challenges of collaborative city model projects.  Few non-GIS tools are capable of dealing with models that are both highly detailed and spatially extensive.  Most design or history-oriented projects are concerned with neighborhoods rather than entire cities.  Segmenting the city model into <a href="..tile_scheme/index.htm:" target="outboard">5000-foot square tiles </a> creates a framework of snap-together modules that include terrain mesh, drapable groundplan images, and building model collections that are precisely registered in a common, CAD-friendly coordinate system. 
+    <p>There are a variety of exchange formats for 3d models extant in the marketplace.  We have chosen the <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000507.shtml" target="outboard">Wavefront OBJ format</a> as the most commonly imported open format that supports a simple triangulated profile and potential to carry image-based texture maps. 
     
-    <h3 id=anatomy">The Anatomy of a Digital Terrain Model</h3>
-    <p>The source source data behind the most efficient and editable <b>Digital Terrain Models (DTM)</b> consists of <b>3D Hard Break Lines</b> that trace the edges of slopes and flat places that have a more or less continuous grade.  <b>Soft Break Lines</b> are lines that the terrain passes through without a crease.  <b>Mass Points </b> provide a way of marking the elevation od peaks and depressions and other locations between the break lines.
-    </p><p>
-    DTM break lines and mass points are the most efficient way of describing the shape of a terrain surface. Because they describe only the critical locations, they are the best source material to use in terrain editing and in exchanges where the number of bytes is an issue.    
-    </p><p>
-    Before a DTM can be rendered as a surface/ require that the elevation information in a DTM be interpolated into a 3D triangulated surface -- sometimes referred to as <b>Mesh</b> or <B>Triangulated Irregular Network (TIN)</b>. There are many ways of triangulating 3D lines and points.  The best one for terrain models is known as <b>Delaunay Triangulation</b> which makes sure that the 3D breaklines are preserved as triangle edges in the resulting mesh.  Triangulated mesh surfaces may be sampled to create a <b>Raster Digital Elevation Model (DEM)</b>.   
-    </p>
-    <h3 id="sources">Source Data for the Boston Metro Area.</h3>
-    <p>There are a couple of challenges for creating rectangular terrain models for municipalities.  First, the best terrain models, created from photogrammetry usually extend to the town limit.  So the city is surrounded by  an false flat areas, which are distracting and tend to frustrate designers.  To fix this, we have found a very servicable state-wide DTM from MassGIS, and developed a process that uses MassGIS DTM features in areas that are beyond the Boston city limits. 
-    </p><p>
-    A second issue occurs in the corners of the tiles.  If there is not an elevation point exactly in the corner of each tile, then the mesh will not extend all the way to the corner -- leaving unsightly, illogical and inaccurate holes in the terrain.  To solve this problem, we have added elevations to the tile corners and tile centers.  Points from this <b>Tile Points</b> layer are include in the DTM data for each tile.  
-    </p>
-   <h3 id="process">The Process</h3>
-      <p>
-      The <a href="https://github.com/CitySchema/Modular-Terrain" target="github">CitySchema/Modular-Terrain Repository.</a> contains resources and tools for creating new tiled terrain models in ArcGIS TIN format.  The <b>Clip Terrain Combo</b> tool can be used to create a rectangular terrain model coverng any area within the Metro3D tile boundary.  To assure that your model extends to the corners, you should snap the corners of your clip rectangle to points in the <b>Metro3D_Tile_Pts</b> feature class. 
-       </p>  
-      <div class="feature procedure">
-       <h3>To Use:</h3>
-          <ol>
-            <li>Clone the workspace from git-hub <a href="https://github.com/CitySchema/cityscema-citytiler" target="github">CitySchema/Modular-Terrain</a>Repository.
-            <li>Open the ArcGIS Pro project form the ArcDocs folder. 
-            <li>Before attempting to create a custom terrain model, I recommend testing the 
-              <b> 
-            <li>Create a recangular clipping frame that is snapped to points in the <b>Metro_3d_Tile_Pts</b> feature class.  
-            <li>From the </b>Metro3d_Terrain</b> toolbox, open the <b>Clip Terrain_Combo</b>
-              model.
-            <li>Use the tools in the top row of the model to create a new folder to hold your terrain resources.
-            <li>Double-click the blue oval for <b>Tile_Polys</b> and substitute your new clipping frame. 
+    <h2>The CityTiler Workspace </h2>
+    <p>The CityTiler workspace is an ArcGIS Pro workspace that provides source material, and tools that produce the tile grid and two types of tiled data-sets.  Following the convention of the <a href="../filesystem/index.htm#workspace">citySchema workflow folder</a>, the cityTiler workspcae is a folder with subfolders for <b>sources</b> and <b>tools</b> and <b>ArcGIS project and layer files</b> among other things.
+    
+    
+    <h2>Tools, Tasks, Maps and Layouts in the CityTiler Workspace</h2>
+    <p>To understand the main components of the CityTiler workspace it wil be useful to open the ArcGIS Pro project, from <b>ArcDocs/CityTiler.aprx</b> and look for the following assets in the Contents and Tasks panes. 
+    <ul>
+    <li><b>cityTiler Tools:</b> The heart of the CityTiler workspace is a set of customized geoprocessing models stored in <b>Tools\Bos3d_CityTiler.atbx</b>. These tools are organized into numbered tool groups.  Each set of tools is associated with one or more maps, which can be looked at in the ArcGIS contents pane.  It is generally better to run these tools through their associated tasks (described below).  In the event a tool needs to be repaired or modified, it may be useful to open them form the table of contents. Many tools have two components: one that is designed to produce a data-set for a single tile, and an <b>iterator model </b> that loops through the single-model tool for a set of tiles.  
+    <li><b>Control Maps:</b> Maps with names that end with <b>_CTL</b> are used as the control context for a set of tools.  Control maps include layers that are referenced in the tools and therefore should be the active maps when certain tools are being run. Many control maps include a tile selector layer tht is used to specify a specific tile or set of tiles that a tool should operate over.
+    <li><b>Groundplan Maps:</b> Maps with names that end in <b>_GP</b> or <b>_Map</b> are used to provide symbolization and styling for groundplan images and city-scale reference maps. 
+    <li><b>Tiled Groundplan Layout: </b> In the <b>Layouts</b> section of the contents pane, the <b>Groundplans_LYT</b> provides the scale aand page-size parameters that are used to produce high-resolution tiled groundplan images based on the stylized data provided by the groundplan maps described above. The shift from one tile to another is accomplished by the <b>Tools\python\export_gp_image_tile.py</b> script.
+    <link><b>Metro TileGrid Layout: </b> The reference map for the tile grid and the fallback context map used by leaflet applications are clipped exactly to the tilegrid boundary. This layour provides the page dimensions and scale that produce the right pixel-size and line weights for these maps.  
+    <li><b>CityTiler Tasks: </b> ArcGIS Tasks are a means of adding essential documentation and controling geoprocessing tools. 
+    </ul>       
 
-      </div>
+  <h2>Product-Oriented Workflows Executed through from CityTiler Workspace</h2>
+  <p>The work of producing tiled data-sets begins in the cityTiler workspace.  Several datasets are produced, some of which are end products, such as groundplan images.  Some of the products are, like the tile grid and the GIS-based terrain resources are used in the tiling process or by the FME workbenches described below. 
+  <ul>
+    <li><b>Repocat_Data Folder: </b> The destination for tiled resources.  This contains the data resources that are part of the At first, the data resources are uncompressed.  Later on, sme of these may be compressed to become endpoints for the <a href="../repocat/index.htm">citySchema Repository Catalog.</a> 
+    
+    <li> <b>Tile Grid and Associated Points as Shapefiles and DXF and Reference Image:</b> The tilegrid polygons and points along with their special offset projection provide the registration framework that enables easy exchange of precisely geo-located models among tools that do not support formal georeferencing. 
+    <p>The custom geoprocessing models that create the tile grid polygons and points are provided in the toolbox   
 
+      <li><b>Tiled Terrain Resources as Shapefiles and ArcGIS TIN and DXF format:</b> A vector-based digital terrain model (DTM) is an efficient means of recording elevations along breaks-in grade and other critical points.  Much more efficient and precise than rasters or contour representations.  DTMs provide the most efficient starting place for creating and modifying triangulated terrain meshes. 
+      <li><b>Tiled Groundplan Images: </b> Recent true orthophotography or stylized planimetric graoundplan maps are useful for painting essential contextual information onto the terrain models to complete the setting for models of structures. The images are georeferenced with ArcGIS world files.  Being clipped precisely with the same footprint as the terrain model, these images snap into place onto the terran models in any 3d modeling application. 
+
+      <li><b>Tiled Vector Groundplan in DXF format:</b> Design studies usually involve reconfiguration of groundplan elements like pavement edges, open spaces and water features.  Vector groundplan information in DXF format provides designers with a starting place for their new groundplan ideas -- which also happens to assure that the groundplan patches that are provided with tjheir submitted models wil be coherent with the greater context in the mother model.  
+      </ul>
+
+    <h2>FME Workbenches </h2>
+      <p>FME provides many capabilities for turning the products of the cityTiler workspace into formats suitible for importing into non-gis platforms and for long-term asset management. Custom FME workbenches have been created to support workflows for generating resources that are indispensible for long term data preservation and interoperability with design-oriented 3d modeling tools. 
+      <p>The FME workbenches are stored in the <b>CityTiler/tools/FME_Tiling_Tools</b> folder.  There is a dated Readme file included with the tools that you can use to compare the issue date of this set of tools against the latest available download listed at the top of this page.
       
+    <ul>
+      <li><b>Draped_Terrain_OBJ.fmw: </b> Takes a specified tile identiifer and produces a terrain mesh that is draped with a specified groundplan image. 
+    <p>Accepts the following inputs:
+      <ul>
+        <li><b>Tile_ID </b> The tile to be converted. (Example: BOS_I_3)
+        <li><b>RepoCat_Data folder: </b> (described above) this folder should contain a folder of tiled terrain resources that includes TIN a shapefile of triangles and a Groundplan image folder that contains the image that will be draped on the terrain mesh.
+      </ul>
+      <p>Private parameters specify the names of the Tiled Terrain Resources and Groundplan Image folders which are both expected to be in the specified RepoCat_Data folder. In the even that you want to specify other terrain triangles or groundplamn images you wil need to edit these private parameters.
+      </p>
+      <li><b>Draped_Terrain_OBJ_Iterator.fmw: </b>  
+        This workbench gets a list of the eligible tiles by grabbing a list of the folders in the Tiled Terrain Resources folder, it converts the folder names into Tile_IDs and runs the Draped_Terrain_OBJ.fmw for each tile. Before you run this, you should test the Draped_Terrain_OBJ.fmw workbench on a single tile first.   
+      
+        <li><b>Multipatch_to_ModelStore_Archive.fmw:</b> OBJ-Format Building model collections are created form the geodatabase editions that are generated in the <a href="..\mmgt_compile/index.htm">Model Management Workflow</a>.  
+      <p>This workbench takes the following parameters:
+      <ul>
+        <li><b>RepoCat_Data: </b>folder for output 
+        <li><b>Input Geodatabase: </b> A geodatabase model collection edition produced by the ModelManagement workflow.)
+        <li><b>Tile_ID: </b> if you want to produce a model store collection for a specific tile, enter it here (Example: BOS_I_3).  Or leave it blank to convert all of the models within the date range.
+        <li><b>Begin Date: </b> If you want to just export recent models, enter a date string here as YYYYMMDD.  To remove the bottom limit, enter 00000000.
+        <li><b>End Date: </b> This date should be the date string used in the name of the geodatabase edition you are using. 
+        <li><b>Full or Recent: </b> If you are only selecting recent updates, choose Recent.  The default is Full.  This value affects the name of the collection that appears in the ModelFinder for each model store. 
+        </ul>
+      This workbench validates and repairs model geometry where necessary and creates a log reporting the errors that it found. It produces a set of tiled model collections for models that are in the <b>Existing</b>, <b>Approved</b>, and <b>History</b> feature classes. Optionally, the <b>Internal</b>  and <b>Alt</b> feature classes can be written to a city-wide <b>Internal</b> model store. 
+    <p>Each tiled or city-wide modelstore includes a catalog database in geojson (polygon) or CSV format. 
+    
+      <li><b>Tiled_SketchUp_Model.fmw: </b> Sketchup format is not an open format, yet it is importable into many design tools and has the advantage of being able to carry an object hierarchy and layers.  This saves many steps compared with importing thousands of individual OBJ models into your favorite 3d modeling program.    This workbench makes a SketchUp model for a single tile. It uses TIN triangles from the the tiled terrain resources and a geodatabase model collection and produces an integrated Sketchup model that has the buildings grouped according to the value of their Model_ID and categorized into layers based on the value of their status class (Existing, Approved, or History). These models are very convenient as a setting for editing existing building models or creating new development scenarios.  
+      <p>This workbench takes the following arguments:
+        <ul>
+          <li><b>Tile ID: </b> The tile ID selected for model production Example: BOS_I_3.
+          <li><b>RepoCat_Data folder: </b> The folder that contains the Tiled Terrain Resources and that will be the location where the tiled SketchUp models are stored. 
+          <li><b>Building Collection Geodatabase: </b> The geodatabase model collection from which building models will be taken.
+          <li><b>Issue Date: </b> This is normally the same issue date that identifies the Geodatabase Model Collection that was used.     
+        </ul>
+      <p>This workbench will create a folder  named \Bos3d_CityModel_[Issue_Date]_SKP in RepoCat_Data.
+
+      <li><b>Tiled_SketchUp_Model_Iterator.fmw: </b> This workbench gets a list of the eligible tiles by grabbing a list of the folders in the Tiled Terrain Resources folder, it converts the folder names into Tile_IDs and runs the Draped_Terrain_OBJ.fmw for each tile. Before you run this, you should test the Draped_Terrain_OBJ.fmw workbench on a single tile first. 
+
+      </ul> <!-- closes list of FME workbenches -->
+
+      <h2>RepoCat Prep and Zip Tools</h2>
+      <p>The tiled resources produced by the CityTiler workflows and the FME workbenches described above are organized in folders identified by the value of each Tile Identifier. It is a good idea to look at these and to open at least one of each in the appropriate tool to make sure that the pieces are all there and operating as expected.  Once you are sure that they are workng, the final step is to zip them.  In the case of the model collections, there is a matter of copying the ModelFinder.html and associated resources to each collection.  Without the ModelFinder, these collections are nothing but folders filled with randomly-named files. 
+      <p>The python scripts kept in <b>cityTiler\tools\RepoCat_Prep_Zip_Tools</b> are provided to make it easy to create a zip archive each tiled resource folder.  These tools work by dragging and dropping a folder onto the tool in question.  
+      <ul>
+        <li><b>Master_ModelFinder:</b> A folder containing the ModelFinder.htm and the associated catalog_resources.  These files use the ctalog_jsonp.js file in each model store collection rendering it as a finding aid that allows for identifying and accessing individual models. 
+        <li><b>PrepZip_ModelStore.py:</b> Copies the master ModelFinder.htm and associated resources into a modelstore folder and the prepares a zip archive.
+        <li><b>ZipChildFolders.py:</b> Creates a zip archive of each of the child folders within a specified parent folder.
+        <li><b>Rename_Files_Folders:</b> A program for renaming files and folders.  Useful in the event that you decide to change the names of resources.  This script does not operate via drag and drop interface and requires customization to specify how it will operate.  
+      </ul>
+       
+
 
   </div> <!-- Closes #article div -->
   <div id="footer"> <!-- Content provided by cityschema_includes.js--> </div> 
