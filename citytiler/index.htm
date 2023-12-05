@@ -71,16 +71,25 @@
     <li><b>CityTiler Tasks: </b> ArcGIS Tasks are a means of adding essential documentation and controling geoprocessing tools. 
     </ul>       
 
+
+    <h2>The Repository Catalog and Repocat_Data Folder: </h2> 
+    <p>The <a href="../repocat/index.htm">Repository Catalog</a> is a file-system directory that holds all of the tiled data products produced by the cityTiler workflows.  For ease of demonstration and demo version of the repoCat folder is provided in the cityTiler workspace. When using these tools in production you may want to keep the working RepoCat folder outside of this workspace.  
+
+
   <h2>Product-Oriented Workflows Executed through from CityTiler Workspace</h2>
   <p>The work of producing tiled data-sets begins in the cityTiler workspace.  Several datasets are produced, some of which are end products, such as groundplan images.  Some of the products are, like the tile grid and the GIS-based terrain resources are used in the tiling process or by the FME workbenches described below. 
-  <ul>
-    <li><b>Repocat_Data Folder: </b> The destination for tiled resources.  This contains the data resources that are part of the At first, the data resources are uncompressed.  Later on, sme of these may be compressed to become endpoints for the <a href="../repocat/index.htm">citySchema Repository Catalog.</a> 
-    
+  <p>Because the FME workbenches are set up to draw terrain mesh and DTM data from existing folders, it is easiest to re-use the folder-names already existing in <b>cityTiler/RepoCat/RepoCat_Data</b> as as the output folders for these various tools.
+  <ul>    
     <li> <b>Tile Grid and Associated Points as Shapefiles and DXF and Reference Image:</b> The tilegrid polygons and points along with their special offset projection provide the registration framework that enables easy exchange of precisely geo-located models among tools that do not support formal georeferencing. 
-    <p>The custom geoprocessing models that create the tile grid polygons and points are provided in the toolbox   
+    <p>The custom geoprocessing models that create the tile grid polygons and points are provided in the toolbox,<b> 1. Create Tile Grid</b>.
 
-      <li><b>Tiled Terrain Resources as Shapefiles and ArcGIS TIN and DXF format:</b> A vector-based digital terrain model (DTM) is an efficient means of recording elevations along breaks-in grade and other critical points.  Much more efficient and precise than rasters or contour representations.  DTMs provide the most efficient starting place for creating and modifying triangulated terrain meshes. 
-      <li><b>Tiled Groundplan Images: </b> Recent true orthophotography or stylized planimetric graoundplan maps are useful for painting essential contextual information onto the terrain models to complete the setting for models of structures. The images are georeferenced with ArcGIS world files.  Being clipped precisely with the same footprint as the terrain model, these images snap into place onto the terran models in any 3d modeling application. 
+      <li><b>Tiled Terrain Resources as Shapefiles and ArcGIS TIN and DXF format:</b> A vector-based digital terrain model (DTM) is an efficient means of recording elevations along breaks-in grade and other critical points.  Much more efficient and precise than rasters or contour representations.  DTMs provide the most efficient starting place for creating and modifying triangulated terrain meshes.  The task, <b>Create Clipped Terrain Datasets</b> produces a folder of clipped DTM data as shape files in a folder that you designate.  
+      
+        <p>The existence the Tile_Frame and Slim_Tin_Triangles shape files within folders  <b>RepoCat_Data/Bos3d_TerrainDTM_SHP/[Tile Label]_GIS</b> is necessary for creating the tiled terrain mesh obj and sketchup format models.
+      
+    
+     <li><b>Tiled Groundplan Images: </b> Recent true orthophotography or stylized planimetric groundplan maps are useful for painting essential contextual information onto the terrain models to complete the setting for models of structures. The images are georeferenced with ArcGIS world files.  Being clipped precisely with the same footprint as the terrain model, these images snap into place onto the terran models in any 3d modeling application. 
+
 
       <li><b>Tiled Vector Groundplan in DXF format:</b> Design studies usually involve reconfiguration of groundplan elements like pavement edges, open spaces and water features.  Vector groundplan information in DXF format provides designers with a starting place for their new groundplan ideas -- which also happens to assure that the groundplan patches that are provided with tjheir submitted models wil be coherent with the greater context in the mother model.  
       </ul>
@@ -96,7 +105,7 @@
         <li><b>Tile_ID </b> The tile to be converted. (Example: BOS_I_3)
         <li><b>RepoCat_Data folder: </b> (described above) this folder should contain a folder of tiled terrain resources that includes TIN a shapefile of triangles and a Groundplan image folder that contains the image that will be draped on the terrain mesh.
       </ul>
-      <p>Private parameters specify the names of the Tiled Terrain Resources and Groundplan Image folders which are both expected to be in the specified RepoCat_Data folder. In the even that you want to specify other terrain triangles or groundplamn images you wil need to edit these private parameters.
+      <p>Private parameters specify the names of the Tiled Terrain Resources and Groundplan Image folders which are both expected to be in the specified RepoCat_Data folder. In the even that you want to specify other terrain triangles or groundplan images you wil need to edit these private parameters.
       </p>
       <li><b>Draped_Terrain_OBJ_Iterator.fmw: </b>  
         This workbench gets a list of the eligible tiles by grabbing a list of the folders in the Tiled Terrain Resources folder, it converts the folder names into Tile_IDs and runs the Draped_Terrain_OBJ.fmw for each tile. Before you run this, you should test the Draped_Terrain_OBJ.fmw workbench on a single tile first.   
@@ -105,7 +114,7 @@
       <p>This workbench takes the following parameters:
       <ul>
         <li><b>RepoCat_Data: </b>folder for output 
-        <li><b>Input Geodatabase: </b> A geodatabase model collection edition produced by the ModelManagement workflow.)
+        <li><b>Input Geodatabase: </b> A geodatabase model collection edition produced by the ModelManagement workflow.
         <li><b>Tile_ID: </b> if you want to produce a model store collection for a specific tile, enter it here (Example: BOS_I_3).  Or leave it blank to convert all of the models within the date range.
         <li><b>Begin Date: </b> If you want to just export recent models, enter a date string here as YYYYMMDD.  To remove the bottom limit, enter 00000000.
         <li><b>End Date: </b> This date should be the date string used in the name of the geodatabase edition you are using. 
