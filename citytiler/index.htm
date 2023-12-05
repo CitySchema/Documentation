@@ -49,7 +49,7 @@
       <b>Pre-Release Notice: </b> This documentation and the associated workspace and tools are almost complete.  They require one more run-through before we are sure that they are ready.
     </p>
     <ul>
-      <li><a href="https://www.pbcgis.com/bos3d_downloads/cityTiler_6.0.2_20231205.zip">CityTiler_6.0.2_20231205.zip</a> Pre-Release edition of CityTiler Workspace with all of the tools and tasks. 
+      <li><a href="https://www.pbcgis.com/bos3d_downloads/cityTiler_6.0.2_20231205r2.zip">CityTiler_6.0.2_20231205.zip</a> Pre-Release edition of CityTiler Workspace with all of the tools and tasks. 
       </ul>
 
   <h2>Tiled framework for cross-platform collaboration</h2>
@@ -107,6 +107,8 @@
       </ul>
       <p>Private parameters specify the names of the Tiled Terrain Resources and Groundplan Image folders which are both expected to be in the specified RepoCat_Data folder. In the even that you want to specify other terrain triangles or groundplan images you wil need to edit these private parameters.
       </p>
+      <p>Before running this tool, or the iterator version, you should check RepoCat_Data to make sure that there is an <b>Bos3d_Groundplan_2011_JPG</b> and a <b>Bos3d_TerrainDTM_SHP\[Tile_ID]_GIS</b> dataset for each tile that you intend to produce
+        .   
       <li><b>Draped_Terrain_OBJ_Iterator.fmw: </b>  
         This workbench gets a list of the eligible tiles by grabbing a list of the folders in the Tiled Terrain Resources folder, it converts the folder names into Tile_IDs and runs the Draped_Terrain_OBJ.fmw for each tile. Before you run this, you should test the Draped_Terrain_OBJ.fmw workbench on a single tile first.   
       
@@ -124,6 +126,8 @@
     <p>Each tiled or city-wide modelstore includes a catalog database in geojson (polygon) or CSV format. 
     
       <li><b>Tiled_SketchUp_Model.fmw: </b> Sketchup format is not an open format, yet it is importable into many design tools and has the advantage of being able to carry an object hierarchy and layers.  This saves many steps compared with importing thousands of individual OBJ models into your favorite 3d modeling program.    This workbench makes a SketchUp model for a single tile. It uses TIN triangles from the the tiled terrain resources and a geodatabase model collection and produces an integrated Sketchup model that has the buildings grouped according to the value of their Model_ID and categorized into layers based on the value of their status class (Existing, Approved, or History). These models are very convenient as a setting for editing existing building models or creating new development scenarios.  
+
+      <p>Before running this tool, or the iterator version, you should check RepoCat_Data to make sure that there is an <b>Bos3d_Orthophoto_2023_JPG</b> and a <b>Bos3d_TerrainDTM_SHP\[Tile_ID]_GIS</b> dataset for each tile that you intend to produce.   
       <p>This workbench takes the following arguments:
         <ul>
           <li><b>Tile ID: </b> The tile ID selected for model production Example: BOS_I_3.
