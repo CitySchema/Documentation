@@ -42,9 +42,19 @@
   <h1 class="title">Preparing Tiled City Model Resources</h1>
   <p>One of the main functions of the cityschema framework is the <a href="../repocat/index.htm" target="outboard">Repository/Catalog</a> which provides access to detailed city model resources in various formats compatible with design-oriented 3d modeling tools, open-source tool-chains and game engines and platform-independent preservation of model assets. 
 
+    <h3>Topic Index</h3>  <!-- notice these paths reference the root folder so that this list can be copied to the index sidebar-->
+    <ul class="verses">
+      <li><a href="../citytiler/index.htm#downloads">Download Latest</a>
+      <li><a href="../citytiler/index.htm#framework">Framework for Collaboration</a>
+      <li><a href="../citytiler/index.htm#workspace">CityTiler Workspace</a>
+      <li><a href="../citytiler/index.htm#tools">Tools, Tasks, Maps and Layouts</a>
+      <li><a href="../citytiler/index.htm#repocat">Demo Repository Catalog</a>
+      <li><a href="../citytiler/index.htm#workflows">ArcGIS Workflows</a>
+      <li><a href="../citytiler/index.htm#fme">FME Workflows</a>
+      <li><a href="../citytiler/index.htm#ziptools">RepoCat Prep and Zip Tools</a>
+      </ul>
 
-
-    <h2>Downloads</h2>
+    <h2 id="downloads">Download Latest Version</h2>
     <p style="background: lightgray;">
       <b>Pre-Release Notice: </b> This documentation and the associated workspace and tools are almost complete.  They require one more run-through before we are sure that they are ready.
     </p>
@@ -52,15 +62,15 @@
       <li><a href="https://www.pbcgis.com/bos3d_downloads/cityTiler_6.0.2_20231206_r3.zip">CityTiler_6.0.2_20231206_r3.zip</a> Pre-Release edition of CityTiler Workspace with all of the tools and tasks. 
       </ul>
 
-  <h2>Tiled framework for cross-platform collaboration</h2>
+  <h2 id="framework">Tiled framework for cross-platform collaboration</h2>
     <p>Exchanging precisely located 3d model data between diverse applications is one of the big challenges of collaborative city model projects.  Few non-GIS tools are capable of dealing with models that are both highly detailed and spatially extensive.  Most design or history-oriented projects are concerned with neighborhoods rather than entire cities.  Segmenting the city model into <a href="..tile_scheme/index.htm:" target="outboard">5000-foot square tiles </a> creates a framework of snap-together modules that include terrain mesh, drapable groundplan images, and building model collections that are precisely registered in a common, CAD-friendly coordinate system. 
     <p>There are a variety of exchange formats for 3d models extant in the marketplace.  We have chosen the <a href="https://www.loc.gov/preservation/digital/formats/fdd/fdd000507.shtml" target="outboard">Wavefront OBJ format</a> as the most commonly imported open format that supports a simple triangulated profile and potential to carry image-based texture maps. 
     
-    <h2>The CityTiler Workspace </h2>
+    <h2 id="workspace">The CityTiler Workspace </h2>
     <p>The CityTiler workspace is an ArcGIS Pro workspace that provides source material, and tools that produce the tile grid and two types of tiled data-sets.  Following the convention of the <a href="../filesystem/index.htm#workspace">citySchema workflow folder</a>, the cityTiler workspcae is a folder with subfolders for <b>sources</b> and <b>tools</b> and <b>ArcGIS project and layer files</b> among other things.
     
     
-    <h2>Tools, Tasks, Maps and Layouts in the CityTiler Workspace</h2>
+    <h2 id="tools">Tools, Tasks, Maps and Layouts in the CityTiler Workspace</h2>
     <p>To understand the main components of the CityTiler workspace it wil be useful to open the ArcGIS Pro project, from <b>ArcDocs/CityTiler.aprx</b> and look for the following assets in the Contents and Tasks panes. 
     <ul>
     <li><b>cityTiler Tools:</b> The heart of the CityTiler workspace is a set of customized geoprocessing models stored in <b>Tools\Bos3d_CityTiler.atbx</b>. These tools are organized into numbered tool groups.  Each set of tools is associated with one or more maps, which can be looked at in the ArcGIS contents pane.  It is generally better to run these tools through their associated tasks (described below).  In the event a tool needs to be repaired or modified, it may be useful to open them form the table of contents. Many tools have two components: one that is designed to produce a data-set for a single tile, and an <b>iterator model </b> that loops through the single-model tool for a set of tiles.  
@@ -72,11 +82,11 @@
     </ul>       
 
 
-    <h2>The Repository Catalog and Repocat_Data Folder: </h2> 
+    <h2 id="repocat">The Demo Repository Catalog and Repocat_Data Folder: </h2> 
     <p>The <a href="../repocat/index.htm">Repository Catalog</a> is a file-system directory that holds all of the tiled data products produced by the cityTiler workflows.  For ease of demonstration and demo version of the repoCat folder is provided in the cityTiler workspace. When using these tools in production you may want to keep the working RepoCat folder outside of this workspace.  
 
 
-  <h2>Product-Oriented Workflows Executed through from CityTiler Workspace</h2>
+  <h2 id="workflows">Product-Oriented Workflows Executed through from CityTiler Workspace</h2>
   <p>The work of producing tiled data-sets begins in the cityTiler workspace.  Several datasets are produced, some of which are end products, such as groundplan images.  Some of the products are, like the tile grid and the GIS-based terrain resources are used in the tiling process or by the FME workbenches described below. 
   <p>Because the FME workbenches are set up to draw terrain mesh and DTM data from existing folders, it is easiest to re-use the folder-names already existing in <b>cityTiler/RepoCat/RepoCat_Data</b> as as the output folders for these various tools.
   <ul>    
@@ -94,7 +104,7 @@
       <li><b>Tiled Vector Groundplan in DXF format:</b> Design studies usually involve reconfiguration of groundplan elements like pavement edges, open spaces and water features.  Vector groundplan information in DXF format provides designers with a starting place for their new groundplan ideas -- which also happens to assure that the groundplan patches that are provided with tjheir submitted models wil be coherent with the greater context in the mother model.  
       </ul>
 
-    <h2>FME Workbenches </h2>
+    <h2 id="fme">FME Workbenches </h2>
       <p>FME provides many capabilities for turning the products of the cityTiler workspace into formats suitible for importing into non-gis platforms and for long-term asset management. Custom FME workbenches have been created to support workflows for generating resources that are indispensible for long term data preservation and interoperability with design-oriented 3d modeling tools. 
       <p>The FME workbenches are stored in the <b>CityTiler/tools/FME_Tiling_Tools</b> folder.  There is a dated Readme file included with the tools that you can use to compare the issue date of this set of tools against the latest available download listed at the top of this page.
       
@@ -103,20 +113,25 @@
     <p>Accepts the following inputs:
       <ul>
         <li><b>Tile_ID </b> The tile to be converted. (Example: BOS_I_3)
-        <li><b>RepoCat_Data folder: </b> (described above) this folder should contain a folder of tiled terrain resources that includes TIN a shapefile of triangles and a Groundplan image folder that contains the image that will be draped on the terrain mesh.
+        <li><b>Folder containing tiled DTM Resources: </b> This folder should contain a folder of tiled terrain resources that includes a folder for each tile.  Each of these tiled folders contains a shapefile of the TIle Polygon TIN Triangles.
+        <li><b>Folder of Tiled Groundplan Images: </b>A folder that contains a sub-folder for each tile.  Each of these tile folders contains a Tiled Groundplan Image that will be draped on the terrain mesh for the subject tile.
+        <li><b>Destination OBJ Folder</b> The name of the folder that will contain the tiled TerrainMech_OBJ datasets.
       </ul>
       <p>Private parameters specify the names of the Tiled Terrain Resources and Groundplan Image folders which are both expected to be in the specified RepoCat_Data folder. In the even that you want to specify other terrain triangles or groundplan images you wil need to edit these private parameters.
       </p>
-      <p>Before running this tool, or the iterator version, you should check RepoCat_Data to make sure that there is an <b>Bos3d_Groundplan_2011_JPG</b> and a <b>Bos3d_TerrainDTM_SHP\[Tile_ID]_GIS</b> dataset for each tile that you intend to produce
-        .   
+      <p>Before running this tool, or the iterator version, you should check RepoCat_Data to make sure that there is an <b>Bos3d_Groundplan_2011_JPG</b> and a <b>Bos3d_TerrainDTM_SHP\[Tile_ID]_GIS</b> dataset for each tile that you intend to produce.   
       <li><b>Draped_Terrain_OBJ_Iterator.fmw: </b>  
         This workbench gets a list of the eligible tiles by grabbing a list of the folders in the Tiled Terrain Resources folder, it converts the folder names into Tile_IDs and runs the Draped_Terrain_OBJ.fmw for each tile. Before you run this, you should test the Draped_Terrain_OBJ.fmw workbench on a single tile first.   
+        <p>User Parameters:
+        <ul>
+          <li><b>GIS TerrainDTM Folder for Tile List: </b> A folder containing several subfolders.  Each subfolder contains a <b>[Tile_ID]_TerrainDTM_2011_SHP</b> folder that contains a tile boundary and tin triangles shapefiles. This folder is scanned and the sub-folder names are parsed to create a list of tile names which will be passed to the Draped_Terrain_OBJ.fmw workbench. 
+        </ul>
       
         <li><b>Multipatch_to_ModelStore_Archive.fmw:</b> OBJ-Format Building model collections are created form the geodatabase editions that are generated in the <a href="..\mmgt_compile/index.htm">Model Management Workflow</a>.  
       <p>This workbench takes the following parameters:
       <ul>
         <li><b>RepoCat_Data: </b>folder for output 
-        <li><b>Input Geodatabase: </b> A geodatabase model collection edition produced by the ModelManagement workflow.
+        <li><b>Building Collection Geodatabase: </b> A geodatabase model collection edition produced by the ModelManagement workflow.  For your convenience a demo geodatabase has been procided in <b>cityTiler/sources/Bos3d_ModelMgt</b> folder. 
         <li><b>Tile_ID: </b> if you want to produce a model store collection for a specific tile, enter it here (Example: BOS_I_3).  Or leave it blank to convert all of the models within the date range.
         <li><b>Begin Date: </b> If you want to just export recent models, enter a date string here as YYYYMMDD.  To remove the bottom limit, enter 00000000.
         <li><b>End Date: </b> This date should be the date string used in the name of the geodatabase edition you are using. 
@@ -126,22 +141,28 @@
     <p>Each tiled or city-wide modelstore includes a catalog database in geojson (polygon) or CSV format. 
     
       <li><b>Tiled_SketchUp_Model.fmw: </b> Sketchup format is not an open format, yet it is importable into many design tools and has the advantage of being able to carry an object hierarchy and layers.  This saves many steps compared with importing thousands of individual OBJ models into your favorite 3d modeling program.    This workbench makes a SketchUp model for a single tile. It uses TIN triangles from the the tiled terrain resources and a geodatabase model collection and produces an integrated Sketchup model that has the buildings grouped according to the value of their Model_ID and categorized into layers based on the value of their status class (Existing, Approved, or History). These models are very convenient as a setting for editing existing building models or creating new development scenarios.  
+        <p>Accepts the following inputs:
+          <ul>
+            <li><b>Tile_ID </b> The tile to be converted. (Example: BOS_I_3)
+            <li><b>Folder containing tiled DTM Resources: </b> This folder should contain a folder of tiled terrain resources that includes a folder for each tile.  Each of these tiled folders contains a shapefile of the TIle Polygon TIN Triangles.
+            <li><b>Folder of Tiled Groundplan Images: </b>A folder that contains a sub-folder for each tile.  Each of these tile folders contains a Tiled Groundplan Image that will be draped on the terrain mesh for the subject tile.
+            <li><b>Building Collection Geodatabase: </b> A geodatabase model collection edition produced by the ModelManagement workflow.  For your convenience a demo geodatabase has been procided in <b>cityTiler/sources/Bos3d_ModelMgt</b> folder. 
+            <li><b>Issue Date: </b> This is normally the same issue date that identifies the Geodatabase Model Collection that was used. 
+            <li><b>Destination Sketchup folder</b> The name of the folder that will contain the tiled TerrainMech_OBJ datasets.
+          </ul>
+          <p>Private parameters specify the names of the Tiled Terrain Resources and Groundplan Image folders which are both expected to be in the specified RepoCat_Data folder. In the even that you want to specify other terrain triangles or groundplan images you wil need to edit these private parameters.
+          </p>
+
 
       <p>Before running this tool, or the iterator version, you should check RepoCat_Data to make sure that there is an <b>Bos3d_Orthophoto_2023_JPG</b> and a <b>Bos3d_TerrainDTM_SHP\[Tile_ID]_GIS</b> dataset for each tile that you intend to produce.   
-      <p>This workbench takes the following arguments:
-        <ul>
-          <li><b>Tile ID: </b> The tile ID selected for model production Example: BOS_I_3.
-          <li><b>RepoCat_Data folder: </b> The folder that contains the Tiled Terrain Resources and that will be the location where the tiled SketchUp models are stored. 
-          <li><b>Building Collection Geodatabase: </b> The geodatabase model collection from which building models will be taken.
-          <li><b>Issue Date: </b> This is normally the same issue date that identifies the Geodatabase Model Collection that was used.     
-        </ul>
+      
       <p>This workbench will create a folder  named \Bos3d_CityModel_[Issue_Date]_SKP in RepoCat_Data.
 
       <li><b>Tiled_SketchUp_Model_Iterator.fmw: </b> This workbench gets a list of the eligible tiles by grabbing a list of the folders in the Tiled Terrain Resources folder, it converts the folder names into Tile_IDs and runs the Draped_Terrain_OBJ.fmw for each tile. Before you run this, you should test the Draped_Terrain_OBJ.fmw workbench on a single tile first. 
 
       </ul> <!-- closes list of FME workbenches -->
 
-      <h2>RepoCat Prep and Zip Tools</h2>
+      <h2 id="ziptools">RepoCat Prep and Zip Tools</h2>
       <p>The tiled resources produced by the CityTiler workflows and the FME workbenches described above are organized in folders identified by the value of each Tile Identifier. It is a good idea to look at these and to open at least one of each in the appropriate tool to make sure that the pieces are all there and operating as expected.  Once you are sure that they are workng, the final step is to zip them.  In the case of the model collections, there is a matter of copying the ModelFinder.html and associated resources to each collection.  Without the ModelFinder, these collections are nothing but folders filled with randomly-named files. 
       <p>The python scripts kept in <b>cityTiler\tools\RepoCat_Prep_Zip_Tools</b> are provided to make it easy to create a zip archive each tiled resource folder.  These tools work by dragging and dropping a folder onto the tool in question.  
       <ul>

@@ -96,11 +96,16 @@ let index_htm = `
 
 
      <li class="chapter"><a href="../citytiler/index.htm">City Tiler</a></li>
-    <ul class="verses">
-      <li class="verse"><a href="../citytiler/index.htm#anatomy">Anatomy of a DTM</a>
-      <li class="verse"><a href="../citytiler/index.htm#sources">Source Data</a>
-      <li class="verse"><a href="../citytiler/index.htm#process">The Process</a>
-   </ul>
+     <ul class="verses">
+     <li><a href="../citytiler/index.htm#downloads">Download Latest</a>
+     <li><a href="../citytiler/index.htm#framework">Framework for Collaboration</a>
+     <li><a href="../citytiler/index.htm#workspace">CityTiler Workspace</a>
+     <li><a href="../citytiler/index.htm#tools">Tools, Tasks, Maps and Layouts</a>
+     <li><a href="../citytiler/index.htm#repocat">Demo Repository Catalog</a>
+     <li><a href="../citytiler/index.htm#workflows">ArcGIS Workflows</a>
+     <li><a href="../citytiler/index.htm#fme">FME Workflows</a>
+     <li><a href="../citytiler/index.htm#ziptools">RepoCat Prep and Zip Tools</a>
+     </ul>
 
 <h3>Managing the Building Model Collection</h3>  
 <li class="chapter"><a href="../model_collection/index.htm">Building Model Collection</a></li>
