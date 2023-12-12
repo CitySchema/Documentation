@@ -46,13 +46,13 @@ let index_htm = `
     <li class="verse"><a href="../home/index.htm#streetscapes">Streetscapes are part of our cultural heritage</a></li>
     <li class="verse"><a href="../home/index.htm#ack">Acknowledgements</a></li>
 </ul>
-<li class="chapter"><a href="../roles/index.htm#roles">Roles and Motivations of Intelligent Organizations </a></li>
+<!-- li class="chapter"><a href="../roles/index.htm#roles">Roles and Motivations of Intelligent Organizations </a></li>
   <ul class="verses">
   <li class="verse"><a href="../roles/index.htm#users">Diverse Collaborators and Users</a></li>
   <li class="verse"><a href="../roles/index.htm#curators">Technical Curation Team</a></li>
     <li class="verse"><a href="../roles/index.htm#"it_dept">The Agency's Information Technology Manager</a></li>
    </ul>
-
+-->
 <li class="chapter"><a href="../repocat/index.htm">Repository / Catalog </a></li>
   <ul class="verses">
   <li class="verse"><a href="../repocat/index.htm#principles">Guided by Sound Asset Management Principles</a></li>
