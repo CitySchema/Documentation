@@ -212,7 +212,7 @@ let header_htm = `
 <div style="float: left; width: 50%; margin: 0px"><img src="../resources/images/headerimage_cropped.png" height="50px"></div>
 <div style= "width: 50%; float: right; padding-top: 20px; font-size: 17px;">
 <div class="rightflex">
-<div><a href="https://github.com/CitySchema" target="github">GitHub</a></div> 
+<div><a href="../whatsnew/index.htm" target="github">Downloads</a></div> 
 <div><a href="https://www.youtube.com/channel/UCPkMHdYokjSvoaljowhkjBQ" target="youtube">YouTube</a></div>
 <div><a href="http://www.cityschema.org">Home</a></div>
 </div></div>
