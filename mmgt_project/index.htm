@@ -39,17 +39,14 @@
 
     <p>The collection of 3D building models is the most actively developed and maintained component of the city model. Simple models can be made by extruding building roof-prints, but the best looking models, more accurate models are contributed by designers or photogrammetry specialists.  These models originate outside the world of GIS, and therefore are associated with a lineage of source files and procedures.  The model collection is discussed in depth on the page <a href="../model_collection/index.htm">The Building Model Collection</a>.
     <p>
-    As the model collection moves through time, there are many files and procedures to keep track of!  Ideally, we would have a few easy-to-understand principles and patterns for file management that permit any model collection curator to add new models, to promote and demote existing models in such a way that the every decision and resource in the lineage of any model can be re-traced and if need-be, undone.   The file management schema should be scalable in such a way that itdoes not become more complicated as the model grows in terms of numbers or spatial extent. Whan managed accrding to these principles, the model collection will serve as a clear memory of the history of the places that have been measured, or dreamed up over the life-span of the model. 
+    As the model collection moves through time, there are many files and procedures to keep track of!  Ideally, we would have a few easy-to-understand principles and patterns for file management that permit any model collection curator to add new models, to promote and demote existing models in such a way that the every decision and resource in the lineage of any model can be re-traced and if need-be, undone.   The file management schema should be scalable in such a way that it does not become more complicated as the model grows in terms of numbers or spatial extent. Whan managed accrding to these principles, the model collection will serve as a clear memory of the history of the places that have been measured, or dreamed up over the life-span of the model. 
     <p>
     
     The purpose of this page is to try to explain these simple principles and patterns in hopes that the user will be able to apply them in almost any model management situation.  Properly applied, this system should allow any other model curator who  understands these principles to pick up the model curation task exactly where the former curator left off. 
-    </p><p> 
-    The workflow and tools described on this page can be demonstrated and forked for local customizations using the <a href="http://github.com/CitySchema/ModelMgt" target="github">Model Management GitHub repository</a>.  We start with the ArcGIS Pro workflow because our municipal GIS managers tend to have licenses for this tool-kit.  The ArcGIS model for representing 3D geometry as geographic features is well suited to the task. We anticipate that the concepts and procedures described here may be implemented on other platforms with completely interoperable results. 
-    </p> 
+
     <h3>Table of Contents</h3>
     <ol>
-      <li><a href="#roles">Enterprise and Technical Viewpoints</a>
-      <li><a href="#foundation">Foundation Concepts and Data Dictionary</a>
+      <li><a href="#download">Download Demo Dataset</a>
       <li><a href="#context">Filesystem Context </a>
       <li><a href="#tour">Tour of the Model Management Workspace Folder: Data Management</a>
       <li><a href="#lifecycle">Lifecycle of a Model Management Workspace</a>
@@ -60,32 +57,9 @@
         <li><a href="#tools"> Explore Tasks and Tools</a>
       </ol>
 <HR>
-    <h2 id="roles">Enterprise and Technical Viewpoints</h2>
-    <p>Before digging into the technical details of <b>How</b> to manage a city-wide collection of 3D models, it will be useful to have a picture of the sorts of people for whom this scheme has been designed, and the personal and institutional <b>motivations</b> that make this effort worthwhile.  
-</p><p>
-    The <b>Technical User</b> is the sort of person who carries out edits and other data management tasks regarding geographic data in a municipality.  This is a person who knows how to use 3D modeling tools and has experience with the issues that come up when working with 3D models in various formats.  The technical user also has an understanding of GIS, relational database fundamentals and basic programming with ArcGIS model builder.  Basic programming with python and javascript is useful, as well.
-  </p><p>
-    
-    The <b>IT Manager</b> is accountable for taking care of the institution's information.  This role involves hiring and evaluating the work of technical users who may be employees or contractors.   For the IT manager, a successful architecture results in a collection of assets that is sustainable without dependencies on particular individuals holding the position of technician or manager. For the IT manager, it will be useful to understand the essential pieces of the city model, where they are stored, and the sorts of problems that are likely to occur -- including the possibility that the digital assets associated with the city model may need to be migrated from one software platform to another.
-  </p>
-  <!-- h3>Special Problems of Managing 3D Models in GIS</h3>
-  <p>
-    <b>Managing a collection of 3D models is different from managing traditional two-dimensional GIS data.</b> Points, Lines and Polygons are easy to visually inspect and to repair with a few strokes of the cursor.  Rules of 2D topology can be evaluated automatically.  Problems that occur with GIS-based 3D model collections may be more difficult to discover.  There are many data-sets involved, including historical models, alternative models, superseded proposals, retired models, etc, which are rarely looked at.  3D models are tricky to repair and replace -- particularly if the original source files are no longer available.  When a 3D model is corrupt, the effect is sometimes invisible in one context, such as the desktop GIS application, but becomes evident when the model is translated to another format.  it is often the case that problems such as lost or corrupted models are not discovered for weeks, and when they are, it can be difficult to trace the problem or to know how many other models may have been affected.  
-  </p><p>
-    The special problems of managing temporally and geographically extended collections of 3d models are the reason for the special pains taken in designing the model management workflow to safeguard against accidental data loss, to maintain an audit trail for all changes,  to assure a roll-back capability, and to keep track of source data.  
-    </p><p>
-    Managers and technicians should each read this documentation to understand that there is a place for storing and finding every piece of the city model.  This will relieve the technician from having to make thousands of new decisions, save the cost of learning from unsuccessful ones.  This understanding, along with periodic quality checks will assure the IT manager that the information resources are recoverable even after the technician moves on to other jobs. 
-    </p>
-  
+<h2>Download Demo Dataset</h2>
+<p>This documentation wil be most easily understood if you have the demonstration workspace open in ArcGIS Pro.  Check the <a href="../whatsnew/index.htm"> Recent Downloads page</a> to download the most recent version of the ModelMgt workspace annd unzip it in your Bos3d_UserDev/Workspaces/ModelMgt_demo folder. 
 
-<HR -->
-
-    <h2 id="foundation">Foundation Concepts</h2>
-
-    <p>For model curators, it is essential to understand the conceptual overview of the model collection, including definitions of important terms and a data dictionary issued in the document: <a href="../model_collection/index.htm" target="outboard">Overview of Building Model Collection and Catalog</a>.  It is particularly important to understand the <a href="../model_collection/index.htm#datadictionary" target="datadict">Data Dictionary</a> with all of the meanings and values expected for each of the model attributes.</p> 
-    </p><p>
-    The Building model collection is the most intensively managed component of the city-wide 3D model. This workflow prepares the model collection to become one of the components of the <a href="../repocat/index.htm" target = "outboard">citySchema Repository Catalog</a> publishing and archiving strategy.
-    </p>    
 
 <h2 id="context">File System Context</h2>
 <p>The citySchema architecture makes use of a modular file-system that has evolved over time to provide a scheme for storing assets that does not grow more complicated as the number of assets or their spatial or temporal extent grows.  The file system facilitates sharing and syncing of assets between in-house and off-site installations where parts of the city model may be worked on.   The demonstration version of the ModelMgt workspace is self-contained so it canbe explored without setting up an elaborate context of source folders.  To see how this workflow would be set up in a production environment, visit <a href="../filesystem/index.htm" target="outboard"> citySchema Modular File System</a> to learn more about the recommended filesystem context for the ModelMgt workspace.
@@ -172,7 +146,7 @@ Stages in the lifecycle of a model management workspace are depicted in the slid
 <hr>
 
     <h2 id="project">A tour of the ModelMgt ArcGIS Pro Project</h2>
-    <p>To get the most out of this tour, you should download a copy of the <a href="http://github.com/CitySchema/ModelMgt" target="github">ModelMgt repository from GitHub</a> and explore the file-system and ArcGIS Pro Project while looking at this tutorial.
+
     </p>
     <p>The ModelMgt.aprx file, located in the ArcDocs folder is an arcGIS pro project that references the tools and data-sets involved in making changes to the model collection and publishing new editions.  Before digging into the tasks, it will be useful to check the critical preferences settings in this project.  Sometimes ArcGIS initializes these differently when you move or create a new project.
     </p>
