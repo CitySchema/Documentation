@@ -53,49 +53,25 @@ let index_htm = `
     <li class="verse"><a href="../roles/index.htm#"it_dept">The Agency's Information Technology Manager</a></li>
    </ul>
 -->
-<li class="chapter"><a href="../repocat/index.htm">Repository / Catalog </a></li>
-  <ul class="verses">
-  <li class="verse"><a href="../repocat/index.htm#principles">Guided by Sound Asset Management Principles</a></li>
-  <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
-    <li class="verse"><a href="../repocat/index.htm#github">Explore, Clone and Customize on GitHub.</a></li>
-   </ul>
 
-<li class="chapter"><a href="../model_ids/index.htm">Model Identifiers </a></li>
-   <li class="chapter"><a href="../tile_scheme/index.htm">Tile Scheme and Coordinate System</a></li>
-   <ul class="verses">
-           <li class="verse"><a href="../tile_scheme/index.htm#purpose" target="metadata">Tiling Strategy</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#coordinates" target="metadata">Metro Boston 3D Coordinate System</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#tips" target="metadata">Tips for maintaining georeferencing in your projects</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#download" target="metadata">Download City-Wide Tile-Grid in various formats</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#datadictionary" target="metadata">Tile Grid Data Dictionary</a>
-    </ul>
-
-
-    <li class="chapter"><a href="../submissions/index.htm">Model Submission Guidelines</a></li>
-    <ul class="verses">
-       <li class="verse"><a href="../submissions/index.htm#lod">Level of Detail</a>
-       <li class="verse"><a href="../submissions/index.htm#obj">Triangulated OBJ Format</a>
-       <li class="verse"><a href="../submissions/index.htm#georef">Context and/or Geolocation</a>
-       <li class="verse"><a href="../submissions/index.htm#sources">Source Material</a>
-    </ul>
- 
-    <!--li class="chapter"><a href="../model_batches/index.htm">Model Batches</a></li>
-    <ul class="verses">
- 
-      <li class="verse"><a href="../mmgt_batch/index.htm#batches">Model Work Batches</a>
-  
-      </ul -->
-
-   <li class="chapter"><a href="../filesystem/index.htm">citySchema Modular File System</a></li>
+   <li class="chapter"><a href="../filesystem/index.htm">CitySchema Modular File System</a></li>
    <ul class="verses">
       <li class="verse"><a href="../filesystem/index.htm#master">Cty3D_Master Folder</a></li>
       <li class="verse"><a href="../filesystem/index.htm#dev">Cty3D_Dev Folder</a></li>
       <li class="verse"><a href="../filesystem/index.htm#workspace">Workspace Patterns</a></li>
    </ul>
 
+<hr>
+   <h3>Building the Tile Scheme and the Repository Catalog</h3>  
 
+   <li class="chapter"><a href="../repocat/index.htm">Repository / Catalog </a></li>
+   <ul class="verses">
+   <li class="verse"><a href="../repocat/index.htm#principles">Guided by Sound Asset Management Principles</a></li>
+   <li class="verse"><a href="../repocat/index.htm#web">Simple-Self-contained Web Publishing Solution</a></li>
+     <li class="verse"><a href="../repocat/index.htm#github">Explore, Clone and Customize on GitHub.</a></li>
+    </ul>
 
-     <li class="chapter"><a href="../citytiler/index.htm">City Tiler</a></li>
+     <li class="chapter"><a href="../citytiler/index.htm">The City Tiler Workspace</a></li>
      <ul class="verses">
      <li><a href="../citytiler/index.htm#downloads">Download Latest</a>
      <li><a href="../citytiler/index.htm#framework">Framework for Collaboration</a>
@@ -106,7 +82,7 @@ let index_htm = `
      <li><a href="../citytiler/index.htm#fme">FME Workflows</a>
      <li><a href="../citytiler/index.htm#ziptools">RepoCat Prep and Zip Tools</a>
      </ul>
-
+<hr>
 <h3>Managing the Building Model Collection</h3>  
 <li class="chapter"><a href="../model_collection/index.htm">Building Model Collection</a></li>
    <ul class="verses">
@@ -114,9 +90,16 @@ let index_htm = `
       <li><a href="../model_collection/index.htm#interop">Interoperability Strategy</a>
       <li class="verse"><a href="../model_collection/index.htm#gdb">Geodatabase Format Collection and Catalog</a>
       <li class="verse"><a href="../model_collection/index.htm#obj">Open Source Format Collection and Catalog</a>
-
-
    </ul>
+
+   <li class="chapter"><a href="../submissions/index.htm">Model Submission Guidelines</a></li>
+   <ul class="verses">
+      <li class="verse"><a href="../submissions/index.htm#lod">Level of Detail</a>
+      <li class="verse"><a href="../submissions/index.htm#obj">Triangulated OBJ Format</a>
+      <li class="verse"><a href="../submissions/index.htm#georef">Context and/or Geolocation</a>
+      <li class="verse"><a href="../submissions/index.htm#sources">Source Material</a>
+   </ul>
+
 
    <li class="chapter"><a href="../data_dictionary/index.htm">Data Dictionary</a></li>
       <ul class="verses">
@@ -143,25 +126,20 @@ let index_htm = `
 
    <li class="chapter"><a href="../mmgt_init/index.htm">Initializing a New Model Management Workspace</a></li>
    <ul class="verses">
-
       <li class="verse"><a href="../mmgt_init/index.htm#initialize">Initializing the Workspace</a>
     </ul>
 
 <li class="chapter"><a href="../mmgt_import/index.htm">Importing Building Models</a></li>
   
-    <ul class="verses">
-    
+   <ul class="verses">
     <li class="verse"><a href="../mmgt_import/index.htm#import">Import, Inspect and Enroll Models</a>
     <li class="verse"><a href="../mmgt_import/index.htm#batches">Prepare a Batch Folder</a>
-
  </ul>
- <li class="chapter"><a href="../mmgt_validate/index.htm">Repair and Validate Models</a>
 
+ <li class="chapter"><a href="../mmgt_validate/index.htm">Repair and Validate Models</a>
  <li class="chapter"><a href="../mmgt_stage/index.htm">Promoting / Demoting Model Status</a></li>
-  
  <ul class="verses">
  <li class="verse"><a href="../mmgt_stage/index.htm#stage">Promote and Demote Model Status Attributes</a>
-
 </ul>
 
 
@@ -192,7 +170,15 @@ let index_htm = `
    <li class="verse"><a href="../mmgt_webscenes/index.htm#layers">Re-useable Layers</a>. 
 </ul>
 
-
+<li class="chapter"><a href="../model_ids/index.htm">About Unique Model Identifiers</a></li>
+   <li class="chapter"><a href="../tile_scheme/index.htm">Tile Scheme and Coordinate System</a></li>
+   <ul class="verses">
+           <li class="verse"><a href="../tile_scheme/index.htm#purpose" target="metadata">Tiling Strategy</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#coordinates" target="metadata">Metro Boston 3D Coordinate System</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#tips" target="metadata">Tips for maintaining georeferencing in your projects</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#download" target="metadata">Download City-Wide Tile-Grid in various formats</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#datadictionary" target="metadata">Tile Grid Data Dictionary</a>
+    </ul>
 
    <hr>
      <li class="chapter"><a href="../template/index.htm">Documentation Template</a></li>
