@@ -147,7 +147,7 @@ h2 {
 
 h3 {
   color: gray;
-  font-size: 19px;
+  font-size: 17px;
   font-weight: 500;
   margin-bottom: 0px;
 }
@@ -229,6 +229,14 @@ margin: 0;
 }
 
 /*** The following deal with figures and the images contained inside ***/
+
+
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 
 figure.middle {
   /*display: flex;*/

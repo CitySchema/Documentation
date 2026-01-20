@@ -100,6 +100,14 @@ let index_htm = `
       <li class="verse"><a href="../submissions/index.htm#sources">Source Material</a>
    </ul>
 
+   <li class="chapter"><a href="../pieces/index.htm">Integrating City Model Components</a></li>   
+<ul class="verses">
+  <li><a href="../pieces/index.htm#terrain">Terrain</a>
+  <li><a href="../pieces/index.htm#bridges">Bridges</a>
+
+  <li><a href="../pieces/index.htm#groundplan">Grade Separation in Groundplan</a>
+  <li><a href="../pieces/index.htm#walls">3D Wall Models</a>
+  </ul>
 
    <li class="chapter"><a href="../data_dictionary/index.htm">Data Dictionary</a></li>
       <ul class="verses">
