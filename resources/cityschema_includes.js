@@ -104,8 +104,8 @@ let index_htm = `
 <ul class="verses">
   <li><a href="../pieces/index.htm#terrain">Terrain</a>
   <li><a href="../pieces/index.htm#bridges">Bridges</a>
-
   <li><a href="../pieces/index.htm#groundplan">Grade Separation in Groundplan</a>
+   <li><a href="../pieces/index.htm#buildings">Terrain Tolerant Building Models</a>
   <li><a href="../pieces/index.htm#walls">3D Wall Models</a>
   </ul>
 
