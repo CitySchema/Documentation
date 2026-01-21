@@ -64,6 +64,16 @@ let index_htm = `
 <hr>
    <h3>Building the Tile Scheme and the Repository Catalog</h3>  
 
+      <li class="chapter"><a href="../tile_scheme/index.htm">Tile Scheme and Coordinate System</a></li>
+   <ul class="verses">
+           <li class="verse"><a href="../tile_scheme/index.htm#purpose" target="metadata">Tiling Strategy</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#coordinates" target="metadata">Metro Boston 3D Coordinate System</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#tips" target="metadata">Tips for maintaining georeferencing in your projects</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#download" target="metadata">Download City-Wide Tile-Grid in various formats</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#datadictionary" target="metadata">Tile Grid Data Dictionary</a>
+    </ul>
+
+
    <li class="chapter"><a href="../repocat/index.htm">Repository / Catalog </a></li>
    <ul class="verses">
    <li class="verse"><a href="../repocat/index.htm#principles">Guided by Sound Asset Management Principles</a></li>
@@ -95,14 +105,6 @@ let index_htm = `
    </ul>
 
 <li class="chapter"><a href="../model_ids/index.htm">About Unique Model Identifiers</a></li>
-   <li class="chapter"><a href="../tile_scheme/index.htm">Tile Scheme and Coordinate System</a></li>
-   <ul class="verses">
-           <li class="verse"><a href="../tile_scheme/index.htm#purpose" target="metadata">Tiling Strategy</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#coordinates" target="metadata">Metro Boston 3D Coordinate System</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#tips" target="metadata">Tips for maintaining georeferencing in your projects</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#download" target="metadata">Download City-Wide Tile-Grid in various formats</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#datadictionary" target="metadata">Tile Grid Data Dictionary</a>
-    </ul>
 
 
    <li class="chapter"><a href="../submissions/index.htm">Model Submission Guidelines</a></li>
@@ -134,7 +136,7 @@ let index_htm = `
         <li> <a href="../data_dictionary/index.htm#qa_flags">QA_Flags Dictionary</a>
         <li><a href="../data_dictionary/index.htm#LOD">Levels of Detail and other Recommendations for Model Structure</a>
       </ul>
-      
+
 <h3>Management Tools</h3> 
 
    <li class="chapter"><a href="../mmgt_project/index.htm">Model Management Workspace</a></li>
