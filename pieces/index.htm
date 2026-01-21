@@ -67,7 +67,7 @@
 <p>
 
 
-  <h2 id="bridges">Detailed and Web-Based Terrain Models </h2>
+  <h2 id="bridges">Problems with Bridges on Varied Terrain Surface  </h2>
 <p>To look right, bridges must meet the terrain in a smooth transition from the road grade on either side of the span.  The figure below illustrates the problem that arises when 3d models of bridges are built to meet detailed terrain exactly, there will be gaps when the model is presented on a less detailed terrain model.
 
       <figure class="middle">
@@ -119,8 +119,6 @@ The detailed terrain reveals a precise edge of cut and an approach grade.  The a
         <figcaption>Bridge Footings should extend under ground and under water.</figcaption>
       </figure>
 
-
-
 <h2 id="groundplan">Grade Separation in Groundplan</h2>
 <p>In the CitySchema framework, the groundplan is an image that represents the Roads, Sidewalks and other graded areas, Vegetation, Open Water, etc.  The groundplan is a coverage with no gaps that is draped on the terrain surface providing the context for the 3D models.  In traditional GIS applications, groundplan features are presented as a 2d map which shows all of the roads running over viaducts and bridges, covering over all of the detail that is underneath. The groundplan used for 3D city modeling, however, should represent the situation under bridges. 
 <p>
@@ -150,6 +148,7 @@ The detailed terrain reveals a precise edge of cut and an approach grade.  The a
         <figcaption>Problems of Buildings Precisely fitting detailed terrain.</figcaption>
       </figure>
 
+<h3>Add Building Model Foundation</h3>
 <p>In reality, buildings have foundations that extend below the ground.  Adding an 8-10 foot foundation to building models allows them to appear without sloppy errors on less detailed terrain models, as shown below. 
   
          <figure class="middle">
