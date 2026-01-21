@@ -28,8 +28,6 @@
 
 let index_htm = `
 <span class="title">Templates & Tools</span>
-<p style="background-color: white; margin-left: -10px; padding-left: 10px;">Now Open! 
-</p>  
 <ul class="treeview">
 <li class="chapter"><a href="../whatsnew/index.htm">Whats New: Recent Updates</a></li>
     <ul class="verses">
