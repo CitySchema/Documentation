@@ -83,7 +83,9 @@ let index_htm = `
      <li><a href="../citytiler/index.htm#ziptools">RepoCat Prep and Zip Tools</a>
      </ul>
 <hr>
-<h3>Managing the Building Model Collection</h3>  
+
+
+<h3>City Model Schema</h3>  
 <li class="chapter"><a href="../model_collection/index.htm">Building Model Collection</a></li>
    <ul class="verses">
       <li><a href="../model_collection/index.htm#overview">Conceptual Overview</a>
@@ -91,6 +93,17 @@ let index_htm = `
       <li class="verse"><a href="../model_collection/index.htm#gdb">Geodatabase Format Collection and Catalog</a>
       <li class="verse"><a href="../model_collection/index.htm#obj">Open Source Format Collection and Catalog</a>
    </ul>
+
+<li class="chapter"><a href="../model_ids/index.htm">About Unique Model Identifiers</a></li>
+   <li class="chapter"><a href="../tile_scheme/index.htm">Tile Scheme and Coordinate System</a></li>
+   <ul class="verses">
+           <li class="verse"><a href="../tile_scheme/index.htm#purpose" target="metadata">Tiling Strategy</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#coordinates" target="metadata">Metro Boston 3D Coordinate System</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#tips" target="metadata">Tips for maintaining georeferencing in your projects</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#download" target="metadata">Download City-Wide Tile-Grid in various formats</a>
+           <li class="verse"><a href="../tile_scheme/index.htm#datadictionary" target="metadata">Tile Grid Data Dictionary</a>
+    </ul>
+
 
    <li class="chapter"><a href="../submissions/index.htm">Model Submission Guidelines</a></li>
    <ul class="verses">
@@ -109,6 +122,9 @@ let index_htm = `
   <li><a href="../pieces/index.htm#walls">3D Wall Models</a>
   </ul>
 
+
+
+
    <li class="chapter"><a href="../data_dictionary/index.htm">Data Dictionary</a></li>
       <ul class="verses">
       <li> <a href="../data_dictionary/index.htm#concept">Concept of Built-Structure Model</a> 
@@ -118,7 +134,8 @@ let index_htm = `
         <li> <a href="../data_dictionary/index.htm#qa_flags">QA_Flags Dictionary</a>
         <li><a href="../data_dictionary/index.htm#LOD">Levels of Detail and other Recommendations for Model Structure</a>
       </ul>
-
+      
+<h3>Management Tools</h3> 
 
    <li class="chapter"><a href="../mmgt_project/index.htm">Model Management Workspace</a></li>
    <ul class="verses">
@@ -178,15 +195,7 @@ let index_htm = `
    <li class="verse"><a href="../mmgt_webscenes/index.htm#layers">Re-useable Layers</a>. 
 </ul>
 
-<li class="chapter"><a href="../model_ids/index.htm">About Unique Model Identifiers</a></li>
-   <li class="chapter"><a href="../tile_scheme/index.htm">Tile Scheme and Coordinate System</a></li>
-   <ul class="verses">
-           <li class="verse"><a href="../tile_scheme/index.htm#purpose" target="metadata">Tiling Strategy</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#coordinates" target="metadata">Metro Boston 3D Coordinate System</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#tips" target="metadata">Tips for maintaining georeferencing in your projects</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#download" target="metadata">Download City-Wide Tile-Grid in various formats</a>
-           <li class="verse"><a href="../tile_scheme/index.htm#datadictionary" target="metadata">Tile Grid Data Dictionary</a>
-    </ul>
+
 
    <hr>
      <li class="chapter"><a href="../template/index.htm">Documentation Template</a></li>
